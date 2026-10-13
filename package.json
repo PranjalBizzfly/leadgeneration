@@ -1,0 +1,30 @@
+{
+  "name": "leadgen-ai-website",
+  "version": "0.1.0",
+  "private": true,
+  "scripts": {
+    "dev": "next dev",
+    "build": "next build",
+    "start": "next start",
+    "lint": "eslint",
+    "check:content": "node scripts/content-check.mts",
+    "qa": "node scripts/qa-crawl.mts http://localhost:3000",
+    "docs:sitemap": "node scripts/sitemap-doc.mts",
+    "qa:visual": "node scripts/visual-qa.mjs http://localhost:3000 --all"
+  },
+  "dependencies": {
+    "next": "16.4.0",
+    "react": "19.3.0",
+    "react-dom": "19.3.0"
+  },
+  "devDependencies": {
+    "@tailwindcss/turbopack": "^4",
+    "@types/node": "^20",
+    "@types/react": "^19",
+    "@types/react-dom": "^19",
+    "eslint": "^9",
+    "eslint-config-next": "16.4.0",
+    "tailwindcss": "^4",
+    "typescript": "^5"
+  }
+}
