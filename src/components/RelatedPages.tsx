@@ -1,4 +1,5 @@
 import Link from "next/link";
+import { titleCase } from "@/lib/title-case";
 import type { PlanEntry } from "@/content/types";
 import { GROUPS } from "@/lib/groups";
 import { describe } from "@/lib/registry";
@@ -11,9 +12,9 @@ export function PageCard({ page }: { page: PlanEntry }) {
         {GROUPS[page.group].label}
       </span>
       <span className="mt-2 font-display text-[17px] font-bold leading-snug text-ink">{page.title}</span>
-      <span className="mt-2 line-clamp-3 flex-1 text-sm leading-relaxed text-muted">{describe(page.path)}</span>
+      <span className="mt-2 line-clamp-3 flex-1 text-sm leading-relaxed text-muted">{titleCase(describe(page.path))}</span>
       <span className="mt-4 inline-flex items-center gap-1.5 text-sm font-semibold text-brand">
-        Read more <ArrowRight size={15} className="transition group-hover:translate-x-1" />
+        Read More <ArrowRight size={15} className="transition group-hover:translate-x-1" />
       </span>
     </Link>
   );

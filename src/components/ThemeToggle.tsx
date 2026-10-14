@@ -13,7 +13,7 @@ export function ThemeToggle() {
     try {
       localStorage.setItem(THEME_KEY, next);
     } catch {
-      /* storage unavailable — theme still applies for this visit */
+      /* storage unavailable, theme still applies for this visit */
     }
   }
 
@@ -23,7 +23,7 @@ export function ThemeToggle() {
       onClick={toggle}
       className="grid size-10 place-items-center rounded-xl border border-line bg-surface text-ink-soft transition hover:border-brand hover:text-brand"
       aria-label="Toggle light and dark theme"
-      title="Toggle theme"
+      title="Toggle Theme"
     >
       <Sun size={18} className="hidden dark:block" />
       <Moon size={18} className="dark:hidden" />

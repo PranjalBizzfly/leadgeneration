@@ -16,68 +16,76 @@ const MODULES: {
   output: string;
   points: string[];
   href: string;
+  /** Destination page name, used verbatim as the link label. */
+  page: string;
   featured?: boolean;
 }[] = [
   {
     stage: "Discover",
     icon: Layers,
     title: "Multi-Source Scraping",
-    text: "Run one query and collect matching businesses from every enabled source.",
-    plan: "All plans",
-    output: "One record per business",
-    points: ["Google Maps, LinkedIn & IndiaMART", "Cross-source de-duplication", "Worker fleet for long jobs", "Quotas tracked per plan"],
+    text: "Run One Query And Collect Matching Businesses From Every Enabled Source.",
+    plan: "All Plans",
+    output: "One Record Per Business",
+    points: ["Google Maps, LinkedIn & IndiaMART", "Cross-Source De-Duplication", "Worker Fleet For Long Jobs", "Quotas Tracked Per Plan"],
     href: "/services/multi-source-lead-scraping",
+    page: "Multi-Source Lead Scraping",
   },
   {
     stage: "Enrich",
     icon: Sparkle,
     title: "AI Contact Enrichment",
-    text: "Fill the gaps automatically with contact routes and company context.",
-    plan: "All plans",
-    output: "Emails, phones, socials",
-    points: ["Emails from the company’s own site", "Phones normalised and format-checked", "Source recorded for every field", "Never overwrites manual edits"],
+    text: "Fill The Gaps Automatically With Contact Routes And Company Context.",
+    plan: "All Plans",
+    output: "Emails, Phones, Socials",
+    points: ["Emails From The Company’s Own Site", "Phones Normalised And Format-Checked", "Source Recorded For Every Field", "Never Overwrites Manual Edits"],
     href: "/services/ai-contact-enrichment",
+    page: "AI Contact Enrichment",
   },
   {
     stage: "Qualify",
     icon: Gauge,
     title: "AI Lead Scoring",
-    text: "Rank the whole list so your team works the top of it first.",
+    text: "Rank The Whole List So Your Team Works The Top Of It First.",
     plan: "Growth & Scale",
-    output: "0–100 score + reasons",
-    points: ["Record completeness", "Website health", "Fit with your market", "Recalculates on re-enrichment"],
+    output: "0–100 Score + Reasons",
+    points: ["Record Completeness", "Website Health", "Fit With Your Market", "Recalculates On Re-Enrichment"],
     href: "/services/ai-lead-scoring",
+    page: "AI Lead Scoring",
     featured: true,
   },
   {
     stage: "Qualify",
     icon: FileCheck,
     title: "SEO Website Audit",
-    text: "Audit a prospect’s site and turn the result into a report you can send.",
+    text: "Audit A Prospect’s Site And Turn The Result Into A Report You Can Send.",
     plan: "Growth & Scale",
-    output: "Client-ready report",
-    points: ["Technical health & performance", "Content, metadata, structured data", "Findings ranked by severity", "Prioritised fix list"],
+    output: "Client-Ready Report",
+    points: ["Technical Health & Performance", "Content, Metadata, Structured Data", "Findings Ranked By Severity", "Prioritised Fix List"],
     href: "/services/seo-website-audit",
+    page: "SEO Website Audit",
   },
   {
     stage: "Qualify",
     icon: Target,
     title: "Opportunity Detection",
-    text: "Surface businesses whose online presence is missing or failing.",
-    plan: "Ask our team",
-    output: "Flags with evidence",
-    points: ["No website at all", "Sites that don’t resolve", "No reachable contact route", "Weak audit results"],
+    text: "Find Businesses Whose Website Or Listing Is Missing Or Broken.",
+    plan: "Ask Our Team",
+    output: "Flags With Evidence",
+    points: ["No Website At All", "Sites That Don’t Resolve", "No Reachable Contact Route", "Weak Audit Results"],
     href: "/services/business-opportunity-detection",
+    page: "Business Opportunity Detection",
   },
   {
     stage: "Engage",
     icon: Send,
     title: "CRM & AI Outreach",
-    text: "Work qualified leads and send AI-drafted outreach from the same record.",
+    text: "Work Qualified Leads And Send AI-Drafted Outreach From The Same Record.",
     plan: "Growth & Scale",
-    output: "Logged conversations",
-    points: ["Pipeline stages and owners", "Drafts use enrichment & audit data", "Your own email transport", "Every message logged"],
+    output: "Logged Conversations",
+    points: ["Pipeline Stages And Owners", "Drafts Use Enrichment & Audit Data", "Your Own Email Transport", "Every Message Logged"],
     href: "/services/ai-outreach-campaigns",
+    page: "AI Outreach Campaigns",
   },
 ];
 
@@ -101,16 +109,16 @@ export function ModuleTabs() {
               tab === t ? "border-transparent bg-grad shadow-lift" : "border-line bg-surface text-ink-soft hover:border-brand hover:text-brand"
             }`}
           >
-            {t === "All" ? "All modules" : t}
+            {t === "All" ? "All Modules" : t}
           </button>
         ))}
       </div>
-      <div className="mt-12 grid gap-6 sm:grid-cols-2 lg:grid-cols-3" role="tabpanel">
+      <div className="mt-9 grid gap-6 sm:grid-cols-2 lg:grid-cols-3" role="tabpanel">
         {shown.map(({ icon: Icon, ...m }) => (
           <article key={m.title} className={`card card-link relative flex flex-col p-7 ${m.featured ? "border-brand ring-4 ring-brand-soft" : ""}`}>
             {m.featured && (
               <span className="absolute -top-3.5 left-1/2 inline-flex -translate-x-1/2 items-center gap-1.5 rounded-full border border-brand bg-surface px-3 py-1 text-xs font-bold text-brand">
-                <Sparkle size={12} /> Core module
+                <Sparkle size={12} /> Core Module
               </span>
             )}
             <div className="flex items-center justify-between">
@@ -123,7 +131,7 @@ export function ModuleTabs() {
             <p className="mt-2 leading-relaxed text-ink-soft">{m.text}</p>
             <dl className="mt-6 grid gap-2.5 border-y border-line py-5 text-sm">
               <div className="flex justify-between gap-3">
-                <dt className="text-muted">Available on</dt>
+                <dt className="text-muted">Available On</dt>
                 <dd className="font-bold">{m.plan}</dd>
               </div>
               <div className="flex justify-between gap-3">
@@ -131,7 +139,7 @@ export function ModuleTabs() {
                 <dd className="text-right font-bold">{m.output}</dd>
               </div>
             </dl>
-            <p className="mt-5 text-xs font-bold uppercase tracking-wider text-muted">Key capabilities</p>
+            <p className="mt-5 text-xs font-bold uppercase tracking-wider text-muted">Key Capabilities</p>
             <ul className="mt-3 grid flex-1 gap-2.5">
               {m.points.map((p) => (
                 <li key={p} className="flex items-start gap-2.5 text-[15px] text-ink-soft">
@@ -140,7 +148,7 @@ export function ModuleTabs() {
               ))}
             </ul>
             <Link href={m.href} className="btn btn-primary mt-7 w-full !rounded-full">
-              View module details <ArrowRight size={16} />
+              {m.page} <ArrowRight size={16} />
             </Link>
           </article>
         ))}

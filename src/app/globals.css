@@ -77,9 +77,9 @@
   --color-warm: var(--warm);
   --color-success: var(--success);
   --color-danger: var(--danger);
-  --font-sans: var(--font-lexend), ui-sans-serif, system-ui, sans-serif;
-  --font-display: var(--font-lexend), ui-sans-serif, system-ui, sans-serif;
-  /* Lexend headings in the target design are bold, not heavy: map extrabold to 700. */
+  --font-sans: var(--font-inter), ui-sans-serif, system-ui, sans-serif;
+  --font-display: var(--font-space-grotesk), var(--font-inter), ui-sans-serif, system-ui, sans-serif;
+  /* Space Grotesk ships up to 700: map extrabold to it. */
   --font-weight-extrabold: 700;
   --shadow-card: var(--shadow);
   --shadow-lift: var(--shadow-lg);
@@ -176,8 +176,9 @@ p { text-wrap: pretty; }
     border: 1px solid var(--line); background: color-mix(in oklch, var(--surface) 70%, transparent);
     font-size: 0.9rem; font-weight: 600; color: var(--ink);
   }
-  .section-y { padding-block: 4.5rem; }
-  @media (min-width: 768px) { .section-y { padding-block: 6.5rem; } }
+  .section-y { padding-block: 3rem; }
+  @media (min-width: 768px) { .section-y { padding-block: 4rem; } }
+  @media (min-width: 1024px) { .section-y { padding-block: 4.5rem; } }
   .h-section { font-size: clamp(2rem, 4.2vw, 3.25rem); font-weight: 800; line-height: 1.08; }
   .lead { font-size: clamp(1.05rem, 1.6vw, 1.25rem); line-height: 1.7; color: var(--ink-soft); }
   .marquee { display: flex; width: max-content; gap: 1rem; }

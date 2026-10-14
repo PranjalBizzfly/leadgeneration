@@ -112,7 +112,7 @@ for (const [vpName, viewport] of Object.entries(VIEWPORTS)) {
   await page.goto(base + "/contact", { waitUntil: "networkidle" });
   await page.click("form button[type=submit]");
   const fieldErrors = await page.locator("form [id^=err-]").count();
-  if (fieldErrors !== 3) issues.push(`contact form showed ${fieldErrors} field errors on empty submit (expected 3)`);
+  if (fieldErrors !== 4) issues.push(`contact form showed ${fieldErrors} field errors on empty submit (expected 4: name, email, phone, message)`);
   await page.screenshot({ path: ".qa/interaction-form-errors.png" });
 
   // Search page filters

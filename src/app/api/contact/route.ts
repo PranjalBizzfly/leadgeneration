@@ -1,4 +1,5 @@
 import { NextResponse } from "next/server";
+import { checkPhone } from "@/lib/phone";
 
 const MAX = { name: 120, email: 200, company: 160, message: 4000 };
 
@@ -23,6 +24,7 @@ export async function POST(request: Request) {
     kind: str("kind") === "demo" ? "demo" : "contact",
     name: str("name").slice(0, MAX.name),
     email: str("email").slice(0, MAX.email),
+    phone: "",
     company: str("company").slice(0, MAX.company),
     topic: str("topic") || str("source"),
     message: str("message").slice(0, MAX.message),
@@ -32,6 +34,9 @@ export async function POST(request: Request) {
   const errors: Record<string, string> = {};
   if (!submission.name) errors.name = "Please enter your name.";
   if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(submission.email)) errors.email = "Please enter a valid email address.";
+  const phone = checkPhone(str("phone"), str("phoneCountry"));
+  if ("error" in phone) errors.phone = phone.error;
+  else submission.phone = phone.e164;
   if (submission.message.length < 10) errors.message = "Please add a few words (at least 10 characters).";
   if (Object.keys(errors).length) return NextResponse.json({ error: "Please fix the highlighted fields.", errors }, { status: 422 });
 

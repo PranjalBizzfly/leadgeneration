@@ -1,4 +1,5 @@
 import Image from "next/image";
+import { titleCase } from "@/lib/title-case";
 import Link from "next/link";
 import { heroImage } from "@/content/images";
 import type { PageContent, PlanEntry } from "@/content/types";
@@ -16,7 +17,7 @@ import { TopicLinkGrid } from "./TopicLinkCard";
 
 const slugify = (s: string) => s.toLowerCase().replace(/[^a-z0-9]+/g, "-").replace(/(^-|-$)/g, "");
 const SECTION_ICONS = [Layers, Target, Gauge, FileCheck, Send, Shield, Users, MapPin];
-const GROUP_ICON = { core: Sparkle, services: Layers, strategies: Target, industries: MapPin, b2b: Users, b2c: Users, "lead-capture": FileCheck, qualification: Gauge, tools: Gauge, resources: FileCheck, compare: Shield } as const;
+const GROUP_ICON = { core: Sparkle, services: Layers, strategies: Target, industries: MapPin, b2b: Users, b2c: Users, "lead-capture": FileCheck, qualification: Gauge, tools: Gauge, resources: FileCheck, compare: Shield, blog: FileCheck } as const;
 
 /** First sentence of a paragraph, for the at-a-glance summary. */
 function firstSentence(p = "") {
@@ -54,11 +55,58 @@ export function ContentPage({ content, plan }: { content: PageContent; plan: Pla
   return (
     <>
       {/* ───────── Hero ───────── */}
+      {photo ? (
+        <>
+        <section data-theme="dark" className="relative isolate overflow-hidden bg-bg text-ink">
+          <Image src={photo.src} alt={photo.alt} fill preload quality={90} sizes="100vw" className="-z-20 object-cover" />
+          <div aria-hidden="true" className="absolute inset-0 -z-10 bg-gradient-to-r from-black/90 via-black/70 to-black/30" />
+          <div aria-hidden="true" className="absolute inset-0 -z-10 bg-gradient-to-t from-black/60 via-transparent to-black/40" />
+          <div className="container-x relative pb-24 pt-8 md:pb-28 lg:pt-12">
+            <Breadcrumbs items={breadcrumbs(plan.path)} />
+            <span className="pill mt-6 !border-white/20 !bg-white/10 !text-white backdrop-blur">
+              <Sparkle size={14} /> {content.eyebrow}
+            </span>
+            <h1 className="fade-up mt-5 max-w-4xl text-[clamp(2.3rem,5.2vw,4.2rem)] font-extrabold uppercase leading-[1.02] tracking-tight text-white">{content.h1}</h1>
+            <div className="mt-6 grid items-end gap-8 lg:grid-cols-[1fr_auto]">
+              <p className="max-w-2xl text-[clamp(1.05rem,1.6vw,1.2rem)] leading-relaxed text-white/85">{titleCase(content.metaDescription)}</p>
+              <div className="flex flex-wrap gap-3">
+                <CtaLink href={content.cta.href} className="btn btn-primary !rounded-full !px-6 !py-3">
+                  {content.cta.label} <ArrowRight size={17} />
+                </CtaLink>
+                <a
+                  href={content.form ? "#form" : "#overview"}
+                  className="btn !rounded-full border border-white/25 bg-white/10 !px-6 !py-3 text-white backdrop-blur hover:bg-white/20"
+                >
+                  {content.form ? "Go To The Form" : "Read The Guide"} <ArrowRight size={17} />
+                </a>
+              </div>
+            </div>
+          </div>
+        </section>
+        {/* Stats card overlapping the hero's bottom edge */}
+        <div className="container-x relative z-10 -mt-16 md:-mt-20">
+          <dl className="card mx-auto grid max-w-5xl grid-cols-2 divide-line !rounded-3xl py-2 shadow-lift md:grid-cols-4 md:divide-x">
+            {[
+              { icon: GroupIcon, value: group.label, label: "Category" },
+              { icon: FileCheck, value: `${minutes} Min`, label: "Reading Time" },
+              { icon: Layers, value: String(content.sections.length), label: "Guide Sections" },
+              { icon: Users, value: String(content.faqs.length), label: "FAQs Answered" },
+            ].map(({ icon: Icon, value, label }) => (
+              <div key={label} className="flex flex-col items-center px-3 py-5 text-center">
+                <span className="icon-tile !size-10 !rounded-xl">
+                  <Icon size={18} />
+                </span>
+                <dd className={`mt-3 font-display font-bold leading-tight ${/^\d/.test(value) ? "text-[clamp(1.4rem,2.4vw,1.9rem)]" : "text-[clamp(1rem,1.5vw,1.2rem)]"}`}>{value}</dd>
+                <dt className="mt-1 text-sm text-muted">{label}</dt>
+              </div>
+            ))}
+          </dl>
+        </div>
+        </>
+      ) : (
       <section className="relative overflow-hidden border-b border-line">
         <div aria-hidden="true" className="bg-grid absolute inset-0" />
-        <div aria-hidden="true" className="absolute -top-48 right-[-10%] size-[42rem] rounded-full blur-3xl" style={{ background: `oklch(0.6 0.17 ${group.hue} / 0.18)` }} />
-        <div aria-hidden="true" className="absolute -bottom-56 left-[-10%] size-[32rem] rounded-full bg-[var(--glow-2)] blur-3xl" />
-        <div className="container-x relative grid items-center gap-12 py-12 md:py-16 lg:min-h-[34rem] lg:grid-cols-[1.2fr_1fr] lg:py-20">
+        <div className="container-x relative grid items-center gap-10 py-10 md:py-12 lg:grid-cols-[1.2fr_1fr] lg:py-14">
           <div className="fade-up min-w-0">
             <Breadcrumbs items={breadcrumbs(plan.path)} />
             <div className="mt-7 flex flex-wrap items-center gap-3">
@@ -70,7 +118,7 @@ export function ContentPage({ content, plan }: { content: PageContent; plan: Pla
               </span>
             </div>
             <h1 className="mt-6 text-[clamp(2.3rem,5vw,4rem)] font-extrabold leading-[1.05]">{content.h1}</h1>
-            <p className="mt-6 max-w-2xl text-[clamp(1.1rem,1.8vw,1.3rem)] leading-relaxed text-ink-soft">{content.metaDescription}</p>
+            <p className="mt-6 max-w-2xl text-[clamp(1.1rem,1.8vw,1.3rem)] leading-relaxed text-ink-soft">{titleCase(content.metaDescription)}</p>
             <ul className="mt-8 flex flex-wrap gap-2.5" aria-label="Page facts">
               <li className="chip">
                 <GroupIcon size={16} className="text-brand" /> {group.label}
@@ -79,11 +127,11 @@ export function ContentPage({ content, plan }: { content: PageContent; plan: Pla
                 <Users size={16} className="text-brand" /> {plan.audience}
               </li>
               <li className="chip">
-                <FileCheck size={16} className="text-brand" /> {minutes} min read
+                <FileCheck size={16} className="text-brand" /> {minutes} Min Read
               </li>
               {isHub && (
                 <li className="chip">
-                  <Layers size={16} className="text-brand" /> {children.length} topics
+                  <Layers size={16} className="text-brand" /> {children.length} Topics
                 </li>
               )}
             </ul>
@@ -92,12 +140,12 @@ export function ContentPage({ content, plan }: { content: PageContent; plan: Pla
                 {content.cta.label} <ArrowRight size={18} />
               </CtaLink>
               <a href={content.form ? "#form" : "#overview"} className="btn btn-ghost !rounded-full !px-7 !py-3.5 text-base">
-                {content.form ? "Go to the form" : "Read the guide"}
+                {content.form ? "Go To The Form" : "Read The Guide"}
               </a>
             </div>
           </div>
           {/* Framed visual, styled like an app window */}
-          <div className={`relative mx-auto w-full max-w-md lg:max-w-none ${photo ? "" : "hidden sm:block"}`}>
+          <div className="relative mx-auto hidden w-full max-w-md sm:block lg:max-w-none">
             <div className="card overflow-hidden !rounded-3xl shadow-lift">
               <div className="flex items-center gap-2 border-b border-line bg-surface-2 px-5 py-3.5">
                 <span className="size-3 rounded-full bg-[oklch(0.7_0.18_25)]" />
@@ -108,21 +156,9 @@ export function ContentPage({ content, plan }: { content: PageContent; plan: Pla
                   <span className="size-1.5 rounded-full bg-success" /> {group.label}
                 </span>
               </div>
-              {photo ? (
-                <Image
-                  src={photo.src}
-                  alt={photo.alt}
-                  width={1600}
-                  height={1000}
-                  preload
-                  sizes="(min-width: 1024px) 40vw, (min-width: 640px) 28rem, 100vw"
-                  className="block h-auto w-full"
-                />
-              ) : (
-                <div className="bg-bg-alt p-4">
-                  <HeroVisual variant={group.visual} seed={plan.path} hue={group.hue} className="h-auto w-full" />
-                </div>
-              )}
+              <div className="bg-bg-alt p-4">
+                <HeroVisual variant={group.visual} seed={plan.path} hue={group.hue} className="h-auto w-full" />
+              </div>
             </div>
             <div className="float-slow absolute -bottom-5 -left-5 hidden items-center gap-3 rounded-2xl border border-line bg-surface px-4 py-3 shadow-lift md:flex">
               <span className="icon-tile !size-9 !rounded-xl">
@@ -133,6 +169,7 @@ export function ContentPage({ content, plan }: { content: PageContent; plan: Pla
           </div>
         </div>
       </section>
+      )}
 
       {/* ───────── Overview + article with sticky summary ───────── */}
       <section id="overview" className="section-y scroll-mt-24">
@@ -147,7 +184,7 @@ export function ContentPage({ content, plan }: { content: PageContent; plan: Pla
               ))}
             </div>
 
-            <h3 className="mt-12 text-xl font-bold">Key takeaways</h3>
+            <h3 className="mt-9 text-xl font-bold">Key Takeaways</h3>
             <ul className="mt-5 grid gap-3 sm:grid-cols-2">
               {content.highlights.map((h) => (
                 <li key={h} className="card flex items-center gap-3 px-5 py-4 text-[15px] font-semibold">
@@ -160,17 +197,17 @@ export function ContentPage({ content, plan }: { content: PageContent; plan: Pla
             </ul>
 
             {content.form && (
-              <div id="form" className="mt-14 scroll-mt-28">
+              <div id="form" className="mt-10 scroll-mt-28">
                 <LeadForm kind={content.form} />
               </div>
             )}
 
             {/* At-a-glance index: every part with a one-line summary. */}
             {content.sections.length > 1 && (
-              <div className="mt-14 overflow-hidden rounded-3xl border border-line">
+              <div className="mt-10 overflow-hidden rounded-3xl border border-line">
                 <div className="flex items-center justify-between gap-4 border-b border-line bg-surface-2 px-6 py-4">
-                  <h3 className="font-bold">At a glance</h3>
-                  <span className="text-sm text-muted">{content.sections.length} parts</span>
+                  <h3 className="font-bold">At A Glance</h3>
+                  <span className="text-sm text-muted">{content.sections.length} Parts</span>
                 </div>
                 <ol className="divide-y divide-line bg-surface">
                   {content.sections.map((s, i) => (
@@ -203,7 +240,7 @@ export function ContentPage({ content, plan }: { content: PageContent; plan: Pla
                   <div className="grid gap-6 p-6 sm:p-8">
                     {keyIdea && (
                       <div className="rounded-2xl border-l-4 border-brand bg-brand-soft/60 px-5 py-4">
-                        <p className="text-xs font-bold uppercase tracking-wider text-brand">Key idea</p>
+                        <p className="text-xs font-bold uppercase tracking-wider text-brand">Key Idea</p>
                         <p className="mt-2 text-[17px] leading-relaxed text-ink">{keyIdea}</p>
                       </div>
                     )}
@@ -216,7 +253,7 @@ export function ContentPage({ content, plan }: { content: PageContent; plan: Pla
                     )}
                     {s.bullets && (
                       <div>
-                        <p className="text-xs font-bold uppercase tracking-wider text-muted">Key points</p>
+                        <p className="text-xs font-bold uppercase tracking-wider text-muted">Key Points</p>
                         <ol className="mt-3 grid gap-3 sm:grid-cols-2">
                           {s.bullets.map((b, j) => (
                             <li key={b} className="flex gap-3 rounded-xl border border-line bg-bg px-4 py-3.5 text-[15px] leading-relaxed text-ink-soft">
@@ -241,12 +278,12 @@ export function ContentPage({ content, plan }: { content: PageContent; plan: Pla
                 <p className="mt-2 font-display text-xl font-extrabold leading-snug">{plan.title}</p>
                 <dl className="mt-5 grid gap-3 text-sm">
                   <div className="flex justify-between gap-4">
-                    <dt className="text-muted">Best for</dt>
+                    <dt className="text-muted">Best For</dt>
                     <dd className="text-right font-semibold">{plan.audience}</dd>
                   </div>
                   <div className="flex justify-between gap-4">
-                    <dt className="text-muted">Reading time</dt>
-                    <dd className="font-semibold">{minutes} minutes</dd>
+                    <dt className="text-muted">Reading Time</dt>
+                    <dd className="font-semibold">{minutes} Minutes</dd>
                   </div>
                   <div className="flex justify-between gap-4">
                     <dt className="text-muted">Sections</dt>
@@ -256,7 +293,7 @@ export function ContentPage({ content, plan }: { content: PageContent; plan: Pla
               </div>
               {toc.length > 1 && (
                 <nav aria-label="On this page" className="hidden border-b border-line p-6 lg:block">
-                  <p className="text-xs font-bold uppercase tracking-wider text-muted">On this page</p>
+                  <p className="text-xs font-bold uppercase tracking-wider text-muted">On This Page</p>
                   <ol className="mt-3 grid gap-2.5 text-sm">
                     {toc.map((t, i) => (
                       <li key={t} className="flex gap-2.5">
@@ -283,16 +320,16 @@ export function ContentPage({ content, plan }: { content: PageContent; plan: Pla
                 </CtaLink>
                 {content.cta.href.startsWith("http") ? (
                   <Link href="/plans" className="btn btn-ghost mt-2.5 w-full !rounded-full">
-                    Compare plans
+                    Plans
                   </Link>
                 ) : (
                   <a href={SITE.appUrl} rel="noopener" className="btn btn-ghost mt-2.5 w-full !rounded-full">
-                    Start free
+                    Start Free
                   </a>
                 )}
                 <p className="mt-4 flex items-start gap-2 text-xs leading-relaxed text-muted">
                   <Shield size={15} className="mt-px shrink-0 text-success" />
-                  The Free plan includes 3 scrape queries, website enrichment and CSV export.
+                  The Free Plan Includes 3 Scrape Queries, Website Enrichment And CSV Export.
                 </p>
               </div>
             </div>
@@ -304,9 +341,9 @@ export function ContentPage({ content, plan }: { content: PageContent; plan: Pla
       {content.steps && (
         <section id={slugify(content.steps.heading)} className="section-y scroll-mt-20 border-y border-line bg-bg-alt">
           <div className="container-x">
-            <SectionHeading badge="Step by step" title={content.steps.heading} subtitle={`A ${content.steps.items.length}-step process you can follow and adapt.`} />
+            <SectionHeading badge="Step By Step" title={content.steps.heading} subtitle={`A ${content.steps.items.length}-Step Process You Can Follow And Adapt.`} />
             <ol
-              className={`mt-14 grid gap-5 sm:grid-cols-2 ${content.steps.items.length >= 5 ? "lg:grid-cols-3 xl:grid-cols-5" : content.steps.items.length === 4 ? "lg:grid-cols-4" : "lg:grid-cols-3"}`}
+              className={`mt-10 grid gap-5 sm:grid-cols-2 ${content.steps.items.length >= 5 ? "lg:grid-cols-3 xl:grid-cols-5" : content.steps.items.length === 4 ? "lg:grid-cols-4" : "lg:grid-cols-3"}`}
             >
               {content.steps.items.map((step, i) => (
                 <li key={step.title} className="card card-link relative flex flex-col items-center p-6 text-center">
@@ -326,8 +363,8 @@ export function ContentPage({ content, plan }: { content: PageContent; plan: Pla
       {content.considerations && (
         <section id={slugify(content.considerations.heading)} className="section-y scroll-mt-20">
           <div className="container-x">
-            <SectionHeading badge="Before you start" title={content.considerations.heading} />
-            <ul className="mt-14 grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
+            <SectionHeading badge="Before You Start" title={content.considerations.heading} />
+            <ul className="mt-10 grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
               {content.considerations.items.map((c, i) => (
                 <li key={c} className="card p-6">
                   <div className="flex items-center justify-between">
@@ -350,11 +387,11 @@ export function ContentPage({ content, plan }: { content: PageContent; plan: Pla
           <div className="card grid items-center gap-8 overflow-hidden !rounded-[2rem] p-6 sm:p-10 lg:grid-cols-[1.3fr_1fr]">
             <div>
               <span className="pill">
-                <Sparkle size={14} /> Illustrative example
+                <Sparkle size={14} /> Illustrative Example
               </span>
               <h2 className="mt-5 text-[clamp(1.6rem,3vw,2.3rem)] font-extrabold leading-tight">{content.example.heading}</h2>
               <p className="lead mt-5">{content.example.text}</p>
-              <p className="mt-5 text-sm text-muted">A hypothetical scenario for explanation only — not a customer story or a promised result.</p>
+              <p className="mt-5 text-sm text-muted">A Hypothetical Scenario For Explanation Only, Not A Customer Story Or A Promised Result.</p>
             </div>
             <div className="hidden rounded-3xl border border-line bg-bg-alt p-4 lg:block">
               <HeroVisual variant={group.visual === "dashboard" ? "pipeline" : "dashboard"} seed={`${plan.path}#example`} hue={group.hue} className="h-auto w-full" />
@@ -367,7 +404,7 @@ export function ContentPage({ content, plan }: { content: PageContent; plan: Pla
       {isHub && children.length > 0 && (
         <section className="section-y" aria-labelledby="hub-topics">
           <div className="container-x">
-            <SectionHeading id="hub-topics" badge={group.label} title={`All ${children.length} ${group.label.toLowerCase()} topics`} subtitle={group.blurb} />
+            <SectionHeading id="hub-topics" badge={group.label} title={`All ${children.length} ${group.label} Topics`} subtitle={group.blurb} />
             <TopicLinkGrid pages={children} />
           </div>
         </section>
@@ -377,8 +414,8 @@ export function ContentPage({ content, plan }: { content: PageContent; plan: Pla
       {content.faqs.length > 0 && (
         <section id="faqs" className="section-y scroll-mt-20 border-y border-line bg-bg-alt" aria-labelledby="faq-title">
           <div className="container-x">
-            <SectionHeading id="faq-title" badge="FAQ" title="Frequently asked questions" subtitle={`Quick answers about ${plan.title.toLowerCase()}.`} />
-            <div className="mx-auto mt-12 max-w-3xl">
+            <SectionHeading id="faq-title" badge="FAQ" title="Frequently Asked Questions" subtitle={`Quick Answers About ${titleCase(plan.title)}.`} />
+            <div className="mx-auto mt-9 max-w-3xl">
               <Faqs items={content.faqs} showHeading={false} />
             </div>
           </div>
@@ -389,7 +426,7 @@ export function ContentPage({ content, plan }: { content: PageContent; plan: Pla
       {related.length > 0 && (
         <section className="section-y" aria-labelledby="related-title">
           <div className="container-x">
-            <SectionHeading id="related-title" badge="Keep exploring" title="Related topics" subtitle="Hand-picked pages that go deeper on the ideas covered here." />
+            <SectionHeading id="related-title" badge="Keep Exploring" title="Related Topics" subtitle="Hand-Picked Pages That Go Deeper On The Ideas Covered Here." />
             <TopicLinkGrid pages={related} />
           </div>
         </section>

@@ -8,11 +8,14 @@
     "start": "next start",
     "lint": "eslint",
     "check:content": "node scripts/content-check.mts",
+    "check:faqs": "node scripts/faq-check.mjs",
     "qa": "node scripts/qa-crawl.mts http://localhost:3000",
+    "check:links": "node scripts/link-check.mjs",
     "docs:sitemap": "node scripts/sitemap-doc.mts",
     "qa:visual": "node scripts/visual-qa.mjs http://localhost:3000 --all"
   },
   "dependencies": {
+    "libphonenumber-js": "^1.12.10",
     "next": "16.4.0",
     "react": "19.3.0",
     "react-dom": "19.3.0"

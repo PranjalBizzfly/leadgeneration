@@ -21,9 +21,9 @@ export function Photo({ file, sizes, className = "", preload, fallback = null, d
   if (!img) return <>{fallback}</>;
   const alt = decorative ? "" : img.alt;
   return fill ? (
-    <Image src={img.src} alt={alt} fill sizes={sizes} preload={preload} className={`object-cover ${className}`} />
+    <Image src={img.src} alt={alt} fill quality={90} sizes={sizes} preload={preload} className={`object-cover ${className}`} />
   ) : (
-    <Image src={img.src} alt={alt} width={1600} height={1000} sizes={sizes} preload={preload} className={`block h-auto w-full ${className}`} />
+    <Image src={img.src} alt={alt} width={1600} height={1000} quality={90} sizes={sizes} preload={preload} className={`block h-auto w-full ${className}`} />
   );
 }
 

@@ -1,9 +1,9 @@
 "use client";
 
 import { useEffect, useState } from "react";
-import { ArrowUp, ChevronDown } from "./icons";
+import { ChevronDown, ChevronUp } from "./icons";
 
-/** Floating up/down scroll controls, always shown; a button is disabled when there is nowhere to go. */
+/** Floating top/bottom scroll controls, always shown; a button is disabled when there is nowhere to go. */
 export function BackToTop() {
   const [canUp, setCanUp] = useState(false);
   const [canDown, setCanDown] = useState(false);
@@ -29,9 +29,9 @@ export function BackToTop() {
   return (
     <div className="fixed bottom-5 right-5 z-40 flex flex-col gap-3">
       <button type="button" onClick={() => window.scrollTo({ top: 0 })} aria-label="Scroll to top" disabled={!canUp} className={base}>
-        <ArrowUp size={18} strokeWidth={1.6} />
+        <ChevronUp size={20} strokeWidth={1.6} />
       </button>
-      <button type="button" onClick={() => window.scrollBy({ top: Math.round(window.innerHeight * 0.85) })} aria-label="Scroll down" disabled={!canDown} className={base}>
+      <button type="button" onClick={() => window.scrollTo({ top: document.documentElement.scrollHeight })} aria-label="Scroll to bottom" disabled={!canDown} className={base}>
         <ChevronDown size={20} strokeWidth={1.6} />
       </button>
     </div>

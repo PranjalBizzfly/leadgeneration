@@ -1,5 +1,7 @@
 import { PLAN } from "@/content/plan";
 import { allPages } from "@/content/all-pages";
+import { posts } from "@/content/blog-posts";
+import { COMPANY_PAGES } from "@/content/company";
 import type { PageContent, PlanEntry } from "@/content/types";
 import { GROUPS } from "./groups";
 import type { SearchItem } from "./search";
@@ -7,11 +9,19 @@ import type { SearchItem } from "./search";
 /** Routes rendered by dedicated components rather than PageContent data. */
 const CUSTOM_ROUTES = new Set(["/", "/sitemap"]);
 
+/** Company pages and blog articles: live routes outside the 300-page plan, each with its own route file. */
+export const EXTRA_PAGES: PlanEntry[] = [
+  ...COMPANY_PAGES,
+  ...posts.map((p): PlanEntry => ({ path: `/blog/${p.slug}`, title: p.title, group: "blog", audience: "Practitioners", outline: p.excerpt, phase: 2 })),
+];
+const extraPaths = new Set(EXTRA_PAGES.map((p) => p.path));
+const postByPath = new Map(posts.map((p) => [`/blog/${p.slug}`, p]));
+
 const contentByPath = new Map<string, PageContent>(allPages.map((p) => [p.path, p]));
-const planByPath = new Map<string, PlanEntry>(PLAN.map((p) => [p.path, p]));
+const planByPath = new Map<string, PlanEntry>([...PLAN, ...EXTRA_PAGES].map((p) => [p.path, p]));
 
 /** A plan entry is live once it is Phase 1 (or later promoted) AND has something to render. */
-export const LIVE: PlanEntry[] = PLAN.filter((p) => CUSTOM_ROUTES.has(p.path) || contentByPath.has(p.path));
+export const LIVE: PlanEntry[] = [...PLAN.filter((p) => CUSTOM_ROUTES.has(p.path) || contentByPath.has(p.path)), ...EXTRA_PAGES];
 const liveSet = new Set(LIVE.map((p) => p.path));
 
 export const isLive = (path: string) => liveSet.has(path);
@@ -20,7 +30,7 @@ export const getContent = (path: string) => contentByPath.get(path);
 
 /** Catch-all route params for every content-driven live page. */
 export function contentSlugs(): string[][] {
-  return LIVE.filter((p) => !CUSTOM_ROUTES.has(p.path)).map((p) => p.path.slice(1).split("/"));
+  return LIVE.filter((p) => !CUSTOM_ROUTES.has(p.path) && !extraPaths.has(p.path)).map((p) => p.path.slice(1).split("/"));
 }
 
 /** Live pages in a group, excluding the hub itself. */
@@ -32,10 +42,15 @@ export function groupChildren(groupKey: PlanEntry["group"]): PlanEntry[] {
 const CUSTOM_DESCRIPTIONS: Record<string, string> = {
   "/": "AI-powered lead generation: find, enrich, score and reach prospects from Google Maps, LinkedIn and IndiaMART.",
   "/sitemap": "A directory of every live page on the site, grouped by topic.",
+  "/careers": "Open roles at LeadGen AI across sales, business development, email marketing, development coordination and prompt engineering.",
+  "/vendors": "How LeadGen AI works with vendors and service providers, and how to propose a collaboration.",
+  "/media": "Company information and the media contact route for journalists writing about LeadGen AI.",
+  "/press-kit": "LeadGen AI logo files, approved company descriptions and brand colours for press and partners.",
+  "/blog": "Practical articles on prospecting, outreach, lead qualification, data hygiene and agency growth.",
 };
 
 export function describe(path: string): string {
-  return contentByPath.get(path)?.metaDescription ?? CUSTOM_DESCRIPTIONS[path] ?? planByPath.get(path)?.outline ?? "";
+  return contentByPath.get(path)?.metaDescription ?? postByPath.get(path)?.metaDescription ?? CUSTOM_DESCRIPTIONS[path] ?? planByPath.get(path)?.outline ?? "";
 }
 
 export interface Crumb {

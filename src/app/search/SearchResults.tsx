@@ -1,6 +1,7 @@
 "use client";
 
 import Link from "next/link";
+import { titleCase } from "@/lib/title-case";
 import { usePathname, useRouter, useSearchParams } from "next/navigation";
 import { useEffect, useState } from "react";
 import { Search } from "@/components/icons";
@@ -34,7 +35,7 @@ export function SearchResults() {
           value={query}
           onChange={(e) => update(e.target.value)}
           autoFocus
-          placeholder="e.g. cold email, dental clinics, lead scoring"
+          placeholder="E.g. Cold Email, Dental Clinics, Lead Scoring"
           className="flex-1 bg-transparent text-lg outline-none placeholder:text-muted"
           aria-label="Search query"
         />
@@ -55,16 +56,16 @@ export function SearchResults() {
         </div>
       )}
       <div className="mt-8" aria-live="polite">
-        {items === null && <p className="text-muted">Loading the page index…</p>}
-        {items && query && <p className="text-sm text-muted">{results.length} result{results.length === 1 ? "" : "s"} for “{query}”</p>}
-        {items && !query && <p className="text-muted">Start typing to search {items.length} pages.</p>}
+        {items === null && <p className="text-muted">Loading The Page Index…</p>}
+        {items && query && <p className="text-sm text-muted">{results.length} Result{results.length === 1 ? "" : "s"} For “{query}”</p>}
+        {items && !query && <p className="text-muted">Start Typing To Search {items.length} Pages.</p>}
         <ul className="mt-4 grid gap-3">
           {results.map((r) => (
             <li key={r.path}>
               <Link href={r.path} className="card card-link block p-5">
                 <span className="text-[11px] font-bold uppercase tracking-wider text-brand">{r.group}</span>
                 <span className="mt-1 block font-display text-lg font-bold">{r.title}</span>
-                <span className="mt-1 block text-sm text-muted">{r.description}</span>
+                <span className="mt-1 block text-sm text-muted">{titleCase(r.description)}</span>
               </Link>
             </li>
           ))}

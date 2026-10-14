@@ -48,21 +48,21 @@ export function SitemapExplorer({ groups }: { groups: SitemapGroup[] }) {
             <input
               value={query}
               onChange={(e) => setQuery(e.target.value)}
-              placeholder="Search pages…"
+              placeholder="Search Pages…"
               aria-label="Search pages"
               className="h-12 flex-1 bg-transparent text-[16px] outline-none placeholder:text-muted"
             />
           </label>
           <div className="flex items-center gap-6 md:ml-4">
             <p className="text-sm font-bold uppercase tracking-[0.12em]" aria-live="polite">
-              {shown === total ? total : `${shown} of ${total}`} pages
+              {shown === total ? total : `${shown} Of ${total}`} Pages
             </p>
             <button
               type="button"
               onClick={() => setCollapsed(allCollapsed ? new Set() : new Set(visible.map((g) => g.key)))}
               className="border-b-2 border-brand pb-0.5 text-sm font-bold text-ink transition hover:text-brand"
             >
-              {allCollapsed ? "Expand all" : "Collapse all"}
+              {allCollapsed ? "Expand All" : "Collapse All"}
             </button>
           </div>
         </div>
@@ -78,8 +78,8 @@ export function SitemapExplorer({ groups }: { groups: SitemapGroup[] }) {
         </div>
       </div>
 
-      <div className="mt-14 grid gap-14">
-        {visible.length === 0 && <p className="text-center text-lg text-muted">No pages match “{query}”.</p>}
+      <div className="mt-10 grid gap-10">
+        {visible.length === 0 && <p className="text-center text-lg text-muted">No Pages Match “{query}”.</p>}
         {visible.map((g) => {
           const isCollapsed = collapsed.has(g.key);
           return (
@@ -95,7 +95,7 @@ export function SitemapExplorer({ groups }: { groups: SitemapGroup[] }) {
                   aria-controls={`sm-list-${g.key}`}
                   className="flex shrink-0 items-center gap-1.5 text-sm font-bold uppercase tracking-[0.12em] text-ink-soft transition hover:text-brand"
                 >
-                  {g.pages.length} pages <ChevronDown size={17} className={`transition ${isCollapsed ? "-rotate-90" : ""}`} />
+                  {g.pages.length} Pages <ChevronDown size={17} className={`transition ${isCollapsed ? "-rotate-90" : ""}`} />
                 </button>
               </div>
               {!isCollapsed && (

@@ -9,7 +9,8 @@ export type GroupKey =
   | "qualification"
   | "tools"
   | "resources"
-  | "compare";
+  | "compare"
+  | "blog";
 
 export interface Section {
   heading: string;

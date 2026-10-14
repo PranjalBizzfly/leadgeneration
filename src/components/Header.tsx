@@ -13,7 +13,7 @@ export function Header() {
   return (
     <header className="sticky top-0 z-40 border-b border-line/70 bg-bg/85 backdrop-blur-xl">
       <a href="#main" className="sr-only focus:not-sr-only focus:absolute focus:left-4 focus:top-3 focus:z-50 focus:rounded-lg focus:bg-surface focus:px-3 focus:py-2">
-        Skip to content
+        Skip To Content
       </a>
       <div className="container-x relative flex h-16 items-center gap-4 lg:h-20">
         <Logo />
@@ -62,7 +62,7 @@ export function Header() {
           <SearchDialog total={LIVE.length} />
           <ThemeToggle />
           <Link href="/book-a-demo" className="btn btn-primary hidden whitespace-nowrap !rounded-full !px-5 sm:inline-flex lg:hidden xl:inline-flex">
-            Request access <ArrowRight size={16} />
+            Request Access <ArrowRight size={16} />
           </Link>
           <MobileNav items={NAV} />
         </div>

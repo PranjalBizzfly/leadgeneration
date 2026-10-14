@@ -8,7 +8,11 @@ const base = process.argv[2] ?? "http://localhost:3123";
 const authored = new Set<string>(["/", "/sitemap"]);
 for (const f of readdirSync("src/content/pages"))
   for (const m of readFileSync(`src/content/pages/${f}`, "utf8").matchAll(/^\s{4}path: "([^"]+)"/gm)) authored.add(m[1]);
-const live = PLAN.filter((p) => authored.has(p.path)).map((p) => p.path);
+const planLive = PLAN.filter((p) => authored.has(p.path)).map((p) => p.path);
+// Live routes = the authored plan pages plus company pages and blog articles listed in sitemap.xml.
+const sitemapPaths = [...(await (await fetch(base + "/sitemap.xml")).text()).matchAll(/<loc>([^<]+)<\/loc>/g)].map((m) => new URL(m[1]).pathname);
+const live = [...new Set([...planLive, ...sitemapPaths])];
+const missingFromSitemap = planLive.filter((p) => !sitemapPaths.includes(p));
 const extra = ["/search", "/sitemap.xml", "/robots.txt", "/search-index.json", "/opengraph-image"];
 
 const issues: string[] = [];
@@ -52,6 +56,7 @@ for (const path of live) if (path !== "/" && !inbound.get(path)) issues.push(`${
 const sitemap = await (await fetch(base + "/sitemap.xml")).text();
 const sitemapCount = (sitemap.match(/<loc>/g) ?? []).length;
 if (sitemapCount !== live.length) issues.push(`sitemap.xml has ${sitemapCount} URLs, expected ${live.length}`);
+for (const p of missingFromSitemap) issues.push(`plan page missing from sitemap: ${p}`);
 
 const reserved = PLAN.find((p) => !authored.has(p.path));
 for (const path of ["/definitely-not-a-page", "/services/nope", reserved?.path].filter(Boolean) as string[]) {

@@ -16,7 +16,7 @@ export function CtaBand({ heading, text, label, href, image }: Props) {
   const external = href.startsWith("http");
   const primary = "btn !rounded-full bg-white !px-7 !py-3.5 text-base text-[#4338ca] hover:bg-white/90";
   return (
-    <section className="relative overflow-hidden rounded-[2rem] bg-gradient-to-br from-[#3730a3] via-[#4f46e5] to-[#7c3aed] px-6 py-16 text-center text-white sm:px-12 md:py-20">
+    <section className="relative overflow-hidden rounded-[2rem] bg-gradient-to-br from-[#3730a3] via-[#4f46e5] to-[#7c3aed] px-6 py-12 text-center text-white sm:px-12 md:py-14">
       {image && (
         <div aria-hidden="true" className="absolute inset-0 opacity-25 mix-blend-luminosity">
           <Photo file={image} sizes="100vw" fill decorative />
@@ -27,7 +27,7 @@ export function CtaBand({ heading, text, label, href, image }: Props) {
       <div aria-hidden="true" className="bg-grid absolute inset-0 opacity-20" />
       <div className="relative mx-auto max-w-3xl">
         <span className="inline-flex items-center gap-2 rounded-full border border-white/25 bg-white/10 px-4 py-1.5 text-xs font-bold uppercase tracking-wider">
-          <Sparkle size={14} /> Next step
+          <Sparkle size={14} /> Next Step
         </span>
         <h2 className="mt-6 text-[clamp(2rem,4.4vw,3.4rem)] font-extrabold leading-[1.08]">{heading}</h2>
         <p className="mx-auto mt-5 max-w-2xl text-lg text-white/80">{text}</p>
@@ -43,7 +43,7 @@ export function CtaBand({ heading, text, label, href, image }: Props) {
           )}
           {href !== "/contact" && (
             <Link href="/contact" className="btn !rounded-full border border-white/35 !px-7 !py-3.5 text-base text-white hover:bg-white/10">
-              Talk to us
+              Contact
             </Link>
           )}
         </div>

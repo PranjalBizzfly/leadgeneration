@@ -8,11 +8,11 @@ import { ArrowRight, Search } from "./icons";
 
 /** Shown before the visitor types anything. */
 const START_HERE: { title: string; path: string; group: string }[] = [
-  { title: "Overview", path: "/platform", group: "Company" },
-  { title: "Platform Services", path: "/services", group: "Platform Services" },
+  { title: "Platform Overview", path: "/platform", group: "Company" },
+  { title: "Services", path: "/services", group: "Platform Services" },
   { title: "How It Works", path: "/how-it-works", group: "Company" },
   { title: "Plans", path: "/plans", group: "Company" },
-  { title: "Resource Hub", path: "/resources", group: "Resources" },
+  { title: "Resources", path: "/resources", group: "Resources" },
 ];
 
 const GridIcon = () => (
@@ -111,7 +111,7 @@ export function SearchDialog({ total }: { total: number }) {
               setActive(0);
             }}
             onKeyDown={onInputKey}
-            placeholder="Search features, solutions, guides…"
+            placeholder="Search Features, Solutions, Guides…"
             className="h-11 min-w-0 flex-1 rounded-xl border border-brand/60 bg-bg px-3.5 text-[17px] outline-none ring-brand-soft transition placeholder:text-muted focus:border-brand focus:ring-4"
             aria-label="Search query"
             role="combobox"
@@ -124,10 +124,10 @@ export function SearchDialog({ total }: { total: number }) {
         </div>
 
         <div className="px-3 pb-2 pt-4">
-          <p className="px-3 text-xs font-bold uppercase tracking-wider text-brand">{query.trim() ? `Results for “${query.trim()}”` : "Start here"}</p>
+          <p className="px-3 text-xs font-bold uppercase tracking-wider text-brand">{query.trim() ? `Results For “${query.trim()}”` : "Start Here"}</p>
           <ul id="search-results" role="listbox" className="mt-2 max-h-[50vh] overflow-y-auto">
             {query.trim() && results.length === 0 && (
-              <li className="px-3 py-8 text-center text-sm text-muted">No pages match “{query}”. Try a broader term.</li>
+              <li className="px-3 py-8 text-center text-sm text-muted">No Pages Match “{query}”. Try A Broader Term.</li>
             )}
             {list.map((r, i) => (
               <li key={r.path} role="option" aria-selected={i === active}>
@@ -146,15 +146,15 @@ export function SearchDialog({ total }: { total: number }) {
               </li>
             ))}
           </ul>
-          <p className="px-3 pb-2 pt-3 text-sm text-muted">Type to search every page on the site. Use ↑ ↓ to move, Enter to open.</p>
+          <p className="px-3 pb-2 pt-3 text-sm text-muted">Type To Search Every Page On The Site. Use ↑ ↓ To Move, Enter To Open.</p>
         </div>
 
         <Link href="/sitemap" onClick={close} className="group flex items-center gap-3 border-t border-line bg-surface-2 px-6 py-4 transition hover:bg-brand-soft">
           <span className="text-brand">
             <GridIcon />
           </span>
-          <span className="flex-1 text-[17px] font-bold">Explore All Pages</span>
-          <span className="text-sm text-muted">{items.length || total} pages</span>
+          <span className="flex-1 text-[17px] font-bold">Sitemap</span>
+          <span className="text-sm text-muted">{items.length || total} Pages</span>
           <ArrowRight size={17} className="text-brand transition group-hover:translate-x-1" />
         </Link>
       </dialog>

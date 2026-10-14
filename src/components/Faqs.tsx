@@ -2,7 +2,7 @@ import type { Faq } from "@/content/types";
 import { Plus } from "./icons";
 import { JsonLd } from "./JsonLd";
 
-export function Faqs({ items, heading = "Frequently asked questions", showHeading = true }: { items: Faq[]; heading?: string; showHeading?: boolean }) {
+export function Faqs({ items, heading = "Frequently Asked Questions", showHeading = true }: { items: Faq[]; heading?: string; showHeading?: boolean }) {
   if (!items.length) return null;
   return (
     <section aria-labelledby={showHeading ? "faq-heading" : undefined} aria-label={showHeading ? undefined : heading}>

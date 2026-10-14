@@ -8,7 +8,7 @@ export function HeroPanel() {
   return (
     <div className="relative mx-auto w-full max-w-xl">
       <span className="absolute -top-4 right-6 z-10 inline-flex items-center gap-1.5 rounded-full bg-grad px-3.5 py-1.5 text-xs font-bold shadow-lift">
-        <Sparkle size={13} /> One pipeline, six modules
+        <Sparkle size={13} /> One Pipeline, Six Modules
       </span>
       <div className="card overflow-hidden !rounded-[1.75rem] shadow-lift">
         <div className="flex items-center gap-2 border-b border-line bg-surface-2 px-5 py-4">
@@ -17,7 +17,7 @@ export function HeroPanel() {
           <span className="size-3 rounded-full bg-[oklch(0.72_0.15_150)]" />
           <span className="ml-3 font-mono text-xs text-muted">leadgen-ai / pipeline</span>
           <span className="ml-auto inline-flex items-center gap-1.5 rounded-full border border-line px-2.5 py-1 text-[11px] font-semibold text-muted">
-            <span className="size-1.5 rounded-full bg-success" /> Illustrative preview
+            <span className="size-1.5 rounded-full bg-success" /> Illustrative Preview
           </span>
         </div>
         <div className="grid gap-3.5 bg-bg-alt p-5">
@@ -27,8 +27,8 @@ export function HeroPanel() {
               <MapPin size={20} />
             </span>
             <div className="min-w-0 flex-1">
-              <p className="text-[15px] font-bold">Lead discovered</p>
-              <p className="text-sm text-muted">Dental clinic · Google Maps · de-duplicated</p>
+              <p className="text-[15px] font-bold">Lead Discovered</p>
+              <p className="text-sm text-muted">Dental Clinic · Google Maps · De-Duplicated</p>
             </div>
             <span className="rounded-full border border-success/40 bg-success/10 px-2.5 py-1 text-xs font-bold text-success">New</span>
           </div>
@@ -38,7 +38,7 @@ export function HeroPanel() {
               <span className="icon-tile !size-10">
                 <Gauge size={18} />
               </span>
-              <p className="flex-1 text-[15px] font-bold">AI lead score</p>
+              <p className="flex-1 text-[15px] font-bold">AI Lead Score</p>
               <p className="font-display text-2xl font-extrabold">
                 86<span className="text-sm font-semibold text-muted">/100</span>
               </p>
@@ -47,7 +47,7 @@ export function HeroPanel() {
               <div className="h-full w-[86%] rounded-full bg-grad" />
             </div>
             <div className="mt-3 flex flex-wrap gap-2 text-xs font-semibold text-ink-soft">
-              {["Complete record", "Weak website", "Fits your market"].map((r) => (
+              {["Complete Record", "Weak Website", "Fits Your Market"].map((r) => (
                 <span key={r} className="rounded-md border border-line bg-surface-2 px-2 py-1">
                   {r}
                 </span>
@@ -60,8 +60,8 @@ export function HeroPanel() {
               <FileCheck size={18} />
             </span>
             <div className="min-w-0 flex-1">
-              <p className="text-[15px] font-bold">SEO audit ready</p>
-              <p className="text-sm text-muted">Findings ranked by severity, with a fix list</p>
+              <p className="text-[15px] font-bold">SEO Audit Ready</p>
+              <p className="text-sm text-muted">Findings Ranked By Severity, With A Fix List</p>
             </div>
             <span className="rounded-full border border-warm/50 bg-warm/10 px-2.5 py-1 text-xs font-bold text-warm">Opportunity</span>
           </div>
@@ -81,8 +81,8 @@ export function HeroPanel() {
           <Send size={17} />
         </span>
         <div>
-          <p className="text-sm font-bold">AI-drafted outreach</p>
-          <p className="text-xs text-muted">Sent through your own email transport</p>
+          <p className="text-sm font-bold">AI-Drafted Outreach</p>
+          <p className="text-xs text-muted">Sent Through Your Own Email Transport</p>
         </div>
       </div>
     </div>

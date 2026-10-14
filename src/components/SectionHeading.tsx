@@ -18,10 +18,10 @@ export function SectionHeading({ badge, title, subtitle, align = "center", id, a
       <span className="pill">
         <Sparkle size={14} /> {badge}
       </span>
-      <Tag id={id} className="h-section mt-5">
+      <Tag id={id} className="h-section mt-4">
         {title}
       </Tag>
-      {subtitle && <p className={`lead mt-5 ${center ? "mx-auto max-w-2xl" : ""}`}>{subtitle}</p>}
+      {subtitle && <p className={`lead mt-4 ${center ? "mx-auto max-w-2xl" : ""}`}>{subtitle}</p>}
     </div>
   );
 }

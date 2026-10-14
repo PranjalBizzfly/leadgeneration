@@ -86,10 +86,10 @@ export function MobileNav({ items }: { items: NavItem[] }) {
             </div>
             <div className="grid gap-2 border-t border-line p-4">
               <Link href="/book-a-demo" className="btn btn-primary w-full">
-                Request access
+                Request Access
               </Link>
               <Link href="/search" className="btn btn-ghost w-full">
-                Search the site
+                Search The Site
               </Link>
             </div>
           </nav>
