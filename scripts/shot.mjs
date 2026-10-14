@@ -17,7 +17,11 @@ if (action === "scroll") {
   await page.waitForTimeout(1500);
   console.log("header top:", await page.evaluate(() => document.querySelector("header").getBoundingClientRect().top), "scrollY:", await page.evaluate(() => scrollY));
 }
-if (action === "footer") {
+if (action.startsWith("#")) {
+  await page.locator(action).scrollIntoViewIfNeeded();
+  await page.waitForTimeout(800);
+  await page.locator(action).locator("xpath=ancestor::section[1]").screenshot({ path: `.qa/${name}.png` });
+} else if (action === "footer") {
   await page.locator("footer").screenshot({ path: `.qa/${name}.png` });
 } else {
   await page.screenshot({ path: `.qa/${name}.png` });

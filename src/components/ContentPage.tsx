@@ -1,4 +1,6 @@
+import Image from "next/image";
 import Link from "next/link";
+import { heroImage } from "@/content/images";
 import type { PageContent, PlanEntry } from "@/content/types";
 import { GROUPS } from "@/lib/groups";
 import { breadcrumbs, groupChildren, relatedPages } from "@/lib/registry";
@@ -47,6 +49,7 @@ export function ContentPage({ content, plan }: { content: PageContent; plan: Pla
   const related = relatedPages(plan.path);
   const minutes = readingMinutes(content);
   const toc = content.sections.map((s) => s.heading);
+  const photo = heroImage(plan.path);
 
   return (
     <>
@@ -94,7 +97,7 @@ export function ContentPage({ content, plan }: { content: PageContent; plan: Pla
             </div>
           </div>
           {/* Framed visual, styled like an app window */}
-          <div className="relative mx-auto hidden w-full max-w-md sm:block lg:max-w-none">
+          <div className={`relative mx-auto w-full max-w-md lg:max-w-none ${photo ? "" : "hidden sm:block"}`}>
             <div className="card overflow-hidden !rounded-3xl shadow-lift">
               <div className="flex items-center gap-2 border-b border-line bg-surface-2 px-5 py-3.5">
                 <span className="size-3 rounded-full bg-[oklch(0.7_0.18_25)]" />
@@ -105,9 +108,21 @@ export function ContentPage({ content, plan }: { content: PageContent; plan: Pla
                   <span className="size-1.5 rounded-full bg-success" /> {group.label}
                 </span>
               </div>
-              <div className="bg-bg-alt p-4">
-                <HeroVisual variant={group.visual} seed={plan.path} hue={group.hue} className="h-auto w-full" />
-              </div>
+              {photo ? (
+                <Image
+                  src={photo.src}
+                  alt={photo.alt}
+                  width={1600}
+                  height={1000}
+                  preload
+                  sizes="(min-width: 1024px) 40vw, (min-width: 640px) 28rem, 100vw"
+                  className="block h-auto w-full"
+                />
+              ) : (
+                <div className="bg-bg-alt p-4">
+                  <HeroVisual variant={group.visual} seed={plan.path} hue={group.hue} className="h-auto w-full" />
+                </div>
+              )}
             </div>
             <div className="float-slow absolute -bottom-5 -left-5 hidden items-center gap-3 rounded-2xl border border-line bg-surface px-4 py-3 shadow-lift md:flex">
               <span className="icon-tile !size-9 !rounded-xl">

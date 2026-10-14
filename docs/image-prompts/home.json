@@ -1,0 +1,74 @@
+[
+  {
+    "path": "/",
+    "file": "/images/pages/home--hero-backdrop.webp",
+    "section": "Homepage hero — soft background photo behind the headline (low opacity, left side kept clear)",
+    "scene": "Wide Bengaluru sales floor at dusk, team working on laptops",
+    "prompt": "Wide establishing shot of a modern Bengaluru sales and growth team office at dusk, seen from the back of the room. Six Indian professionals in smart-casual clothes work at long oak desks with laptops and slim monitors showing abstract, unreadable dashboards with soft indigo and violet tones. City lights glow through floor-to-ceiling windows. The left third of the frame is darker and calm for overlaid headline text. Soft practical lighting, shallow depth of field, 35mm lens, premium editorial photography. Photorealistic, high detail, 16:10, no text, no letters, no logos, no watermarks, no brand names.",
+    "alt": "Indian sales team working at laptops in a modern Bengaluru office at dusk"
+  },
+  {
+    "path": "/",
+    "file": "/images/pages/home--about-pipeline.webp",
+    "section": "Homepage “About LeadGen AI” split — image inside the pipeline card (replaces the pipeline illustration)",
+    "scene": "Founder and analyst reviewing a lead list together on a laptop",
+    "prompt": "Over-the-shoulder shot of a female Indian founder in her thirties and a young male analyst reviewing a lead list together on a laptop in a bright Pune startup office. The screen shows abstract, unreadable rows with coloured score bars and small map pins. A notebook, a coffee cup and a phone sit on a light wooden desk. Morning daylight from the side, plants in soft focus in the background, calm and focused mood. 50mm lens, shallow depth of field, premium editorial photography. Photorealistic, high detail, 16:10, no text, no letters, no logos, no watermarks, no brand names.",
+    "alt": "Founder and analyst reviewing a scored lead list on a laptop in a bright office"
+  },
+  {
+    "path": "/",
+    "file": "/images/pages/home--solution-agencies.webp",
+    "section": "Homepage Solutions — “Marketing & SEO agency prospecting” visual",
+    "scene": "Agency strategist presenting a website audit to a clinic owner",
+    "prompt": "A young Indian agency strategist in a navy shirt presents a website audit on a tablet to a middle-aged clinic owner across a small consultation table in a Chennai clinic waiting area. The tablet shows an abstract, unreadable report with coloured severity bars. The owner leans in, interested. Warm natural light, potted plant and frosted glass behind, candid moment, eye-level 50mm shot with shallow depth of field, premium editorial photography. Photorealistic, high detail, 16:10, no text, no letters, no logos, no watermarks, no brand names.",
+    "alt": "Agency strategist showing a website audit on a tablet to a clinic owner"
+  },
+  {
+    "path": "/",
+    "file": "/images/pages/home--solution-local.webp",
+    "section": "Homepage Solutions — “Local business prospecting” visual",
+    "scene": "Field seller with phone outside a row of Jaipur shopfronts",
+    "prompt": "Candid street-level shot of an Indian field sales executive in her late twenties holding a smartphone that shows an abstract, unreadable map with clustered pins, standing on a clean pavement in front of a row of small local shops in Jaipur in late-afternoon golden light. Shop signs are blurred and unreadable. A shoulder bag and a light jacket complete the look. 35mm lens, shallow depth of field, natural colour, premium editorial photography. Photorealistic, high detail, 16:10, no text, no letters, no logos, no watermarks, no brand names.",
+    "alt": "Field sales executive checking a map of nearby businesses on her phone outside local shops"
+  },
+  {
+    "path": "/",
+    "file": "/images/pages/home--solution-suppliers.webp",
+    "section": "Homepage Solutions — “MSME suppliers & exporters” visual",
+    "scene": "Factory owner on laptop in mezzanine office overlooking production floor",
+    "prompt": "An Indian MSME factory owner in his fifties, wearing a crisp shirt, works on a laptop in a glass-walled mezzanine office overlooking a clean packaging and fabrication floor in Rajkot. The laptop shows an abstract, unreadable list of buyer cards. Cartons and machinery are softly blurred below through the glass. Cool daylight mixed with warm desk light. Medium-wide 35mm shot with shallow depth of field, premium industrial editorial photography. Photorealistic, high detail, 16:10, no text, no letters, no logos, no watermarks, no brand names.",
+    "alt": "Factory owner researching buyers on a laptop in an office overlooking the production floor"
+  },
+  {
+    "path": "/",
+    "file": "/images/pages/home--solution-sales-teams.webp",
+    "section": "Homepage Solutions — “SDR & sales team prioritisation” visual",
+    "scene": "Sales manager leading a stand-up beside a wall screen pipeline board",
+    "prompt": "A Mumbai sales manager, an Indian woman in her forties, leads a quick morning stand-up with four SDRs of mixed genders beside a large wall screen showing an abstract, unreadable kanban pipeline with coloured columns. Team members hold coffee and laptops, attentive and relaxed. Modern open-plan office, soft overhead lighting with daylight from the windows. Candid three-quarter 35mm shot, shallow depth of field, premium editorial photography. Photorealistic, high detail, 16:10, no text, no letters, no logos, no watermarks, no brand names.",
+    "alt": "Sales manager leading a morning stand-up beside a pipeline board on a wall screen"
+  },
+  {
+    "path": "/",
+    "file": "/images/pages/home--background-jobs.webp",
+    "section": "Homepage methodology banner — “Large jobs keep running after you close the tab” (right-side image)",
+    "scene": "Professional closing laptop lid at end of day, desk lamp on",
+    "prompt": "Close-up of an Indian professional's hands gently closing a laptop lid at the end of the workday on a tidy walnut desk, a warm desk lamp glowing beside a ceramic mug and a small plant. A second slim monitor behind still glows softly with an abstract, unreadable progress visual in indigo and violet tones. Evening window light, calm mood, shallow depth of field, 50mm lens, premium editorial still-life photography. Photorealistic, high detail, 16:10, no text, no letters, no logos, no watermarks, no brand names.",
+    "alt": "Hands closing a laptop at day’s end while a monitor behind shows ongoing progress"
+  },
+  {
+    "path": "/",
+    "file": "/images/pages/home--final-cta.webp",
+    "section": "Homepage final call-to-action band — background photo (darkened under the gradient)",
+    "scene": "Two colleagues celebrating a reply on laptop, quiet win",
+    "prompt": "Two Indian colleagues, a man and a woman in their late twenties, share a quiet celebratory moment at a standing desk as one points at a laptop screen showing an abstract, unreadable inbox with one highlighted card. Subtle smiles, genuine and understated. Modern Hyderabad co-working space with soft indigo ambient light and bokeh in the background. Medium shot, 50mm lens, shallow depth of field, premium editorial photography. Photorealistic, high detail, 16:10, no text, no letters, no logos, no watermarks, no brand names.",
+    "alt": "Two colleagues quietly celebrating a positive reply on a laptop at a standing desk"
+  },
+  {
+    "path": "/sitemap",
+    "file": "/images/pages/sitemap.webp",
+    "section": "Sitemap page — header image beside the page title",
+    "scene": "Top-down desk with index cards organised in a grid",
+    "prompt": "Top-down flat-lay of a clean light-grey desk where an Indian professional's hands arrange blank colour-coded index cards into neat columns and groups, next to a closed laptop, a pen and a small succulent. The cards carry only abstract coloured stripes and no writing. Soft diffused daylight, gentle shadows, a calm organised mood with subtle indigo and violet accents in the cards. 50mm lens, premium editorial still-life photography. Photorealistic, high detail, 16:10, no text, no letters, no logos, no watermarks, no brand names.",
+    "alt": "Hands organising colour-coded index cards into neat groups on a clean desk"
+  }
+]

@@ -1,0 +1,362 @@
+[
+  {
+    "path": "/lead-capture",
+    "file": "/images/pages/lead-capture.webp",
+    "section": "Hero image (replaces framed illustration)",
+    "scene": "Marketing lead pins a printed visitor-to-lead journey map across a long wall in a Mumbai co-working space",
+    "prompt": "Wide establishing shot of a Mumbai co-working space in late-morning light. A woman marketing lead in her forties, sleeves rolled up, pins printed sheets with abstract unreadable page layouts in a long left-to-right sequence on a pale wall, connected by indigo string. A younger male colleague holds a coffee and studies the sequence thoughtfully. Concrete floor, plants, large windows. Clean negative space on the right wall. 35mm look, shallow depth of field, soft daylight, subtle indigo accents. Photorealistic, high detail, 16:10, no text, no letters, no logos, no watermarks, no brand names.",
+    "alt": "Marketing lead pinning a sequence of printed page layouts linked by string on a co-working wall"
+  },
+  {
+    "path": "/lead-capture/landing-page-design",
+    "file": "/images/pages/lead-capture--landing-page-design.webp",
+    "section": "Hero image (replaces framed illustration)",
+    "scene": "Designer reviewing paper landing-page wireframes spread on a drafting table in a Pune agency",
+    "prompt": "Top-down view of a wooden drafting table in a Pune design agency. A young Indian woman designer with silver rings arranges hand-drawn paper wireframes of a landing page, grey boxes and blocks with no readable text, marking the hero area with a violet marker. A tablet beside her shows abstract, unreadable UI blocks. Afternoon window light casts soft shadows. Empty table surface on the left as negative space. 50mm look, crisp detail, true-to-life colour. Photorealistic, high detail, 16:10, no text, no letters, no logos, no watermarks, no brand names.",
+    "alt": "Designer arranging paper landing page wireframes on a drafting table, viewed from above"
+  },
+  {
+    "path": "/lead-capture/landing-page-copywriting",
+    "file": "/images/pages/lead-capture--landing-page-copywriting.webp",
+    "section": "Hero image (replaces framed illustration)",
+    "scene": "Copywriter crossing out headline drafts on a legal pad at a Kolkata cafe window",
+    "prompt": "Close-up, slightly side-on, of a middle-aged Bengali male copywriter in spectacles at a window table in a Kolkata cafe, pen hovering over a yellow legal pad covered in struck-through scribbles that remain illegible. A clay cup of tea and an open laptop whose screen shows abstract, unreadable UI sit nearby. Overcast soft daylight, rain streaks on glass, muted tones with a faint violet cast. Blurred street background, negative space to the right. 50mm look, shallow depth of field. Photorealistic, high detail, 16:10, no text, no letters, no logos, no watermarks, no brand names.",
+    "alt": "Copywriter with a pen over a legal pad of crossed-out drafts at a rainy cafe window"
+  },
+  {
+    "path": "/lead-capture/lead-capture-forms",
+    "file": "/images/pages/lead-capture--lead-capture-forms.webp",
+    "section": "Hero image (replaces framed illustration)",
+    "scene": "Woman filling a short web form on her phone on a Bengaluru apartment balcony",
+    "prompt": "Over-the-shoulder shot of a woman in her thirties in a cotton kurta, seated on a Bengaluru apartment balcony at golden hour, typing into a simple form on her smartphone; the screen shows abstract, unreadable UI with a few input bars and one highlighted button. Potted plants and a city skyline softly blurred behind. Warm sunset light with cool indigo shadows. Phone in sharp focus, open sky on the left as negative space. 50mm look, shallow depth of field. Photorealistic, high detail, 16:10, no text, no letters, no logos, no watermarks, no brand names.",
+    "alt": "Woman filling in a short form on her phone on a balcony at sunset"
+  },
+  {
+    "path": "/lead-capture/multi-step-forms",
+    "file": "/images/pages/lead-capture--multi-step-forms.webp",
+    "section": "Hero image (replaces framed illustration)",
+    "scene": "UX team arranges a row of paper phone-screen cutouts with a progress strip on a meeting table",
+    "prompt": "Medium shot in a Hyderabad product studio. Two UX designers, a young man in a hoodie and an older woman with short grey hair, lay four paper cutouts shaped like phone screens in a row on a white table, each showing abstract unreadable blocks, with a thin violet progress strip drawn above them. Their hands move the third card into place. Diffused overhead light, sticky notes blurred in the background, clean space at the top. 35mm look. Photorealistic, high detail, 16:10, no text, no letters, no logos, no watermarks, no brand names.",
+    "alt": "Two designers arranging a row of paper phone screen mockups that form a step sequence"
+  },
+  {
+    "path": "/lead-capture/form-field-optimisation",
+    "file": "/images/pages/lead-capture--form-field-optimisation.webp",
+    "section": "Hero image (replaces framed illustration)",
+    "scene": "Hands cutting unnecessary field strips from a printed form with scissors",
+    "prompt": "Close-up of hands on a grey desk mat in a Chennai marketing office: a man trims printed horizontal strips representing form fields, each an empty bar with no readable labels, discarding three strips into a small pile while a shorter stack remains. Scissors, a steel ruler and a laptop edge showing abstract, unreadable UI. Cool morning light from the left, soft shadows, faint indigo tones. Generous empty mat on the right. 50mm macro-like look, shallow depth of field. Photorealistic, high detail, 16:10, no text, no letters, no logos, no watermarks, no brand names.",
+    "alt": "Hands trimming printed form field strips with scissors, leaving a shorter form"
+  },
+  {
+    "path": "/lead-capture/calls-to-action",
+    "file": "/images/pages/lead-capture--calls-to-action.webp",
+    "section": "Hero image (replaces framed illustration)",
+    "scene": "Designer holds coloured button swatches against a large monitor mockup to test contrast",
+    "prompt": "Side-angle medium shot of a young Sikh male designer in a turban at a Chandigarh studio desk, holding small paper swatches in violet, coral and grey up against a large monitor that shows abstract, unreadable UI with a single empty button shape. He squints, comparing contrast. Late-afternoon light through blinds creates gentle stripes. Minimal desk, wide blank wall to the right. 35mm look, shallow depth of field, true-to-life colour. Photorealistic, high detail, 16:10, no text, no letters, no logos, no watermarks, no brand names.",
+    "alt": "Designer holding coloured paper swatches up to a monitor to compare button contrast"
+  },
+  {
+    "path": "/lead-capture/popups-and-slide-ins",
+    "file": "/images/pages/lead-capture--popups-and-slide-ins.webp",
+    "section": "Hero image (replaces framed illustration)",
+    "scene": "Shopper on a sofa sees a small panel slide in on a tablet while browsing in the evening",
+    "prompt": "Candid evening scene in a Jaipur living room: a woman in her fifties reclines on a sofa holding a tablet, a small panel sliding in at the corner of the screen, which shows abstract, unreadable UI. Her expression is calm and considering. Warm lamp light, a carved wooden side table with a brass lamp, indigo cushion. Shot from slightly behind and to the side, tablet in focus, room softly blurred, darker negative space on the left. 50mm look. Photorealistic, high detail, 16:10, no text, no letters, no logos, no watermarks, no brand names.",
+    "alt": "Woman on a sofa looking at a tablet where a small panel has slid in"
+  },
+  {
+    "path": "/lead-capture/exit-intent",
+    "file": "/images/pages/lead-capture--exit-intent.webp",
+    "section": "Hero image (replaces framed illustration)",
+    "scene": "Close-up of a hand moving a mouse toward a laptop's top edge as an overlay appears",
+    "prompt": "Tight close-up at desk level in a Delhi home office at night: a young man's hand glides a mouse upward, the laptop screen showing a centred overlay card dimming the page behind, all abstract, unreadable UI. Screen glow lights his knuckles with cool indigo; a desk lamp adds warm fill. A notebook and earphones blurred in the foreground. Dark negative space on the right. 50mm look, very shallow depth of field. Photorealistic, high detail, 16:10, no text, no letters, no logos, no watermarks, no brand names.",
+    "alt": "Hand moving a mouse at night as an overlay card appears on a laptop screen"
+  },
+  {
+    "path": "/lead-capture/thank-you-pages",
+    "file": "/images/pages/lead-capture--thank-you-pages.webp",
+    "section": "Hero image (replaces framed illustration)",
+    "scene": "Small business owner relaxes after submitting an enquiry, phone showing a confirmation screen and calendar",
+    "prompt": "Medium shot of an older man who owns a hardware shop in Indore, leaning back on a stool behind his counter, looking at his phone with quiet relief; the screen shows abstract, unreadable UI with a large check-mark shape and a small calendar grid. Shelves of tools and paint tins softly blurred behind. Mid-morning daylight from the shop front, warm tones with indigo shadows. Negative space above his head. 35mm look, shallow depth of field. Photorealistic, high detail, 16:10, no text, no letters, no logos, no watermarks, no brand names.",
+    "alt": "Shop owner behind his counter looking at a confirmation screen on his phone"
+  },
+  {
+    "path": "/lead-capture/ab-testing",
+    "file": "/images/pages/lead-capture--ab-testing.webp",
+    "section": "Hero image (replaces framed illustration)",
+    "scene": "CRO analyst compares two abstract page variants side by side on dual monitors",
+    "prompt": "Over-the-shoulder shot of a CRO analyst, a woman in her late twenties with a braid, seated before two side-by-side monitors in a Gurugram office, each screen showing a slightly different page variant in abstract, unreadable UI, with a small bar chart beneath. She rests her chin on her hand, comparing. Overcast daylight from tall windows, cool indigo-grey palette, a printed notebook with abstract graphs at her elbow. Space on the left. 35mm look, shallow depth of field. Photorealistic, high detail, 16:10, no text, no letters, no logos, no watermarks, no brand names.",
+    "alt": "Analyst comparing two versions of a web page on side-by-side monitors"
+  },
+  {
+    "path": "/lead-capture/conversion-rate-optimisation",
+    "file": "/images/pages/lead-capture--conversion-rate-optimisation.webp",
+    "section": "Hero image (replaces framed illustration)",
+    "scene": "Team sorts research sticky notes into an impact-versus-effort grid on a glass wall",
+    "prompt": "Candid meeting shot in a Bengaluru SaaS team room: three colleagues of varied ages stand at a glass wall where a hand-drawn two-by-two grid holds clusters of coloured sticky notes with illegible scribbles. A man in his forties moves a note into the top corner while a young woman points and an older woman holds printed survey sheets. Afternoon light, reflections on glass, violet and yellow notes. Room space on the right. 35mm look. Photorealistic, high detail, 16:10, no text, no letters, no logos, no watermarks, no brand names.",
+    "alt": "Three colleagues sorting sticky notes into a priority grid on a glass wall"
+  },
+  {
+    "path": "/lead-capture/page-speed",
+    "file": "/images/pages/lead-capture--page-speed.webp",
+    "section": "Hero image (replaces framed illustration)",
+    "scene": "Developer with a mid-range phone and laptop timing a page load beside a stopwatch",
+    "prompt": "Low-angle desk close-up in a Kochi developer's workspace at dusk: a budget smartphone propped on a stand loads a page with abstract grey placeholder blocks, next to a laptop whose screen shows abstract, unreadable UI with a waterfall of coloured bars. An analogue stopwatch sits in the foreground. The developer, a young man in a T-shirt, watches intently, slightly out of focus. Cool screen light, indigo dusk outside the window, empty space at left. 50mm look. Photorealistic, high detail, 16:10, no text, no letters, no logos, no watermarks, no brand names.",
+    "alt": "Developer watching a phone and laptop load a page beside a stopwatch"
+  },
+  {
+    "path": "/lead-capture/mobile-conversion",
+    "file": "/images/pages/lead-capture--mobile-conversion.webp",
+    "section": "Hero image (replaces framed illustration)",
+    "scene": "Commuter tapping a large button one-handed with her thumb on a Mumbai local train",
+    "prompt": "Close-up on a Mumbai local train in morning light: a young working woman holds a grab handle with one hand and uses her thumb on a smartphone in the other, reaching a large button at the bottom of the screen, which shows abstract, unreadable UI. Motion-blurred window and other commuters behind. Natural side light, warm skin tones with cool indigo reflections. Phone and thumb sharp, blurred carriage occupying the right. 35mm look, shallow depth of field. Photorealistic, high detail, 16:10, no text, no letters, no logos, no watermarks, no brand names.",
+    "alt": "Commuter on a train tapping a large button on her phone with one thumb"
+  },
+  {
+    "path": "/lead-capture/social-proof",
+    "file": "/images/pages/lead-capture--social-proof.webp",
+    "section": "Hero image (replaces framed illustration)",
+    "scene": "Marketer interviews a real customer on camera in a Surat textile unit for a testimonial",
+    "prompt": "Behind-the-camera view in a Surat textile unit: a small video camera on a tripod in the foreground frames a middle-aged woman factory owner speaking naturally among bolts of coloured fabric, while a young male marketer with headphones holds a notebook beside the tripod. Looms softly blurred behind. Daylight from high windows mixes with soft LED panel light. The camera's flip screen shows abstract, unreadable UI. Space at the top right. 35mm look, shallow depth of field. Photorealistic, high detail, 16:10, no text, no letters, no logos, no watermarks, no brand names.",
+    "alt": "Factory owner being filmed for a customer interview among bolts of fabric"
+  },
+  {
+    "path": "/lead-capture/trust-signals",
+    "file": "/images/pages/lead-capture--trust-signals.webp",
+    "section": "Hero image (replaces framed illustration)",
+    "scene": "Cautious retiree checks a site's contact and privacy details on a laptop before entering details",
+    "prompt": "Medium close-up in a Lucknow home study: a retired man in a sweater vest and reading glasses leans toward a laptop, one finger resting on the trackpad, expression careful and evaluating; the screen shows abstract, unreadable UI with a small padlock-like shape and a footer block. A printed bank passbook and teacup lie beside the laptop. Soft window light, warm wood, subtle indigo cushion behind. Wall space on the left. 50mm look, shallow depth of field. Photorealistic, high detail, 16:10, no text, no letters, no logos, no watermarks, no brand names.",
+    "alt": "Retired man carefully reviewing a website on his laptop before sharing details"
+  },
+  {
+    "path": "/lead-capture/click-to-call",
+    "file": "/images/pages/lead-capture--click-to-call.webp",
+    "section": "Hero image (replaces framed illustration)",
+    "scene": "Plumbing business owner answers an incoming mobile call in his van outside a Pune housing society",
+    "prompt": "Candid shot through the open door of a small service van parked outside a Pune housing society: a plumber in his thirties wearing a work shirt answers a call on his phone, toolbox and coiled pipes beside him. His second phone on the dashboard shows abstract, unreadable UI with a large call-button shape. Bright midday light, leafy trees, apartment blocks blurred in the background. Open street on the right. 35mm look, shallow depth of field, natural colour. Photorealistic, high detail, 16:10, no text, no letters, no logos, no watermarks, no brand names.",
+    "alt": "Plumber in his van answering a phone call outside an apartment complex"
+  },
+  {
+    "path": "/lead-capture/booking-widgets",
+    "file": "/images/pages/lead-capture--booking-widgets.webp",
+    "section": "Hero image (replaces framed illustration)",
+    "scene": "Physiotherapy clinic receptionist confirms an appointment on a tablet calendar in Chennai",
+    "prompt": "Medium shot at a bright physiotherapy clinic reception in Chennai: a receptionist in her twenties with jasmine in her hair taps a tablet on the counter showing a weekly calendar grid in abstract, unreadable UI, while a patient's phone nearby shows a matching reminder card. Exercise balls and a treatment room softly blurred behind. Clean white and teal interior, soft morning light, subtle violet accents. Counter space on the left. 35mm look, shallow depth of field. Photorealistic, high detail, 16:10, no text, no letters, no logos, no watermarks, no brand names.",
+    "alt": "Clinic receptionist confirming an appointment on a tablet calendar at the front desk"
+  },
+  {
+    "path": "/lead-capture/live-chat",
+    "file": "/images/pages/lead-capture--live-chat.webp",
+    "section": "Hero image (replaces framed illustration)",
+    "scene": "Chat agent with a headset types replies at a support desk while a colleague leans in to take over",
+    "prompt": "Medium shot of a small support corner in a Noida office: a young woman with a headset types into a chat window on her monitor, which shows abstract, unreadable UI with alternating message bubbles. A senior male salesperson leans over her shoulder, ready to take over the conversation. Evening, warm desk lamps, city lights through the window, cool indigo screen glow. Foreground blurred plant, space at right. 35mm look, shallow depth of field. Photorealistic, high detail, 16:10, no text, no letters, no logos, no watermarks, no brand names.",
+    "alt": "Support agent typing chat replies while a sales colleague leans in to help"
+  },
+  {
+    "path": "/lead-capture/gated-content",
+    "file": "/images/pages/lead-capture--gated-content.webp",
+    "section": "Hero image (replaces framed illustration)",
+    "scene": "Content strategist weighs a printed report against a laptop showing a blurred preview behind a form",
+    "prompt": "Top-down desk shot in an Ahmedabad content studio: a bound printed report with abstract unreadable charts lies beside a laptop showing a page with a blurred preview and a small form card, all abstract, unreadable UI. A woman strategist's hands rest between them, one holding a pencil as if deciding. A brass paperweight, chai glass and sticky tabs complete the scene. Soft north light, neutral desk with indigo notebook. Empty space at top. 50mm look. Photorealistic, high detail, 16:10, no text, no letters, no logos, no watermarks, no brand names.",
+    "alt": "Printed report beside a laptop showing a blurred preview behind a small form"
+  },
+  {
+    "path": "/lead-capture/lead-magnet-delivery",
+    "file": "/images/pages/lead-capture--lead-magnet-delivery.webp",
+    "section": "Hero image (replaces framed illustration)",
+    "scene": "Young farmer-entrepreneur opens a just-delivered guide in his email on a phone at a greenhouse",
+    "prompt": "Medium shot inside a polyhouse near Nashik: a young agri-entrepreneur in a cap stands between rows of capsicum plants, reading a freshly delivered guide on his phone, the screen showing an inbox message and a document thumbnail in abstract, unreadable UI. Diffused white light filters through the polythene roof, lush greens with a cool cast. Watering hose and crates blurred. Plant rows lead away to the left as negative space. 35mm look, shallow depth of field. Photorealistic, high detail, 16:10, no text, no letters, no logos, no watermarks, no brand names.",
+    "alt": "Young grower in a greenhouse reading a guide that arrived on his phone"
+  },
+  {
+    "path": "/lead-capture/form-spam-prevention",
+    "file": "/images/pages/lead-capture--form-spam-prevention.webp",
+    "section": "Hero image (replaces framed illustration)",
+    "scene": "Web admin filters junk submissions in a dense list while sipping filter coffee late at night",
+    "prompt": "Over-the-shoulder night shot in a Coimbatore home office: a woman web administrator in her forties, hair in a bun, scrolls a long list of submissions on a large monitor, several rows greyed out and flagged with red markers, the rest highlighted in indigo, all abstract, unreadable UI. A steel tumbler of filter coffee and a small succulent sit on the desk. Low warm lamp plus blue screen glow, darkness on the left. 35mm look, shallow depth of field. Photorealistic, high detail, 16:10, no text, no letters, no logos, no watermarks, no brand names.",
+    "alt": "Web administrator reviewing a list of form submissions with junk entries flagged"
+  },
+  {
+    "path": "/lead-capture/consent-checkboxes",
+    "file": "/images/pages/lead-capture--consent-checkboxes.webp",
+    "section": "Hero image (replaces framed illustration)",
+    "scene": "Compliance officer and marketer review a printed form with an unticked box in a Delhi law-firm meeting room",
+    "prompt": "Close-up across a polished meeting table in a Delhi office: a compliance officer, an older woman in a sari with reading glasses, points her pen at a small empty checkbox on a printed form with unreadable grey lines, while a younger male marketer listens with a laptop open showing abstract, unreadable UI. Bookshelves and a ring binder softly blurred. Soft daylight, muted wood tones, indigo folder. Table space on the right. 50mm look, shallow depth of field. Photorealistic, high detail, 16:10, no text, no letters, no logos, no watermarks, no brand names.",
+    "alt": "Compliance officer pointing to a checkbox on a printed form while a marketer listens"
+  },
+  {
+    "path": "/lead-capture/conversion-tracking",
+    "file": "/images/pages/lead-capture--conversion-tracking.webp",
+    "section": "Hero image (replaces framed illustration)",
+    "scene": "Analytics specialist traces event flow with a laptop and a hand-drawn tracking diagram",
+    "prompt": "Desk-level medium shot in a Bengaluru analytics agency: a young man with curly hair and an older female colleague study a laptop showing abstract, unreadable UI with a live stream of dot markers and a line chart, while a sheet beside it holds a hand-drawn flow of circles and arrows with no readable words. She traces an arrow with her finger. Bright morning light, white desk, indigo mug. Space above. 35mm look, shallow depth of field. Photorealistic, high detail, 16:10, no text, no letters, no logos, no watermarks, no brand names.",
+    "alt": "Two analysts checking event data on a laptop beside a hand-drawn flow diagram"
+  },
+  {
+    "path": "/lead-capture/heatmaps-and-session-insights",
+    "file": "/images/pages/lead-capture--heatmaps-and-session-insights.webp",
+    "section": "Hero image (replaces framed illustration)",
+    "scene": "UX researcher studies a colour heatmap over a page layout on a large wall display",
+    "prompt": "Wide shot of a dim research room in a Hyderabad agency: a UX researcher in her thirties stands before a large wall display showing a page layout overlaid with warm-to-cool colour blobs of a heatmap, abstract, unreadable UI. Her silhouette is rim-lit by the screen's glow, notebook in hand. A colleague seated at a desk in the foreground is softly blurred. Moody low light, deep indigo and violet tones with warm red patches. Dark negative space on the left. 35mm look. Photorealistic, high detail, 16:10, no text, no letters, no logos, no watermarks, no brand names.",
+    "alt": "Researcher standing before a large screen showing a colour heatmap over a page layout"
+  },
+  {
+    "path": "/lead-qualification",
+    "file": "/images/pages/lead-qualification.webp",
+    "section": "Hero image (replaces framed illustration)",
+    "scene": "Sales and marketing heads walk through a glass corridor reviewing a tablet together",
+    "prompt": "Wide candid shot in a modern Gurugram office corridor with glass walls: a marketing head in her forties and a sales head in his fifties walk side by side, both looking at a tablet she holds that shows abstract, unreadable UI with a funnel of coloured bands. Meeting rooms with blurred teams line the corridor. Late-afternoon sun streams in at an angle, long shadows, cool indigo glass reflections. Open corridor ahead as negative space. 35mm look. Photorealistic, high detail, 16:10, no text, no letters, no logos, no watermarks, no brand names.",
+    "alt": "Marketing and sales leaders walking down an office corridor reviewing a tablet"
+  },
+  {
+    "path": "/lead-qualification/bant",
+    "file": "/images/pages/lead-qualification--bant.webp",
+    "section": "Hero image (replaces framed illustration)",
+    "scene": "Sales rep on a discovery call ticks four boxes on a printed call sheet",
+    "prompt": "Close-up at a small desk in a Pune sales office: a young male rep with a headset on a discovery call ticks one of four large empty squares on a printed call sheet with unreadable grey lines, pen in hand, his face softly focused in the background, listening. A laptop shows abstract, unreadable UI. Morning light from the right, warm tones with an indigo notebook. Desk space on the left. 50mm look, shallow depth of field. Photorealistic, high detail, 16:10, no text, no letters, no logos, no watermarks, no brand names.",
+    "alt": "Sales rep on a headset ticking boxes on a printed call sheet"
+  },
+  {
+    "path": "/lead-qualification/champ",
+    "file": "/images/pages/lead-qualification--champ.webp",
+    "section": "Hero image (replaces framed illustration)",
+    "scene": "Consultant listens closely as a factory manager describes problems on the shop floor",
+    "prompt": "Medium shot on a Rajkot engineering factory floor: a female sales consultant in her thirties holding a small notebook listens attentively as a grey-haired plant manager in a safety vest gestures toward a CNC machine, explaining a problem. Steel parts and machines in soft background blur, overhead industrial lights and daylight from high windows. Neutral greys with cool indigo tones. Space on the right. 35mm look, shallow depth of field, candid. Photorealistic, high detail, 16:10, no text, no letters, no logos, no watermarks, no brand names.",
+    "alt": "Consultant listening as a factory manager explains a problem beside a machine"
+  },
+  {
+    "path": "/lead-qualification/mql-vs-sql",
+    "file": "/images/pages/lead-qualification--mql-vs-sql.webp",
+    "section": "Hero image (replaces framed illustration)",
+    "scene": "Marketer hands a folder across a desk divider to a sales colleague in an open-plan office",
+    "prompt": "Side-on medium shot in an open-plan Bengaluru office: across a low desk divider, a young marketing executive in a denim shirt passes an indigo folder to a sales colleague, a woman in her forties, who reaches for it while glancing at her monitor showing abstract, unreadable UI. Two distinct desk zones, posters blurred, plants. Bright diffused daylight. The handover is centred, open office space at the top. 35mm look, shallow depth of field. Photorealistic, high detail, 16:10, no text, no letters, no logos, no watermarks, no brand names.",
+    "alt": "Marketer handing a folder across a desk divider to a sales colleague"
+  },
+  {
+    "path": "/lead-qualification/lead-scoring-models",
+    "file": "/images/pages/lead-qualification--lead-scoring-models.webp",
+    "section": "Hero image (replaces framed illustration)",
+    "scene": "Revenue ops analyst calibrates scores comparing a printed points table to a scatter chart",
+    "prompt": "Over-the-shoulder shot of a revenue operations analyst, a man in his thirties with a beard, at a Mumbai office desk. He holds a printed grid table with unreadable cells and pencil marks, comparing it to a monitor showing a scatter chart and score distribution bars in abstract, unreadable UI. Calculator and highlighter on the desk. Overcast window light, cool palette with violet highlights. Desk space on the left. 35mm look, shallow depth of field. Photorealistic, high detail, 16:10, no text, no letters, no logos, no watermarks, no brand names.",
+    "alt": "Analyst comparing a printed scoring table with a scatter chart on his monitor"
+  },
+  {
+    "path": "/lead-qualification/fit-vs-intent-scoring",
+    "file": "/images/pages/lead-qualification--fit-vs-intent-scoring.webp",
+    "section": "Hero image (replaces framed illustration)",
+    "scene": "Two strategists place index cards on a masking-tape two-axis matrix on the floor",
+    "prompt": "High-angle shot of a startup office floor in Chennai: a large two-axis matrix made from blue masking tape on light wood, with two strategists, a young woman crouching and a middle-aged man kneeling, placing blank index cards into the quadrants. The top-right quadrant holds a small cluster of violet cards. Morning sun through windows casts long soft shadows. Bare floor space framing the matrix. 35mm look, gentle depth of field. Photorealistic, high detail, 16:10, no text, no letters, no logos, no watermarks, no brand names.",
+    "alt": "Two colleagues placing cards into quadrants of a tape matrix on the office floor"
+  },
+  {
+    "path": "/lead-qualification/negative-scoring",
+    "file": "/images/pages/lead-qualification--negative-scoring.webp",
+    "section": "Hero image (replaces framed illustration)",
+    "scene": "Sales ops lead removing cards from a filing tray into a reject box",
+    "prompt": "Close-up of hands at a sales operations desk in Kolkata: an older woman with bangles lifts plain index cards from a tray and drops some into a cardboard box marked only with a red stripe, keeping the rest. Some cards carry faded edges suggesting age. A monitor in the background shows a declining line in abstract, unreadable UI. Soft afternoon light, muted browns and indigo. Clean desk space on the right. 50mm look, shallow depth of field. Photorealistic, high detail, 16:10, no text, no letters, no logos, no watermarks, no brand names.",
+    "alt": "Hands sorting index cards from a tray, dropping some into a discard box"
+  },
+  {
+    "path": "/lead-qualification/lead-nurturing",
+    "file": "/images/pages/lead-qualification--lead-nurturing.webp",
+    "section": "Hero image (replaces framed illustration)",
+    "scene": "Marketer plans a nurture calendar with printed content pieces on a long wall planner",
+    "prompt": "Medium wide shot in a Goa boutique marketing agency with whitewashed walls: a woman in her late thirties in linen stands at a long horizontal wall planner, clipping small printed cards with abstract unreadable thumbnails into week columns, a few already spaced apart. A male colleague on a rattan chair reviews a laptop showing abstract, unreadable UI. Warm coastal daylight, potted palms, subtle indigo accents. Wall space on the left. 35mm look, shallow depth of field. Photorealistic, high detail, 16:10, no text, no letters, no logos, no watermarks, no brand names.",
+    "alt": "Marketer clipping printed content cards onto a weekly wall planner"
+  },
+  {
+    "path": "/lead-qualification/email-nurture-sequences",
+    "file": "/images/pages/lead-qualification--email-nurture-sequences.webp",
+    "section": "Hero image (replaces framed illustration)",
+    "scene": "Prospect reads a personal email on a laptop at a kitchen table and starts typing a reply",
+    "prompt": "Candid medium shot in a Bhubaneswar home kitchen in the early morning: a woman in her thirties, a small business owner, sits at a wooden table with a laptop open, cup of tea in hand, beginning to type a reply; the screen shows an email thread in abstract, unreadable UI. Steel utensils and a window with soft dawn light behind, cool blue tones turning warm. Camera from slightly behind her shoulder, window space on the right. 50mm look, shallow depth of field. Photorealistic, high detail, 16:10, no text, no letters, no logos, no watermarks, no brand names.",
+    "alt": "Woman at her kitchen table starting to reply to an email in the morning"
+  },
+  {
+    "path": "/lead-qualification/drip-campaigns",
+    "file": "/images/pages/lead-qualification--drip-campaigns.webp",
+    "section": "Hero image (replaces framed illustration)",
+    "scene": "Automation specialist builds a branching workflow canvas on an ultrawide monitor",
+    "prompt": "Wide-angle desk shot in a Bengaluru marketing ops room: a young non-binary automation specialist with short hair and headphones around their neck drags a node on an ultrawide monitor showing a branching workflow of connected boxes and timer icons, abstract, unreadable UI. A mechanical keyboard, a small hourglass ornament and a water bottle on the desk. Late-afternoon light, cool indigo and violet screen glow. Space at upper left. 35mm look, shallow depth of field. Photorealistic, high detail, 16:10, no text, no letters, no logos, no watermarks, no brand names.",
+    "alt": "Specialist arranging a branching automation workflow on an ultrawide monitor"
+  },
+  {
+    "path": "/lead-qualification/lead-routing",
+    "file": "/images/pages/lead-qualification--lead-routing.webp",
+    "section": "Hero image (replaces framed illustration)",
+    "scene": "Sales manager assigns territories on a large wall map of India with coloured pins",
+    "prompt": "Medium shot in a Delhi distribution company's sales office: a male sales manager in his fifties places coloured pins on a large wall map of India with no readable labels, divided into tinted regions, while two reps, a young woman and a young man, watch from a desk. A laptop shows abstract, unreadable UI with a map and pins. Even overhead light plus window daylight, indigo and amber pins. Space at the right of the map. 35mm look. Photorealistic, high detail, 16:10, no text, no letters, no logos, no watermarks, no brand names.",
+    "alt": "Sales manager placing coloured pins on a wall map of regions while reps watch"
+  },
+  {
+    "path": "/lead-qualification/speed-to-lead",
+    "file": "/images/pages/lead-qualification--speed-to-lead.webp",
+    "section": "Hero image (replaces framed illustration)",
+    "scene": "Rep grabs his ringing phone as a new-lead alert lights up on a smartwatch",
+    "prompt": "Dynamic close-up in a Hyderabad real estate sales office: a young salesman's hand reaches quickly for his phone while his smartwatch lights up with an alert, both showing abstract, unreadable UI. His half-eaten lunch box and a property brochure with an unreadable layout sit nearby. Slight motion blur on the hand, sharp watch face. Midday light from a window, warm tones with cool indigo glow. Desk space on the left. 50mm look, shallow depth of field. Photorealistic, high detail, 16:10, no text, no letters, no logos, no watermarks, no brand names.",
+    "alt": "Salesman quickly reaching for his phone as an alert lights up his smartwatch"
+  },
+  {
+    "path": "/lead-qualification/sales-handoff",
+    "file": "/images/pages/lead-qualification--sales-handoff.webp",
+    "section": "Hero image (replaces framed illustration)",
+    "scene": "SDR briefs an account executive at a standing table before a client call",
+    "prompt": "Candid medium shot at a high standing table in a Mumbai SaaS office pantry: a young female SDR walks an account executive, an older man in a blazer, through notes on her laptop showing abstract, unreadable UI with a contact card and a timeline. He nods, holding a takeaway coffee and a printed one-page brief with an unreadable layout. Morning light, glass and wood, indigo chairs. Space on the left. 35mm look, shallow depth of field. Photorealistic, high detail, 16:10, no text, no letters, no logos, no watermarks, no brand names.",
+    "alt": "Junior rep briefing an account executive at a standing table before a call"
+  },
+  {
+    "path": "/lead-qualification/crm-hygiene",
+    "file": "/images/pages/lead-qualification--crm-hygiene.webp",
+    "section": "Hero image (replaces framed illustration)",
+    "scene": "Operations admin merges duplicate records on screen beside a neat stack of cleaned contact cards",
+    "prompt": "Top-down angled shot of a tidy desk in a Pune manufacturing firm's sales office: a laptop shows two near-identical record cards side by side with a merge arrow, abstract, unreadable UI, as a middle-aged woman admin's hand rests on the trackpad. Beside it, a neat stack of business-card-sized blank cards squared with a clip, and an empty wire tray. Clean white desk, soft even daylight, indigo accents. Space at top. 50mm look. Photorealistic, high detail, 16:10, no text, no letters, no logos, no watermarks, no brand names.",
+    "alt": "Laptop showing two matching records to merge beside a neat stack of cards"
+  },
+  {
+    "path": "/lead-qualification/pipeline-stages",
+    "file": "/images/pages/lead-qualification--pipeline-stages.webp",
+    "section": "Hero image (replaces framed illustration)",
+    "scene": "Sales team gathers around a wall screen reviewing a kanban pipeline at a weekly stand-up",
+    "prompt": "Wide candid shot of a weekly stand-up in a Noida B2B software office: five salespeople of mixed ages stand in a loose arc facing a large wall screen showing kanban-style columns of coloured cards, abstract, unreadable UI. A woman manager in her forties points at a column boundary; others hold mugs and notebooks. Morning light, grey carpet, violet and teal card colours. Camera behind the group, open wall above. 35mm look. Photorealistic, high detail, 16:10, no text, no letters, no logos, no watermarks, no brand names.",
+    "alt": "Sales team at a stand-up reviewing a kanban pipeline on a wall screen"
+  },
+  {
+    "path": "/lead-qualification/lead-recycling",
+    "file": "/images/pages/lead-qualification--lead-recycling.webp",
+    "section": "Hero image (replaces framed illustration)",
+    "scene": "Marketing coordinator moves folders from a sales shelf back into a nurture cabinet drawer",
+    "prompt": "Medium shot in a Vadodara pharma distributor's office: a young male marketing coordinator carries a few colour-tabbed folders from an open shelf to a grey filing cabinet, sliding them into a drawer labelled only with a blank indigo tag. A wall calendar with an unreadable grid and a small potted money plant are softly blurred. Afternoon sun through blinds, warm stripes. Cabinet on the right, aisle space on the left. 35mm look, shallow depth of field. Photorealistic, high detail, 16:10, no text, no letters, no logos, no watermarks, no brand names.",
+    "alt": "Coordinator returning folders from a shelf into a filing cabinet drawer"
+  },
+  {
+    "path": "/lead-qualification/re-engagement",
+    "file": "/images/pages/lead-qualification--re-engagement.webp",
+    "section": "Hero image (replaces framed illustration)",
+    "scene": "Former customer rediscovers a friendly message on her phone while waiting at a bus stop",
+    "prompt": "Street-level candid shot at a covered bus stop in Bengaluru after rain: a woman in her forties with an umbrella tucked under her arm glances at her phone with mild surprise and interest, the screen showing a single message card in abstract, unreadable UI. Wet road reflections, blurred auto-rickshaws passing, overcast evening light with cool indigo tones and warm streetlights. Shot from the side, open street on the left. 50mm look, shallow depth of field. Photorealistic, high detail, 16:10, no text, no letters, no logos, no watermarks, no brand names.",
+    "alt": "Woman at a rainy bus stop reading a message on her phone"
+  },
+  {
+    "path": "/lead-qualification/follow-up-cadence",
+    "file": "/images/pages/lead-qualification--follow-up-cadence.webp",
+    "section": "Hero image (replaces framed illustration)",
+    "scene": "Sales manager sketches a spaced-dot touch timeline on a whiteboard for new reps",
+    "prompt": "Medium shot in a Chennai logistics firm's training room: a sales manager in her fifties with a silver braid draws a horizontal line of dots with uneven gaps on a whiteboard, marking some with phone and envelope doodles, no readable words. Three young reps seated at a table take notes, slightly blurred in the foreground. Late-morning daylight, white walls, indigo markers. Whiteboard space on the right. 35mm look, shallow depth of field. Photorealistic, high detail, 16:10, no text, no letters, no logos, no watermarks, no brand names.",
+    "alt": "Sales manager drawing a timeline of follow-up touches on a whiteboard for trainees"
+  },
+  {
+    "path": "/lead-qualification/disqualification-criteria",
+    "file": "/images/pages/lead-qualification--disqualification-criteria.webp",
+    "section": "Hero image (replaces framed illustration)",
+    "scene": "Founder closes a laptop and sets aside a folder after deciding a deal is not a fit",
+    "prompt": "Quiet medium close-up in a small Kochi startup office at dusk: a founder in his thirties gently closes a folder and places it on an out tray, expression settled rather than disappointed, a laptop beside him with abstract, unreadable UI dimming. A printed short checklist with unreadable lines and a pen rest on the desk. Warm last light through the window, long shadows, violet sky outside. Empty desk on the left. 50mm look, shallow depth of field. Photorealistic, high detail, 16:10, no text, no letters, no logos, no watermarks, no brand names.",
+    "alt": "Founder calmly setting a folder aside in an out tray at dusk"
+  },
+  {
+    "path": "/lead-qualification/lead-status-definitions",
+    "file": "/images/pages/lead-qualification--lead-status-definitions.webp",
+    "section": "Hero image (replaces framed illustration)",
+    "scene": "Cross-functional workshop agrees on colour-coded status cards laid out on a conference table",
+    "prompt": "High-angle shot over a conference table in a Bhopal education company: six colour-coded cards, each a different solid hue with no text, lie in a neat row, and hands from four people of varied ages and genders adjust their order, one woman sliding a teal card between two others. Laptops at the edges show abstract, unreadable UI. Soft overhead light with daylight, wood table, indigo and violet among the colours. Space at the bottom. 35mm look. Photorealistic, high detail, 16:10, no text, no letters, no logos, no watermarks, no brand names.",
+    "alt": "Colleagues arranging a row of colour-coded cards on a conference table"
+  }
+]

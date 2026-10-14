@@ -7,6 +7,7 @@ import { HeroPanel } from "@/components/home/HeroPanel";
 import { ModuleTabs } from "@/components/home/ModuleTabs";
 import { TypedPhrase } from "@/components/home/TypedPhrase";
 import { ArrowRight, Check, ChevronRight, FileCheck, Gauge, Layers, MapPin, Send, Shield, Sparkle, Target, Users } from "@/components/icons";
+import { hasPhoto, Photo } from "@/components/Photo";
 import { PageCard } from "@/components/RelatedPages";
 import { SectionHeading } from "@/components/SectionHeading";
 import type { Visual } from "@/lib/groups";
@@ -70,7 +71,7 @@ const METHOD = [
   { icon: Send, title: "Reach out", short: "Convert", text: "Push the top band into the CRM and send AI-drafted outreach that uses the lead’s own data." },
 ];
 
-const SOLUTIONS: { badge: string; title: string; text: string; points: string[]; href: string; cta: string; visual: Visual; hue: number; tag: string }[] = [
+const SOLUTIONS: { badge: string; title: string; text: string; points: string[]; href: string; cta: string; visual: Visual; hue: number; tag: string; photo: string }[] = [
   {
     badge: "For agencies",
     title: "Marketing & SEO agency prospecting",
@@ -81,6 +82,7 @@ const SOLUTIONS: { badge: string; title: string; text: string; points: string[];
     visual: "dashboard",
     hue: 265,
     tag: "Audit-led pitches",
+    photo: "/images/pages/home--solution-agencies.webp",
   },
   {
     badge: "For local-market sellers",
@@ -92,6 +94,7 @@ const SOLUTIONS: { badge: string; title: string; text: string; points: string[];
     visual: "map",
     hue: 160,
     tag: "City × category lists",
+    photo: "/images/pages/home--solution-local.webp",
   },
   {
     badge: "For B2B suppliers",
@@ -103,6 +106,7 @@ const SOLUTIONS: { badge: string; title: string; text: string; points: string[];
     visual: "network",
     hue: 285,
     tag: "Multi-source records",
+    photo: "/images/pages/home--solution-suppliers.webp",
   },
   {
     badge: "For sales teams",
@@ -114,6 +118,7 @@ const SOLUTIONS: { badge: string; title: string; text: string; points: string[];
     visual: "pipeline",
     hue: 200,
     tag: "Work the top band",
+    photo: "/images/pages/home--solution-sales-teams.webp",
   },
 ];
 
@@ -155,6 +160,9 @@ export default function HomePage() {
     <>
       {/* ───────── Hero ───────── */}
       <section className="relative overflow-hidden">
+        <div aria-hidden="true" className="absolute inset-0 opacity-[0.16] [mask-image:linear-gradient(to_bottom,black_40%,transparent)]">
+          <Photo file="/images/pages/home--hero-backdrop.webp" sizes="100vw" fill decorative preload />
+        </div>
         <div aria-hidden="true" className="bg-grid absolute inset-0" />
         <div aria-hidden="true" className="absolute -top-56 right-[-15%] size-[52rem] rounded-full bg-[var(--glow-1)] blur-3xl" />
         <div aria-hidden="true" className="absolute -bottom-64 left-[-15%] size-[40rem] rounded-full bg-[var(--glow-3)] blur-3xl" />
@@ -238,8 +246,12 @@ export default function HomePage() {
               </div>
               <span className="pill shrink-0">Single source of truth</span>
             </div>
-            <div className="my-5 overflow-hidden rounded-2xl border border-line bg-bg-alt p-3">
-              <HeroVisual variant="pipeline" seed="home-about" className="h-auto w-full" />
+            <div className={`my-5 overflow-hidden rounded-2xl border border-line bg-bg-alt ${hasPhoto("/images/pages/home--about-pipeline.webp") ? "" : "p-3"}`}>
+              <Photo
+                file="/images/pages/home--about-pipeline.webp"
+                sizes="(min-width: 1024px) 34rem, 100vw"
+                fallback={<HeroVisual variant="pipeline" seed="home-about" className="h-auto w-full" />}
+              />
             </div>
             <ol className="grid gap-3">
               {PIPELINE_ROWS.map(({ icon: Icon, ...r }, i) => (
@@ -344,6 +356,9 @@ export default function HomePage() {
             </ol>
           </div>
           <div className="relative mt-14 overflow-hidden rounded-[2rem] border border-line bg-gradient-to-r from-[#1e1b4b] via-[#312e81] to-[#4c1d95] p-8 text-white sm:p-12">
+            <div aria-hidden="true" className="absolute inset-y-0 right-0 w-full lg:w-3/5 [mask-image:linear-gradient(to_right,transparent,black_45%)]">
+              <Photo file="/images/pages/home--background-jobs.webp" sizes="(min-width: 1024px) 45vw, 100vw" fill decorative className="opacity-45" />
+            </div>
             <div aria-hidden="true" className="bg-grid absolute inset-0 opacity-20" />
             <div className="relative grid items-center gap-8 lg:grid-cols-[1.4fr_1fr]">
               <div>
@@ -393,8 +408,12 @@ export default function HomePage() {
                   </Link>
                 </div>
                 <div className={`card overflow-hidden !rounded-[2rem] p-5 ${i % 2 ? "lg:order-1" : ""}`}>
-                  <div className="rounded-3xl border border-line bg-bg-alt p-4">
-                    <HeroVisual variant={s.visual} seed={`home-solution-${i}`} hue={s.hue} className="h-auto w-full" />
+                  <div className={`overflow-hidden rounded-3xl border border-line bg-bg-alt ${hasPhoto(s.photo) ? "" : "p-4"}`}>
+                    <Photo
+                      file={s.photo}
+                      sizes="(min-width: 1024px) 36rem, 100vw"
+                      fallback={<HeroVisual variant={s.visual} seed={`home-solution-${i}`} hue={s.hue} className="h-auto w-full" />}
+                    />
                   </div>
                   <div className="mt-4 flex items-center justify-between gap-3 px-1">
                     <span className="font-mono text-xs font-bold uppercase tracking-wider text-brand">{s.badge}</span>
@@ -494,7 +513,13 @@ export default function HomePage() {
       <section className="section-y" aria-labelledby="home-faq-title">
         <div className="container-x">
           <SectionHeading id="home-faq-title" badge="FAQ" title="Answers before your first scrape" />
-          <div className="mx-auto mt-12 max-w-3xl">
+          <div className={`mx-auto mt-12 grid items-start gap-10 ${hasPhoto("/images/pages/home--final-cta.webp") ? "max-w-6xl lg:grid-cols-[1fr_1.25fr]" : "max-w-3xl"}`}>
+            {hasPhoto("/images/pages/home--final-cta.webp") && (
+              <div className="card hidden overflow-hidden !rounded-3xl lg:sticky lg:top-28 lg:block">
+                <Photo file="/images/pages/home--final-cta.webp" sizes="(min-width: 1024px) 30rem, 100vw" />
+              </div>
+            )}
+            <div>
             <Faqs items={HOME_FAQS} showHeading={false} />
             <p className="mt-5 text-center text-muted">
               More questions? Visit the{" "}
@@ -507,12 +532,18 @@ export default function HomePage() {
               </Link>
               .
             </p>
+            </div>
           </div>
         </div>
       </section>
 
       <div className="container-x">
-        <CtaBand heading="Find the businesses that need what you sell" text="Run your first queries on the Free plan, or request a walkthrough for your team." label="Start free" href={SITE.appUrl} />
+        <CtaBand
+          heading="Find the businesses that need what you sell"
+          text="Run your first queries on the Free plan, or request a walkthrough for your team."
+          label="Start free"
+          href={SITE.appUrl}
+        />
       </div>
 
       {/* ───────── Knowledge hubs ───────── */}
