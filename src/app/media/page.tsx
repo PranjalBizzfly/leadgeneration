@@ -1,4 +1,6 @@
 import type { Metadata } from "next";
+import { FaqSection } from "@/components/FaqSection";
+import { MEDIA_FAQS } from "@/content/company-faqs";
 import Link from "next/link";
 import { CtaBand } from "@/components/CtaBand";
 import { ArrowRight, Check, FileCheck, Gauge, Layers, MapPin, Send, Sparkle, Target } from "@/components/icons";
@@ -89,6 +91,8 @@ export default function MediaPage() {
           <p className="mt-8 text-center text-sm text-muted">We do not currently publish press releases or coverage on this site.</p>
         </div>
       </section>
+
+      <FaqSection items={MEDIA_FAQS} subtitle="Quick Answers For Journalists And Writers." className="!border-t-0" />
 
       <div className="container-x mt-12 md:mt-14">
         <CtaBand heading="Working On A Story?" text="Include your deadline and we will do our best to respond in time." label="Contact" href="/contact?topic=Media" />

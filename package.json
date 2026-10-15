@@ -11,14 +11,19 @@
     "check:faqs": "node scripts/faq-check.mjs",
     "qa": "node scripts/qa-crawl.mts http://localhost:3000",
     "check:links": "node scripts/link-check.mjs",
+    "test:api": "node --test scripts/api.test.mjs",
     "docs:sitemap": "node scripts/sitemap-doc.mts",
     "qa:visual": "node scripts/visual-qa.mjs http://localhost:3000 --all"
   },
   "dependencies": {
+    "@react-three/drei": "^10.7.8",
+    "@react-three/fiber": "^9.8.0",
+    "@types/three": "^0.180.0",
     "libphonenumber-js": "^1.12.10",
     "next": "16.4.0",
     "react": "19.3.0",
-    "react-dom": "19.3.0"
+    "react-dom": "19.3.0",
+    "three": "^0.180.0"
   },
   "devDependencies": {
     "@tailwindcss/turbopack": "^4",

@@ -1,4 +1,4 @@
-import type { PlanEntry } from "./types";
+import type { Faq, PlanEntry } from "./types";
 
 /** A published blog article. Articles carry no publication dates by design (none are verified). */
 export interface BlogPost {
@@ -12,6 +12,8 @@ export interface BlogPost {
   sections: { heading: string; paragraphs: string[]; bullets?: string[] }[];
   /** Paths of related live pages. */
   related: string[];
+  /** Article-specific FAQs, rendered with FAQPage JSON-LD. */
+  faqs?: Faq[];
 }
 
 /** Company pages outside the 300-page content plan, rendered by dedicated routes. */

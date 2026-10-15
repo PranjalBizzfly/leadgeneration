@@ -3,6 +3,7 @@ import Link from "next/link";
 import { CtaBand } from "@/components/CtaBand";
 import { Faqs } from "@/components/Faqs";
 import { HeroVisual } from "@/components/HeroVisual";
+import { Hero3D } from "@/components/home/Hero3D";
 import { ModuleTabs } from "@/components/home/ModuleTabs";
 import { TypedPhrase } from "@/components/home/TypedPhrase";
 import { ArrowRight, Check, ChevronRight, FileCheck, Gauge, Layers, MapPin, Send, Shield, Sparkle, Target, Users } from "@/components/icons";
@@ -138,12 +139,6 @@ const HOME_FAQS = [
   { q: "Can I Get My Leads Out Of The Platform?", a: "Yes. Leads Can Be Exported To CSV, And CSV Export Is Already Included In The Free Plan. Teams On The Scale Plan Can Also Use Per-Org API Keys To Connect LeadGen AI To Their Own Systems And Workflows." },
 ];
 
-const BoltIcon = () => (
-  <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinejoin="round" aria-hidden="true">
-    <path d="M13 2 3 14h9l-1 8 10-12h-9l1-8z" />
-  </svg>
-);
-
 const HUB_ICONS = { "/b2c": Users, "/lead-capture": FileCheck, "/lead-qualification": Gauge, "/tools": Layers, "/resources": Sparkle, "/compare": Shield, "/strategies": Target, "/b2b": Users } as const;
 
 export default function HomePage() {
@@ -152,78 +147,47 @@ export default function HomePage() {
     .filter(isLive)
     .map((p) => getPlan(p)!);
   const hubs = (["/strategies", "/b2b", "/b2c", "/lead-capture", "/lead-qualification", "/tools", "/resources", "/compare"] as const).filter(isLive);
-  const stats = [
-    { value: "3", label: "Data Sources", icon: MapPin },
-    { value: "0–100", label: "Lead Score With Reasons", icon: Gauge },
-    { value: "6", label: "Connected Modules", icon: Layers },
-    { value: String(LIVE.length), label: "Free Guides & Playbooks", icon: FileCheck },
-  ];
 
   return (
     <>
-      {/* ───────── Hero: full-bleed photo, centred headline (copy mirrors the live LeadGen AI landing page) ───────── */}
-      <section data-theme="dark" className="relative isolate overflow-hidden bg-bg text-white">
-        <div aria-hidden="true" className="absolute inset-0 -z-20">
-          <Photo file="/images/pages/home--hero-backdrop.webp" sizes="100vw" fill preload />
-        </div>
-        <div aria-hidden="true" className="absolute inset-0 -z-10 bg-black/50" />
-        <div aria-hidden="true" className="absolute inset-0 -z-10 bg-gradient-to-t from-black/80 via-black/20 to-black/50" />
-        <div className="container-x relative flex min-h-[calc(100svh-4rem)] flex-col pb-12 pt-8 lg:min-h-[calc(100svh-5rem)]">
-          <p className="flex items-center gap-2 text-xs font-bold uppercase tracking-[0.18em] text-white/85">
-            <span className="size-1.5 rounded-full bg-warm" /> AI-Powered Lead Generation · Prospect Intelligence
-          </p>
-
-          {/* Floating glass badges */}
-          <div className="float-slower absolute right-6 top-24 hidden rounded-2xl border border-white/15 bg-white/10 p-4 shadow-lift backdrop-blur-md lg:block xl:right-24">
-            <p className="flex items-center gap-2 text-[11px] font-bold uppercase tracking-wider text-warm">
-              <BoltIcon /> One query, three sources
-            </p>
-            <ul className="mt-3 grid grid-cols-2 gap-x-6 gap-y-2 text-sm font-semibold">
-              {["Google Maps", "LinkedIn", "IndiaMART", "De-duplicated"].map((s) => (
-                <li key={s} className="flex items-center gap-1.5">
-                  <Check size={14} className="text-success" strokeWidth={3} /> {s}
-                </li>
-              ))}
-            </ul>
-          </div>
-          <div className="float-slow absolute bottom-40 left-6 hidden items-center gap-3 rounded-2xl border border-white/15 bg-white/10 px-4 py-3 shadow-lift backdrop-blur-md lg:flex xl:left-[22%]">
-            <span className="grid size-10 place-items-center rounded-xl bg-grad">
-              <Gauge size={18} />
-            </span>
-            <span>
-              <span className="block text-sm font-bold">0–100 AI Lead Score</span>
-              <span className="block text-xs text-white/70">Reasons Stored On Every Record</span>
-            </span>
-          </div>
-
-          <h1 className="fade-up my-auto py-16 text-center text-[clamp(2.6rem,8.4vw,7.2rem)] lg:pb-12 lg:pt-36 font-extrabold uppercase leading-[0.95] tracking-tight">
-            Turn Raw Market Data Into
-            <br />
-            <span className="bg-gradient-to-r from-[#fde68a] via-[#f5f3ff] to-[#c4b5fd] bg-clip-text text-transparent">
-              <TypedPhrase phrases={["Qualified Pipeline", "Sales-Ready Leads", "Revenue You Close"]} />
-            </span>
-          </h1>
-
-          <div className="self-end lg:max-w-md">
-            <p className="text-[17px] leading-relaxed text-white/90">
-              Find, Qualify And Reach Prospects On Google Maps, LinkedIn And IndiaMART. One AI-Powered Pipeline, From Scraping To Outreach.
-            </p>
-            <ul className="mt-4 flex flex-wrap gap-x-5 gap-y-2 text-sm font-semibold text-white/85">
-              {["No Credit Card Required", "3 Free Queries Included", "Multi-Tenant & Role-Based"].map((t) => (
-                <li key={t} className="flex items-center gap-1.5">
-                  <Check size={15} className="text-warm" strokeWidth={2.8} /> {t}
-                </li>
-              ))}
-            </ul>
-            <div className="mt-6 flex flex-wrap items-center gap-4">
-              <a href={SITE.appUrl} rel="noopener" className="btn btn-primary !rounded-full !px-7 !py-3.5 text-base">
-                Start Scraping Free <ArrowRight size={18} />
-              </a>
-              <Link href="/how-it-works" className="inline-flex items-center gap-1.5 font-semibold text-white hover:text-brand">
-                How It Works <ArrowRight size={16} />
-              </Link>
-            </div>
-          </div>
+      {/* ───────── Hero: headline beside a live 3D office where each room is one pipeline stage ───────── */}
+      <section className="relative isolate overflow-hidden bg-bg text-ink">
+        <div aria-hidden="true" className="bg-grid absolute inset-0 -z-10 opacity-40" />
+        <div className="container-x relative !max-w-[92rem] pb-10 pt-8 lg:py-10">
+          <Hero3D
+            intro={
+              <div className="fade-up">
+                <p className="flex items-center gap-2 text-xs font-bold uppercase tracking-[0.18em] text-ink-soft">
+                  <span className="size-1.5 rounded-full bg-warm" /> AI-Powered Lead Generation · Prospect Intelligence
+                </p>
+                <h1 className="mt-5 text-[clamp(2.2rem,3.5vw,3.6rem)] font-extrabold uppercase leading-[1] tracking-tight">
+                  Turn Raw Market Data Into
+                  <br />
+                  <span className="text-grad">
+                    <TypedPhrase phrases={["Qualified Pipeline", "Sales-Ready Leads", "Revenue You Close"]} />
+                  </span>
+                </h1>
+                <p className="mt-5 max-w-xl text-[17px] leading-relaxed text-ink-soft">
+                  Find, Qualify And Reach Prospects On Google Maps, LinkedIn And IndiaMART. One AI-Powered Pipeline, From Scraping To Outreach.
+                </p>
+                <ul className="mt-5 flex flex-wrap gap-x-5 gap-y-2 text-sm font-semibold text-ink-soft">
+                  {["No Credit Card Required", "3 Free Queries Included", "Multi-Tenant & Role-Based"].map((t) => (
+                    <li key={t} className="flex items-center gap-1.5">
+                      <Check size={15} className="text-warm" strokeWidth={2.8} /> {t}
+                    </li>
+                  ))}
+                </ul>
+                <div className="mt-7 flex flex-wrap items-center gap-4">
+                  <a href={SITE.appUrl} rel="noopener" className="btn btn-primary !rounded-full !px-7 !py-3.5 text-base">
+                    Start Scraping Free <ArrowRight size={18} />
+                  </a>
+                  <Link href="/how-it-works" className="inline-flex items-center gap-1.5 font-semibold text-ink hover:text-brand">
+                    How It Works <ArrowRight size={16} />
+                  </Link>
+                </div>
+              </div>
+            }
+          />
         </div>
       </section>
 
@@ -243,21 +207,6 @@ export default function HomePage() {
               </span>
               {label}
             </Link>
-          ))}
-        </div>
-      </section>
-
-      {/* ───────── Fact band ───────── */}
-      <section className="container-x pt-16 md:pt-20" aria-label="LeadGen AI at a glance">
-        <div className="card grid grid-cols-2 divide-line !rounded-[2rem] lg:grid-cols-4 lg:divide-x">
-          {stats.map(({ icon: Icon, ...s }) => (
-            <div key={s.label} className="flex flex-col items-center px-4 py-9 text-center">
-              <span className="icon-tile !size-14 !rounded-2xl">
-                <Icon size={24} />
-              </span>
-              <p className="mt-5 font-display text-[clamp(2.2rem,4vw,3rem)] font-extrabold leading-none">{s.value}</p>
-              <p className="mt-2 font-semibold text-ink-soft">{s.label}</p>
-            </div>
           ))}
         </div>
       </section>
@@ -438,7 +387,7 @@ export default function HomePage() {
                     <Photo
                       file={s.photo}
                       sizes="(min-width: 1024px) 36rem, 100vw"
-                      fallback={<HeroVisual variant={s.visual} seed={`home-solution-${i}`} hue={s.hue} className="h-auto w-full" />}
+                      fallback={<HeroVisual variant={s.visual} seed={`home-solution-${i}`} hue={s.hue} topic={s.title} className="h-auto w-full" />}
                     />
                   </div>
                   <div className="mt-4 flex items-center justify-between gap-3 px-1">

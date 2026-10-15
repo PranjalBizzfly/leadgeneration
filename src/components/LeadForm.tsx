@@ -1,5 +1,6 @@
 "use client";
 
+import Link from "next/link";
 import { useEffect, useRef, useState } from "react";
 import type { CountryCode } from "libphonenumber-js";
 import { checkPhone } from "@/lib/phone";
@@ -16,6 +17,11 @@ const TOPICS = ["General Question", "Plans And Billing", "Data And Privacy", "Pa
 
 export function LeadForm({ kind }: { kind: "contact" | "demo" }) {
   const [status, setStatus] = useState<Status>("idle");
+  // When the form appeared; the server ignores submissions completed implausibly fast (spam protection).
+  const startedAt = useRef(0);
+  useEffect(() => {
+    startedAt.current = Date.now();
+  }, []);
   const [errors, setErrors] = useState<Errors>({});
   const [country, setCountry] = useState<CountryCode>(DEFAULT_COUNTRY);
   const phoneRef = useRef<HTMLDivElement>(null);
@@ -60,11 +66,11 @@ export function LeadForm({ kind }: { kind: "contact" | "demo" }) {
       const res = await fetch("/api/contact", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ ...data, kind }),
+        body: JSON.stringify({ ...data, kind, startedAt: startedAt.current }),
       });
       const body = await res.json().catch(() => ({}));
       if (!res.ok) {
-        setErrors({ ...(body.errors ?? {}), form: body.error ?? "Something went wrong. Please try again." });
+        setErrors({ ...(body.error?.details ?? {}), form: body.error?.message ?? "Something went wrong. Please try again." });
         setStatus("error");
         return;
       }
@@ -163,7 +169,12 @@ export function LeadForm({ kind }: { kind: "contact" | "demo" }) {
         </p>
       )}
       <div className="flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-between">
-        <p className="text-xs text-muted">We Use These Details Only To Respond To You. See Our Privacy Policy.</p>
+        <p className="text-xs text-muted">We Use These Details Only To Respond To You. See Our{" "}
+          <Link href="/privacy-policy" className="font-semibold text-brand underline-offset-2 hover:underline">
+            Privacy Policy
+          </Link>
+          .
+        </p>
         <button type="submit" disabled={status === "sending"} className="btn btn-primary disabled:opacity-60">
           {status === "sending" ? "Sending…" : kind === "demo" ? "Request Access" : "Send Message"}
         </button>

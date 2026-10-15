@@ -1,4 +1,6 @@
 import type { Metadata } from "next";
+import { FaqSection } from "@/components/FaqSection";
+import { BLOG_FAQS } from "@/content/company-faqs";
 import { PageHero } from "@/components/PageHero";
 import { posts } from "@/content/blog-posts";
 import { pageMetadata } from "@/lib/metadata";
@@ -25,6 +27,7 @@ export default function BlogPage() {
           <BlogExplorer posts={summaries} />
         </div>
       </section>
+      <FaqSection items={BLOG_FAQS} subtitle="Quick Answers About The LeadGen AI Blog." />
     </>
   );
 }

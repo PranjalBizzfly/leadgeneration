@@ -1,4 +1,6 @@
 import type { Metadata } from "next";
+import { FaqSection } from "@/components/FaqSection";
+import { CAREERS_FAQS } from "@/content/company-faqs";
 import Link from "next/link";
 import { CtaBand } from "@/components/CtaBand";
 import { ArrowRight, Check, FileCheck, Send, Sparkle, Target, Users } from "@/components/icons";
@@ -182,7 +184,9 @@ export default function CareersPage() {
         </div>
       </section>
 
-      <div className="container-x">
+      <FaqSection items={CAREERS_FAQS} subtitle="Quick Answers About Roles And Applying At LeadGen AI." />
+
+      <div className="container-x mt-12 md:mt-14">
         <CtaBand heading="Don’t See Your Role?" text="Send us a note about what you’d like to work on. We read every message." label="Contact" href="/contact?topic=Careers" />
       </div>
     </>

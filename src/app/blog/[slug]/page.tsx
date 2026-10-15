@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { FaqSection } from "@/components/FaqSection";
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import { CtaBand } from "@/components/CtaBand";
@@ -102,6 +103,8 @@ export default async function BlogPostPage({ params }: Props) {
           </div>
         </section>
       )}
+
+      {post.faqs && <FaqSection items={post.faqs} subtitle="Quick Answers About This Article." className={related.length > 0 || more.length > 0 ? "!border-t-0" : ""} />}
 
       <div className="container-x mt-12 md:mt-14">
         <CtaBand heading="Put It Into Practice" text="Run your first queries on the Free plan, or talk to us about your prospecting." label="Start Free" href={SITE.appUrl} />

@@ -3,7 +3,7 @@ import { titleCase } from "@/lib/title-case";
 import Link from "next/link";
 import { heroImage } from "@/content/images";
 import type { PageContent, PlanEntry } from "@/content/types";
-import { GROUPS } from "@/lib/groups";
+import { GROUPS, type Visual } from "@/lib/groups";
 import { breadcrumbs, groupChildren, relatedPages } from "@/lib/registry";
 import { SITE } from "@/lib/site";
 import { Breadcrumbs } from "./Breadcrumbs";
@@ -14,6 +14,10 @@ import { ArrowRight, Check, FileCheck, Gauge, Info, Layers, MapPin, Send, Shield
 import { LeadForm } from "./LeadForm";
 import { SectionHeading } from "./SectionHeading";
 import { TopicLinkGrid } from "./TopicLinkCard";
+
+/** The example shows the page group’s own scene, unless the hero already shows it (no photo), then a complementary one. */
+const COMPLEMENT: Record<Visual, Visual> = { dashboard: "pipeline", pipeline: "dashboard", funnel: "chart", map: "dashboard", network: "flow", form: "chart", flow: "dashboard", chart: "dashboard", book: "flow", scale: "chart" };
+const exampleVisual = (v: Visual, heroHasPhoto: boolean) => (heroHasPhoto ? v : COMPLEMENT[v]);
 
 const slugify = (s: string) => s.toLowerCase().replace(/[^a-z0-9]+/g, "-").replace(/(^-|-$)/g, "");
 const SECTION_ICONS = [Layers, Target, Gauge, FileCheck, Send, Shield, Users, MapPin];
@@ -157,7 +161,7 @@ export function ContentPage({ content, plan }: { content: PageContent; plan: Pla
                 </span>
               </div>
               <div className="bg-bg-alt p-4">
-                <HeroVisual variant={group.visual} seed={plan.path} hue={group.hue} className="h-auto w-full" />
+                <HeroVisual variant={group.visual} seed={plan.path} hue={group.hue} topic={plan.title} className="h-auto w-full" />
               </div>
             </div>
             <div className="float-slow absolute -bottom-5 -left-5 hidden items-center gap-3 rounded-2xl border border-line bg-surface px-4 py-3 shadow-lift md:flex">
@@ -394,7 +398,7 @@ export function ContentPage({ content, plan }: { content: PageContent; plan: Pla
               <p className="mt-5 text-sm text-muted">A Hypothetical Scenario For Explanation Only, Not A Customer Story Or A Promised Result.</p>
             </div>
             <div className="hidden rounded-3xl border border-line bg-bg-alt p-4 lg:block">
-              <HeroVisual variant={group.visual === "dashboard" ? "pipeline" : "dashboard"} seed={`${plan.path}#example`} hue={group.hue} className="h-auto w-full" />
+              <HeroVisual variant={exampleVisual(group.visual, Boolean(photo))} seed={`${plan.path}#example`} hue={group.hue} topic={plan.title} className="h-auto w-full" />
             </div>
           </div>
         </section>

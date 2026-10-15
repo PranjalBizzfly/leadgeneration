@@ -1,4 +1,6 @@
 import type { Metadata } from "next";
+import { FaqSection } from "@/components/FaqSection";
+import { VENDORS_FAQS } from "@/content/company-faqs";
 import Link from "next/link";
 import { CtaBand } from "@/components/CtaBand";
 import { ArrowRight, Check, FileCheck, Layers, Send, Shield, Users } from "@/components/icons";
@@ -98,6 +100,8 @@ export default function VendorsPage() {
           </div>
         </div>
       </section>
+
+      <FaqSection items={VENDORS_FAQS} subtitle="Quick Answers About Working With LeadGen AI As A Vendor." className="!border-t-0" />
 
       <div className="container-x mt-12 md:mt-14">
         <CtaBand heading="Have Something That Could Help?" text="Send a short introduction and we will be in touch about next steps." label="Contact" href="/contact?topic=Vendors" />

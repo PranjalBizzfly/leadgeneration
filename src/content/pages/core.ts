@@ -1263,7 +1263,8 @@ export const pages: PageContent[] = [
       {
         heading: "Information This Website Collects",
         paragraphs: [
-          "When You Use The Contact Form Or The Request-Access Form, We Receive The Details You Enter, Such As Your Name, Work Email, Company And Message. Please Don’t Include Sensitive Personal Information Or Credentials In These Forms.",
+          "When You Use The Contact Form Or The Request-Access Form, We Receive The Details You Enter: Your Name, Work Email, Phone Number With Its Country Code, Company (Optional), Topic And Message. Please Don’t Include Sensitive Personal Information Or Credentials In These Forms.",
+          "To Block Spam, The Server Briefly Checks Your IP Address Against A Short-Term Submission Limit And Checks How Long The Form Took To Fill In. These Checks Are Held In Memory For A Few Minutes And Are Not Stored With Your Submission.",
           "The Site Remembers Whether You Prefer A Light Or Dark Theme By Storing That Choice In Your Browser’s localStorage. This Value Stays On Your Device And Is Not Sent To Us. No Analytics Or Advertising Trackers Are Installed On This Website.",
         ],
       },
@@ -1271,6 +1272,7 @@ export const pages: PageContent[] = [
         heading: "How We Use It",
         paragraphs: [
           "We Use Form Submissions To Reply To Your Enquiry, To Arrange A Walkthrough If You Request Access, And To Keep A Record Of Our Correspondence With You. We Do Not Sell Form Submissions.",
+          "Submissions Are Passed To The Service We Use To Receive And Manage Enquiries, So The Team Can Read And Reply To Them.",
         ],
       },
       {
@@ -1307,7 +1309,7 @@ export const pages: PageContent[] = [
       },
       {
         q: "What Information Do The Website Forms Collect?",
-        a: "The Contact And Request-Access Forms Collect What You Enter, Such As Your Name, Work Email, Company And Message. Please Don’t Include Sensitive Personal Information Or Credentials In These Forms.",
+        a: "The Contact And Request-Access Forms Collect What You Enter: Your Name, Work Email, Phone Number, Optional Company, Topic And Message. Please Don’t Include Sensitive Personal Information Or Credentials In These Forms.",
       },
       {
         q: "Is My Form Submission Sold To Anyone?",

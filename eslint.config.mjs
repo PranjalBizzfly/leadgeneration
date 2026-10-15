@@ -7,6 +7,8 @@ const eslintConfig = defineConfig([
   ...nextTs,
   // Override default ignores of eslint-config-next.
   globalIgnores([
+    // Local QA scratch output (git-ignored).
+    ".qa/**",
     // Default ignores of eslint-config-next:
     ".next/**",
     "out/**",

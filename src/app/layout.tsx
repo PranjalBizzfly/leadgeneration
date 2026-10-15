@@ -1,8 +1,10 @@
 import type { Metadata, Viewport } from "next";
 import { Inter, Space_Grotesk } from "next/font/google";
+import { Analytics } from "@/components/Analytics";
 import { BackToTop } from "@/components/BackToTop";
 import { Footer } from "@/components/Footer";
 import { Header } from "@/components/Header";
+import { Motion } from "@/components/Motion";
 import { JsonLd } from "@/components/JsonLd";
 import { themeScript } from "@/components/ThemeToggle";
 import { SITE } from "@/lib/site";
@@ -37,6 +39,8 @@ export default function RootLayout({ children }: Readonly<{ children: React.Reac
         <main id="main">{children}</main>
         <Footer />
         <BackToTop />
+        <Motion />
+        <Analytics />
         <JsonLd data={{ "@context": "https://schema.org", "@type": "Organization", name: SITE.name, url: SITE.url, description: SITE.description }} />
       </body>
     </html>

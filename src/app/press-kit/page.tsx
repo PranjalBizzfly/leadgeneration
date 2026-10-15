@@ -1,4 +1,6 @@
 import type { Metadata } from "next";
+import { FaqSection } from "@/components/FaqSection";
+import { PRESS_KIT_FAQS } from "@/content/company-faqs";
 import Link from "next/link";
 import { CopyButton } from "@/components/CopyButton";
 import { ArrowRight, FileCheck } from "@/components/icons";
@@ -146,6 +148,8 @@ export default function PressKitPage() {
           </p>
         </div>
       </section>
+
+      <FaqSection items={PRESS_KIT_FAQS} subtitle="Quick Answers About Logos, Descriptions And Brand Use." />
     </>
   );
 }

@@ -13,7 +13,8 @@ type Props = { params: Promise<{ slug: string[] }> };
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const path = `/${(await params).slug.join("/")}`;
   const content = getContent(path);
-  if (!content) return {};
+  // Unknown paths render the 404 page; give it a title instead of an empty head.
+  if (!content) return { title: "Page Not Found", robots: { index: false } };
   return pageMetadata({ title: content.metaTitle, description: content.metaDescription, path });
 }
 

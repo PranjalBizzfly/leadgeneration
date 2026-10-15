@@ -11,7 +11,7 @@ import { ThemeToggle } from "./ThemeToggle";
 /** Desktop mega menus open on hover and keyboard focus (focus-within), so they need no client JavaScript. */
 export function Header() {
   return (
-    <header className="sticky top-0 z-40 border-b border-line/70 bg-bg/85 backdrop-blur-xl">
+    <header className="site-header sticky top-0 z-40 border-b border-line/70 bg-bg/85 backdrop-blur-xl" style={{ viewTransitionName: "site-header" }}>
       <a href="#main" className="sr-only focus:not-sr-only focus:absolute focus:left-4 focus:top-3 focus:z-50 focus:rounded-lg focus:bg-surface focus:px-3 focus:py-2">
         Skip To Content
       </a>
