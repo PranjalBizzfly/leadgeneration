@@ -5,6 +5,7 @@ import { useEffect } from "react";
 
 /** What animates in as it scrolls into view. Cards and list items get a 3D flip-up. */
 const REVEAL = [
+  "main h1",
   "main h2",
   "main h3",
   "main .lead",
@@ -51,12 +52,14 @@ function setupReveals() {
     el.style.setProperty("--rv-d", `${Math.min(i, 8) * 70}ms`);
     const s = sections.findIndex((sec) => sec.contains(el));
     const [card, text] = STYLES[Math.max(0, s) % STYLES.length];
-    el.classList.add("rv", el.matches(".card, ol > li") ? card : text);
+    const isHeading = el.matches("h1, h2, h3, .h-section");
+    const isCard = el.matches(".card, ol > li");
+    el.classList.add("rv", isHeading ? "rv-heading" : isCard ? card : text);
     io.observe(el);
   }
   return () => {
     io.disconnect();
-    for (const el of els) el.classList.remove("rv", "rv-3d", "rv-up", "rv-left", "rv-right", "rv-zoom", "rv-flipy", "rv-in");
+    for (const el of els) el.classList.remove("rv", "rv-3d", "rv-up", "rv-left", "rv-right", "rv-zoom", "rv-flipy", "rv-heading", "rv-in");
   };
 }
 

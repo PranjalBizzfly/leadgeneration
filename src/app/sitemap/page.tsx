@@ -2,7 +2,8 @@ import type { Metadata } from "next";
 import { Breadcrumbs } from "@/components/Breadcrumbs";
 import { Faqs } from "@/components/Faqs";
 import { Sparkle } from "@/components/icons";
-import { hasPhoto, Photo } from "@/components/Photo";
+import { LetterHeading } from "@/components/LetterHeading";
+import { Photo, hasPhoto } from "@/components/Photo";
 import { SectionHeading } from "@/components/SectionHeading";
 import type { GroupKey } from "@/content/types";
 import { GROUPS } from "@/lib/groups";
@@ -41,7 +42,8 @@ export default function SitemapPage() {
             <span className="pill">
               <Sparkle size={14} /> Explore All Pages
             </span>
-            <h1 className="mt-5 text-[clamp(2.4rem,5vw,4rem)] font-extrabold leading-[1.05]">Sitemap</h1>
+            <LetterHeading text="Sitemap" as="h1" className="mt-5 text-[clamp(2.4rem,5vw,4rem)] font-extrabold leading-[1.05]" />
+            <span aria-hidden="true" className="heading-accent-line mt-3.5 w-16" />
             <p className="lead mt-4 max-w-2xl">Every Live Page On This Site ({LIVE.length} Pages), Grouped By Topic. Filter By Category Or Search To Jump Straight To A Page.</p>
           </div>
           {hasPhoto("/images/pages/sitemap.webp") && (

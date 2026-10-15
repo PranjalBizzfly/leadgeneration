@@ -4,6 +4,7 @@ import { MEDIA_FAQS } from "@/content/company-faqs";
 import Link from "next/link";
 import { CtaBand } from "@/components/CtaBand";
 import { ArrowRight, Check, FileCheck, Gauge, Layers, MapPin, Send, Sparkle, Target } from "@/components/icons";
+import { LetterHeading } from "@/components/LetterHeading";
 import { PageHero } from "@/components/PageHero";
 import { SectionHeading } from "@/components/SectionHeading";
 import { pageMetadata } from "@/lib/metadata";
@@ -59,7 +60,8 @@ export default function MediaPage() {
           </div>
           <div className="card overflow-hidden !rounded-3xl">
             <div className="border-b border-line bg-surface-2 px-6 py-4">
-              <h2 className="font-bold">Key Facts</h2>
+              <LetterHeading text="Key Facts" as="h2" triggerOnScroll className="font-bold" />
+              <span aria-hidden="true" className="heading-accent-line mt-2 w-10" />
             </div>
             <dl className="divide-y divide-line">
               {FACTS.map(({ icon: Icon, ...f }) => (

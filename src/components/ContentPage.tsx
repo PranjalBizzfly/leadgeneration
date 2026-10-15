@@ -12,6 +12,7 @@ import { Faqs } from "./Faqs";
 import { HeroVisual } from "./HeroVisual";
 import { ArrowRight, Check, FileCheck, Gauge, Info, Layers, MapPin, Send, Shield, Sparkle, Target, Users } from "./icons";
 import { LeadForm } from "./LeadForm";
+import { LetterHeading } from "./LetterHeading";
 import { SectionHeading } from "./SectionHeading";
 import { TopicLinkGrid } from "./TopicLinkCard";
 
@@ -70,7 +71,8 @@ export function ContentPage({ content, plan }: { content: PageContent; plan: Pla
             <span className="pill mt-6 !border-white/20 !bg-white/10 !text-white backdrop-blur">
               <Sparkle size={14} /> {content.eyebrow}
             </span>
-            <h1 className="fade-up mt-5 max-w-4xl text-[clamp(2.3rem,5.2vw,4.2rem)] font-extrabold uppercase leading-[1.02] tracking-tight text-white">{content.h1}</h1>
+            <LetterHeading text={content.h1} as="h1" className="mt-5 max-w-4xl text-[clamp(2.3rem,5.2vw,4.2rem)] font-extrabold uppercase leading-[1.02] tracking-tight text-white" />
+            <span aria-hidden="true" className="heading-accent-line mt-4 w-20 !bg-gradient-to-r !from-indigo-400 !via-purple-300 !to-cyan-400" />
             <div className="mt-6 grid items-end gap-8 lg:grid-cols-[1fr_auto]">
               <p className="max-w-2xl text-[clamp(1.05rem,1.6vw,1.2rem)] leading-relaxed text-white/85">{titleCase(content.metaDescription)}</p>
               <div className="flex flex-wrap gap-3">
@@ -121,7 +123,8 @@ export function ContentPage({ content, plan }: { content: PageContent; plan: Pla
                 <Sparkle size={14} /> {content.eyebrow}
               </span>
             </div>
-            <h1 className="mt-6 text-[clamp(2.3rem,5vw,4rem)] font-extrabold leading-[1.05]">{content.h1}</h1>
+            <LetterHeading text={content.h1} as="h1" className="mt-6 text-[clamp(2.3rem,5vw,4rem)] font-extrabold leading-[1.05]" />
+            <span aria-hidden="true" className="heading-accent-line mt-4 w-20" />
             <p className="mt-6 max-w-2xl text-[clamp(1.1rem,1.8vw,1.3rem)] leading-relaxed text-ink-soft">{titleCase(content.metaDescription)}</p>
             <ul className="mt-8 flex flex-wrap gap-2.5" aria-label="Page facts">
               <li className="chip">
@@ -179,7 +182,10 @@ export function ContentPage({ content, plan }: { content: PageContent; plan: Pla
       <section id="overview" className="section-y scroll-mt-24">
         <div className="container-x grid gap-12 lg:grid-cols-[minmax(0,1fr)_23rem] lg:gap-16">
           <article className="min-w-0">
-            <h2 className="text-[clamp(1.9rem,3.4vw,2.6rem)] font-extrabold">Overview</h2>
+            <div className="group">
+              <LetterHeading text="Overview" as="h2" triggerOnScroll className="text-[clamp(1.9rem,3.4vw,2.6rem)] font-extrabold" />
+              <span aria-hidden="true" className="heading-accent-line mt-3" />
+            </div>
             <div className="mt-6 grid gap-5">
               {content.intro.map((p) => (
                 <p key={p.slice(0, 40)} className="lead">
@@ -231,14 +237,14 @@ export function ContentPage({ content, plan }: { content: PageContent; plan: Pla
               const Icon = SECTION_ICONS[i % SECTION_ICONS.length];
               const [keyIdea, ...detail] = s.paragraphs;
               return (
-                <section key={s.heading} id={slugify(s.heading)} className="mt-10 scroll-mt-28 overflow-hidden rounded-3xl border border-line bg-surface shadow-card">
+                <section key={s.heading} id={slugify(s.heading)} className="group mt-10 scroll-mt-28 overflow-hidden rounded-3xl border border-line bg-surface shadow-card transition-all duration-300 hover:border-brand/40 hover:shadow-lift">
                   <header className="flex items-center gap-4 border-b border-line bg-surface-2 px-6 py-5 sm:px-8">
                     <span className="icon-tile">
                       <Icon size={22} />
                     </span>
                     <div className="min-w-0">
                       <span className="text-xs font-bold uppercase tracking-wider text-brand">Part {String(i + 1).padStart(2, "0")}</span>
-                      <h2 className="mt-0.5 text-[clamp(1.35rem,2.4vw,1.75rem)] font-extrabold leading-tight">{s.heading}</h2>
+                      <LetterHeading text={s.heading} as="h2" triggerOnScroll className="mt-0.5 text-[clamp(1.35rem,2.4vw,1.75rem)] font-extrabold leading-tight transition-colors duration-300 group-hover:text-brand" />
                     </div>
                   </header>
                   <div className="grid gap-6 p-6 sm:p-8">
@@ -393,7 +399,8 @@ export function ContentPage({ content, plan }: { content: PageContent; plan: Pla
               <span className="pill">
                 <Sparkle size={14} /> Illustrative Example
               </span>
-              <h2 className="mt-5 text-[clamp(1.6rem,3vw,2.3rem)] font-extrabold leading-tight">{content.example.heading}</h2>
+              <LetterHeading text={content.example.heading} as="h2" triggerOnScroll className="mt-5 text-[clamp(1.6rem,3vw,2.3rem)] font-extrabold leading-tight" />
+              <span aria-hidden="true" className="heading-accent-line mt-3" />
               <p className="lead mt-5">{content.example.text}</p>
               <p className="mt-5 text-sm text-muted">A Hypothetical Scenario For Explanation Only, Not A Customer Story Or A Promised Result.</p>
             </div>

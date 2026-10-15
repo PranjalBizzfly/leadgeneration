@@ -20,74 +20,74 @@ const MODULES: {
   page: string;
   featured?: boolean;
 }[] = [
-  {
-    stage: "Discover",
-    icon: Layers,
-    title: "Multi-Source Scraping",
-    text: "Run One Query And Collect Matching Businesses From Every Enabled Source.",
-    plan: "All Plans",
-    output: "One Record Per Business",
-    points: ["Google Maps, LinkedIn & IndiaMART", "Cross-Source De-Duplication", "Worker Fleet For Long Jobs", "Quotas Tracked Per Plan"],
-    href: "/services/multi-source-lead-scraping",
-    page: "Multi-Source Lead Scraping",
-  },
-  {
-    stage: "Enrich",
-    icon: Sparkle,
-    title: "AI Contact Enrichment",
-    text: "Fill The Gaps Automatically With Contact Routes And Company Context.",
-    plan: "All Plans",
-    output: "Emails, Phones, Socials",
-    points: ["Emails From The Company’s Own Site", "Phones Normalised And Format-Checked", "Source Recorded For Every Field", "Never Overwrites Manual Edits"],
-    href: "/services/ai-contact-enrichment",
-    page: "AI Contact Enrichment",
-  },
-  {
-    stage: "Qualify",
-    icon: Gauge,
-    title: "AI Lead Scoring",
-    text: "Rank The Whole List So Your Team Works The Top Of It First.",
-    plan: "Growth & Scale",
-    output: "0–100 Score + Reasons",
-    points: ["Record Completeness", "Website Health", "Fit With Your Market", "Recalculates On Re-Enrichment"],
-    href: "/services/ai-lead-scoring",
-    page: "AI Lead Scoring",
-    featured: true,
-  },
-  {
-    stage: "Qualify",
-    icon: FileCheck,
-    title: "SEO Website Audit",
-    text: "Audit A Prospect’s Site And Turn The Result Into A Report You Can Send.",
-    plan: "Growth & Scale",
-    output: "Client-Ready Report",
-    points: ["Technical Health & Performance", "Content, Metadata, Structured Data", "Findings Ranked By Severity", "Prioritised Fix List"],
-    href: "/services/seo-website-audit",
-    page: "SEO Website Audit",
-  },
-  {
-    stage: "Qualify",
-    icon: Target,
-    title: "Opportunity Detection",
-    text: "Find Businesses Whose Website Or Listing Is Missing Or Broken.",
-    plan: "Ask Our Team",
-    output: "Flags With Evidence",
-    points: ["No Website At All", "Sites That Don’t Resolve", "No Reachable Contact Route", "Weak Audit Results"],
-    href: "/services/business-opportunity-detection",
-    page: "Business Opportunity Detection",
-  },
-  {
-    stage: "Engage",
-    icon: Send,
-    title: "CRM & AI Outreach",
-    text: "Work Qualified Leads And Send AI-Drafted Outreach From The Same Record.",
-    plan: "Growth & Scale",
-    output: "Logged Conversations",
-    points: ["Pipeline Stages And Owners", "Drafts Use Enrichment & Audit Data", "Your Own Email Transport", "Every Message Logged"],
-    href: "/services/ai-outreach-campaigns",
-    page: "AI Outreach Campaigns",
-  },
-];
+    {
+      stage: "Discover",
+      icon: Layers,
+      title: "Multi-Source Scraping",
+      text: "Run One Query And Collect Matching Businesses From Every Enabled Source.",
+      plan: "All Plans",
+      output: "One Record Per Business",
+      points: ["Google Maps, LinkedIn & IndiaMART", "Cross-Source De-Duplication", "Worker Fleet For Long Jobs", "Quotas Tracked Per Plan"],
+      href: "/services/multi-source-lead-scraping",
+      page: "Multi-Source Lead Scraping",
+    },
+    {
+      stage: "Enrich",
+      icon: Sparkle,
+      title: "AI Contact Enrichment",
+      text: "Fill The Gaps Automatically With Contact Routes And Company Context.",
+      plan: "All Plans",
+      output: "Emails, Phones, Socials",
+      points: ["Emails From The Company’s Own Site", "Phones Normalised And Format-Checked", "Source Recorded For Every Field", "Never Overwrites Manual Edits"],
+      href: "/services/ai-contact-enrichment",
+      page: "AI Contact Enrichment",
+    },
+    {
+      stage: "Qualify",
+      icon: Gauge,
+      title: "AI Lead Scoring",
+      text: "Rank The Whole List So Your Team Works The Top Of It First.",
+      plan: "Growth & Scale",
+      output: "0–100 Score + Reasons",
+      points: ["Record Completeness", "Website Health", "Fit With Your Market", "Recalculates On Re-Enrichment"],
+      href: "/services/ai-lead-scoring",
+      page: "AI Lead Scoring",
+      featured: true,
+    },
+    {
+      stage: "Qualify",
+      icon: FileCheck,
+      title: "SEO Website Audit",
+      text: "Audit A Prospect’s Site And Turn The Result Into A Report You Can Send.",
+      plan: "Growth & Scale",
+      output: "Client-Ready Report",
+      points: ["Technical Health & Performance", "Content, Metadata, Structured Data", "Findings Ranked By Severity", "Prioritised Fix List"],
+      href: "/services/seo-website-audit",
+      page: "SEO Website Audit",
+    },
+    {
+      stage: "Qualify",
+      icon: Target,
+      title: "Opportunity Detection",
+      text: "Find Businesses Whose Website Or Listing Is Missing Or Broken.",
+      plan: "Ask Our Team",
+      output: "Flags With Evidence",
+      points: ["No Website At All", "Sites That Don’t Resolve", "No Reachable Contact Route", "Weak Audit Results"],
+      href: "/services/business-opportunity-detection",
+      page: "Business Opportunity Detection",
+    },
+    {
+      stage: "Engage",
+      icon: Send,
+      title: "CRM & AI Outreach",
+      text: "Work Qualified Leads And Send AI-Drafted Outreach From The Same Record.",
+      plan: "Growth & Scale",
+      output: "Logged Conversations",
+      points: ["Pipeline Stages And Owners", "Drafts Use Enrichment & Audit Data", "Your Own Email Transport", "Every Message Logged"],
+      href: "/services/ai-outreach-campaigns",
+      page: "AI Outreach Campaigns",
+    },
+  ];
 
 const TABS: ("All" | Stage)[] = ["All", "Discover", "Enrich", "Qualify", "Engage"];
 
@@ -105,9 +105,8 @@ export function ModuleTabs() {
             role="tab"
             aria-selected={tab === t}
             onClick={() => setTab(t)}
-            className={`rounded-full border px-5 py-2.5 text-sm font-bold transition ${
-              tab === t ? "border-transparent bg-grad shadow-lift" : "border-line bg-surface text-ink-soft hover:border-brand hover:text-brand"
-            }`}
+            className={`rounded-full border px-5 py-2.5 text-sm font-bold transition ${tab === t ? "border-transparent bg-grad shadow-lift" : "border-line bg-surface text-ink-soft hover:border-brand hover:text-brand"
+              }`}
           >
             {t === "All" ? "All Modules" : t}
           </button>

@@ -495,18 +495,18 @@ export default function HomePage() {
               </div>
             )}
             <div>
-            <Faqs items={HOME_FAQS} showHeading={false} />
-            <p className="mt-5 text-center text-muted">
-              More Questions? Visit The{" "}
-              <Link href="/faq" className="font-semibold text-brand">
-                FAQ
-              </Link>{" "}
-              Or Browse The{" "}
-              <Link href="/sitemap" className="font-semibold text-brand">
-                Sitemap
-              </Link>
-              .
-            </p>
+              <Faqs items={HOME_FAQS} showHeading={false} />
+              <p className="mt-5 text-center text-muted">
+                More Questions? Visit The{" "}
+                <Link href="/faq" className="font-semibold text-brand">
+                  FAQ
+                </Link>{" "}
+                Or Browse The{" "}
+                <Link href="/sitemap" className="font-semibold text-brand">
+                  Sitemap
+                </Link>
+                .
+              </p>
             </div>
           </div>
         </div>

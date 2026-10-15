@@ -1,4 +1,5 @@
 import type { Faq } from "@/content/types";
+import { LetterHeading } from "./LetterHeading";
 import { Plus } from "./icons";
 import { JsonLd } from "./JsonLd";
 
@@ -7,9 +8,10 @@ export function Faqs({ items, heading = "Frequently Asked Questions", showHeadin
   return (
     <section aria-labelledby={showHeading ? "faq-heading" : undefined} aria-label={showHeading ? undefined : heading}>
       {showHeading && (
-        <h2 id="faq-heading" className="text-2xl font-bold sm:text-3xl">
-          {heading}
-        </h2>
+        <div className="mb-6">
+          <LetterHeading text={heading} as="h2" id="faq-heading" triggerOnScroll className="text-2xl font-bold sm:text-3xl" />
+          <span aria-hidden="true" className="heading-accent-line mt-2.5" />
+        </div>
       )}
       <div className={`${showHeading ? "mt-6" : ""} divide-y divide-line overflow-hidden rounded-2xl border border-line bg-surface`}>
         {items.map((f) => (

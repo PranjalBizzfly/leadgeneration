@@ -1,5 +1,6 @@
 import type { ReactNode } from "react";
 import { Breadcrumbs } from "./Breadcrumbs";
+import { LetterHeading } from "./LetterHeading";
 import { Sparkle } from "./icons";
 import { breadcrumbs } from "@/lib/registry";
 
@@ -14,7 +15,8 @@ export function PageHero({ path, badge, title, intro, children }: { path: string
         <span className="pill mt-7">
           <Sparkle size={14} /> {badge}
         </span>
-        <h1 className="fade-up mt-5 max-w-4xl text-[clamp(2.3rem,5vw,4rem)] font-extrabold leading-[1.05]">{title}</h1>
+        <LetterHeading text={title} as="h1" className="mt-5 max-w-4xl text-[clamp(2.3rem,5vw,4rem)] font-extrabold leading-[1.05]" />
+        <span aria-hidden="true" className="heading-accent-line mt-4 w-20" />
         <p className="lead mt-6 max-w-3xl">{intro}</p>
         {children && <div className="mt-8 flex flex-wrap gap-3">{children}</div>}
       </div>

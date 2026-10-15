@@ -4,6 +4,7 @@ import Link from "next/link";
 import { notFound } from "next/navigation";
 import { CtaBand } from "@/components/CtaBand";
 import { ArrowRight, Check } from "@/components/icons";
+import { LetterHeading } from "@/components/LetterHeading";
 import { PageHero } from "@/components/PageHero";
 import { TopicLinkGrid } from "@/components/TopicLinkCard";
 import { posts } from "@/content/blog-posts";
@@ -44,7 +45,8 @@ export default async function BlogPostPage({ params }: Props) {
           <article className="min-w-0 max-w-3xl">
             {post.sections.map((s) => (
               <section key={s.heading} id={slugify(s.heading)} className="mt-9 scroll-mt-28 first:mt-0">
-                <h2 className="text-[clamp(1.5rem,2.6vw,2rem)] font-extrabold leading-tight">{s.heading}</h2>
+                <LetterHeading text={s.heading} as="h2" triggerOnScroll className="text-[clamp(1.5rem,2.6vw,2rem)] font-extrabold leading-tight" />
+                <span aria-hidden="true" className="heading-accent-line mt-3" />
                 <div className="prose-body mt-5 text-[17px]">
                   {s.paragraphs.map((p) => (
                     <p key={p.slice(0, 40)}>{p}</p>
@@ -88,7 +90,8 @@ export default async function BlogPostPage({ params }: Props) {
       {(related.length > 0 || more.length > 0) && (
         <section className="section-y border-t border-line bg-bg-alt">
           <div className="container-x">
-            <h2 className="text-2xl font-extrabold sm:text-3xl">Keep Reading</h2>
+            <LetterHeading text="Keep Reading" as="h2" triggerOnScroll className="text-2xl font-extrabold sm:text-3xl" />
+            <span aria-hidden="true" className="heading-accent-line mt-3" />
             {more.length > 0 && (
               <div className="mt-8 grid gap-4 sm:grid-cols-2">
                 {more.map((p) => (

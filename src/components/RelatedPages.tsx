@@ -1,4 +1,5 @@
 import Link from "next/link";
+import { LetterHeading } from "./LetterHeading";
 import { titleCase } from "@/lib/title-case";
 import type { PlanEntry } from "@/content/types";
 import { GROUPS } from "@/lib/groups";
@@ -24,9 +25,10 @@ export function RelatedPages({ pages, heading = "Related reading" }: { pages: Pl
   if (!pages.length) return null;
   return (
     <section aria-labelledby="related-heading">
-      <h2 id="related-heading" className="text-2xl font-bold sm:text-3xl">
-        {heading}
-      </h2>
+      <div className="mb-6">
+        <LetterHeading text={heading} as="h2" id="related-heading" triggerOnScroll className="text-2xl font-bold sm:text-3xl" />
+        <span aria-hidden="true" className="heading-accent-line mt-2.5" />
+      </div>
       <div className="mt-6 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
         {pages.map((p) => (
           <PageCard key={p.path} page={p} />

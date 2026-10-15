@@ -26,7 +26,7 @@ export const ChevronDown = (p: IconProps) => (
 export const ChevronUp = (p: IconProps) => (
   <svg {...base(p)}><path d="m6 15 6-6 6 6" /></svg>
 );
-export const ChevronRight =(p: IconProps) => (
+export const ChevronRight = (p: IconProps) => (
   <svg {...base(p)}><path d="m9 6 6 6-6 6" /></svg>
 );
 export const Check = (p: IconProps) => (

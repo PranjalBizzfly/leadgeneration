@@ -1,4 +1,5 @@
 import Link from "next/link";
+import { LetterHeading } from "./LetterHeading";
 import { ArrowRight, Sparkle } from "./icons";
 import { Photo } from "./Photo";
 
@@ -29,7 +30,8 @@ export function CtaBand({ heading, text, label, href, image }: Props) {
         <span className="inline-flex items-center gap-2 rounded-full border border-white/25 bg-white/10 px-4 py-1.5 text-xs font-bold uppercase tracking-wider">
           <Sparkle size={14} /> Next Step
         </span>
-        <h2 className="mt-6 text-[clamp(2rem,4.4vw,3.4rem)] font-extrabold leading-[1.08]">{heading}</h2>
+        <LetterHeading text={heading} as="h2" triggerOnScroll className="mt-6 text-[clamp(2rem,4.4vw,3.4rem)] font-extrabold leading-[1.08]" />
+        <span aria-hidden="true" className="heading-accent-line mx-auto mt-4 !bg-gradient-to-r !from-cyan-300 !to-white" />
         <p className="mx-auto mt-5 max-w-2xl text-lg text-white/80">{text}</p>
         <div className="mt-9 flex flex-wrap justify-center gap-3">
           {external ? (

@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import { Suspense } from "react";
+import { LetterHeading } from "@/components/LetterHeading";
 import { pageMetadata } from "@/lib/metadata";
 import { SearchResults } from "./SearchResults";
 
@@ -13,7 +14,8 @@ export const metadata: Metadata = pageMetadata({
 export default function SearchPage() {
   return (
     <div className="container-x max-w-3xl py-12">
-      <h1 className="text-4xl font-extrabold">Search The Site</h1>
+      <LetterHeading text="Search The Site" as="h1" className="text-4xl font-extrabold" />
+      <span aria-hidden="true" className="heading-accent-line mt-3.5 w-16" />
       <Suspense fallback={<div className="mt-8 h-14 rounded-xl border border-line bg-surface" />}>
         <SearchResults />
       </Suspense>

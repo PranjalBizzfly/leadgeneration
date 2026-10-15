@@ -4,6 +4,7 @@ import { CAREERS_FAQS } from "@/content/company-faqs";
 import Link from "next/link";
 import { CtaBand } from "@/components/CtaBand";
 import { ArrowRight, Check, FileCheck, Send, Sparkle, Target, Users } from "@/components/icons";
+import { LetterHeading } from "@/components/LetterHeading";
 import { PageHero } from "@/components/PageHero";
 import { SectionHeading } from "@/components/SectionHeading";
 import { pageMetadata } from "@/lib/metadata";
@@ -175,7 +176,8 @@ export default function CareersPage() {
           </div>
 
           <div className="mx-auto mt-10 max-w-3xl rounded-3xl border border-line bg-bg-alt p-6 text-center sm:p-8">
-            <h2 className="text-2xl font-extrabold">How To Apply</h2>
+            <LetterHeading text="How To Apply" as="h2" triggerOnScroll className="text-2xl font-extrabold" />
+            <span aria-hidden="true" className="heading-accent-line mx-auto mt-2.5" />
             <p className="mt-3 leading-relaxed text-ink-soft">
               Choose a role and select <strong>Apply Now</strong>. The contact form opens with the role filled in. Tell us a little about yourself and include a link to your CV or
               profile. We reply to the email address you provide.
