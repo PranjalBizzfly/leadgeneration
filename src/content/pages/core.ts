@@ -82,35 +82,35 @@ export const pages: PageContent[] = [
     },
     faqs: [
       {
-        q: "Is LeadGen AI A Data Vendor That Sells Contact Lists?",
+        q: "Is LeadGen AI a data vendor that sells contact lists?",
         a: "No. LeadGen AI is a platform you run yourself. You define the query, the platform gathers and enriches public business data for that query, and the resulting records sit in your own workspace.",
       },
       {
-        q: "What Does “Prospect Intelligence” Mean In Practice?",
+        q: "What does “prospect intelligence” mean in practice?",
         a: "It means a lead arrives with context rather than just a name and number: where each field came from, a score with reasons, an audit of the website and any opportunity flags, all on one record.",
       },
       {
-        q: "Can I Try The Platform Before Committing To A Paid Plan?",
+        q: "Can I try the platform before committing to a paid plan?",
         a: "Yes. The Free plan includes 3 scrape queries, website enrichment, the lead dashboard and CSV export for one admin user, which is enough to judge whether the records suit your market.",
       },
       {
-        q: "What Kind Of Team Gets The Most Out Of LeadGen AI?",
+        q: "What kind of team gets the most out of LeadGen AI?",
         a: "Teams whose customers are businesses visible in public listings. Digital and web agencies use it to find local businesses with weak or missing websites, B2B sellers build territory lists, and suppliers in India use IndiaMART search terms to find buyers and peers.",
       },
       {
-        q: "Why Does LeadGen AI Store The Source Of Every Field?",
+        q: "Why does LeadGen AI store the source of every field?",
         a: "Traceability is one of the platform’s core principles. Knowing where a phone number or email came from helps you judge its reliability, correct mistakes and answer a prospect honestly if they ask how you found them.",
       },
       {
-        q: "Will Automated Enrichment Undo The Corrections My Team Makes?",
+        q: "Will automated enrichment undo the corrections my team makes?",
         a: "No. Enrichment never overwrites a field someone edited by hand, and it only writes a field when the new value is more complete. That way records improve over time without losing your team’s knowledge.",
       },
       {
-        q: "Who Is Responsible For The Emails Sent From The Platform?",
+        q: "Who is responsible for the emails sent from the platform?",
         a: "You are. Campaigns go out through your own configured email transport, so your sending reputation and compliance stay in your hands. The platform respects sending limits and opt-out obligations and logs every message against its lead.",
       },
       {
-        q: "What Is A Common Mistake When Starting Out?",
+        q: "What is a common mistake when starting out?",
         a: "Running vague, broad queries. Lead quality depends on how clearly you define your market, category and geography, so start with one specific category in one location, review the records, then widen.",
       },
     ],
@@ -168,35 +168,35 @@ export const pages: PageContent[] = [
     ],
     faqs: [
       {
-        q: "Should I Use The Contact Form Or The Request Access Form?",
+        q: "Should I use the contact form or the request access form?",
         a: "Use the contact form for questions, policy requests and anything general. Use request access when you want a guided walkthrough of the product and are ready to evaluate it.",
       },
       {
-        q: "Can I Ask For The Privacy Policy That Covers The LeadGen AI Application?",
+        q: "Can I ask for the Privacy Policy that covers the LeadGen AI application?",
         a: "Yes. The privacy policy on this website covers the marketing site only. Ask through this form for the documents that govern your use of the application.",
       },
       {
-        q: "What Should I Avoid Putting In The Message?",
+        q: "What should I avoid putting in the message?",
         a: "Please don’t send passwords, API keys or other credentials. Describe the issue instead, and the team will advise on any secure next step.",
       },
       {
-        q: "How Will The Team Reply To My Message?",
+        q: "How will the team reply to my message?",
         a: "Replies come by email to the address you enter in the form. Use a work email you check regularly, and look in your spam folder if you are expecting a reply and haven’t seen one.",
       },
       {
-        q: "What Details Help You Recommend A Plan?",
+        q: "What details help you recommend a plan?",
         a: "Tell us which sources matter to you, roughly how many queries you expect to run each month and how many people will use the workspace. Those three points usually decide between Free, Growth and Scale.",
       },
       {
-        q: "Can I Ask Whether The Data Sources Cover My Market?",
+        q: "Can I ask whether the data sources cover my market?",
         a: "Yes. Describe what you sell, the categories you prospect and the locations you cover. The team can then comment on how Google Maps, LinkedIn or IndiaMART are likely to fit your market.",
       },
       {
-        q: "Why Might Some Answers Take Longer Than Others?",
+        q: "Why might some answers take longer than others?",
         a: "Questions on topics such as plan limits or data handling sometimes need input from a specialist. When that happens, the team will let you know that the reply may take a little longer.",
       },
       {
-        q: "How Are The Details I Send Through This Form Used?",
+        q: "How are the details I send through this form used?",
         a: "They are used only to respond to your enquiry, as described in the website Privacy Policy. If you later want your submission deleted, you can ask through this same form.",
       },
     ],
@@ -294,35 +294,35 @@ export const pages: PageContent[] = [
     },
     faqs: [
       {
-        q: "Do I Need To Keep The Browser Open While A Large Scrape Runs?",
+        q: "Do I need to keep the browser open while a large scrape runs?",
         a: "No. Long jobs run on the worker fleet, so a large scrape keeps going after you close the tab, and the job record shows what was fetched and when.",
       },
       {
-        q: "What Happens To A Lead’s Score When Its Data Changes?",
+        q: "What happens to a lead’s score when its data changes?",
         a: "Scores recalculate when a lead is re-enriched, so a record that gains a working website or contact details can move up the list.",
       },
       {
-        q: "Can I Skip Stages I Don’t Need?",
+        q: "Can I skip stages I don’t need?",
         a: "Yes. Many teams simply scrape, enrich and export to CSV. Scoring, audits and outreach are there when you want them, subject to your plan.",
       },
       {
-        q: "Where Do The AI-Drafted Messages Get Their Details From?",
+        q: "Where do the AI-drafted messages get their details from?",
         a: "From the lead’s own record (its enrichment data and, where available, its website audit findings) so each draft refers to that specific business.",
       },
       {
-        q: "How Should I Write My First Query?",
+        q: "How should I write my first query?",
         a: "Start narrow with one category and one location, such as architects in Kochi. For directory sources like IndiaMART, use a search term that matches how suppliers describe themselves. Check the results, then widen once you know the list is useful.",
       },
       {
-        q: "Why Do Some Leads Stay Incomplete After Enrichment?",
+        q: "Why do some leads stay incomplete after enrichment?",
         a: "Enrichment relies on what businesses publish on their own websites. If a business has no site, or its site has no contact details, there may be nothing to add. Such leads can still be useful, especially when flagged as an opportunity.",
       },
       {
-        q: "Which Areas Does The SEO Website Audit Check?",
+        q: "Which areas does the SEO website audit check?",
         a: "It checks technical health, content, metadata, structured data and performance. Each area is graded, the grades roll up into an overall score, and the report lists ranked findings with plain-English explanations and a prioritised fix list.",
       },
       {
-        q: "Should I Send AI Drafts Without Editing Them?",
+        q: "Should I send AI drafts without editing them?",
         a: "No. AI-drafted messages are a starting point. Review each one for accuracy and tone, and add specific references to the prospect’s findings where it helps, before sending it through your own email transport.",
       },
     ],
@@ -411,35 +411,35 @@ export const pages: PageContent[] = [
     },
     faqs: [
       {
-        q: "Which Module Should A New Team Switch On First?",
+        q: "Which module should a new team switch on first?",
         a: "Most start with scraping, enrichment and the lead dashboard, check record quality, then add scoring and audits once they know which markets to focus on.",
       },
       {
-        q: "Can Two Teams Share One Workspace Without Seeing Each Other’s Leads?",
+        q: "Can two teams share one workspace without seeing each other’s leads?",
         a: "Role-based access is designed so each team sees the records it should. Plan your roles to reflect those boundaries when you set up the workspace.",
       },
       {
-        q: "Is There An API On Every Plan?",
+        q: "Is there an API on every plan?",
         a: "No. Per-org API keys are listed on the Scale plan. Free and Growth include CSV export from the lead dashboard.",
       },
       {
-        q: "Does LeadGen AI Have Built-In Integrations With Other CRMs?",
+        q: "Does LeadGen AI have built-in integrations with other CRMs?",
         a: "LeadGen AI does not publish named integrations with third-party CRMs. Teams usually move records with CSV export or, on the Scale plan, connect their own tools through per-org API keys, so plan your sync process around those routes.",
       },
       {
-        q: "What Is Stored On A Single Lead Record?",
+        q: "What is stored on a single lead record?",
         a: "Identity and location, contact routes, ratings and listing signals, enrichment results, the score and its reasons, audit results, opportunity flags, pipeline stage and owner, and the full activity history. It also records the source of each field.",
       },
       {
-        q: "Why Do Large Jobs Run On A Worker Fleet?",
+        q: "Why do large jobs run on a worker fleet?",
         a: "Scraping and enrichment can involve many pages and listings, so long jobs run on workers rather than in the browser. A large scrape keeps going after you close the tab, and each job records what it fetched and when.",
       },
       {
-        q: "How Should A Manager Plan Roles Before Inviting The Team?",
+        q: "How should a manager plan roles before inviting the team?",
         a: "Map roles to how the work is actually split, such as researchers who run queries, sellers who own pipeline stages and managers who review scores. Growth includes full team access with seven role modules, while Free has a single admin user.",
       },
       {
-        q: "When Does A Team Need The Scale Plan’s Infrastructure?",
+        q: "When does a team need the Scale plan’s infrastructure?",
         a: "When monthly query volume regularly goes beyond growth’s 50 queries, or the team needs LinkedIn and IndiaMART sources or programmatic access. Scale adds unlimited queries, a distributed scrape fleet and per-org API keys.",
       },
     ],
@@ -552,35 +552,35 @@ export const pages: PageContent[] = [
     },
     faqs: [
       {
-        q: "Why Aren’t Prices Shown On This Page?",
+        q: "Why aren’t prices shown on this page?",
         a: "LeadGen AI does not publish prices on its public site. Request access or contact the team for current pricing for Growth and Scale.",
       },
       {
-        q: "How Does The Annual Billing Saving Work?",
+        q: "How does the annual billing saving work?",
         a: "The live site shows a “Save 20%” option for annual billing. Confirm the details for your plan with the team when you request access.",
       },
       {
-        q: "Can I Cancel A Paid Plan Later?",
+        q: "Can I cancel a paid plan later?",
         a: "The live site states “No hidden fees, cancel anytime.” Check the terms that apply to your account for specifics.",
       },
       {
-        q: "Which Plan Includes Client-Ready SEO Reports?",
+        q: "Which plan includes client-ready SEO reports?",
         a: "Growth includes SEO and website-build reports, and Scale builds on Growth for higher-volume teams.",
       },
       {
-        q: "How Do I Estimate How Many Queries I Need Each Month?",
+        q: "How do I estimate how many queries I need each month?",
         a: "Multiply the categories you target by the locations you cover, then by how often you refresh each list. If the total regularly exceeds 50 a month, growth’s quota will feel tight and scale’s unlimited queries are worth discussing.",
       },
       {
-        q: "What Should I Judge During The Free Plan?",
+        q: "What should I judge during the Free plan?",
         a: "Focus on record quality for your market. Free includes 3 scrape queries, website enrichment, the lead dashboard and CSV export, but not AI scoring or outreach, so use it to check whether the listings and contact details suit your prospecting.",
       },
       {
-        q: "Which Plan Do I Need For LinkedIn And IndiaMART?",
+        q: "Which plan do I need for LinkedIn and IndiaMART?",
         a: "Multiple sources, including LinkedIn and IndiaMART, are listed on the Scale plan. If your buyers mainly appear on those platforms rather than Google Maps, factor that in when choosing a tier.",
       },
       {
-        q: "What Extra Support Comes With Scale?",
+        q: "What extra support comes with Scale?",
         a: "Scale includes priority support with an SLA and a dedicated success manager. It suits teams that want a named contact alongside unlimited queries, a distributed scrape fleet and per-org API keys.",
       },
     ],
@@ -646,35 +646,35 @@ export const pages: PageContent[] = [
     ],
     faqs: [
       {
-        q: "Who From My Team Should Join The Walkthrough?",
+        q: "Who from my team should join the walkthrough?",
         a: "Ideally the person who owns prospecting day to day and whoever decides on the plan. If IT will review the tool, invite them too or send their questions in advance.",
       },
       {
-        q: "Can The Walkthrough Use A Market I Choose?",
+        q: "Can the walkthrough use a market I choose?",
         a: "That is the aim. Name the categories and locations in the form so the session reflects your real prospecting.",
       },
       {
-        q: "Do I Have To Request Access To Use The Free Plan?",
+        q: "Do I have to request access to use the Free plan?",
         a: "No. You can start free on the live site; requesting access is for teams that want a guided evaluation.",
       },
       {
-        q: "What Will The Walkthrough Show?",
+        q: "What will the walkthrough show?",
         a: "Most sessions cover running a query, how results merge into one record, what enrichment adds, the 0–100 score with its reasons, an SEO audit report, opportunity flags, the pipeline board and AI-drafted outreach, plus roles, CSV export and API keys.",
       },
       {
-        q: "How Should I Prepare Before The Session?",
+        q: "How should I prepare before the session?",
         a: "Note two or three categories and locations you prospect today, the sources that matter for your buyers and how you prospect now. Mention what frustrates you about your current process so the session can focus on it.",
       },
       {
-        q: "Can IT Raise Data Handling Questions As Part Of The Request?",
+        q: "Can IT raise data handling questions as part of the request?",
         a: "Yes. Add any review requirements to the form. The team can then cover workspaces, roles and traceability during the session, and point you to the documentation that governs the LeadGen AI application if your review needs it.",
       },
       {
-        q: "Will I Get Pricing During Or After The Walkthrough?",
+        q: "Will I get pricing during or after the walkthrough?",
         a: "Yes. Pricing is shared directly rather than published on the site. After the session you can start on Free straight away, or discuss Growth or Scale if you need scoring, outreach, more sources or higher volume.",
       },
       {
-        q: "What Should I Share About My Team Size?",
+        q: "What should I share about my team size?",
         a: "Say how many people would use the workspace and in what roles, such as researchers, sellers or managers. This helps the team show role-based access properly and recommend a plan that fits.",
       },
     ],
@@ -725,35 +725,35 @@ export const pages: PageContent[] = [
     ],
     faqs: [
       {
-        q: "What Kinds Of Businesses Can I Find With LeadGen AI?",
+        q: "What kinds of businesses can I find with LeadGen AI?",
         a: "Any business that appears in public listings on Google Maps, LinkedIn or IndiaMART. You search by category and location, or by a directory search term.",
       },
       {
-        q: "What Information Comes With Each Lead?",
+        q: "What information comes with each lead?",
         a: "Business name, category and full postal address; website, listed phone numbers and public emails; ratings, review counts and listing-completeness signals; and the source of each field, plus whatever enrichment adds.",
       },
       {
-        q: "Will I Get Duplicate Records When A Business Is Listed On Several Sources?",
+        q: "Will I get duplicate records when a business is listed on several sources?",
         a: "No. Results are normalised into one lead record per business and de-duplicated across sources.",
       },
       {
-        q: "Where Do Enriched Email Addresses Come From?",
+        q: "Where do enriched email addresses come from?",
         a: "From the business’s own website. Enrichment resolves the site, crawls the pages that normally carry contact details and records where each value came from.",
       },
       {
-        q: "If I Correct A Lead’s Details By Hand, Will Enrichment Change Them Back?",
+        q: "If I correct a lead’s details by hand, will enrichment change them back?",
         a: "No. Enrichment never overwrites a field you edited by hand, and it writes a field only when the new value is more complete.",
       },
       {
-        q: "What Does The 0–100 Lead Score Take Into Account?",
+        q: "What does the 0–100 lead score take into account?",
         a: "Record completeness, website health and whether the business is credibly online, fit against your stated market, category and geography, and signals of an active, operating business. The reasons are stored on the record.",
       },
       {
-        q: "Which Email Account Sends My Outreach?",
+        q: "Which email account sends my outreach?",
         a: "Your own. Campaigns go out through the email transport you configure, and every message is logged against its lead.",
       },
       {
-        q: "Can I Export My Leads?",
+        q: "Can I export my leads?",
         a: "Yes. CSV export from the lead dashboard is included on every plan, and the Scale plan adds per-org API keys.",
       },
     ],
@@ -839,35 +839,35 @@ export const pages: PageContent[] = [
     },
     faqs: [
       {
-        q: "What Makes LeadGen AI Different From Buying A Lead List?",
+        q: "What makes LeadGen AI different from buying a lead list?",
         a: "You build the list from live public listings for the exact market you define, and every field records its source. A bought list is fixed at the moment it was put together and rarely shows where its data came from.",
       },
       {
-        q: "Does Evidence-Based Outreach Really Need An Audit For Every Lead?",
+        q: "Does evidence-based outreach really need an audit for every lead?",
         a: "Not always. Audits are most useful when you sell web, SEO or digital services. Other teams may lean on the score, enrichment data and opportunity flags instead.",
       },
       {
-        q: "Can I Keep Using My Existing CRM Alongside LeadGen AI?",
+        q: "Can I keep using my existing CRM alongside LeadGen AI?",
         a: "Yes. Many teams prospect and qualify in LeadGen AI and move chosen leads into another system via CSV export, or via per-org API keys on the Scale plan.",
       },
       {
-        q: "When Might LeadGen AI Not Be The Right Fit?",
+        q: "When might LeadGen AI not be the right fit?",
         a: "If your buyers rarely appear on Google Maps, LinkedIn or IndiaMART, source coverage may be limited. Teams that only need a one-off list, or depend on deep named CRM integrations, may also find another approach suits them better.",
       },
       {
-        q: "How Does A Single Pipeline Reduce Errors?",
+        q: "How does a single pipeline reduce errors?",
         a: "Every stage works on the same lead record, so nothing is copied between a scraper, a spreadsheet, a CRM and a mail client. That removes copy errors and keeps each lead’s history, score, audit and messages attached to it.",
       },
       {
-        q: "Can A Lead Score Be Questioned By My Team?",
+        q: "Can a lead score be questioned by my team?",
         a: "Yes. The reasons behind each 0–100 score are stored on the record, so sellers and managers can see why a lead ranks where it does and challenge it. Scores also recalculate when a lead is re-enriched.",
       },
       {
-        q: "How Is This Better Than Manual Research?",
+        q: "How is this better than manual research?",
         a: "Manual research is thorough for a handful of accounts but slow to scale and hard to keep consistent. LeadGen AI applies the same gathering, enrichment and scoring to every lead, leaving you time to review the ones that matter.",
       },
       {
-        q: "What Gives An Outreach Message Real Substance?",
+        q: "What gives an outreach message real substance?",
         a: "Specific evidence about the prospect, such as audit findings or an opportunity flag like a missing website. AI drafts use the lead’s own enrichment and audit data, so a first message can refer to something real, though it still needs human review.",
       },
     ],
@@ -960,35 +960,35 @@ export const pages: PageContent[] = [
     },
     faqs: [
       {
-        q: "Which Source Should I Start With?",
+        q: "Which source should I start with?",
         a: "Start where your buyers are most visible: Google Maps for local, location-led businesses; IndiaMART for Indian suppliers and traders; LinkedIn for B2B company context.",
       },
       {
-        q: "How Does The Platform Decide Two Listings Are The Same Business?",
+        q: "How does the platform decide two listings are the same business?",
         a: "Results are normalised into a consistent record and de-duplicated across sources, so the same business found on different platforms is merged into one lead.",
       },
       {
-        q: "Can I See Which Source Supplied A Particular Phone Number?",
+        q: "Can I see which source supplied a particular phone number?",
         a: "Yes. Every lead records the source each field came from, including values added later by enrichment.",
       },
       {
-        q: "How Do I Write A Good IndiaMART Search Term?",
+        q: "How do I write a good IndiaMART search term?",
         a: "Use the words suppliers actually put in their product titles rather than broad industry labels. Run a couple of variants and compare which one brings back the most relevant businesses before running many queries.",
       },
       {
-        q: "Why Does My Google Maps Query Return Too Many Irrelevant Results?",
+        q: "Why does my Google Maps query return too many irrelevant results?",
         a: "Broad categories and large areas produce broad lists. Specific categories usually work better, such as “orthodontist” rather than “healthcare”, and a city or district gives a more manageable list than a whole state.",
       },
       {
-        q: "Are Listings Always Up To Date?",
+        q: "Are listings always up to date?",
         a: "No. Listings are only as current as each business keeps them, and coverage varies by category and region. Review a sample before scaling up, and let enrichment fill gaps from the business’s own website.",
       },
       {
-        q: "Which Plan Includes LinkedIn And IndiaMART?",
+        q: "Which plan includes LinkedIn and IndiaMART?",
         a: "Both are listed among the multiple sources available on the Scale plan. Check which sources your plan includes before building a workflow around them.",
       },
       {
-        q: "Does Public Listing Data Remove My Obligations When Contacting Businesses?",
+        q: "Does public listing data remove my obligations when contacting businesses?",
         a: "No. Public availability does not remove your obligations. Follow each source platform’s terms and the laws that apply to your outreach, and take care with any details that identify individuals.",
       },
     ],
@@ -1078,35 +1078,35 @@ export const pages: PageContent[] = [
     },
     faqs: [
       {
-        q: "Does This Page Describe Encryption Or Certifications?",
+        q: "Does this page describe encryption or certifications?",
         a: "No. We only state controls we can verify here. Contact the team for documentation on topics such as encryption, certifications or hosting.",
       },
       {
-        q: "Can One Customer See Another Customer’s Leads?",
+        q: "Can one customer see another customer’s leads?",
         a: "The platform is multi-tenant, with each organisation in its own workspace and role-based access within it.",
       },
       {
-        q: "How Can I Show Where A Lead’s Data Originated During An Internal Audit?",
+        q: "How can I show where a lead’s data originated during an internal audit?",
         a: "Use the per-field source records on the lead and the job record showing what was fetched and when.",
       },
       {
-        q: "How Should We Store Per-Org API Keys?",
+        q: "How should we store per-org API keys?",
         a: "Treat them as secrets. Keep them in a secure location, limit who can see them and replace them if you suspect exposure. Keys belong to your organisation and are available on the Scale plan.",
       },
       {
-        q: "Can Automated Enrichment Overwrite Our Manual Corrections?",
+        q: "Can automated enrichment overwrite our manual corrections?",
         a: "No. Enrichment writes a field only when the new value is more complete, and it never overwrites a field a user edited by hand. This stops automated processes from silently undoing your team’s fixes.",
       },
       {
-        q: "In What Ways Can Data Leave The Platform?",
+        q: "In what ways can data leave the platform?",
         a: "Through CSV export from the lead dashboard, through per-org API keys on the Scale plan, and through outreach sent via your own configured email transport. Every outreach message is logged against its lead.",
       },
       {
-        q: "What Should We Do When Someone Leaves The Team?",
+        q: "What should we do when someone leaves the team?",
         a: "Remove their access promptly and review whether any API keys or email transport credentials they could see should be replaced. Managing roles and access remains your responsibility.",
       },
       {
-        q: "How Can Roles Follow The Principle Of Least Privilege?",
+        q: "How can roles follow the principle of least privilege?",
         a: "Map role modules to job functions, such as researchers, sellers and managers, and give each person only the access their work needs. Growth includes full team access with seven role modules to support this.",
       },
     ],
@@ -1203,35 +1203,35 @@ export const pages: PageContent[] = [
     },
     faqs: [
       {
-        q: "Is It Acceptable To Email A Business Just Because Its Address Is Public?",
+        q: "Is it acceptable to email a business just because its address is public?",
         a: "Not automatically. Relevance, the channel, the recipient’s jurisdiction and your basis for contact all matter. Check the rules that apply and take advice if unsure.",
       },
       {
-        q: "How Should We Handle An Opt-Out Request Received By Phone?",
+        q: "How should we handle an opt-out request received by phone?",
         a: "Treat it the same as an email unsubscribe: record it, add the contact to your suppression list and make sure no future campaign reaches them.",
       },
       {
-        q: "Does LeadGen AI Make Our Outreach Compliant Automatically?",
+        q: "Does LeadGen AI make our outreach compliant automatically?",
         a: "No tool can. The platform respects sending limits and opt-out obligations and keeps records, but compliance depends on your audience, content and process.",
       },
       {
-        q: "Why Keep A Suppression List?",
+        q: "Why keep a suppression list?",
         a: "A suppression list stops people who opted out from being contacted again when they appear in a new query or import. Apply it before every campaign, not just the first one.",
       },
       {
-        q: "How Quickly Should We Increase Sending Volume?",
+        q: "How quickly should we increase sending volume?",
         a: "Gradually. Large batches from a new or cold mailbox harm deliverability and can look like spam. Because outreach goes through your own email transport, your domain’s reputation is at stake, so send in measured batches and watch replies and opt-outs.",
       },
       {
-        q: "What Should We Say If A Prospect Asks How We Got Their Details?",
+        q: "What should we say if a prospect asks how we got their details?",
         a: "Check the lead record, which shows the source of each field, and explain honestly, for example that the email was found on their own contact page. If they ask not to be contacted, add them to your suppression list.",
       },
       {
-        q: "Do The Same Rules Apply In Every Country?",
+        q: "Do the same rules apply in every country?",
         a: "No. Laws such as GDPR in Europe, CAN-SPAM in the United States and India’s DPDP Act set different expectations, and rules for calls or SMS can be stricter than for email. Check current requirements for each recipient’s jurisdiction.",
       },
       {
-        q: "Are Personal Details Treated Differently From Business Contact Routes?",
+        q: "Are personal details treated differently from business contact routes?",
         a: "Generally, yes. A published business email or switchboard number usually raises fewer concerns than details that identify an individual. Be cautious with personal information and follow the terms of each source platform.",
       },
     ],
@@ -1296,35 +1296,35 @@ export const pages: PageContent[] = [
     ],
     faqs: [
       {
-        q: "Does This Website Use Cookies For Tracking?",
+        q: "Does this website use cookies for tracking?",
         a: "No analytics are installed. The only stored preference is your theme choice, kept in your browser’s localStorage.",
       },
       {
-        q: "Does This Policy Cover Data Inside The LeadGen AI Application?",
+        q: "Does this policy cover data inside the LeadGen AI application?",
         a: "No. It covers this marketing website only. Contact LeadGen AI for the authoritative policy that governs the application.",
       },
       {
-        q: "How Do I Ask For My Form Submission To Be Deleted?",
+        q: "How do I ask for my form submission to be deleted?",
         a: "Send a request through the contact page, using the same email address you used in the original form if possible.",
       },
       {
-        q: "What Information Do The Website Forms Collect?",
+        q: "What information do the website forms collect?",
         a: "The contact and request-access forms collect what you enter: your name, work email, phone number, optional company, topic and message. Please don’t include sensitive personal information or credentials in these forms.",
       },
       {
-        q: "Is My Form Submission Sold To Anyone?",
+        q: "Is my form submission sold to anyone?",
         a: "No. This policy states that form submissions are not sold. They are used to reply to your enquiry, arrange a walkthrough if you request access and keep a record of our correspondence with you.",
       },
       {
-        q: "How Long Are Form Submissions Kept?",
+        q: "How long are form submissions kept?",
         a: "The policy says they are kept for as long as needed to handle your enquiry and any resulting relationship, then deleted or anonymised when no longer needed. It does not set a fixed period.",
       },
       {
-        q: "How Do I Clear My Saved Theme Preference?",
+        q: "How do I clear my saved theme preference?",
         a: "Your light or dark theme choice is stored in your browser’s localStorage and stays on your device. You can remove it at any time by clearing this site’s data in your browser settings.",
       },
       {
-        q: "Why Might You Ask Me To Confirm My Identity?",
+        q: "Why might you ask me to confirm my identity?",
         a: "When you ask to access, correct or delete information, confirming your identity helps make sure the request really comes from you. Depending on where you live, the rights available to you may vary.",
       },
     ],
@@ -1392,35 +1392,35 @@ export const pages: PageContent[] = [
     ],
     faqs: [
       {
-        q: "Do These Terms Apply To My LeadGen AI Account?",
+        q: "Do these terms apply to my LeadGen AI account?",
         a: "No. They apply to this website only. Contact LeadGen AI for the terms that govern the application.",
       },
       {
-        q: "Can I Quote Content From This Website In My Own Article?",
+        q: "Can I quote content from this website in my own article?",
         a: "Short quotations with attribution and a link are fine. For larger reuse, please ask through the contact page.",
       },
       {
-        q: "Are The Examples On This Site Real Customer Stories?",
+        q: "Are the examples on this site real customer stories?",
         a: "No. Examples are illustrative scenarios written to explain ideas, and they do not describe real businesses.",
       },
       {
-        q: "Can I Rely On Articles On This Site As Legal Advice?",
+        q: "Can I rely on articles on this site as legal advice?",
         a: "No. Educational articles offer general guidance on lead generation and are not legal, financial or professional advice. Regulatory topics are summarised only in general terms, so check current rules and take advice for your circumstances.",
       },
       {
-        q: "Are Product Descriptions On This Site Guaranteed To Stay The Same?",
+        q: "Are product descriptions on this site guaranteed to stay the same?",
         a: "No. They reflect the platform as understood at the time of writing, and features or plans may change. If something matters to your decision, confirm the current details with the team.",
       },
       {
-        q: "What Kinds Of Use Are Not Allowed On This Website?",
+        q: "What kinds of use are not allowed on this website?",
         a: "Submitting false or unlawful information through the forms, trying to disrupt or gain unauthorised access to the site, republishing substantial content without permission, and using the site to send spam or harvest information about others.",
       },
       {
-        q: "Is LeadGen AI Responsible For Linked External Websites?",
+        q: "Is LeadGen AI responsible for linked external websites?",
         a: "No. Links to external sites are provided for convenience, and these terms state that LeadGen AI is not responsible for their content. Review each external site’s own terms before relying on it.",
       },
       {
-        q: "How Will I Know If These Terms Change?",
+        q: "How will I know if these terms change?",
         a: "Updated terms are published on this page, and the version shown here applies from the time it is published. Check back occasionally, and send any questions through the contact page.",
       },
     ],

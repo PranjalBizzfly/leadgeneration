@@ -55,7 +55,20 @@ export function SearchResults() {
         </div>
       )}
       <div className="mt-8" aria-live="polite">
-        {items === null && <p className="text-muted">Loading the page index…</p>}
+        {items === null && (
+          <div role="status">
+            <span className="sr-only">Loading the page index…</span>
+            <ul className="grid gap-3" aria-hidden="true">
+              {[0, 1, 2, 3].map((i) => (
+                <li key={i} className="card grid gap-2 p-5">
+                  <span className="skeleton h-3 w-24" />
+                  <span className="skeleton h-5 w-3/5" />
+                  <span className="skeleton h-3 w-4/5" />
+                </li>
+              ))}
+            </ul>
+          </div>
+        )}
         {items && query && <p className="text-sm text-muted">{results.length} Result{results.length === 1 ? "" : "s"} For “{query}”</p>}
         {items && !query && <p className="text-muted">Start typing to search {items.length} Pages.</p>}
         <ul className="mt-4 grid gap-3">

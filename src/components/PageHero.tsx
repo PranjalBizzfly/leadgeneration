@@ -14,7 +14,7 @@ export function PageHero({ path, badge, title, intro, children }: { path: string
   if (photo) {
     return (
       <section data-theme="dark" className="relative isolate overflow-hidden border-b border-line bg-bg text-ink">
-        <Image src={photo.src} alt={bg.own ? photo.alt : ""} fill preload quality={90} sizes="100vw" className="-z-20 object-cover" />
+        <Image src={photo.src} alt={bg.own ? photo.alt : ""} data-decorative={bg.own ? undefined : ""} fill preload quality={90} sizes="100vw" className="-z-20 object-cover" />
         <div aria-hidden="true" className="absolute inset-0 -z-10 bg-gradient-to-r from-black/90 via-black/70 to-black/30" />
         <div aria-hidden="true" className="absolute inset-0 -z-10 bg-gradient-to-t from-black/60 via-transparent to-black/40" />
         <div className="container-x relative py-12 md:py-16 lg:py-20">

@@ -22,6 +22,12 @@ export function SceneHtml({ position, center, zIndexRange = [16777271, 0], style
     const el = (elRef.current = document.createElement("div"));
     const target = (events.connected as HTMLElement | undefined) ?? gl.domElement.parentElement;
     el.style.cssText = "position:absolute;top:0;left:0;";
+    // The label sits inside the canvas's event container. Without this, a click on a chip in the label
+    // also reaches the 3D scene as a click on empty space (onPointerMissed), which deselects the room
+    // right after the chip's own action ran.
+    const stop = (e: Event) => e.stopPropagation();
+    const kinds = ["pointerdown", "pointerup", "pointermove", "click", "wheel"] as const;
+    kinds.forEach((k) => el.addEventListener(k, stop));
     target?.appendChild(el);
     const r = (root.current = createRoot(el));
     return () => {

@@ -19,7 +19,7 @@ export function SectionHeading({ badge, title, subtitle, align = "center", id, a
       <span className="pill">
         <Sparkle size={14} /> {badge}
       </span>
-      <LetterHeading text={title} as={Tag} id={id} triggerOnScroll className="h-section mt-4" />
+      <LetterHeading text={title} as={Tag} id={id} triggerOnScroll cursor={false} className="h-section mt-4" />
       <span aria-hidden="true" className={`heading-accent-line mt-3.5 ${center ? "mx-auto" : ""}`} />
       {subtitle && <p className={`lead mt-4 ${center ? "mx-auto max-w-2xl" : ""}`}>{subtitle}</p>}
     </div>

@@ -40,8 +40,10 @@ async function copyrightYear() {
   return new Date().getFullYear();
 }
 
-const heading = "font-display text-[17px] font-bold text-[#a5b4fc]";
-const link = "text-[15px] leading-snug text-white/80 transition-colors hover:text-[#a5b4fc]";
+const heading =
+  "relative pb-2.5 font-display text-[17px] font-bold text-[#a5b4fc] after:absolute after:bottom-0 after:left-0 after:h-0.5 after:w-6 after:rounded-full after:bg-gradient-to-r after:from-[#6366f1] after:to-[#22d3ee]";
+const link =
+  "inline-flex min-h-11 items-center text-balance rounded-sm text-[15px] leading-snug text-white/80 transition duration-200 hover:translate-x-0.5 hover:text-[#a5b4fc] focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#a5b4fc] md:min-h-0";
 
 export async function Footer() {
   const year = await copyrightYear();
@@ -58,7 +60,7 @@ export async function Footer() {
         </p>
       </div>
 
-      <div className="container-x !max-w-[92rem] grid grid-cols-2 gap-x-6 gap-y-10 pb-12 pt-12 md:grid-cols-4 md:pt-14 xl:grid-cols-[1.7fr_repeat(6,minmax(0,1fr))_1.3fr] xl:gap-x-8">
+      <div className="container-x !max-w-[92rem] grid grid-cols-2 gap-x-6 gap-y-10 pb-12 pt-12 md:grid-cols-4 md:pt-14 xl:grid-cols-[1.5fr_repeat(6,minmax(0,1fr))_1.25fr] xl:gap-x-7">
         {/* Brand */}
         <div className="col-span-2 md:col-span-4 xl:col-span-1">
           <Link href="/" className="inline-flex items-center gap-3" aria-label={`${SITE.name} home`}>
@@ -78,7 +80,7 @@ export async function Footer() {
         {COLUMNS.map((c) => (
           <nav key={c.heading} aria-label={c.heading}>
             <h2 className={heading}>{c.heading}</h2>
-            <ul className="mt-5 grid gap-2.5">
+            <ul className="mt-4 grid md:gap-2.5">
               {c.paths.filter(isLive).map((p) => (
                 <li key={p}>
                   <Link href={p} className={link}>
@@ -88,7 +90,7 @@ export async function Footer() {
               ))}
               {c.more && (
                 <li>
-                  <Link href={c.more.href} className="text-[15px] font-semibold leading-snug text-[#a5b4fc] transition-colors hover:text-white">
+                  <Link href={c.more.href} className="inline-flex min-h-11 items-center md:min-h-0 text-[15px] font-semibold leading-snug text-[#a5b4fc] transition-colors hover:text-white">
                     {c.more.label}
                     <ArrowRight size={14} className="ml-1.5 inline-block align-[-2px]" />
                   </Link>

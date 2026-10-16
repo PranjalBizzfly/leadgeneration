@@ -28,6 +28,7 @@ export function SearchDialog({ total }: { total: number }) {
   const [open, setOpen] = useState(false);
   const [query, setQuery] = useState("");
   const [items, setItems] = useState<SearchItem[]>([]);
+  const [loaded, setLoaded] = useState(false);
   const [active, setActive] = useState(0);
   const dialogRef = useRef<HTMLDialogElement>(null);
   const inputRef = useRef<HTMLInputElement>(null);
@@ -52,7 +53,10 @@ export function SearchDialog({ total }: { total: number }) {
     if (!d) return;
     if (open && !d.open) {
       d.showModal();
-      loadSearchIndex().then(setItems);
+      loadSearchIndex().then((all) => {
+        setItems(all);
+        setLoaded(true);
+      });
       requestAnimationFrame(() => inputRef.current?.focus());
     } else if (!open && d.open) d.close();
   }, [open]);
@@ -118,7 +122,7 @@ export function SearchDialog({ total }: { total: number }) {
             aria-expanded={list.length > 0}
             aria-controls="search-results"
           />
-          <button type="button" onClick={close} className="shrink-0 rounded-lg border border-line px-2.5 py-1.5 text-xs font-semibold text-ink-soft hover:text-ink" aria-label="Close search">
+          <button type="button" onClick={close} className="min-h-11 min-w-11 shrink-0 rounded-lg border border-line px-2.5 py-1.5 text-xs font-semibold text-ink-soft hover:text-ink sm:min-h-0 sm:min-w-0" aria-label="Close search">
             Esc
           </button>
         </div>
@@ -126,7 +130,18 @@ export function SearchDialog({ total }: { total: number }) {
         <div className="px-3 pb-2 pt-4">
           <p className="px-3 text-xs font-bold uppercase tracking-wider text-brand">{query.trim() ? `Results For “${query.trim()}”` : "Start Here"}</p>
           <ul id="search-results" role="listbox" className="mt-2 max-h-[50vh] overflow-y-auto">
-            {query.trim() && results.length === 0 && (
+            {query.trim() && !loaded && (
+              <li role="status" className="grid gap-2 px-3 py-3">
+                <span className="sr-only">Loading the page index…</span>
+                {[0, 1, 2].map((n) => (
+                  <span key={n} aria-hidden="true" className="grid gap-1.5 py-1.5">
+                    <span className="skeleton h-4 w-3/5" />
+                    <span className="skeleton h-3 w-1/4" />
+                  </span>
+                ))}
+              </li>
+            )}
+            {query.trim() && loaded && results.length === 0 && (
               <li className="px-3 py-8 text-center text-sm text-muted">No pages match “{query}”. Try a broader term.</li>
             )}
             {list.map((r, i) => (

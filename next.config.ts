@@ -3,6 +3,8 @@ import { RENAMED_ROUTES } from "./src/lib/renamed-routes";
 
 const nextConfig: NextConfig = {
   /* config options here */
+  // Optional separate build folder (e.g. NEXT_DIST_DIR=.next-qa) so a QA build can run beside a normal one.
+  distDir: process.env.NEXT_DIST_DIR || ".next",
   cacheComponents: true,
   partialPrefetching: false,
   // Old URLs permanently redirect (308) to the renamed pages, keeping links and search rankings working.

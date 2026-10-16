@@ -185,9 +185,12 @@ export function Hero3D({ intro }: { intro: React.ReactNode }) {
       >
         {/* While the 3D office loads: just the panel's own background and a quiet status line (no photo). */}
         {show3d && !ready && (
-          <p className="absolute inset-x-0 bottom-5 text-center text-sm font-semibold text-ink/60" role="status">
-            Loading The 3D Office…
-          </p>
+          <div className="pointer-events-none absolute inset-0 flex flex-col justify-end gap-3 p-6 sm:p-8" role="status">
+            <span className="sr-only">Loading The 3D Office…</span>
+            <span aria-hidden="true" className="skeleton h-[45%] w-full rounded-2xl" />
+            <span aria-hidden="true" className="skeleton h-4 w-2/3" />
+            <span aria-hidden="true" className="skeleton h-4 w-1/3" />
+          </div>
         )}
         {!show3d && (
           <p className="absolute inset-0 grid place-items-center px-8 text-center text-sm text-ink/70">
@@ -258,7 +261,7 @@ export function Hero3D({ intro }: { intro: React.ReactNode }) {
               type="button"
               aria-pressed={on}
               onClick={() => manual(on ? null : s.id)}
-              className={`flex shrink-0 items-center gap-2 rounded-full border px-3.5 py-2 text-sm font-semibold transition focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-brand ${
+              className={`flex min-h-11 shrink-0 items-center gap-2 rounded-full border px-3.5 py-2 text-sm md:min-h-0 font-semibold transition focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-brand ${
                 on ? "border-transparent text-ink" : "border-line bg-ink/5 text-ink/85 hover:border-line hover:bg-ink/10"
               }`}
               style={on ? { background: s.accent } : undefined}

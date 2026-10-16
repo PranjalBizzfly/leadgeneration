@@ -11,7 +11,7 @@ import { pageMetadata } from "@/lib/metadata";
 
 export const metadata: Metadata = pageMetadata({
   title: "Press Kit: Logos, Descriptions & Brand Colours",
-  description: "Download the LeadGen AI logo mark, copy approved company descriptions and use the official brand colours and typefaces in press and partner materials.",
+  description: "See the LeadGen AI logo mark, copy approved company descriptions and use the official brand colours and typefaces in press and partner materials.",
   path: "/press-kit",
 });
 
@@ -81,7 +81,7 @@ export default function PressKitPage() {
           <ul className="mx-auto mt-6 grid max-w-4xl gap-3 sm:grid-cols-2">
             {ASSETS.map((a) => (
               <li key={a.file}>
-                <a href={a.file} download className="card card-link flex items-center gap-4 px-5 py-4">
+                <div className="card flex items-center gap-4 px-5 py-4">
                   <span className="icon-tile !size-10 !rounded-xl">
                     <FileCheck size={18} />
                   </span>
@@ -89,8 +89,7 @@ export default function PressKitPage() {
                     <span className="block font-bold">{a.name}</span>
                     <span className="block text-sm text-muted">{a.note}</span>
                   </span>
-                  <span className="text-sm font-semibold text-brand">Download</span>
-                </a>
+                </div>
               </li>
             ))}
           </ul>

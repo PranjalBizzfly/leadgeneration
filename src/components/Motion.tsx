@@ -23,7 +23,14 @@ function setupReveals() {
   const els = [...document.querySelectorAll<HTMLElement>(REVEAL)].filter(
     // Skip anything already on screen (no flash on load) and the 3D hero's own UI.
     // Also skip elements that aren't rendered at this screen size (they'd never "arrive").
-    (el) => el.getClientRects().length > 0 && el.getBoundingClientRect().top > window.innerHeight * 0.92 && !el.closest("[aria-roledescription], [aria-hidden=true], details"),
+    (el) =>
+      el.getClientRects().length > 0 &&
+      // Visually hidden labels (sr-only at this breakpoint) never "arrive" on screen.
+      el.offsetWidth > 2 &&
+      el.offsetHeight > 2 &&
+      el.getBoundingClientRect().top > window.innerHeight * 0.92 &&
+      // data-no-reveal opts out components that own their transform (e.g. the 3D industry orbit).
+      !el.closest("[aria-roledescription], [aria-hidden=true], details, [data-no-reveal]"),
   );
   const io = new IntersectionObserver(
     (entries) => {
@@ -57,7 +64,25 @@ function setupReveals() {
     el.classList.add("rv", isHeading ? "rv-heading" : isCard ? card : text);
     io.observe(el);
   }
+  // Fallback: an ancestor's clip-path (section cut shapes) can hide an element from the observer even
+  // while it's on screen. On scroll, reveal anything armed that is actually inside the viewport.
+  let frame = 0;
+  const sweep = () => {
+    frame = 0;
+    for (const el of els) {
+      if (el.classList.contains("rv-in")) continue;
+      const r = el.getBoundingClientRect();
+      if (r.top < window.innerHeight && r.bottom > 0) {
+        el.classList.add("rv-in");
+        io.unobserve(el);
+      }
+    }
+  };
+  const onScroll = () => (frame ||= requestAnimationFrame(sweep));
+  window.addEventListener("scroll", onScroll, { passive: true });
   return () => {
+    window.removeEventListener("scroll", onScroll);
+    cancelAnimationFrame(frame);
     io.disconnect();
     for (const el of els) el.classList.remove("rv", "rv-3d", "rv-up", "rv-left", "rv-right", "rv-zoom", "rv-flipy", "rv-heading", "rv-in");
   };
@@ -128,7 +153,7 @@ export function Motion() {
     };
   }, [pathname]);
 
-  // 3D tilt + spotlight on cards, magnetic primary buttons, header state. One delegated listener.
+  // Spotlight on cards, magnetic primary buttons, header state. One delegated listener.
   useEffect(() => {
     if (window.matchMedia("(prefers-reduced-motion: reduce), (hover: none)").matches) return;
     let tilted: HTMLElement | null = null;
@@ -149,8 +174,6 @@ export function Motion() {
         const r = card.getBoundingClientRect();
         const x = (e.clientX - r.left) / r.width;
         const y = (e.clientY - r.top) / r.height;
-        card.style.setProperty("--rx", `${(0.5 - y) * 7}deg`);
-        card.style.setProperty("--ry", `${(x - 0.5) * 9}deg`);
         card.style.setProperty("--mx", `${x * 100}%`);
         card.style.setProperty("--my", `${y * 100}%`);
       }
@@ -159,8 +182,9 @@ export function Motion() {
       pulled = btn;
       if (btn) {
         const r = btn.getBoundingClientRect();
-        btn.style.setProperty("--tx", `${((e.clientX - r.left) / r.width - 0.5) * 8}px`);
-        btn.style.setProperty("--ty", `${((e.clientY - r.top) / r.height - 0.5) * 6}px`);
+        // Whole pixels only: a sub-pixel offset renders the button label blurry.
+        btn.style.setProperty("--tx", `${Math.round(((e.clientX - r.left) / r.width - 0.5) * 8)}px`);
+        btn.style.setProperty("--ty", `${Math.round(((e.clientY - r.top) / r.height - 0.5) * 6)}px`);
       }
     };
     const onLeave = () => {

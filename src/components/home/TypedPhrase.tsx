@@ -4,6 +4,8 @@ import { useEffect, useState } from "react";
 
 /**
  * Types each phrase, pauses, deletes it and moves on, with a blinking cursor.
+ * Every phrase is laid out invisibly in the same grid cell, so the box is always as wide as the longest
+ * phrase and the heading never reflows while typing. The cursor is zero-width and absolutely positioned.
  * Screen readers get the first phrase as static text; reduced-motion users see it without animation.
  */
 export function TypedPhrase({ phrases }: { phrases: string[] }) {
@@ -30,9 +32,18 @@ export function TypedPhrase({ phrases }: { phrases: string[] }) {
   return (
     <>
       <span className="sr-only">{phrases[0]}</span>
-      <span aria-hidden="true" className="whitespace-nowrap">
-        <span className="text-grad">{phrases[index].slice(0, length)}</span>
-        <span className="type-cursor ml-1 inline-block h-[0.85em] w-[3px] translate-y-[0.08em] rounded-full bg-brand" />
+      <span aria-hidden="true" className="inline-grid whitespace-nowrap">
+        {phrases.map((p) => (
+          <span key={p} className="invisible col-start-1 row-start-1">
+            {p}
+          </span>
+        ))}
+        <span className="col-start-1 row-start-1 justify-self-start">
+          <span className="text-grad">{phrases[index].slice(0, length)}</span>
+          <span className="relative">
+            <span className="type-cursor absolute left-1 top-[0.1em] h-[0.85em] w-[3px] rounded-full bg-brand" />
+          </span>
+        </span>
       </span>
     </>
   );

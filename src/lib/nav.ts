@@ -14,6 +14,8 @@ export interface NavItem {
   href: string;
   columns?: NavColumn[];
   footer?: NavLink;
+  /** Task-oriented shortcuts ("By Goal"): each column is one goal with 2–3 links. */
+  goals?: NavColumn[];
   /** Path prefixes that mark this item active. */
   match: string[];
 }
@@ -51,6 +53,12 @@ export const NAV: NavItem[] = [
       col("Discover", ["/services/multi-source-lead-scraping", "/services/google-maps-lead-extraction", "/services/linkedin-lead-enrichment", "/services/indiamart-lead-extraction"]),
       col("Enrich & Qualify", ["/services/ai-contact-enrichment", "/services/ai-lead-scoring", "/services/seo-website-audit", "/services/business-opportunity-detection"]),
       col("Engage & Operate", ["/services/crm-pipeline-management", "/services/ai-outreach-campaigns", "/services/csv-lead-export", "/services/role-based-team-access", "/services/api-access"]),
+    ],
+    goals: [
+      col("Find Leads", ["/services/multi-source-lead-scraping", "/services/google-maps-lead-extraction", "/services/lead-list-building"]),
+      col("Fill Missing Contacts", ["/services/ai-contact-enrichment", "/services/website-enrichment", "/services/business-email-discovery"]),
+      col("Decide Who To Call", ["/services/ai-lead-scoring", "/services/sales-prioritisation", "/services/business-opportunity-detection"]),
+      col("Reach Out", ["/services/ai-outreach-campaigns", "/services/ai-drafted-outreach-messages", "/services/crm-pipeline-management"]),
     ],
     footer: { title: "Services", href: "/services" },
   },

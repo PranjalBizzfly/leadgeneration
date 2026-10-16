@@ -16,12 +16,37 @@ export function TopicLinkCard({ page }: { page: PlanEntry }) {
   );
 }
 
-export function TopicLinkGrid({ pages }: { pages: PlanEntry[] }) {
+/** Large "start here" tile that leads a bento grid: full description and a clear call to read. */
+function FeatureTopicCard({ page }: { page: PlanEntry }) {
+  return (
+    <Link href={page.path} className="card card-link card-accent group flex flex-col justify-between gap-6 p-7 sm:col-span-2 lg:row-span-2">
+      <span>
+        <span className="pill">Start Here</span>
+        <span className="mt-5 block font-display text-[clamp(1.5rem,2.4vw,2rem)] font-bold leading-tight text-ink">{page.title}</span>
+        <span className="mt-3 block max-w-xl leading-relaxed text-ink-soft">{describe(page.path)}</span>
+      </span>
+      <span className="btn-text">
+        Read The Guide <ChevronRight size={18} />
+      </span>
+    </Link>
+  );
+}
+
+export function TopicLinkGrid({ pages, bento = false }: { pages: PlanEntry[]; bento?: boolean }) {
+  // Bento: the first topic becomes a large tile spanning two columns and two rows on wide screens.
+  const [first, ...rest] = pages;
   return (
     <div className="mt-9 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
-      {pages.map((p) => (
-        <TopicLinkCard key={p.path} page={p} />
-      ))}
+      {bento && first ? (
+        <>
+          <FeatureTopicCard page={first} />
+          {rest.map((p) => (
+            <TopicLinkCard key={p.path} page={p} />
+          ))}
+        </>
+      ) : (
+        pages.map((p) => <TopicLinkCard key={p.path} page={p} />)
+      )}
     </div>
   );
 }

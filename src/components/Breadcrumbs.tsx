@@ -18,7 +18,7 @@ export function Breadcrumbs({ items }: { items: Crumb[] }) {
                   {c.name}
                 </span>
               ) : (
-                <Link href={c.href} className="hover:text-brand">
+                <Link href={c.href} className="inline-flex min-h-11 items-center hover:text-brand md:min-h-0">
                   {c.name}
                 </Link>
               )}

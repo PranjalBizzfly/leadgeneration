@@ -114,7 +114,7 @@ export function ModuleTabs() {
       </div>
       <div className="mt-9 grid gap-6 sm:grid-cols-2 lg:grid-cols-3" role="tabpanel">
         {shown.map(({ icon: Icon, ...m }) => (
-          <article key={m.title} className={`card card-link relative flex flex-col p-7 ${m.featured ? "border-brand ring-4 ring-brand-soft" : ""}`}>
+          <article key={m.title} className={`card card-link relative flex flex-col p-7 ${m.featured ? "card-accent" : ""}`}>
             {m.featured && (
               <span className="absolute -top-3.5 left-1/2 inline-flex -translate-x-1/2 items-center gap-1.5 rounded-full border border-brand bg-surface px-3 py-1 text-xs font-bold text-brand">
                 <Sparkle size={12} /> Core Module
@@ -146,7 +146,8 @@ export function ModuleTabs() {
                 </li>
               ))}
             </ul>
-            <Link href={m.href} className="btn btn-primary mt-7 w-full !rounded-full">
+            {/* One loud action in the grid: the featured module keeps the gradient pill, the rest are text links. */}
+            <Link href={m.href} className={m.featured ? "btn btn-primary mt-7 w-full !rounded-full" : "btn-text mt-6 self-start"}>
               {m.page} <ArrowRight size={16} />
             </Link>
           </article>

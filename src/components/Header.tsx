@@ -3,12 +3,13 @@ import { NAV } from "@/lib/nav";
 import { LIVE } from "@/lib/registry";
 import { ArrowRight, ChevronDown } from "./icons";
 import { Logo } from "./Logo";
+import { MegaMenuCloser } from "./MegaMenuCloser";
 import { MobileNav } from "./MobileNav";
 import { NavLink } from "./NavLink";
 import { SearchDialog } from "./SearchDialog";
 import { ThemeToggle } from "./ThemeToggle";
 
-/** Desktop mega menus open on hover and keyboard focus (focus-within), so they need no client JavaScript. */
+/** Desktop mega menus open on hover and keyboard focus (focus-within); MegaMenuCloser only closes them after a navigation. */
 export function Header() {
   return (
     <header className="site-header sticky top-0 z-40 border-b border-line/70 bg-bg/85 backdrop-blur-xl" style={{ viewTransitionName: "site-header" }}>
@@ -26,7 +27,7 @@ export function Header() {
                   {item.columns && <ChevronDown size={15} className="transition group-hover:rotate-180" />}
                 </NavLink>
                 {item.columns && (
-                  <div className="invisible absolute inset-x-4 top-full z-50 pt-2 opacity-0 transition duration-200 group-focus-within:visible group-focus-within:opacity-100 group-hover:visible group-hover:opacity-100 sm:inset-x-6">
+                  <div className="mega-menu invisible absolute inset-x-4 top-full z-50 pt-2 opacity-0 transition duration-200 group-focus-within:visible group-focus-within:opacity-100 group-hover:visible group-hover:opacity-100 sm:inset-x-6">
                     <div className="card grid gap-8 p-7 shadow-lift" style={{ gridTemplateColumns: `repeat(${item.columns.length}, minmax(0, 1fr))` }}>
                       {item.columns.map((c) => (
                         <div key={c.heading}>
@@ -43,6 +44,29 @@ export function Header() {
                           </ul>
                         </div>
                       ))}
+                      {item.goals && (
+                        <section aria-labelledby={`goals-${item.label}`} className="col-span-full -mt-2 border-t border-line pt-5">
+                          <h2 id={`goals-${item.label}`} className="mb-3 text-xs font-bold uppercase tracking-wider text-brand">
+                            By Goal
+                          </h2>
+                          <div className="grid gap-4" style={{ gridTemplateColumns: `repeat(${item.goals.length}, minmax(0, 1fr))` }}>
+                            {item.goals.map((g) => (
+                              <div key={g.heading} className="min-w-0 rounded-xl bg-surface-2 p-3">
+                                <h3 className="mb-1.5 px-1 text-sm font-semibold text-ink">{g.heading}</h3>
+                                <ul className="grid gap-0.5">
+                                  {g.links.map((l) => (
+                                    <li key={l.href}>
+                                      <Link href={l.href} className="block rounded-md px-1 py-1 text-[13px] text-ink-soft transition hover:bg-brand-soft hover:text-brand">
+                                        {l.title}
+                                      </Link>
+                                    </li>
+                                  ))}
+                                </ul>
+                              </div>
+                            ))}
+                          </div>
+                        </section>
+                      )}
                       {item.footer && (
                         <Link
                           href={item.footer.href}
@@ -57,6 +81,7 @@ export function Header() {
               </li>
             ))}
           </ul>
+          <MegaMenuCloser />
         </nav>
         <div className="ml-auto flex shrink-0 items-center gap-2">
           <SearchDialog total={LIVE.length} />

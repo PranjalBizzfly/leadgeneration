@@ -17,9 +17,11 @@ for (const path of ["/", "/services/ai-lead-scoring", "/careers", "/blog"]) {
   if (!armed) issues.push(`${path}: no reveal targets armed`);
   // Scroll through the whole page; everything armed must end up revealed.
   const h = await page.evaluate(() => document.documentElement.scrollHeight);
-  for (let y = 0; y < h; y += 500) {
-    await page.evaluate((v) => window.scrollTo(0, v), y);
-    await page.waitForTimeout(120);
+  // Wheel scrolling like a visitor: programmatic scrollTo jumps are cancelled by the site's smooth
+  // scrolling and skip past content, which made this check flaky.
+  for (let y = 0; y < h; y += 300) {
+    await page.mouse.wheel(0, 300);
+    await page.waitForTimeout(200);
   }
   await page.waitForTimeout(1200);
   const hidden = await page.locator(".rv:not(.rv-in)").count();
@@ -32,8 +34,9 @@ for (const path of ["/", "/services/ai-lead-scoring", "/careers", "/blog"]) {
     const b = await card.boundingBox();
     await page.mouse.move(b.x + b.width * 0.85, b.y + b.height * 0.2);
     await page.waitForTimeout(200);
-    const rx = await card.evaluate((el) => el.style.getPropertyValue("--rx"));
-    if (!rx) issues.push(`${path}: card tilt did not respond`);
+    // Cards follow the cursor with a spotlight (--mx/--my); the earlier 3D tilt (--rx) was removed from Motion.tsx.
+    const rx = await card.evaluate((el) => el.style.getPropertyValue("--mx") || el.style.getPropertyValue("--rx"));
+    if (!rx) issues.push(`${path}: card spotlight did not respond`);
   }
   if (errors.length) issues.push(`${path}: ${errors.slice(0, 2).join(" | ")}`);
   console.log(`${path}: ${armed} reveal targets`);

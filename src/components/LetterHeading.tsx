@@ -19,12 +19,13 @@ interface Props {
 
 /**
  * Loads heading text letter-by-letter like a responsive typewriter.
- * Fully accessible (crawlers and screen readers get the complete text in sr-only).
- * Reduced-motion users see the complete static text immediately.
+ * The full text is always laid out (untyped letters are only transparent), so the heading never
+ * changes size while it types: no layout shift. The cursor is zero-width and absolutely positioned.
+ * Screen readers and crawlers get the complete text; reduced-motion users see it statically.
  */
 export function LetterHeading({
   text,
-  as: Tag = "h2",
+  as = "h2",
   id,
   className = "",
   speed,
@@ -32,104 +33,78 @@ export function LetterHeading({
   triggerOnScroll = false,
   cursor = true,
 }: Props) {
-  const [mounted, setMounted] = useState(false);
-  const [count, setCount] = useState(0);
-  const [started, setStarted] = useState(!triggerOnScroll);
-  const [done, setDone] = useState(false);
-  const ref = useRef<HTMLElement>(null);
+  // null = static, fully visible text (server render, no JS, reduced motion, finished).
+  const [count, setCount] = useState<number | null>(null);
+  const ref = useRef<HTMLHeadingElement>(null);
 
-  // IntersectionObserver for scroll-triggered headings
   useEffect(() => {
-    if (!triggerOnScroll) {
-      setStarted(true);
-      return;
-    }
     const el = ref.current;
-    if (!el) return;
+    if (!el || window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
+    const charDelay = speed ?? Math.max(14, Math.min(32, Math.floor(1100 / Math.max(text.length, 1))));
+    let timer: ReturnType<typeof setTimeout> | undefined;
+    let io: IntersectionObserver | undefined;
 
-    if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
-      setStarted(true);
-      setDone(true);
-      return;
-    }
-
-    const io = new IntersectionObserver(
-      (entries) => {
-        for (const entry of entries) {
-          if (entry.isIntersecting) {
-            setStarted(true);
-            io.disconnect();
-            break;
-          }
+    const run = () => {
+      let c = 0;
+      const tick = () => {
+        if (c >= text.length) {
+          timer = setTimeout(() => setCount(null), 350);
+          return;
         }
-      },
-      { rootMargin: "0px 0px -40px 0px", threshold: 0.15 }
-    );
+        // Advance by 1 character, or 2 if next is whitespace for natural rhythm.
+        c = Math.min(text.length, c + (text[c] === " " ? 2 : 1));
+        setCount(c);
+        timer = setTimeout(tick, charDelay);
+      };
+      timer = setTimeout(tick, delay);
+    };
 
-    io.observe(el);
-    return () => io.disconnect();
-  }, [triggerOnScroll]);
+    // Hide the letters (opacity only, layout unchanged) after hydration, then type once started.
+    const hide = requestAnimationFrame(() => {
+      setCount(0);
+      if (!triggerOnScroll) return run();
+      io = new IntersectionObserver(
+        (entries) => {
+          if (entries.some((e) => e.isIntersecting)) {
+            io?.disconnect();
+            run();
+          }
+        },
+        { rootMargin: "0px 0px -40px 0px", threshold: 0.15 },
+      );
+      io.observe(el);
+    });
 
-  // Mount check and reduced motion check
-  useEffect(() => {
-    if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
-      setDone(true);
-      return;
-    }
-    setMounted(true);
-  }, []);
+    return () => {
+      cancelAnimationFrame(hide);
+      clearTimeout(timer);
+      io?.disconnect();
+    };
+  }, [text, speed, delay, triggerOnScroll]);
 
-  // Letter by letter typing loop
-  useEffect(() => {
-    if (!mounted || !started || done) return;
+  const Tag = as as "h2";
+  const typing = count !== null;
 
-    // Calculate dynamic speed: longer headings type faster so they finish crisply (~0.4s to 1.3s)
-    const charDelay =
-      speed ?? Math.max(14, Math.min(32, Math.floor(1100 / Math.max(text.length, 1))));
-
-    // Initial delay before typing begins
-    let timer: NodeJS.Timeout;
-    if (count === 0) {
-      timer = setTimeout(() => {
-        setCount(1);
-      }, delay);
-      return () => clearTimeout(timer);
-    }
-
-    if (count >= text.length) {
-      // Finished typing: short pause then fade cursor
-      const finishTimer = setTimeout(() => {
-        setDone(true);
-      }, 350);
-      return () => clearTimeout(finishTimer);
-    }
-
-    // Advance by 1 character, or 2 if next is whitespace for natural rhythm
-    const step = text[count] === " " ? 2 : 1;
-    timer = setTimeout(() => {
-      setCount((c) => Math.min(text.length, c + step));
-    }, charDelay);
-
-    return () => clearTimeout(timer);
-  }, [mounted, started, count, done, text, speed, delay]);
-
-  const displayed = mounted && !done ? text.slice(0, count) : text;
-  const showCursor = cursor && mounted && started && !done;
-
+  const inline = as === "span";
   return (
-    <Tag ref={ref as any} id={id} className={`relative ${className}`}>
+    <Tag ref={ref} id={id} className={`relative ${inline ? "inline-grid" : "grid"} ${className}`}>
       {/* Accessible to screen readers and SEO crawlers */}
       <span className="sr-only">{text}</span>
-      {/* Visual letter-by-letter rendering */}
-      <span aria-hidden="true" suppressHydrationWarning>
-        {displayed}
-        {showCursor && (
-          <span
-            aria-hidden="true"
-            className="type-cursor ml-1 inline-block h-[0.82em] w-[3px] translate-y-[0.06em] rounded-full bg-brand shadow-[0_0_8px_var(--brand)]"
-          />
-        )}
+      {/* The full, unsplit text always defines the box (same cell as the typed layer), so splitting a word
+          mid-type can never change line breaks or height. It is only made transparent while typing. */}
+      <span aria-hidden="true" className={`[grid-area:1/1] ${typing ? "opacity-0" : ""}`}>
+        {text}
       </span>
+      {typing && (
+        <span aria-hidden="true" className="[grid-area:1/1]">
+          {text.slice(0, count)}
+          {cursor && (
+            <span className="relative">
+              <span className="type-cursor absolute left-1 top-[0.12em] h-[0.82em] w-[3px] rounded-full bg-brand shadow-[0_0_8px_var(--brand)]" />
+            </span>
+          )}
+        </span>
+      )}
     </Tag>
   );
 }

@@ -13,7 +13,8 @@ for (const [name, viewport] of [["desktop", { width: 1440, height: 900 }], ["mob
   const errors = [];
   page.on("console", (m) => m.type() === "error" && errors.push(m.text()));
   page.on("pageerror", (e) => errors.push(String(e)));
-  await page.goto(base + "/", { waitUntil: "networkidle" });
+  // "load", not "networkidle": link prefetching keeps the network busy for ~8s, by which time the story has already asked its first question.
+  await page.goto(base + "/", { waitUntil: "load" });
   const vis = (t) => page.getByText(t, { exact: false }).locator("visible=true").first();
   const wait = async (t, ms, label) => {
     try {

@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import type { CSSProperties } from "react";
 import Link from "next/link";
 import { CtaBand } from "@/components/CtaBand";
 import { Faqs } from "@/components/Faqs";
@@ -7,7 +8,10 @@ import { Hero3D } from "@/components/home/Hero3D";
 import { ModuleTabs } from "@/components/home/ModuleTabs";
 import { TypedPhrase } from "@/components/home/TypedPhrase";
 import { ArrowRight, Check, ChevronRight, FileCheck, Gauge, Layers, MapPin, Send, Shield, Sparkle, Target, Users } from "@/components/icons";
+import { IndustryTabs } from "@/components/IndustryTabs";
+import { ManualVsAutomated } from "@/components/ManualVsAutomated";
 import { hasPhoto, Photo } from "@/components/Photo";
+import { SampleCard, type SampleKind } from "@/components/SampleCards";
 import { PageCard } from "@/components/RelatedPages";
 import { SectionHeading } from "@/components/SectionHeading";
 import type { Visual } from "@/lib/groups";
@@ -122,6 +126,9 @@ const SOLUTIONS: { badge: string; title: string; text: string; points: string[];
   },
 ];
 
+/** Sample product card shown on each solution photo, in SOLUTIONS order. */
+const SOLUTION_SAMPLES: SampleKind[] = ["audit", "opportunity", "score", "pipeline"];
+
 const PLANS = [
   { name: "Free", blurb: "For small teams just getting started with lead generation.", features: ["3 scrape queries", "Website Enrichment", "Lead dashboard & CSV export", "1 admin user"] },
   { name: "Growth", blurb: "For growing teams that want scoring, outreach and team roles.", features: ["50 scrape queries / month", "AI lead scoring & outreach", "Full team & 7 role modules", "SEO & website-build reports"], featured: true },
@@ -129,14 +136,14 @@ const PLANS = [
 ];
 
 const HOME_FAQS = [
-  { q: "Which Data Sources Does LeadGen AI Use?", a: "LeadGen AI discovers business leads from Google Maps, LinkedIn and IndiaMART. One query can search every source you turn on. The results are merged into one record per business, and the source of each field is recorded." },
-  { q: "What Does A Lead Record Contain?", a: "Typically the business name, category and postal address; website, listed phone numbers and public email addresses; ratings, review counts and listing-completeness signals; plus anything added by enrichment, the 0–100 score with its reasons, and audit results." },
-  { q: "Can I Try It Before Choosing A Paid Plan?", a: "Yes. The Free plan includes 3 scrape queries, website enrichment, the lead dashboard and CSV export for one admin user. Growth and Scale add scoring, outreach, team roles, more queries and dedicated infrastructure." },
-  { q: "Does LeadGen AI Send Emails On My Behalf?", a: "Outreach campaigns are sent through the email transport you configure. Every message is logged against its lead, and you remain responsible for your list, sending limits and opt-out obligations." },
-  { q: "How Is Each Lead Scored?", a: "Every lead gets one 0–100 score based on completeness, website health, market fit and activity. The reasons are stored on the record. Because the reasons are saved, your team can see why a lead ranks where it does instead of trusting a bare number." },
-  { q: "Will Enrichment Overwrite Changes My Team Makes By Hand?", a: "No. Enrichment never overwrites a field you edited manually, and it only writes a field when the new value is more complete. Every field also records the source it came from, so you can always see where a value came from." },
-  { q: "What Happens If I Close The Browser During A Large Scrape?", a: "Nothing is lost. Long scrapes are handed to a background worker fleet rather than your browser, so they keep running after you close the tab. Each job records what it fetched and when, and quotas are tracked per plan and billing cycle." },
-  { q: "Can I Get My Leads Out Of The Platform?", a: "Yes. Leads can be exported to CSV, and CSV export is already included in the Free plan. Teams on the Scale plan can also use per-org API keys to connect LeadGen AI to their own systems and workflows." },
+  { q: "Which data sources does LeadGen AI use?", a: "LeadGen AI discovers business leads from Google Maps, LinkedIn and IndiaMART. One query can search every source you turn on. The results are merged into one record per business, and the source of each field is recorded." },
+  { q: "What does a lead record contain?", a: "Typically the business name, category and postal address; website, listed phone numbers and public email addresses; ratings, review counts and listing-completeness signals; plus anything added by enrichment, the 0–100 score with its reasons, and audit results." },
+  { q: "Can I try it before choosing a paid plan?", a: "Yes. The Free plan includes 3 scrape queries, website enrichment, the lead dashboard and CSV export for one admin user. Growth and Scale add scoring, outreach, team roles, more queries and dedicated infrastructure." },
+  { q: "Does LeadGen AI send emails on my behalf?", a: "Outreach campaigns are sent through the email transport you configure. Every message is logged against its lead, and you remain responsible for your list, sending limits and opt-out obligations." },
+  { q: "How is each lead scored?", a: "Every lead gets one 0–100 score based on completeness, website health, market fit and activity. The reasons are stored on the record. Because the reasons are saved, your team can see why a lead ranks where it does instead of trusting a bare number." },
+  { q: "Will enrichment overwrite changes my team makes by hand?", a: "No. Enrichment never overwrites a field you edited manually, and it only writes a field when the new value is more complete. Every field also records the source it came from, so you can always see where a value came from." },
+  { q: "What happens if I close the browser during a large scrape?", a: "Nothing is lost. Long scrapes are handed to a background worker fleet rather than your browser, so they keep running after you close the tab. Each job records what it fetched and when, and quotas are tracked per plan and billing cycle." },
+  { q: "Can I get my leads out of the platform?", a: "Yes. Leads can be exported to CSV, and CSV export is already included in the Free plan. Teams on the Scale plan can also use per-org API keys to connect LeadGen AI to their own systems and workflows." },
 ];
 
 const HUB_ICONS = { "/b2c-lead-generation": Users, "/lead-capture-and-conversion": FileCheck, "/lead-qualification-and-nurturing": Gauge, "/tools-analytics-and-reporting": Layers, "/resources": Sparkle, "/comparisons-and-planning": Shield, "/lead-generation-strategies": Target, "/b2b-lead-generation": Users } as const;
@@ -181,7 +188,7 @@ export default function HomePage() {
                   <a href={SITE.appUrl} rel="noopener" className="btn btn-primary !rounded-full !px-7 !py-3.5 text-base">
                     Start Scraping Free <ArrowRight size={18} />
                   </a>
-                  <Link href="/how-it-works" className="inline-flex items-center gap-1.5 font-semibold text-ink hover:text-brand">
+                  <Link href="/how-it-works" className="inline-flex min-h-11 items-center gap-1.5 font-semibold text-ink hover:text-brand">
                     How It Works <ArrowRight size={16} />
                   </Link>
                 </div>
@@ -222,12 +229,16 @@ export default function HomePage() {
               </div>
               <span className="pill shrink-0">Single Source Of Truth</span>
             </div>
-            <div className={`my-5 overflow-hidden rounded-2xl border border-line bg-bg-alt ${hasPhoto("/images/pages/home--about-pipeline.webp") ? "" : "p-3"}`}>
-              <Photo
-                file="/images/pages/home--about-pipeline.webp"
-                sizes="(min-width: 1024px) 34rem, 100vw"
-                fallback={<HeroVisual variant="pipeline" seed="home-about" className="h-auto w-full" />}
-              />
+            <div className="relative my-5">
+              <div className={`overflow-hidden rounded-2xl border border-line bg-bg-alt ${hasPhoto("/images/pages/home--about-pipeline.webp") ? "" : "p-3"}`}>
+                <Photo
+                  file="/images/pages/home--about-pipeline.webp"
+                  sizes="(min-width: 1024px) 34rem, 100vw"
+                  fallback={<HeroVisual variant="pipeline" seed="home-about" className="h-auto w-full" />}
+                />
+              </div>
+              <SampleCard kind="score" className="float-slow absolute -bottom-6 -left-4 hidden scale-90 xl:block" />
+              <SampleCard kind="opportunity" className="float-slower absolute -right-6 -top-6 hidden scale-90 xl:block" />
             </div>
             <ol className="grid gap-3">
               {PIPELINE_ROWS.map(({ icon: Icon, ...r }, i) => (
@@ -249,11 +260,11 @@ export default function HomePage() {
             <SectionHeading align="left" badge="About LeadGen AI" title="Find, Understand And Reach The Right Prospects" />
             <p className="lead mt-6">
               LeadGen AI is a prospect intelligence platform. It turns public business data into clean, scored leads you can export. Your team spends its
-              Time talking to prospects instead of copying and pasting research.
+              time talking to prospects instead of copying and pasting research.
             </p>
             <p className="mt-5 leading-relaxed text-muted">
               Describe the businesses you want. The platform collects them, fills in missing contact details and scores every lead with saved reasons. It also audits websites
-              And flags businesses with a clear problem you can solve.
+              and flags businesses with a clear problem you can solve.
             </p>
             <blockquote className="mt-8 rounded-2xl border border-line border-l-4 border-l-brand bg-surface p-6 text-lg font-semibold italic leading-relaxed">
               “From scraping to outreach, one AI-powered pipeline to discover, qualify, and close prospects.”
@@ -312,7 +323,7 @@ export default function HomePage() {
       </section>
 
       {/* ───────── Methodology ───────── */}
-      <section data-theme="dark" className="surface-island section-y my-8 md:my-12" aria-labelledby="method-title">
+      <section data-theme="dark" className="surface-island section-y my-5 md:my-8" aria-labelledby="method-title">
         <div className="container-x">
           <SectionHeading id="method-title" badge="How It Works" title="Search, Scrape, Enrich, Score, Reach" subtitle="A five-stage workflow that takes you from a search term to logged outreach." />
           <div className="relative mt-10">
@@ -332,7 +343,7 @@ export default function HomePage() {
           </div>
           <div className="relative mt-10 overflow-hidden rounded-[2rem] border border-line bg-gradient-to-r from-[#1e1b4b] via-[#312e81] to-[#4c1d95] p-8 text-white sm:p-12">
             <div aria-hidden="true" className="absolute inset-y-0 right-0 w-full lg:w-3/5 [mask-image:linear-gradient(to_right,transparent,black_45%)]">
-              <Photo file="/images/pages/home--background-jobs.webp" sizes="(min-width: 1024px) 45vw, 100vw" fill className="opacity-45" />
+              <Photo file="/images/pages/home--background-jobs.webp" sizes="(min-width: 1024px) 45vw, 100vw" fill decorative className="opacity-45" />
             </div>
             <div aria-hidden="true" className="bg-grid absolute inset-0 opacity-20" />
             <div className="relative grid items-center gap-8 lg:grid-cols-[1.4fr_1fr]">
@@ -354,6 +365,19 @@ export default function HomePage() {
         </div>
       </section>
 
+      {/* ───────── Manual vs automated workflow ───────── */}
+      <section className="section-y" aria-labelledby="mva-title">
+        <div className="container-x">
+          <SectionHeading
+            id="mva-title"
+            badge="Comparison"
+            title="Manual Vs Automated Prospecting"
+            subtitle="The same five jobs, done by hand or with LeadGen AI. Automate the collecting and checking; keep human judgement for the conversation."
+          />
+          <ManualVsAutomated className="mt-10" />
+        </div>
+      </section>
+
       {/* ───────── Solutions (alternating splits) ───────── */}
       <section className="section-y" aria-labelledby="solutions-title">
         <div className="container-x">
@@ -371,7 +395,7 @@ export default function HomePage() {
                   <ul className="mt-4 grid gap-3 sm:grid-cols-2">
                     {s.points.map((p) => (
                       <li key={p} className="flex items-center gap-2.5 text-[15px] text-ink-soft">
-                        <span className="grid size-6 shrink-0 place-items-center rounded-full border border-brand/40 text-brand">
+                        <span className="tick">
                           <Check size={13} strokeWidth={3} />
                         </span>
                         {p}
@@ -383,7 +407,8 @@ export default function HomePage() {
                   </Link>
                 </div>
                 <div className={`card overflow-hidden !rounded-[2rem] p-5 ${i % 2 ? "lg:order-1" : ""}`}>
-                  <div className={`overflow-hidden rounded-3xl border border-line bg-bg-alt ${hasPhoto(s.photo) ? "" : "p-4"}`}>
+                  <div className={`relative overflow-hidden rounded-3xl border border-line bg-bg-alt ${hasPhoto(s.photo) ? "" : "p-4"}`}>
+                    <SampleCard kind={SOLUTION_SAMPLES[i % SOLUTION_SAMPLES.length]} className="absolute bottom-4 left-4 z-10 hidden origin-bottom-left scale-[0.85] sm:block" />
                     <Photo
                       file={s.photo}
                       sizes="(min-width: 1024px) 36rem, 100vw"
@@ -418,19 +443,33 @@ export default function HomePage() {
             title="Playbooks For 44 Industries"
             subtitle="Buying triggers, listing signals and objections differ by vertical. Each guide covers generating leads and prospecting into the sector."
           />
-          <ul className="mt-10 grid grid-cols-2 gap-4 sm:grid-cols-3 lg:grid-cols-4">
-            {industries.map((p) => (
-              <li key={p.path}>
-                <Link href={p.path} className="card card-link group flex h-full items-center gap-4 p-5">
-                  <span className="icon-tile !size-11">
-                    <MapPin size={19} />
-                  </span>
-                  <span className="min-w-0 flex-1 font-bold">{p.title}</span>
-                  <ChevronRight size={17} className="hidden shrink-0 text-muted transition group-hover:translate-x-1 group-hover:text-brand sm:block" />
-                </Link>
-              </li>
-            ))}
-          </ul>
+          <IndustryTabs className="mt-10" />
+          {/* Industry cards glide in three rows (alternating directions); each row is rendered four times for a seamless
+              loop, with the copy hidden from assistive tech and keyboard. Hover pauses; reduced motion shows a grid. */}
+          <div className="slide-rows mt-10" aria-label="More industry playbooks">
+            {[0, 1, 2].map((row) => {
+              const items = industries.filter((_, k) => k % 3 === row);
+              return (
+                <div key={row} className="slide-row" style={{ "--dir": row % 2 ? "reverse" : "normal", "--dur": `${38 + row * 6}s` } as CSSProperties}>
+                  {[0, 1, 2, 3].map((copy) => (
+                    <ul key={copy} className="slide-track" aria-hidden={copy > 0 ? true : undefined}>
+                      {items.map((p) => (
+                        <li key={p.path}>
+                          <Link href={p.path} tabIndex={copy > 0 ? -1 : undefined} className="card card-link group flex h-full items-center gap-3 p-4 sm:gap-4 sm:p-5">
+                            <span className="icon-tile !size-10 shrink-0 sm:!size-11">
+                              <MapPin size={19} />
+                            </span>
+                            <span className="min-w-0 flex-1 text-[15px] font-bold leading-snug sm:text-base">{p.title}</span>
+                            <ChevronRight size={17} className="shrink-0 text-muted transition group-hover:translate-x-1 group-hover:text-brand" />
+                          </Link>
+                        </li>
+                      ))}
+                    </ul>
+                  ))}
+                </div>
+              );
+            })}
+          </div>
           <div className="mt-10 text-center">
             <Link href="/industries" className="btn btn-primary !rounded-full !px-8 !py-3.5 text-base">
               Industries <ArrowRight size={18} />
@@ -462,7 +501,7 @@ export default function HomePage() {
           <SectionHeading id="plan-title" badge="Plans" title="Start Free, Scale When It Works" subtitle="Three plans, from a first test to dedicated infrastructure. See the live app for current pricing." />
           <div className="mt-10 grid gap-6 lg:grid-cols-3">
             {PLANS.map((p) => (
-              <div key={p.name} className={`card relative flex flex-col !rounded-3xl p-8 ${p.featured ? "border-brand ring-4 ring-brand-soft" : ""}`}>
+              <div key={p.name} className={`card relative flex flex-col !rounded-3xl p-8 ${p.featured ? "card-accent" : ""}`}>
                 {p.featured && (
                   <span className="absolute -top-3.5 left-8 rounded-full bg-grad px-3.5 py-1 text-xs font-bold">Most Popular</span>
                 )}
@@ -524,7 +563,7 @@ export default function HomePage() {
       {/* ───────── Knowledge hubs ───────── */}
       <section className="surface-soft cut-wave section-y" aria-labelledby="learn-title">
         <div className="container-x">
-          <SectionHeading id="learn-title" badge="Learning Library" title="What You’ll Find In Our Guides" subtitle={`${LIVE.length} Pages Covering Every Stage, From First Click To Closed Deal.`} />
+          <SectionHeading id="learn-title" badge="Learning Library" title="What You’ll Find In Our Guides" subtitle={`${LIVE.length} pages covering every stage, from first click to closed deal.`} />
           <div className="mt-10 grid gap-5 sm:grid-cols-2 lg:grid-cols-4">
             {hubs.map((path) => {
               const Icon = HUB_ICONS[path];

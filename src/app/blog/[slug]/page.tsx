@@ -6,6 +6,7 @@ import { CtaBand } from "@/components/CtaBand";
 import { ArrowRight, Check } from "@/components/icons";
 import { LetterHeading } from "@/components/LetterHeading";
 import { PageHero } from "@/components/PageHero";
+import { PageSchema } from "@/components/PageSchema";
 import { TopicLinkGrid } from "@/components/TopicLinkCard";
 import { posts } from "@/content/blog-posts";
 import { pageMetadata } from "@/lib/metadata";
@@ -22,7 +23,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const { slug } = await params;
   const post = posts.find((p) => p.slug === slug);
   if (!post) return {};
-  return pageMetadata({ title: post.title, description: post.metaDescription, path: `/blog/${post.slug}` });
+  return pageMetadata({ title: post.title, description: post.metaDescription, path: `/blog/${post.slug}`, ownImage: true });
 }
 
 const slugify = (s: string) => s.toLowerCase().replace(/[^a-z0-9]+/g, "-").replace(/(^-|-$)/g, "");
@@ -36,24 +37,42 @@ export default async function BlogPostPage({ params }: Props) {
 
   return (
     <div className="page-root">
+      <PageSchema post={post} />
       <PageHero path={`/blog/${post.slug}`} badge={post.category} title={post.title} intro={post.excerpt}>
         <span className="chip">{post.readMinutes} min read</span>
       </PageHero>
 
       <section className="section-y">
         <div className="container-x grid gap-12 lg:grid-cols-[minmax(0,1fr)_18rem] lg:gap-16">
-          <article className="min-w-0 max-w-3xl">
+          <article className="min-w-0 max-w-[44rem]">
+            {/* Phones: the contents list sits above the article, collapsed. */}
+            <details className="card mb-8 p-4 lg:hidden">
+              <summary className="flex min-h-11 cursor-pointer list-none items-center justify-between font-semibold [&::-webkit-details-marker]:hidden">
+                In This Article <span aria-hidden="true" className="text-muted">{post.sections.length} Sections</span>
+              </summary>
+              <ol className="mt-2 grid gap-1 text-[15px]">
+                {post.sections.map((s, i) => (
+                  <li key={s.heading}>
+                    <a href={`#${slugify(s.heading)}`} className="flex min-h-11 items-center gap-3 text-ink-soft hover:text-brand">
+                      <span className="font-mono text-xs text-muted">{String(i + 1).padStart(2, "0")}</span>
+                      {s.heading}
+                    </a>
+                  </li>
+                ))}
+              </ol>
+            </details>
             {post.sections.map((s) => (
-              <section key={s.heading} id={slugify(s.heading)} className="mt-9 scroll-mt-28 first:mt-0">
-                <LetterHeading text={s.heading} as="h2" triggerOnScroll className="text-[clamp(1.5rem,2.6vw,2rem)] font-extrabold leading-tight" />
+              <section key={s.heading} id={slugify(s.heading)} className="mt-12 scroll-mt-28 first:mt-0">
+                {/* Static heading: typing effects get in the way of reading. */}
+                <h2 className="text-[clamp(1.5rem,2.6vw,2rem)] font-extrabold leading-tight tracking-tight">{s.heading}</h2>
                 <span aria-hidden="true" className="heading-accent-line mt-3" />
-                <div className="prose-body mt-5 text-[17px]">
+                <div className="prose-body mt-5 max-w-[68ch] text-[17.5px] sm:text-[18px]">
                   {s.paragraphs.map((p) => (
                     <p key={p.slice(0, 40)}>{p}</p>
                   ))}
                 </div>
                 {s.bullets && (
-                  <ul className="mt-5 grid gap-3">
+                  <ul className="mt-6 grid max-w-[68ch] gap-3">
                     {s.bullets.map((b) => (
                       <li key={b} className="flex gap-3 rounded-xl border border-line bg-surface px-4 py-3 text-[15px] leading-relaxed text-ink-soft">
                         <Check size={18} className="mt-0.5 shrink-0 text-brand" strokeWidth={2.6} /> {b}
@@ -63,8 +82,8 @@ export default async function BlogPostPage({ params }: Props) {
                 )}
               </section>
             ))}
-            <Link href="/blog" className="btn btn-ghost mt-10 !rounded-full">
-              Blog
+            <Link href="/blog" className="btn btn-ghost mt-12 !rounded-full">
+              <ArrowRight size={15} className="rotate-180" /> Blog
             </Link>
           </article>
           <aside className="hidden lg:block" aria-label="In this article">

@@ -51,7 +51,7 @@ export function AppWindow({ station, index, run, playing, dwellMs, status, onTog
           <Demo id={station.id} run={run} />
         </div>
 
-        <button type="button" onClick={() => setDetails((d) => !d)} className="mt-3 text-[11px] font-bold text-ink/60 underline-offset-2 hover:text-ink hover:underline" aria-expanded={details}>
+        <button type="button" onClick={() => setDetails((d) => !d)} className="relative mt-3 text-[11px] font-bold before:absolute before:-inset-x-2 before:-inset-y-3.5 before:content-[''] text-ink/60 underline-offset-2 hover:text-ink hover:underline" aria-expanded={details}>
           {details ? "Hide how it works" : "How it works"}
         </button>
         {details && (
@@ -77,7 +77,7 @@ export function AppWindow({ station, index, run, playing, dwellMs, status, onTog
           type="button"
           onClick={onTogglePlay}
           aria-label={playing ? "Pause story" : "Play story"}
-          className="grid size-8 shrink-0 place-items-center rounded-full bg-ink text-bg transition hover:bg-ink/85"
+          className="relative grid size-8 shrink-0 place-items-center rounded-full before:absolute before:-inset-1.5 before:content-[''] bg-ink text-bg transition hover:bg-ink/85"
         >
           {playing ? (
             <svg width="12" height="12" viewBox="0 0 12 12" aria-hidden="true">
@@ -92,7 +92,7 @@ export function AppWindow({ station, index, run, playing, dwellMs, status, onTog
         </button>
         <div className="flex flex-1 gap-1" role="group" aria-label="Story stages">
           {STATIONS.map((st, i) => (
-            <button key={st.id} type="button" onClick={() => onJump(i)} aria-label={`Go to ${st.short}`} className="group relative h-6 flex-1">
+            <button key={st.id} type="button" onClick={() => onJump(i)} aria-label={`Go to ${st.short}`} className="group relative h-6 flex-1 before:absolute before:-inset-y-2.5 before:inset-x-0 before:content-['']">
               <span className="absolute inset-x-0 top-1/2 h-1 -translate-y-1/2 overflow-hidden rounded-full bg-ink/15 group-hover:bg-ink/25">
                 {i === index && dwellMs > 0 ? (
                   <span

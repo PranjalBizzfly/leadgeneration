@@ -1,7 +1,7 @@
 import Image from "next/image";
 import { pageBackground } from "@/lib/page-background";
 import Link from "next/link";
-import type { PageContent, PlanEntry } from "@/content/types";
+import type { PageContent, PlanEntry, Section } from "@/content/types";
 import { GROUPS, type Visual } from "@/lib/groups";
 import { breadcrumbs, groupChildren, relatedPages } from "@/lib/registry";
 import { SITE } from "@/lib/site";
@@ -10,8 +10,16 @@ import { CtaBand } from "./CtaBand";
 import { Faqs } from "./Faqs";
 import { HeroVisual } from "./HeroVisual";
 import { ArrowRight, Check, FileCheck, Gauge, Info, Layers, MapPin, Send, Shield, Sparkle, Target, Users } from "./icons";
-import { LeadForm } from "./LeadForm";
+import { IndustryTabs } from "./IndustryTabs";
+import { LazyLeadForm } from "./LazyLeadForm";
+import { ManualVsAutomated } from "./ManualVsAutomated";
+import { ChecklistProgress } from "./page-types/ChecklistProgress";
+import { comparisonLayout, pageKind } from "./page-types/detect";
+import { Glossary } from "./page-types/Glossary";
+import { InTheApp } from "./page-types/InTheApp";
+import { PlaybookTimeline } from "./page-types/PlaybookTimeline";
 import { LetterHeading } from "./LetterHeading";
+import { TocSpy } from "./TocSpy";
 import { SectionHeading } from "./SectionHeading";
 import { TopicLinkGrid } from "./TopicLinkCard";
 
@@ -57,9 +65,89 @@ export function ContentPage({ content, plan }: { content: PageContent; plan: Pla
   // One section-cut shape per page (varies across pages, never mixed on one page).
   const cut = CUTS[[...plan.path].reduce((h, c) => (h * 31 + c.charCodeAt(0)) >>> 0, 0) % CUTS.length];
   const minutes = readingMinutes(content);
-  const toc = content.sections.map((s) => s.heading);
   const bg = pageBackground(plan.path);
   const photo = bg?.image;
+  const kind = pageKind(plan, isHub);
+  const compare = kind === "compare" ? comparisonLayout(plan, content) : null;
+  const checkTotal = kind === "checklist" ? content.sections.reduce((n, s) => n + (s.bullets?.length ?? 0), 0) : 0;
+  const toc = kind === "glossary" ? [] : content.sections.map((s) => s.heading);
+
+  /** One guide part. `compact` is used inside the two comparison columns. */
+  const renderSection = (s: Section, i: number, compact = false) => {
+    const Icon = SECTION_ICONS[i % SECTION_ICONS.length];
+    const [keyIdea, ...detail] = s.paragraphs;
+    const checklist = kind === "checklist";
+    return (
+      <section
+        key={s.heading}
+        id={slugify(s.heading)}
+        className={`guide-part group scroll-mt-28 overflow-hidden rounded-3xl border border-line shadow-card ${compact ? "mt-6" : "mt-10"} ${i % 2 ? "guide-part-alt" : "bg-surface"}`}
+      >
+        <header className={`flex items-center gap-4 border-b border-line bg-surface-2 ${compact ? "px-5 py-4" : "px-6 py-5 sm:px-8"}`}>
+          <span className="icon-tile">
+            <Icon size={22} />
+          </span>
+          <div className="min-w-0">
+            <span className="text-xs font-bold uppercase tracking-wider text-brand">Part {String(i + 1).padStart(2, "0")}</span>
+            <LetterHeading
+              text={s.heading}
+              as="h2"
+              triggerOnScroll
+              cursor={false}
+              className={`mt-0.5 font-extrabold leading-tight transition-colors duration-300 group-hover:text-brand ${compact ? "text-[clamp(1.2rem,2vw,1.45rem)]" : "text-[clamp(1.35rem,2.4vw,1.75rem)]"}`}
+            />
+          </div>
+        </header>
+        <div className={`grid gap-6 ${compact ? "p-5" : "p-6 sm:p-8"}`}>
+          {keyIdea && (
+            <div className="key-idea">
+              <p className="flex items-center gap-2 text-xs font-bold uppercase tracking-wider text-brand">
+                <Sparkle size={14} /> Key Idea
+              </p>
+              <p className={`mt-2.5 font-medium leading-relaxed text-ink ${compact ? "text-[16.5px]" : "text-[18px]"}`}>{keyIdea}</p>
+            </div>
+          )}
+          {detail.length > 0 && (
+            <div className="prose-body text-[16.5px]">
+              {detail.map((p) => (
+                <p key={p.slice(0, 40)}>{p}</p>
+              ))}
+            </div>
+          )}
+          {s.bullets &&
+            (checklist ? (
+              <fieldset>
+                <legend className="text-xs font-bold uppercase tracking-wider text-muted">Tick As You Go</legend>
+                <ul className="checklist mt-3">
+                  {s.bullets.map((b, j) => (
+                    <li key={b}>
+                      <label className="checklist-item">
+                        <input type="checkbox" data-check={`${i}-${j}`} className="checklist-box" />
+                        <span>{b}</span>
+                      </label>
+                    </li>
+                  ))}
+                </ul>
+              </fieldset>
+            ) : (
+              <div>
+                <p className="text-xs font-bold uppercase tracking-wider text-muted">Key Points</p>
+                <ol className="key-points mt-3">
+                  {s.bullets.map((b, j) => (
+                    <li key={b}>
+                      <span className="key-points-n" aria-hidden="true">
+                        {j + 1}
+                      </span>
+                      <span>{b}</span>
+                    </li>
+                  ))}
+                </ol>
+              </div>
+            ))}
+        </div>
+      </section>
+    );
+  };
 
   return (
     <div className="page-root">
@@ -67,17 +155,18 @@ export function ContentPage({ content, plan }: { content: PageContent; plan: Pla
       {photo ? (
         <>
         <section data-theme="dark" className="relative isolate overflow-hidden bg-bg text-ink">
-          <Image src={photo.src} alt={bg.own ? photo.alt : ""} fill preload quality={90} sizes="100vw" className="-z-20 object-cover" />
+          <Image src={photo.src} alt={bg.own ? photo.alt : ""} data-decorative={bg.own ? undefined : ""} fill preload quality={90} sizes="100vw" className="-z-20 object-cover" />
           <div aria-hidden="true" className="absolute inset-0 -z-10 bg-gradient-to-r from-black/90 via-black/70 to-black/30" />
           <div aria-hidden="true" className="absolute inset-0 -z-10 bg-gradient-to-t from-black/60 via-transparent to-black/40" />
-          <div className="container-x relative pb-24 pt-8 md:pb-28 lg:pt-12">
+          <div className={`container-x relative pt-8 lg:pt-12 ${content.form ? "grid gap-10 pb-14 md:pb-16 lg:grid-cols-[minmax(0,1fr)_minmax(0,30rem)] lg:items-start lg:gap-12" : "pb-24 md:pb-28"}`}>
+            <div className="min-w-0">
             <Breadcrumbs items={breadcrumbs(plan.path)} />
             <span className="pill mt-6 !border-white/20 !bg-white/10 !text-white backdrop-blur">
               <Sparkle size={14} /> {content.eyebrow}
             </span>
             <LetterHeading text={content.h1} as="h1" className="mt-5 max-w-4xl text-[clamp(2.3rem,5.2vw,4.2rem)] font-extrabold uppercase leading-[1.02] tracking-tight text-white" />
             <span aria-hidden="true" className="heading-accent-line mt-4 w-20 !bg-gradient-to-r !from-indigo-400 !via-purple-300 !to-cyan-400" />
-            <div className="mt-6 grid items-end gap-8 lg:grid-cols-[1fr_auto]">
+            <div className={`mt-6 grid items-end gap-8 ${content.form ? "" : "lg:grid-cols-[1fr_auto]"}`}>
               <p className="max-w-2xl text-[clamp(1.05rem,1.6vw,1.2rem)] leading-relaxed text-white/85">{content.metaDescription}</p>
               <div className="flex flex-wrap gap-3">
                 <CtaLink href={content.cta.href} className="btn btn-primary !rounded-full !px-6 !py-3">
@@ -91,9 +180,16 @@ export function ContentPage({ content, plan }: { content: PageContent; plan: Pla
                 </a>
               </div>
             </div>
+            </div>
+            {content.form && (
+              <div id="form" className="min-w-0 scroll-mt-28">
+                <LazyLeadForm kind={content.form} />
+              </div>
+            )}
           </div>
         </section>
-        {/* Stats card overlapping the hero's bottom edge */}
+        {/* Stats card overlapping the hero's bottom edge (not on form pages, where the form fills the hero) */}
+        {!content.form && (
         <div className="container-x relative z-10 -mt-16 md:-mt-20">
           <dl className="card mx-auto grid max-w-5xl grid-cols-2 divide-line !rounded-3xl py-2 shadow-lift md:grid-cols-4 md:divide-x">
             {[
@@ -112,6 +208,7 @@ export function ContentPage({ content, plan }: { content: PageContent; plan: Pla
             ))}
           </dl>
         </div>
+        )}
         </>
       ) : (
       <section className="relative overflow-hidden border-b border-line">
@@ -155,7 +252,12 @@ export function ContentPage({ content, plan }: { content: PageContent; plan: Pla
               </a>
             </div>
           </div>
-          {/* Framed visual, styled like an app window */}
+          {content.form ? (
+            <div id="form" className="min-w-0 scroll-mt-28">
+              <LazyLeadForm kind={content.form} />
+            </div>
+          ) : (
+          /* Framed visual, styled like an app window */
           <div className="relative mx-auto hidden w-full max-w-md sm:block lg:max-w-none">
             <div className="card overflow-hidden !rounded-3xl shadow-lift">
               <div className="flex items-center gap-2 border-b border-line bg-surface-2 px-5 py-3.5">
@@ -178,8 +280,17 @@ export function ContentPage({ content, plan }: { content: PageContent; plan: Pla
               <span className="text-sm font-semibold">{content.highlights[0]}</span>
             </div>
           </div>
+          )}
         </div>
       </section>
+      )}
+
+      {/* ───────── Industries hub: tabbed tour of key verticals ───────── */}
+      {plan.path === "/industries" && (
+        <section className={`container-x ${photo ? "pt-16 md:pt-20" : "pt-12 md:pt-16"}`} aria-labelledby="industry-tabs-title">
+          <SectionHeading id="industry-tabs-title" badge="Industries" title="Explore Key Industries" subtitle="Pick an industry to see what its guide covers." />
+          <IndustryTabs className="mt-10" />
+        </section>
       )}
 
       {/* ───────── Overview + article with sticky summary ───────── */}
@@ -187,7 +298,7 @@ export function ContentPage({ content, plan }: { content: PageContent; plan: Pla
         <div className="container-x grid gap-12 lg:grid-cols-[minmax(0,1fr)_23rem] lg:gap-16">
           <article className="min-w-0">
             <div className="group">
-              <LetterHeading text="Overview" as="h2" triggerOnScroll className="text-[clamp(1.9rem,3.4vw,2.6rem)] font-extrabold" />
+              <LetterHeading text="Overview" as="h2" triggerOnScroll cursor={false} className="text-[clamp(1.9rem,3.4vw,2.6rem)] font-extrabold" />
               <span aria-hidden="true" className="heading-accent-line mt-3" />
             </div>
             <div className="mt-6 grid gap-5">
@@ -202,22 +313,26 @@ export function ContentPage({ content, plan }: { content: PageContent; plan: Pla
             <ul className="mt-5 grid gap-3 sm:grid-cols-2">
               {content.highlights.map((h) => (
                 <li key={h} className="card flex items-center gap-3 px-5 py-4 text-[15px] font-semibold">
-                  <span className="grid size-7 shrink-0 place-items-center rounded-full bg-brand-soft text-brand">
-                    <Check size={15} strokeWidth={3} />
+                  <span className="tick">
+                    <Check size={13} strokeWidth={3} />
                   </span>
                   {h}
                 </li>
               ))}
             </ul>
 
-            {content.form && (
-              <div id="form" className="mt-10 scroll-mt-28">
-                <LeadForm kind={content.form} />
+            {kind === "service" && (
+              <div className="mt-10">
+                <h3 className="text-xl font-bold">In The App</h3>
+                <p className="mt-1.5 text-sm text-muted">An illustrative preview built from sample data, showing the kind of output this feature produces in LeadGen AI.</p>
+                <InTheApp path={plan.path} className="mt-5" />
               </div>
             )}
 
+            {kind === "glossary" && <Glossary sections={content.sections} />}
+
             {/* At-a-glance index: every part with a one-line summary. */}
-            {content.sections.length > 1 && (
+            {kind !== "glossary" && content.sections.length > 1 && (
               <div className="mt-10 overflow-hidden rounded-3xl border border-line">
                 <div className="flex items-center justify-between gap-4 border-b border-line bg-surface-2 px-6 py-4">
                   <h3 className="font-bold">At A Glance</h3>
@@ -237,51 +352,31 @@ export function ContentPage({ content, plan }: { content: PageContent; plan: Pla
               </div>
             )}
 
-            {content.sections.map((s, i) => {
-              const Icon = SECTION_ICONS[i % SECTION_ICONS.length];
-              const [keyIdea, ...detail] = s.paragraphs;
-              return (
-                <section key={s.heading} id={slugify(s.heading)} className="group mt-10 scroll-mt-28 overflow-hidden rounded-3xl border border-line bg-surface shadow-card transition-all duration-300 hover:border-brand/40 hover:shadow-lift">
-                  <header className="flex items-center gap-4 border-b border-line bg-surface-2 px-6 py-5 sm:px-8">
-                    <span className="icon-tile">
-                      <Icon size={22} />
-                    </span>
-                    <div className="min-w-0">
-                      <span className="text-xs font-bold uppercase tracking-wider text-brand">Part {String(i + 1).padStart(2, "0")}</span>
-                      <LetterHeading text={s.heading} as="h2" triggerOnScroll className="mt-0.5 text-[clamp(1.35rem,2.4vw,1.75rem)] font-extrabold leading-tight transition-colors duration-300 group-hover:text-brand" />
+            {kind === "checklist" && checkTotal > 0 ? (
+              <div data-checklist={plan.path}>
+                <div className="checklist-sticky mt-10">
+                  <ChecklistProgress storageKey={plan.path} total={checkTotal} />
+                </div>
+                {content.sections.map((s, i) => renderSection(s, i))}
+              </div>
+            ) : compare ? (
+              <>
+                {compare.before.map((s) => renderSection(s, content.sections.indexOf(s)))}
+                <div className="mt-10 grid gap-6 md:grid-cols-2">
+                  {compare.columns.map((col, c) => (
+                    <div key={compare.sides[c]} className={`compare-col min-w-0 ${c ? "compare-col-b" : ""}`}>
+                      <p className="compare-side-label">
+                        <span aria-hidden="true">{c ? "B" : "A"}</span> {compare.sides[c]}
+                      </p>
+                      {col.map((s) => renderSection(s, content.sections.indexOf(s), true))}
                     </div>
-                  </header>
-                  <div className="grid gap-6 p-6 sm:p-8">
-                    {keyIdea && (
-                      <div className="rounded-2xl border-l-4 border-brand bg-brand-soft/60 px-5 py-4">
-                        <p className="text-xs font-bold uppercase tracking-wider text-brand">Key Idea</p>
-                        <p className="mt-2 text-[17px] leading-relaxed text-ink">{keyIdea}</p>
-                      </div>
-                    )}
-                    {detail.length > 0 && (
-                      <div className="prose-body text-[16.5px]">
-                        {detail.map((p) => (
-                          <p key={p.slice(0, 40)}>{p}</p>
-                        ))}
-                      </div>
-                    )}
-                    {s.bullets && (
-                      <div>
-                        <p className="text-xs font-bold uppercase tracking-wider text-muted">Key Points</p>
-                        <ol className="mt-3 grid gap-3 sm:grid-cols-2">
-                          {s.bullets.map((b, j) => (
-                            <li key={b} className="flex gap-3 rounded-xl border border-line bg-bg px-4 py-3.5 text-[15px] leading-relaxed text-ink-soft">
-                              <span className="grid size-6 shrink-0 place-items-center rounded-md bg-brand-soft font-mono text-xs font-bold text-brand">{j + 1}</span>
-                              <span>{b}</span>
-                            </li>
-                          ))}
-                        </ol>
-                      </div>
-                    )}
-                  </div>
-                </section>
-              );
-            })}
+                  ))}
+                </div>
+                {compare.after.map((s) => renderSection(s, content.sections.indexOf(s)))}
+              </>
+            ) : (
+              kind !== "glossary" && content.sections.map((s, i) => renderSection(s, i))
+            )}
           </article>
 
           {/* Sticky summary card */}
@@ -301,12 +396,13 @@ export function ContentPage({ content, plan }: { content: PageContent; plan: Pla
                   </div>
                   <div className="flex justify-between gap-4">
                     <dt className="text-muted">Sections</dt>
-                    <dd className="font-semibold">{toc.length}</dd>
+                    <dd className="font-semibold">{content.sections.length}</dd>
                   </div>
                 </dl>
               </div>
               {toc.length > 1 && (
-                <nav aria-label="On this page" className="hidden border-b border-line p-6 lg:block">
+                <nav aria-label="On this page" className="toc hidden border-b border-line p-6 lg:block">
+                  <TocSpy />
                   <p className="text-xs font-bold uppercase tracking-wider text-muted">On this page</p>
                   <ol className="mt-3 grid gap-2.5 text-sm">
                     {toc.map((t, i) => (
@@ -333,11 +429,11 @@ export function ContentPage({ content, plan }: { content: PageContent; plan: Pla
                   {content.cta.label} <ArrowRight size={16} />
                 </CtaLink>
                 {content.cta.href.startsWith("http") ? (
-                  <Link href="/plans" className="btn btn-ghost mt-2.5 w-full !rounded-full">
+                  <Link href="/plans" className="btn-text mt-1.5 w-full justify-center">
                     Plans
                   </Link>
                 ) : (
-                  <a href={SITE.appUrl} rel="noopener" className="btn btn-ghost mt-2.5 w-full !rounded-full">
+                  <a href={SITE.appUrl} rel="noopener" className="btn-text mt-1.5 w-full justify-center">
                     Start Free
                   </a>
                 )}
@@ -351,11 +447,24 @@ export function ContentPage({ content, plan }: { content: PageContent; plan: Pla
         </div>
       </section>
 
+      {/* ───────── How it works: manual vs automated ───────── */}
+      {plan.path === "/how-it-works" && (
+        <section className="section-y" aria-labelledby="manual-vs-automated">
+          <div className="container-x">
+            <SectionHeading id="manual-vs-automated" badge="Compare" title="Manual Vs Automated Prospecting" />
+            <ManualVsAutomated className="mt-8" />
+          </div>
+        </section>
+      )}
+
       {/* ───────── Process ───────── */}
       {content.steps && (
-        <section id={slugify(content.steps.heading)} data-theme="dark" className="surface-island section-y my-8 scroll-mt-20 md:my-12">
+        <section id={slugify(content.steps.heading)} data-theme="dark" className="surface-island section-y my-5 scroll-mt-20 md:my-8">
           <div className="container-x">
-            <SectionHeading badge="Step By Step" title={content.steps.heading} subtitle={`A ${content.steps.items.length}-Step Process You Can Follow And Adapt.`} />
+            <SectionHeading badge={kind === "strategy" ? "Playbook" : "Step By Step"} title={content.steps.heading} subtitle={`A ${content.steps.items.length}-Step Process You Can Follow And Adapt.`} />
+            {kind === "strategy" ? (
+              <PlaybookTimeline items={content.steps.items} className="mx-auto mt-10 max-w-3xl" />
+            ) : (
             <ol
               className={`mt-10 grid gap-5 sm:grid-cols-2 ${content.steps.items.length >= 5 ? "lg:grid-cols-3 xl:grid-cols-5" : content.steps.items.length === 4 ? "lg:grid-cols-4" : "lg:grid-cols-3"}`}
             >
@@ -369,6 +478,7 @@ export function ContentPage({ content, plan }: { content: PageContent; plan: Pla
                 </li>
               ))}
             </ol>
+            )}
           </div>
         </section>
       )}
@@ -403,7 +513,7 @@ export function ContentPage({ content, plan }: { content: PageContent; plan: Pla
               <span className="pill">
                 <Sparkle size={14} /> Illustrative Example
               </span>
-              <LetterHeading text={content.example.heading} as="h2" triggerOnScroll className="mt-5 text-[clamp(1.6rem,3vw,2.3rem)] font-extrabold leading-tight" />
+              <LetterHeading text={content.example.heading} as="h2" triggerOnScroll cursor={false} className="mt-5 text-[clamp(1.6rem,3vw,2.3rem)] font-extrabold leading-tight" />
               <span aria-hidden="true" className="heading-accent-line mt-3" />
               <p className="lead mt-5">{content.example.text}</p>
               <p className="mt-5 text-sm text-muted">A hypothetical scenario for explanation only, not a customer story or a promised result.</p>
@@ -420,7 +530,7 @@ export function ContentPage({ content, plan }: { content: PageContent; plan: Pla
         <section className="section-y" aria-labelledby="hub-topics">
           <div className="container-x">
             <SectionHeading id="hub-topics" badge={group.label} title={`All ${children.length} ${group.label} Topics`} subtitle={group.blurb} />
-            <TopicLinkGrid pages={children} />
+            <TopicLinkGrid pages={children} bento />
           </div>
         </section>
       )}
@@ -439,7 +549,7 @@ export function ContentPage({ content, plan }: { content: PageContent; plan: Pla
 
       {/* ───────── Related topics ───────── */}
       {related.length > 0 && (
-        <section className="section-y" aria-labelledby="related-title">
+        <section className="surface-panel section-y my-5 md:my-8" aria-labelledby="related-title">
           <div className="container-x">
             <SectionHeading id="related-title" badge="Keep Exploring" title="Related Topics" subtitle="Hand-picked pages that go deeper on the ideas covered here." />
             <TopicLinkGrid pages={related} />
