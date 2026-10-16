@@ -88,7 +88,7 @@ export function LeadForm({ kind }: { kind: "contact" | "demo" }) {
           <Check size={24} />
         </div>
         <h3 className="mt-4 text-xl font-bold">Thanks, Your {kind === "demo" ? "Access Request" : "Message"} Has Been Submitted.</h3>
-        <p className="mt-2 text-ink-soft">We’ll Reply To The Email Address You Provided.</p>
+        <p className="mt-2 text-ink-soft">We’ll reply to the email address you provided.</p>
       </div>
     );
   }
@@ -169,7 +169,7 @@ export function LeadForm({ kind }: { kind: "contact" | "demo" }) {
         </p>
       )}
       <div className="flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-between">
-        <p className="text-xs text-muted">We Use These Details Only To Respond To You. See Our{" "}
+        <p className="text-xs text-muted">We use these details only to respond to you. See our{" "}
           <Link href="/privacy-policy" className="font-semibold text-brand underline-offset-2 hover:underline">
             Privacy Policy
           </Link>

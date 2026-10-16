@@ -14,16 +14,16 @@ export interface GroupInfo {
 }
 
 export const GROUPS: Record<GroupKey, GroupInfo> = {
-  core: { key: "core", label: "Company", hub: null, blurb: "About LeadGen AI, How It Works, Plans And Support.", visual: "dashboard", hue: 265 },
-  services: { key: "services", label: "Platform Services", hub: "/services", blurb: "Every Capability In The LeadGen AI Pipeline, From Discovery To Outreach.", visual: "pipeline", hue: 265 },
-  strategies: { key: "strategies", label: "Strategies", hub: "/strategies", blurb: "Playbooks For Inbound, Outbound And Multichannel Lead Generation.", visual: "funnel", hue: 285 },
-  industries: { key: "industries", label: "Industries", hub: "/industries", blurb: "Vertical-Specific Guidance For Generating And Prospecting Leads.", visual: "map", hue: 205 },
-  b2b: { key: "b2b", label: "B2B", hub: "/b2b", blurb: "Reaching Business Buyers, From SMB Owners To Enterprise Committees.", visual: "network", hue: 285 },
-  b2c: { key: "b2c", label: "B2C", hub: "/b2c", blurb: "Consumer Lead Generation With Consent And Speed Built In.", visual: "network", hue: 250 },
-  "lead-capture": { key: "lead-capture", label: "Lead Capture", hub: "/lead-capture", blurb: "Landing Pages, Forms And Conversion Optimisation.", visual: "form", hue: 275 },
-  qualification: { key: "qualification", label: "Qualification", hub: "/lead-qualification", blurb: "Scoring, Nurturing And CRM Workflows.", visual: "flow", hue: 300 },
-  tools: { key: "tools", label: "Tools & Analytics", hub: "/tools", blurb: "Integrations, Measurement And Reporting.", visual: "chart", hue: 185 },
-  resources: { key: "resources", label: "Resources", hub: "/resources", blurb: "Guides, Glossary And Checklists.", visual: "book", hue: 280 },
-  compare: { key: "compare", label: "Comparisons", hub: "/compare", blurb: "Comparisons, Use Cases And Implementation Planning.", visual: "scale", hue: 300 },
+  core: { key: "core", label: "Company", hub: null, blurb: "About LeadGen AI, how it works, plans and support.", visual: "dashboard", hue: 265 },
+  services: { key: "services", label: "Platform Services", hub: "/services", blurb: "Every capability in the LeadGen AI pipeline, from discovery to outreach.", visual: "pipeline", hue: 265 },
+  strategies: { key: "strategies", label: "Strategies", hub: "/lead-generation-strategies", blurb: "Playbooks for inbound, outbound and multichannel lead generation.", visual: "funnel", hue: 285 },
+  industries: { key: "industries", label: "Industries", hub: "/industries", blurb: "Vertical-specific guidance for generating and prospecting leads.", visual: "map", hue: 205 },
+  b2b: { key: "b2b", label: "B2B", hub: "/b2b-lead-generation", blurb: "Reaching business buyers, from SMB owners to enterprise committees.", visual: "network", hue: 285 },
+  b2c: { key: "b2c", label: "B2C", hub: "/b2c-lead-generation", blurb: "Consumer lead generation with consent and speed built in.", visual: "network", hue: 250 },
+  "lead-capture": { key: "lead-capture", label: "Lead Capture", hub: "/lead-capture-and-conversion", blurb: "Landing pages, forms and conversion optimisation.", visual: "form", hue: 275 },
+  qualification: { key: "qualification", label: "Qualification", hub: "/lead-qualification-and-nurturing", blurb: "Scoring, nurturing and CRM workflows.", visual: "flow", hue: 300 },
+  tools: { key: "tools", label: "Tools & Analytics", hub: "/tools-analytics-and-reporting", blurb: "Integrations, measurement and reporting.", visual: "chart", hue: 185 },
+  resources: { key: "resources", label: "Resources", hub: "/resources", blurb: "Guides, glossary and checklists.", visual: "book", hue: 280 },
+  compare: { key: "compare", label: "Comparisons", hub: "/comparisons-and-planning", blurb: "Comparisons, use cases and implementation planning.", visual: "scale", hue: 300 },
   blog: { key: "blog", label: "Blog", hub: "/blog", blurb: "Practical articles on prospecting, outreach and qualification.", visual: "book", hue: 280 },
 };

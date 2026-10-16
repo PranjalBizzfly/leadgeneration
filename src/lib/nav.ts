@@ -19,16 +19,16 @@ export interface NavItem {
 }
 
 const descriptions: Record<string, string> = {
-  "/services/multi-source-lead-scraping": "One Query Across Three Sources",
-  "/services/google-maps-lead-extraction": "Local Businesses By Category And City",
-  "/services/linkedin-lead-enrichment": "Company Context For B2B Outreach",
-  "/services/indiamart-lead-extraction": "Suppliers And B2B Sellers In India",
-  "/services/ai-contact-enrichment": "Emails, Phones, Sites And Socials",
-  "/services/ai-lead-scoring": "A 0–100 Score With Reasons",
-  "/services/seo-website-audit": "Client-Ready Website Reports",
-  "/services/business-opportunity-detection": "Spot Businesses That Need Help",
-  "/services/crm-pipeline-management": "Stages, Owners And History",
-  "/services/ai-outreach-campaigns": "AI-Drafted, Logged Outreach",
+  "/services/multi-source-lead-scraping": "One query across three sources",
+  "/services/google-maps-lead-extraction": "Local businesses by category and city",
+  "/services/linkedin-lead-enrichment": "Company context for B2B outreach",
+  "/services/indiamart-lead-extraction": "Suppliers and B2B sellers in India",
+  "/services/ai-contact-enrichment": "Emails, phones, sites and socials",
+  "/services/ai-lead-scoring": "A 0–100 score with reasons",
+  "/services/seo-website-audit": "Client-ready website reports",
+  "/services/business-opportunity-detection": "Spot businesses that need help",
+  "/services/crm-pipeline-management": "Stages, owners and history",
+  "/services/ai-outreach-campaigns": "AI-drafted, logged outreach",
 };
 
 function links(paths: string[]): NavLink[] {
@@ -55,16 +55,16 @@ export const NAV: NavItem[] = [
     footer: { title: "Services", href: "/services" },
   },
   {
-    label: "Solutions",
-    match: ["/strategies", "/b2b", "/b2c"],
-    href: "/strategies",
+    label: "Strategies",
+    match: ["/lead-generation-strategies", "/b2b-lead-generation", "/b2c-lead-generation", "/strategies", "/b2b", "/b2c"],
+    href: "/lead-generation-strategies",
     columns: [
       col("By Team", ["/services/agency-client-prospecting", "/services/seo-agency-lead-generation", "/services/website-redesign-prospecting", "/services/local-business-prospecting", "/b2b/sdr-teams", "/b2b/founder-led-sales"]),
-      col("B2B Audiences", ["/b2b", "/b2b/ideal-customer-profile", "/b2b/small-business-prospecting", "/b2b/msme-suppliers", "/b2b/exporters-and-importers"]),
-      col("B2C Audiences", ["/b2c", "/b2c/homeowners", "/b2c/patients", "/b2c/students", "/b2c/local-shoppers"]),
+      col("B2B Audiences", ["/b2b-lead-generation", "/b2b/ideal-customer-profile", "/b2b/small-business-prospecting", "/b2b/msme-suppliers", "/b2b/exporters-and-importers"]),
+      col("B2C Audiences", ["/b2c-lead-generation", "/b2c/homeowners", "/b2c/patients", "/b2c/students", "/b2c/local-shoppers"]),
       col("Strategies", ["/strategies/cold-email-outreach", "/strategies/linkedin-prospecting", "/strategies/local-seo", "/strategies/website-audit-offers", "/strategies/outbound-sequences"]),
     ],
-    footer: { title: "Solutions", href: "/strategies" },
+    footer: { title: "All Strategies", href: "/lead-generation-strategies" },
   },
   {
     label: "Industries",
@@ -73,32 +73,32 @@ export const NAV: NavItem[] = [
     columns: [
       col("Local Services", ["/industries/home-services", "/industries/plumbing", "/industries/hvac", "/industries/roofing", "/industries/cleaning-services"]),
       col("Health & Professional", ["/industries/dental-clinics", "/industries/medical-clinics", "/industries/law-firms", "/industries/accounting-firms", "/industries/financial-advisors"]),
-      col("Industrial & Trade", ["/industries/manufacturing", "/industries/wholesale-distributors", "/industries/logistics", "/industries/textiles-and-apparel", "/industries/industrial-and-chemical-suppliers"]),
-      col("Lifestyle & Tech", ["/industries/real-estate", "/industries/restaurants", "/industries/saas", "/industries/digital-agencies", "/industries/ecommerce"]),
+      col("Industrial & Trade", ["/industries/manufacturing", "/industries/wholesale-and-distribution", "/industries/logistics", "/industries/textiles-and-apparel", "/industries/industrial-and-chemical-suppliers"]),
+      col("Lifestyle & Tech", ["/industries/real-estate", "/industries/restaurants", "/industries/saas", "/industries/digital-agencies", "/industries/e-commerce"]),
     ],
     footer: { title: "Industries", href: "/industries" },
   },
   {
     label: "Resources",
-    match: ["/resources", "/blog", "/lead-capture", "/lead-qualification", "/tools", "/compare", "/faq", "/data-sources", "/sitemap"],
+    match: ["/resources", "/blog", "/lead-capture-and-conversion", "/lead-qualification-and-nurturing", "/tools-analytics-and-reporting", "/comparisons-and-planning", "/lead-capture", "/lead-qualification", "/tools", "/compare", "/faq", "/data-sources", "/sitemap"],
     href: "/resources",
     columns: [
-      col("Guides", ["/resources", "/blog", "/resources/beginners-guide", "/resources/glossary", "/resources/lead-generation-checklist", "/resources/cold-email-writing", "/resources/icp-worksheet"]),
-      col("Convert & Qualify", ["/lead-capture", "/lead-qualification", "/tools", "/tools/lead-generation-kpis", "/lead-qualification/lead-scoring-models"]),
-      col("Compare & Plan", ["/compare", "/compare/inbound-vs-outbound", "/compare/manual-vs-automated-prospecting", "/compare/30-day-implementation-plan"]),
+      col("Guides", ["/resources", "/blog", "/resources/beginners-guide-to-lead-generation", "/resources/lead-generation-glossary", "/resources/lead-generation-checklist", "/resources/cold-email-writing", "/resources/icp-worksheet"]),
+      col("Convert & Qualify", ["/lead-capture-and-conversion", "/lead-qualification-and-nurturing", "/tools-analytics-and-reporting", "/tools/lead-generation-kpis", "/lead-qualification/lead-scoring-models"]),
+      col("Compare & Plan", ["/comparisons-and-planning", "/compare/inbound-vs-outbound", "/compare/manual-vs-automated-prospecting", "/compare/30-day-implementation-plan"]),
       col("Data & Trust", ["/data-sources", "/security-and-data-handling", "/responsible-prospecting", "/faq", "/sitemap"]),
     ],
     footer: { title: "Resources", href: "/resources" },
   },
   {
     label: "About",
-    match: ["/about", "/careers", "/vendors", "/media", "/press-kit", "/platform", "/how-it-works", "/why-leadgen-ai", "/plans", "/security-and-data-handling", "/responsible-prospecting"],
+    match: ["/about", "/careers", "/vendors", "/media", "/press-kit", "/platform-overview", "/how-it-works", "/why-leadgen-ai", "/plans", "/security-and-data-handling", "/responsible-prospecting"],
     href: "/about",
     columns: [
-      col("Company", ["/about", "/why-leadgen-ai", "/platform", "/how-it-works", "/careers"]),
+      col("Company", ["/about", "/why-leadgen-ai", "/platform-overview", "/how-it-works", "/careers"]),
       col("Press & Partners", ["/media", "/press-kit", "/vendors", "/blog"]),
-      col("Get Started", ["/plans", "/book-a-demo", "/contact"]),
+      col("Get Started", ["/plans", "/request-access", "/contact"]),
     ],
   },
-  { label: "Contact", href: "/contact", match: ["/contact", "/book-a-demo"] },
+  { label: "Contact", href: "/contact", match: ["/contact", "/request-access"] },
 ];

@@ -103,11 +103,11 @@ const applyHref = (title: string) => `/contact?topic=Careers&role=${encodeURICom
 
 export default function CareersPage() {
   return (
-    <>
+    <div className="page-root">
       <PageHero
         path="/careers"
         badge="Careers"
-        title="Help Teams Find The Right Prospects"
+        title="Careers At LeadGen AI: Help Teams Find The Right Prospects"
         intro="LeadGen AI builds one pipeline that takes teams from a search to a qualified conversation. We are hiring across sales, business development, marketing, engineering coordination and AI. Browse the open roles below and apply directly."
       >
         <a href="#open-roles" className="btn btn-primary !rounded-full !px-7 !py-3.5">
@@ -186,11 +186,11 @@ export default function CareersPage() {
         </div>
       </section>
 
-      <FaqSection items={CAREERS_FAQS} subtitle="Quick Answers About Roles And Applying At LeadGen AI." />
+      <FaqSection items={CAREERS_FAQS} subtitle="Quick answers about roles and applying at LeadGen AI." cut="cut-tilt" />
 
       <div className="container-x mt-12 md:mt-14">
         <CtaBand heading="Don’t See Your Role?" text="Send us a note about what you’d like to work on. We read every message." label="Contact" href="/contact?topic=Careers" />
       </div>
-    </>
+    </div>
   );
 }

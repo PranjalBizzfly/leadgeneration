@@ -8,7 +8,7 @@ import { ArrowRight, Search } from "./icons";
 
 /** Shown before the visitor types anything. */
 const START_HERE: { title: string; path: string; group: string }[] = [
-  { title: "Platform Overview", path: "/platform", group: "Company" },
+  { title: "Platform Overview", path: "/platform-overview", group: "Company" },
   { title: "Services", path: "/services", group: "Platform Services" },
   { title: "How It Works", path: "/how-it-works", group: "Company" },
   { title: "Plans", path: "/plans", group: "Company" },
@@ -127,7 +127,7 @@ export function SearchDialog({ total }: { total: number }) {
           <p className="px-3 text-xs font-bold uppercase tracking-wider text-brand">{query.trim() ? `Results For “${query.trim()}”` : "Start Here"}</p>
           <ul id="search-results" role="listbox" className="mt-2 max-h-[50vh] overflow-y-auto">
             {query.trim() && results.length === 0 && (
-              <li className="px-3 py-8 text-center text-sm text-muted">No Pages Match “{query}”. Try A Broader Term.</li>
+              <li className="px-3 py-8 text-center text-sm text-muted">No pages match “{query}”. Try a broader term.</li>
             )}
             {list.map((r, i) => (
               <li key={r.path} role="option" aria-selected={i === active}>
@@ -146,7 +146,7 @@ export function SearchDialog({ total }: { total: number }) {
               </li>
             ))}
           </ul>
-          <p className="px-3 pb-2 pt-3 text-sm text-muted">Type To Search Every Page On The Site. Use ↑ ↓ To Move, Enter To Open.</p>
+          <p className="px-3 pb-2 pt-3 text-sm text-muted">Type to search every page on the site. Use ↑ ↓ to move, Enter to open.</p>
         </div>
 
         <Link href="/sitemap" onClick={close} className="group flex items-center gap-3 border-t border-line bg-surface-2 px-6 py-4 transition hover:bg-brand-soft">

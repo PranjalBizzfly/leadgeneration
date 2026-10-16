@@ -4,7 +4,7 @@ export const metadata = { title: "Page not found", robots: { index: false } };
 
 const POPULAR = [
   ["/services", "Platform services"],
-  ["/strategies", "Lead generation strategies"],
+  ["/lead-generation-strategies", "Lead generation strategies"],
   ["/industries", "Industries"],
   ["/how-it-works", "How it works"],
   ["/sitemap", "Full sitemap"],
@@ -16,7 +16,7 @@ export default function NotFound() {
       <div className="max-w-xl">
         <p className="font-display text-7xl font-extrabold text-brand">404</p>
         <h1 className="mt-4 text-3xl font-extrabold">We Couldn’t Find That Page</h1>
-        <p className="mt-4 text-lg text-ink-soft">The Link May Be Outdated, Or The Page May Not Exist Yet. Try One Of These Instead, Or Search The Site.</p>
+        <p className="mt-4 text-lg text-ink-soft">The link may be outdated, or the page may not exist yet. Try one of these instead, or search the site.</p>
         <ul className="mt-8 flex flex-wrap justify-center gap-2">
           {POPULAR.map(([href, label]) => (
             <li key={href}>

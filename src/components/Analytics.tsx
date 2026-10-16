@@ -53,7 +53,7 @@ export function Analytics() {
   return (
     <div role="dialog" aria-label="Analytics consent" className="fixed inset-x-3 bottom-3 z-50 mx-auto max-w-xl rounded-2xl border border-line bg-surface p-4 shadow-lift sm:inset-x-auto sm:left-5">
       <p className="text-sm text-ink-soft">
-        We’d Like To Use Google Analytics To Understand How The Site Is Used. It Only Runs If You Allow It.{" "}
+        We’d like to use Google Analytics to understand how the site is used. It only runs if you allow it.{" "}
         <Link href="/privacy-policy" className="font-semibold text-brand hover:underline">
           Privacy Policy
         </Link>

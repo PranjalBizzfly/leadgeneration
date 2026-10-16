@@ -23,15 +23,15 @@ const COLUMNS: { heading: string; paths: string[]; more?: { label: string; href:
   {
     heading: "Strategies",
     paths: ["/strategies/cold-email-outreach", "/strategies/linkedin-prospecting", "/strategies/local-seo", "/strategies/website-audit-offers", "/strategies/outbound-sequences"],
-    more: { label: "All Strategies", href: "/strategies" },
+    more: { label: "All Strategies", href: "/lead-generation-strategies" },
   },
   {
     heading: "Industries",
     paths: ["/industries/real-estate", "/industries/dental-clinics", "/industries/manufacturing", "/industries/saas", "/industries/digital-agencies"],
     more: { label: "All Industries", href: "/industries" },
   },
-  { heading: "Quick Links", paths: ["/how-it-works", "/platform", "/plans", "/faq", "/book-a-demo", "/b2b", "/b2c", "/resources", "/compare"] },
-  { heading: "Legal", paths: ["/privacy-policy", "/terms", "/responsible-prospecting", "/security-and-data-handling"] },
+  { heading: "Quick Links", paths: ["/how-it-works", "/platform-overview", "/plans", "/faq", "/request-access", "/b2b-lead-generation", "/b2c-lead-generation", "/resources", "/comparisons-and-planning"] },
+  { heading: "Legal", paths: ["/privacy-policy", "/terms-of-use", "/responsible-prospecting", "/security-and-data-handling"] },
   { heading: "Company", paths: ["/about", "/careers", "/vendors", "/media", "/press-kit", "/blog", "/contact", "/sitemap"] },
 ];
 
@@ -54,7 +54,7 @@ export async function Footer() {
       {/* Tagline tab hanging from the top edge */}
       <div className="flex justify-center px-4">
         <p className="rounded-b-[2rem] bg-gradient-to-r from-[#6366f1] to-[#8b5cf6] px-8 pb-3.5 pt-2.5 text-center font-display text-[clamp(1.15rem,2.4vw,1.9rem)] font-bold italic tracking-tight shadow-[0_18px_40px_-18px_rgba(99,102,241,0.8)] sm:px-14">
-          From Raw Data To Real Conversations…
+          From raw data to real conversations…
         </p>
       </div>
 
@@ -69,7 +69,7 @@ export async function Footer() {
             </span>
           </Link>
           <p className="mt-5 max-w-xs text-[15px] leading-relaxed text-white/70">
-            One Pipeline To Discover, Enrich, Score, Audit And Reach The Right Prospects Across Google Maps, LinkedIn And IndiaMART.
+            One pipeline to discover, enrich, score, audit and reach the right prospects across Google Maps, LinkedIn and IndiaMART.
           </p>
           <SocialLinks className="mt-5" />
         </div>
@@ -101,7 +101,7 @@ export async function Footer() {
         {/* Get started */}
         <div className="col-span-2 md:col-span-1">
           <h2 className={heading}>Get Started</h2>
-          <p className="mt-5 text-[15px] leading-relaxed text-white/70">Tell Us Who You Sell To And We’ll Show You How To Find Them.</p>
+          <p className="mt-5 text-[15px] leading-relaxed text-white/70">Tell us who you sell to and we’ll show you how to find them.</p>
           <div className="mt-6 grid max-w-[14.5rem] gap-3">
             <a href={SITE.appUrl} rel="noopener" className="group flex items-center gap-2.5 rounded-full bg-gradient-to-r from-[#6366f1] to-[#8b5cf6] py-2 pl-2 pr-5 transition hover:brightness-110">
               <span className="grid size-[30px] shrink-0 place-items-center overflow-hidden rounded-full bg-white/15 [&>*]:!rounded-full">
@@ -127,7 +127,7 @@ export async function Footer() {
 
       <div className="border-t border-white/10">
         <p className="container-x py-6 text-center text-sm text-white/70">
-          Copyright © {year} {SITE.name}. All Rights Reserved.
+          Copyright © {year} {SITE.name}. All rights reserved.
         </p>
       </div>
     </footer>

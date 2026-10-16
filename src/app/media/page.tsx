@@ -29,7 +29,7 @@ const FACTS = [
 
 export default function MediaPage() {
   return (
-    <>
+    <div className="page-root">
       <PageHero
         path="/media"
         badge="Media"
@@ -80,7 +80,7 @@ export default function MediaPage() {
         </div>
       </section>
 
-      <section className="section-y border-y border-line bg-bg-alt">
+      <section className="section-y border-y border-line bg-bg-alt cut-wave">
         <div className="container-x">
           <SectionHeading badge="Media Contact" title="Talk To Our Team" subtitle="For interviews, comment, product information or image requests, send a message through the contact form with the Media topic selected." />
           <div className="mx-auto mt-9 grid max-w-4xl gap-5 sm:grid-cols-3">
@@ -94,11 +94,11 @@ export default function MediaPage() {
         </div>
       </section>
 
-      <FaqSection items={MEDIA_FAQS} subtitle="Quick Answers For Journalists And Writers." className="!border-t-0" />
+      <FaqSection items={MEDIA_FAQS} subtitle="Quick answers for journalists and writers." cut="cut-wave" className="!border-t-0" />
 
       <div className="container-x mt-12 md:mt-14">
         <CtaBand heading="Working On A Story?" text="Include your deadline and we will do our best to respond in time." label="Contact" href="/contact?topic=Media" />
       </div>
-    </>
+    </div>
   );
 }

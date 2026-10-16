@@ -10,7 +10,7 @@ The project files are the source of truth. When this file and the code disagree,
 ## 1. Project overview
 
 - **What it is:** the marketing site for **LeadGen AI**, a prospect intelligence platform (live app: https://leadgeneration.oxo1.com/). Audience: agencies, sales teams and B2B suppliers, mostly in India.
-- **Stack:** Next.js 16 App Router (Cache Components on), React 19, TypeScript, Tailwind CSS v4, three.js via `@react-three/fiber` and `drei` for the homepage 3D office. Fonts: Space Grotesk (headings), Inter (body). Before using Next APIs, read `node_modules/next/dist/docs/`, as `AGENTS.md` instructs. This version differs from older Next.js.
+- **Stack:** Next.js 16 App Router (Cache Components on), React 19, TypeScript, Tailwind CSS v4, three.js via `@react-three/fiber` and `drei` for the homepage 3D office. Fonts: Bricolage Grotesque for large headings (h1, h2 via `--font-headline`), DM Sans for body, small headings and the wordmark (both loaded in `src/app/layout.tsx`). Before using Next APIs, read `node_modules/next/dist/docs/`, as `AGENTS.md` instructs. This version differs from older Next.js.
 - **Routes and content:**
   - `src/content/plan.ts`: the 300-route plan, the single source of truth for content pages.
   - `src/content/pages/*.ts`: page content as data (schema in `src/content/types.ts`), aggregated in `src/content/all-pages.ts`.

@@ -15,11 +15,11 @@ export const metadata: Metadata = pageMetadata({
 export default function BlogPage() {
   const summaries = posts.map(({ slug, title, category, excerpt, readMinutes }) => ({ slug, title, category, excerpt, readMinutes }));
   return (
-    <>
+    <div className="page-root">
       <PageHero
         path="/blog"
         badge="Blog"
-        title="Practical Notes On Lead Generation"
+        title="LeadGen AI Blog: Practical Notes On Lead Generation"
         intro="Hands-on articles for people who find, qualify and reach business prospects. Filter by topic or search for what you need."
       />
       <section className="section-y">
@@ -27,7 +27,7 @@ export default function BlogPage() {
           <BlogExplorer posts={summaries} />
         </div>
       </section>
-      <FaqSection items={BLOG_FAQS} subtitle="Quick Answers About The LeadGen AI Blog." />
-    </>
+      <FaqSection items={BLOG_FAQS} subtitle="Quick answers about the LeadGen AI blog." cut="cut-flow" />
+    </div>
   );
 }

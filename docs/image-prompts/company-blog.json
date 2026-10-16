@@ -1,0 +1,106 @@
+[
+  {
+    "path": "/careers",
+    "file": "/images/pages/careers.webp",
+    "section": "Hero background (PageHero)",
+    "scene": "Small mixed team collaborating at a standing table in a bright Bengaluru startup office",
+    "prompt": "Candid wide shot of four young professionals in a bright Bengaluru startup office, two women and two men in smart-casual clothes, gathered at a tall standing table, one sketching on a notebook while another points at a laptop whose screen shows abstract, unreadable UI. Warm late-morning daylight through tall windows, plants and exposed concrete, soft indigo accents on chairs, 35mm lens, shallow depth of field. Premium editorial photography.",
+    "alt": "Four young colleagues collaborating around a standing table in a bright startup office"
+  },
+  {
+    "path": "/vendors",
+    "file": "/images/pages/vendors.webp",
+    "section": "Hero background (PageHero)",
+    "scene": "Two business partners shaking hands across a meeting table in a Gurugram office",
+    "prompt": "Medium shot of two business partners, a woman in her forties and a man in his thirties, shaking hands across a light oak meeting table in a calm Gurugram office, an open laptop showing abstract, unreadable UI and a neat folder of papers between them. Soft overcast daylight, muted grey walls with a violet accent cushion, natural expressions, 50mm lens, shallow depth of field. Premium editorial photography.",
+    "alt": "Two business partners shaking hands across a meeting table in an office"
+  },
+  {
+    "path": "/media",
+    "file": "/images/pages/media.webp",
+    "section": "Hero background (PageHero)",
+    "scene": "Journalist interviewing a founder with a recorder on a cafe table in Mumbai",
+    "prompt": "Candid over-the-shoulder shot of a journalist in her thirties interviewing a company founder in a quiet Mumbai cafe, a small audio recorder and a notebook with unreadable handwriting on the wooden table, two coffee cups, the founder gesturing mid-explanation. Late-afternoon window light, warm wood tones with cool indigo shadows, 50mm lens, shallow depth of field. Premium editorial photography.",
+    "alt": "Journalist interviewing a founder at a cafe table with a recorder and notebook"
+  },
+  {
+    "path": "/press-kit",
+    "file": "/images/pages/press-kit.webp",
+    "section": "Hero background (PageHero)",
+    "scene": "Top-down designer desk with colour swatches, printed brand sheets and a tablet",
+    "prompt": "Top-down still life of a tidy designer desk: indigo, violet and cyan colour swatch cards fanned out, blank printed brand guideline sheets with abstract unreadable layouts, a tablet showing abstract shapes, a pencil and a small plant on matte charcoal surface. Soft diffused studio daylight, crisp shadows, calm minimal styling, 50mm lens look. Premium editorial product photography.",
+    "alt": "Top-down desk with colour swatches, printed brand sheets and a tablet"
+  },
+  {
+    "path": "/blog",
+    "file": "/images/pages/blog.webp",
+    "section": "Hero background (PageHero)",
+    "scene": "Person reading on a tablet with coffee by a window in a Kochi home office",
+    "prompt": "Quiet medium shot of a man in his late twenties reading on a tablet in a Kochi home office, seated in a cane chair by a window, a cup of filter coffee and an open notebook on a small side table, the tablet screen showing abstract, unreadable article layout. Gentle morning light, green foliage outside, soft indigo throw on the chair, 35mm lens, shallow depth of field. Premium editorial photography.",
+    "alt": "Man reading on a tablet beside a window with coffee and a notebook"
+  },
+  {
+    "path": "/blog/build-a-city-by-category-prospect-list",
+    "file": "/images/pages/blog--build-a-city-by-category-prospect-list.webp",
+    "section": "Hero background (PageHero)",
+    "scene": "Analyst marking areas on a printed city map beside a laptop in Ahmedabad",
+    "prompt": "Close medium shot of a woman analyst in an Ahmedabad office marking neighbourhoods on a large printed city map with coloured pins and a marker, a laptop beside her showing an abstract map with pins and unreadable UI, sticky notes in a neat grid. Bright midday light, white desk, indigo and violet pins, 35mm lens, shallow depth of field. Premium editorial photography.",
+    "alt": "Analyst pinning neighbourhoods on a printed city map beside a laptop"
+  },
+  {
+    "path": "/blog/google-maps-or-directories-choosing-a-source",
+    "file": "/images/pages/blog--google-maps-or-directories-choosing-a-source.webp",
+    "section": "Hero background (PageHero)",
+    "scene": "Two colleagues comparing a map on one laptop and a directory listing on another",
+    "prompt": "Over-the-shoulder shot of two colleagues in a Chennai agency office comparing two laptops side by side, one showing an abstract map with pins, the other an abstract list layout, both unreadable UI, one colleague tapping a pen between them. Cool morning light, light wood desk, violet notebook, natural expressions, 35mm lens, shallow depth of field. Premium editorial photography.",
+    "alt": "Two colleagues comparing a map view and a list view on two laptops"
+  },
+  {
+    "path": "/blog/first-email-that-references-a-website-audit",
+    "file": "/images/pages/blog--first-email-that-references-a-website-audit.webp",
+    "section": "Hero background (PageHero)",
+    "scene": "Agency writer drafting an email beside a printed website audit report",
+    "prompt": "Close medium shot of a young woman at an agency desk in Pune typing on a laptop whose screen shows an abstract, unreadable email layout, a printed website audit report with highlighted, unreadable sections and coloured tabs beside her. Soft late-afternoon light, calm focused expression, indigo mug, 50mm lens, shallow depth of field. Premium editorial photography.",
+    "alt": "Woman drafting an email on a laptop beside a printed website audit report"
+  },
+  {
+    "path": "/blog/consent-aware-outreach-basics",
+    "file": "/images/pages/blog--consent-aware-outreach-basics.webp",
+    "section": "Hero background (PageHero)",
+    "scene": "Compliance lead reviewing a printed policy with a colleague at a meeting table",
+    "prompt": "Candid medium shot of an older compliance lead and a younger sales colleague in a Delhi meeting room reviewing a printed policy document with unreadable text, one pointing at a checkbox section while a laptop shows abstract, unreadable UI. Even overcast daylight, neutral grey interior with a violet accent chair, serious but relaxed expressions, 35mm lens, shallow depth of field. Premium editorial photography.",
+    "alt": "Two colleagues reviewing a printed policy document at a meeting table"
+  },
+  {
+    "path": "/blog/keeping-a-lead-database-clean",
+    "file": "/images/pages/blog--keeping-a-lead-database-clean.webp",
+    "section": "Hero background (PageHero)",
+    "scene": "Operations specialist working through a spreadsheet on two monitors at night",
+    "prompt": "Side-angle shot of an operations specialist in his thirties at a dual-monitor desk in a quiet Hyderabad office after dark, both screens showing abstract, unreadable spreadsheet grids with some rows softly highlighted, a desk lamp and a neat stack of folders. Warm lamp light mixed with cool indigo monitor glow, focused expression, 35mm lens, shallow depth of field. Premium editorial photography.",
+    "alt": "Operations specialist reviewing spreadsheet rows on two monitors at night"
+  },
+  {
+    "path": "/blog/interpreting-a-lead-score",
+    "file": "/images/pages/blog--interpreting-a-lead-score.webp",
+    "section": "Hero background (PageHero)",
+    "scene": "Sales manager thinking over a gauge-style chart on a laptop with notes",
+    "prompt": "Medium close shot of a sales manager in her forties leaning back thoughtfully at her desk in a Kolkata office, chin on hand, looking at a laptop screen that shows an abstract gauge and bar chart with unreadable UI, a handwritten note page with unreadable scribbles beside the keyboard. Soft window light, calm muted palette with indigo accents, 50mm lens, shallow depth of field. Premium editorial photography.",
+    "alt": "Sales manager thoughtfully studying a gauge chart on her laptop"
+  },
+  {
+    "path": "/blog/weekly-prospecting-routine-for-small-agencies",
+    "file": "/images/pages/blog--weekly-prospecting-routine-for-small-agencies.webp",
+    "section": "Hero background (PageHero)",
+    "scene": "Small agency team planning the week on a wall calendar with sticky notes",
+    "prompt": "Wide candid shot of a three-person agency team in a compact Jaipur studio planning their week on a wall-mounted weekly planner covered in coloured sticky notes with no readable writing, one person placing a note, another holding a laptop showing abstract, unreadable UI. Monday-morning daylight, warm terracotta walls with indigo and violet notes, 35mm lens, shallow depth of field. Premium editorial photography.",
+    "alt": "Small agency team planning their week with sticky notes on a wall planner"
+  },
+  {
+    "path": "/blog/turning-audit-findings-into-a-proposal",
+    "file": "/images/pages/blog--turning-audit-findings-into-a-proposal.webp",
+    "section": "Hero background (PageHero)",
+    "scene": "Consultant presenting printed proposal pages to a shop owner at a counter",
+    "prompt": "Candid medium shot of a young consultant walking a local shop owner in Lucknow through printed proposal pages with abstract, unreadable charts and coloured highlights, spread on the shop's glass counter, a tablet showing abstract UI beside them. Warm afternoon light from the shopfront, shelves softly out of focus, engaged natural expressions, 35mm lens, shallow depth of field. Premium editorial photography.",
+    "alt": "Consultant walking a shop owner through printed proposal pages at a counter"
+  }
+]

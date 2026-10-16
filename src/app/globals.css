@@ -77,9 +77,10 @@
   --color-warm: var(--warm);
   --color-success: var(--success);
   --color-danger: var(--danger);
-  --font-sans: var(--font-inter), ui-sans-serif, system-ui, sans-serif;
-  --font-display: var(--font-space-grotesk), var(--font-inter), ui-sans-serif, system-ui, sans-serif;
-  /* Space Grotesk ships up to 700: map extrabold to it. */
+  --font-sans: var(--font-dm-sans), ui-sans-serif, system-ui, sans-serif;
+  --font-display: var(--font-dm-sans), ui-sans-serif, system-ui, sans-serif;
+  --font-headline: var(--font-bricolage), var(--font-dm-sans), ui-sans-serif, system-ui, sans-serif;
+  /* Headings use extrabold widely; keep it at 700 so DM Sans headings stay at the established weight. */
   --font-weight-extrabold: 700;
   --shadow-card: var(--shadow);
   --shadow-lift: var(--shadow-lg);
@@ -105,6 +106,37 @@ h4 {
   font-family: var(--font-display);
   letter-spacing: -0.02em;
   text-wrap: balance;
+}
+
+/*
+ * Large headings use the display face (Bricolage Grotesque); h3/h4 and body stay in DM Sans.
+ * Unlayered, so it deliberately overrides per-heading font-bold/font-extrabold utilities.
+ */
+h1,
+h2 {
+  font-family: var(--font-headline);
+  font-weight: 600;
+  letter-spacing: -0.02em;
+  font-variation-settings: "opsz" 72;
+}
+
+/* Capitals need a little more room than lowercase at the same tracking. */
+h1.uppercase,
+h2.uppercase {
+  letter-spacing: -0.01em;
+}
+
+h3,
+h4 {
+  font-weight: 600;
+  letter-spacing: -0.01em;
+}
+
+/* Footer column titles are h2 for structure but read as small labels, so they keep the body face. */
+footer h2 {
+  font-family: var(--font-display);
+  font-variation-settings: normal;
+  letter-spacing: -0.01em;
 }
 
 p {
@@ -189,10 +221,15 @@ p {
   }
 
   .card {
-    background: var(--surface);
+    background: linear-gradient(180deg, color-mix(in oklch, var(--brand) 3%, var(--surface)) 0%, var(--surface) 55%);
     border: 1px solid var(--line);
     border-radius: 1rem;
-    box-shadow: var(--shadow);
+    box-shadow: var(--shadow), inset 0 1px 0 color-mix(in oklch, white 6%, transparent);
+    transition: border-color 0.2s ease, box-shadow 0.2s ease;
+  }
+
+  .card:hover {
+    border-color: color-mix(in oklch, var(--brand) 28%, var(--line));
   }
 
   .eyebrow {
@@ -261,6 +298,98 @@ p {
     .section-y {
       padding-block: 4.5rem;
     }
+  }
+
+  /*
+   * Section surfaces. Pages rotate through plain → tint → soft → island → brand band (CtaBand)
+   * so neighbouring sections never share a background. All values derive from the theme tokens,
+   * so both themes keep the same brand palette.
+   */
+  .surface-tint {
+    position: relative;
+    isolation: isolate;
+    background:
+      radial-gradient(60% 55% at 85% 0%, var(--glow-2), transparent 70%),
+      linear-gradient(180deg, color-mix(in oklch, var(--brand) 6%, var(--bg)) 0%, var(--bg-alt) 100%);
+    border-block: 1px solid color-mix(in oklch, var(--brand) 12%, var(--line));
+  }
+
+  /*
+   * Section cuts: shape a tinted section's top and bottom edges with an SVG mask, so the page background
+   * shows through and the edge blends seamlessly in both themes (no extra markup, no colour to match).
+   * The cut height stays inside the section's own padding, so content is never clipped.
+   *   .cut-wave  soft wave        .cut-step   asymmetric step (rounded shoulders)
+   *   .cut-slant slanted edges    .cut-curve  convex arc
+   *   .cut-tilt  opposing slants  .cut-flow   long flowing wave
+   */
+  :is(.cut-wave, .cut-step, .cut-slant, .cut-curve, .cut-tilt, .cut-flow) {
+    --cut-h: clamp(28px, 5vw, 76px);
+    border-block: 0 !important;
+    -webkit-mask: var(--cut-top) top / 100% var(--cut-h) no-repeat, linear-gradient(#000 0 0) center / 100% calc(100% - 2 * var(--cut-h) + 2px) no-repeat, var(--cut-bottom) bottom / 100% var(--cut-h) no-repeat;
+    mask: var(--cut-top) top / 100% var(--cut-h) no-repeat, linear-gradient(#000 0 0) center / 100% calc(100% - 2 * var(--cut-h) + 2px) no-repeat, var(--cut-bottom) bottom / 100% var(--cut-h) no-repeat;
+  }
+  .cut-wave {
+    --cut-top: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1440 100' preserveAspectRatio='none'%3E%3Cpath d='M0 62C240 4 480 4 720 42S1200 100 1440 30V100H0Z'/%3E%3C/svg%3E");
+    --cut-bottom: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1440 100' preserveAspectRatio='none'%3E%3Cpath d='M0 0H1440V40C1200 96 960 96 720 58S240 2 0 68Z'/%3E%3C/svg%3E");
+  }
+  .cut-step {
+    --cut-top: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1440 100' preserveAspectRatio='none'%3E%3Cpath d='M0 100V78C0 66 12 60 44 60H560C598 60 612 54 640 36C668 18 686 12 724 12H1396C1428 12 1440 6 1440 0V100Z'/%3E%3C/svg%3E");
+    --cut-bottom: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1440 100' preserveAspectRatio='none'%3E%3Cpath d='M0 0H1440V22C1440 34 1428 40 1396 40H880C842 40 828 46 800 64C772 82 754 88 716 88H44C12 88 0 94 0 100Z'/%3E%3C/svg%3E");
+  }
+  .cut-slant {
+    --cut-top: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1440 100' preserveAspectRatio='none'%3E%3Cpath d='M0 100V72L1440 4V100Z'/%3E%3C/svg%3E");
+    --cut-bottom: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1440 100' preserveAspectRatio='none'%3E%3Cpath d='M0 0H1440V28L0 96Z'/%3E%3C/svg%3E");
+  }
+  .cut-curve {
+    --cut-top: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1440 100' preserveAspectRatio='none'%3E%3Cpath d='M0 100V70Q720 -36 1440 70V100Z'/%3E%3C/svg%3E");
+    --cut-bottom: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1440 100' preserveAspectRatio='none'%3E%3Cpath d='M0 0H1440V30Q720 136 0 30Z'/%3E%3C/svg%3E");
+  }
+  .cut-tilt {
+    --cut-top: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1440 100' preserveAspectRatio='none'%3E%3Cpath d='M0 100V6L1440 74V100Z'/%3E%3C/svg%3E");
+    --cut-bottom: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1440 100' preserveAspectRatio='none'%3E%3Cpath d='M0 0H1440V94L0 26Z'/%3E%3C/svg%3E");
+  }
+  .cut-flow {
+    --cut-top: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1440 100' preserveAspectRatio='none'%3E%3Cpath d='M0 40C180 90 360 96 540 64S900 0 1080 18S1360 70 1440 56V100H0Z'/%3E%3C/svg%3E");
+    --cut-bottom: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1440 100' preserveAspectRatio='none'%3E%3Cpath d='M0 0H1440V44C1260 30 1080 82 900 86S540 26 360 30S90 70 0 60Z'/%3E%3C/svg%3E");
+  }
+
+  .surface-soft {
+    position: relative;
+    isolation: isolate;
+    background:
+      radial-gradient(45% 60% at 0% 100%, var(--glow-3), transparent 70%),
+      radial-gradient(40% 50% at 100% 0%, var(--glow-1), transparent 70%),
+      var(--bg-alt);
+    border-block: 1px solid var(--line);
+  }
+
+  /* Inset dark panel. Put data-theme="dark" on the element so its contents use the dark tokens in both themes. */
+  .surface-island {
+    position: relative;
+    isolation: isolate;
+    overflow: hidden;
+    margin-inline: clamp(0.5rem, 1.6vw, 1.5rem);
+    border-radius: clamp(1.5rem, 3vw, 2.5rem);
+    border: 1px solid color-mix(in oklch, var(--brand) 18%, var(--line));
+    background:
+      radial-gradient(55% 70% at 50% 0%, var(--glow-1), transparent 70%),
+      radial-gradient(40% 55% at 100% 100%, var(--glow-3), transparent 70%),
+      radial-gradient(35% 50% at 0% 100%, var(--glow-2), transparent 70%),
+      var(--surface);
+    color: var(--ink);
+  }
+
+  .surface-island::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    z-index: -1;
+    background-image:
+      linear-gradient(to right, color-mix(in oklch, var(--line) 60%, transparent) 1px, transparent 1px),
+      linear-gradient(to bottom, color-mix(in oklch, var(--line) 60%, transparent) 1px, transparent 1px);
+    background-size: 56px 56px;
+    mask-image: radial-gradient(ellipse 70% 60% at 50% 0%, black 20%, transparent 75%);
+    pointer-events: none;
   }
 
   .h-section {
@@ -480,6 +609,53 @@ p {
 
 .btn-ghost:hover {
   transform: translateY(-1px);
+}
+
+/* Ghost buttons idle with a slow brand-tinted sheen and an arrow nudge; hover takes over from the loop. */
+.btn-ghost::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  pointer-events: none;
+  background: linear-gradient(110deg, transparent 35%, color-mix(in oklch, var(--brand) 16%, transparent) 50%, transparent 65%);
+  transform: translateX(-120%);
+  animation: btn-sheen 4.5s ease-in-out infinite;
+}
+
+.btn-ghost > svg:last-child {
+  animation: btn-nudge 4.5s ease-in-out infinite;
+}
+
+.btn-ghost:hover::after {
+  animation-play-state: paused;
+}
+
+.btn-ghost:hover > svg:last-child {
+  animation: none;
+}
+
+@keyframes btn-sheen {
+  0%,
+  55% {
+    transform: translateX(-120%);
+  }
+  85%,
+  100% {
+    transform: translateX(120%);
+  }
+}
+
+@keyframes btn-nudge {
+  0%,
+  60%,
+  80%,
+  100% {
+    transform: translateX(0);
+  }
+  70% {
+    transform: translateX(4px);
+  }
 }
 
 /* Header: shrinks and deepens its blur once the page scrolls; nav underline grows from the centre. */
@@ -707,7 +883,10 @@ main {
   /* Section-to-section: the next section rises into place (translate + fade) while the one you are
      leaving recedes like a card going under (scale + dim + rounded corners). Separate properties, so the
      two phases never fight. */
-  main>div>section {
+  /* Pages wrap their sections in one .page-root, so Next's route-change scroll sees a
+     single root (several roots made the dev build scroll down to the last one it visited). */
+  main>div>section,
+  main>div>.page-root>section {
     transform-origin: 50% 0%;
     animation: section-rise linear both, section-recede linear both;
     animation-timeline: view(), view();
@@ -715,7 +894,8 @@ main {
   }
 
   /* The hero (3D office) stays untouched: filters/scale on a WebGL ancestor can make it flicker. */
-  main>div>section:first-child {
+  main>div>section:first-child,
+  main>div>.page-root>section:first-child {
     animation: none;
   }
 }
@@ -926,8 +1106,13 @@ a:hover>svg:last-child {
   }
 
   .btn-primary::after,
+  .btn-ghost::after,
   .scroll-progress {
     display: none;
+  }
+
+  .btn-ghost > svg:last-child {
+    animation: none;
   }
 
   .rv,

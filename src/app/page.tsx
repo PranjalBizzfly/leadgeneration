@@ -41,42 +41,42 @@ const MARQUEE = [
 ] as const;
 
 const PIPELINE_ROWS = [
-  { icon: Layers, title: "Discover", text: "One Query Across Google Maps, LinkedIn And IndiaMART" },
-  { icon: Sparkle, title: "Enrich", text: "Emails, Phones, Websites And Socials Added Automatically" },
-  { icon: Gauge, title: "Qualify", text: "0–100 Scores, SEO Audits And Opportunity Flags" },
-  { icon: Send, title: "Engage", text: "CRM Pipeline And AI-Drafted Outreach, Every Message Logged" },
+  { icon: Layers, title: "Discover", text: "One query across Google Maps, LinkedIn and IndiaMART" },
+  { icon: Sparkle, title: "Enrich", text: "Emails, phones, websites and socials added automatically" },
+  { icon: Gauge, title: "Qualify", text: "0–100 scores, SEO audits and opportunity flags" },
+  { icon: Send, title: "Engage", text: "CRM pipeline and AI-drafted outreach, every message logged" },
 ];
 
 const WHY = [
-  { icon: Layers, title: "One Pipeline, Not Five Tools", text: "Search, Scraping, Enrichment, Scoring, Audits And Outreach Share One Record Per Business, So Nothing Is Lost Between Exports." },
-  { icon: Shield, title: "Traceable Data", text: "Every Field Records The Source It Came From, Every Job Records What It Fetched And When, And Your Manual Edits Are Never Overwritten." },
-  { icon: Gauge, title: "Scores You Can Explain", text: "Each Lead Gets One 0–100 Score. The Reasons (Completeness, Website Health, Market Fit And Activity) Are Saved On The Record." },
-  { icon: FileCheck, title: "Audit-Led Conversations", text: "Open With Evidence: A Severity-Ranked SEO Report And A Prioritised Fix List You Can Hand Straight To The Prospect." },
-  { icon: Target, title: "Opportunities Flagged For You", text: "Businesses With No Website, A Broken Site, No Contact Route Or A Weak Audit Are Flagged Instead Of Buried Mid-List." },
-  { icon: Users, title: "Built For Teams", text: "Multi-Tenant, Role-Based Workspaces With 7 Role Modules On Growth, Plus Per-Org API Keys And A Dedicated Fleet On Scale." },
+  { icon: Layers, title: "One Pipeline, Not Five Tools", text: "Search, scraping, enrichment, scoring, audits and outreach share one record per business, so nothing is lost between exports." },
+  { icon: Shield, title: "Traceable Data", text: "Every field records the source it came from, every job records what it fetched and when, and your manual edits are never overwritten." },
+  { icon: Gauge, title: "Scores You Can Explain", text: "Each lead gets one 0–100 score. The reasons (completeness, website health, market fit and activity) are saved on the record." },
+  { icon: FileCheck, title: "Audit-Led Conversations", text: "Open with evidence: a severity-ranked SEO report and a prioritised fix list you can hand straight to the prospect." },
+  { icon: Target, title: "Opportunities Flagged For You", text: "Businesses with no website, a broken site, no contact route or a weak audit are flagged instead of buried mid-list." },
+  { icon: Users, title: "Built For Teams", text: "Multi-tenant, role-based workspaces with 7 role modules on Growth, plus per-org API keys and a dedicated fleet on Scale." },
 ];
 
 const BADGES = [
-  { icon: Shield, tag: "Traceable", title: "Source Per Field", text: "Know Where Every Value Came From" },
-  { icon: Layers, tag: "Background", title: "Worker Fleet", text: "Large Scrapes Keep Running After You Close The Tab" },
-  { icon: Users, tag: "Role-Based", title: "Team Access", text: "Each Team Sees The Records It Should" },
-  { icon: Send, tag: "Accountable", title: "Logged Outreach", text: "Every Message Recorded Against Its Lead" },
+  { icon: Shield, tag: "Traceable", title: "Source Per Field", text: "Know where every value came from" },
+  { icon: Layers, tag: "Background", title: "Worker Fleet", text: "Large scrapes keep running after you close the tab" },
+  { icon: Users, tag: "Role-Based", title: "Team Access", text: "Each team sees the records it should" },
+  { icon: Send, tag: "Accountable", title: "Logged Outreach", text: "Every message recorded against its lead" },
 ];
 
 const METHOD = [
-  { icon: Target, title: "Search", short: "Category + Location", text: "Pick Your Sources And Describe The Businesses You Want: A Category And Location, Or A Directory Search Term." },
-  { icon: Layers, title: "Scrape", short: "Fan-Out & De-Duplicate", text: "The Query Runs On Each Source You Turned On, And The Results Are Merged Into One Record Per Business." },
-  { icon: Sparkle, title: "Enrich", short: "Fill The Gaps", text: "Contact Routes And Company Context Are Added Automatically, Without Touching Your Edits." },
-  { icon: Gauge, title: "Score & Audit", short: "Prioritise", text: "Every Lead Gets A 0–100 Score; Audits And Flags Show Who Has A Problem You Can Solve." },
-  { icon: Send, title: "Reach Out", short: "Convert", text: "Push The Top Band Into The CRM And Send AI-Drafted Outreach That Uses The Lead’s Own Data." },
+  { icon: Target, title: "Search", short: "Category + Location", text: "Pick your sources and describe the businesses you want: a category and location, or a directory search term." },
+  { icon: Layers, title: "Scrape", short: "Fan-Out & De-Duplicate", text: "The query runs on each source you turned on, and the results are merged into one record per business." },
+  { icon: Sparkle, title: "Enrich", short: "Fill The Gaps", text: "Contact routes and company context are added automatically, without touching your edits." },
+  { icon: Gauge, title: "Score & Audit", short: "Prioritise", text: "Every lead gets a 0–100 score; audits and flags show who has a problem you can solve." },
+  { icon: Send, title: "Reach Out", short: "Convert", text: "Push the top band into the CRM and send AI-drafted outreach that uses the lead’s own data." },
 ];
 
 const SOLUTIONS: { badge: string; title: string; text: string; points: string[]; href: string; cta: string; visual: Visual; hue: number; tag: string; photo: string }[] = [
   {
     badge: "For Agencies",
     title: "Marketing & SEO Agency Prospecting",
-    text: "Find Local Businesses In Your Niche, Audit Their Websites Automatically And Open Every Conversation With Evidence The Owner Can See For Themselves.",
-    points: ["SEO Website Audit", "Opportunity Detection", "AI-Drafted Outreach", "Client-Ready Reports"],
+    text: "Find local businesses in your niche, audit their websites automatically and open every conversation with evidence the owner can see for themselves.",
+    points: ["SEO Website Audit", "Opportunity Detection", "AI-drafted outreach", "Client-ready reports"],
     href: "/services/agency-client-prospecting",
     cta: "Agency Client Prospecting",
     visual: "dashboard",
@@ -87,8 +87,8 @@ const SOLUTIONS: { badge: string; title: string; text: string; points: string[];
   {
     badge: "For Local-Market Sellers",
     title: "Local Business Prospecting",
-    text: "Build City-By-Category Lists From Google Maps, Enrich Them With Contact Routes And Work The Highest-Scoring Businesses First.",
-    points: ["Google Maps Extraction", "Contact Enrichment", "AI Lead Scoring", "CRM Pipeline"],
+    text: "Build city-by-category lists from Google Maps, enrich them with contact routes and work the highest-scoring businesses first.",
+    points: ["Google Maps extraction", "Contact enrichment", "AI Lead Scoring", "CRM pipeline"],
     href: "/services/local-business-prospecting",
     cta: "Local Business Prospecting",
     visual: "map",
@@ -99,8 +99,8 @@ const SOLUTIONS: { badge: string; title: string; text: string; points: string[];
   {
     badge: "For B2B Suppliers",
     title: "MSME Suppliers & Exporters",
-    text: "Discover Buyers And Partners Across IndiaMART And LinkedIn, With Consistent Records And The Source Of Every Field Kept For Trust.",
-    points: ["IndiaMART Extraction", "LinkedIn Enrichment", "Cross-Source De-Duplication", "CSV Export & API Keys"],
+    text: "Discover buyers and partners across IndiaMART and LinkedIn, with consistent records and the source of every field kept for trust.",
+    points: ["IndiaMART extraction", "LinkedIn enrichment", "Cross-source de-duplication", "CSV export & API keys"],
     href: "/b2b/msme-suppliers",
     cta: "MSME Suppliers",
     visual: "network",
@@ -111,8 +111,8 @@ const SOLUTIONS: { badge: string; title: string; text: string; points: string[];
   {
     badge: "For Sales Teams",
     title: "SDR & Sales Team Prioritisation",
-    text: "Replace Spreadsheet Triage With Score-Sorted Lists, Owners And Stages On A Pipeline Board, And Outreach That Is Logged Against Every Lead.",
-    points: ["Score Bands", "Pipeline Stages & Owners", "Role-Based Access", "Activity History"],
+    text: "Replace spreadsheet triage with score-sorted lists, owners and stages on a pipeline board, and outreach that is logged against every lead.",
+    points: ["Score bands", "Pipeline stages & owners", "Role-based access", "Activity history"],
     href: "/b2b/sdr-teams",
     cta: "SDR Teams",
     visual: "pipeline",
@@ -123,33 +123,33 @@ const SOLUTIONS: { badge: string; title: string; text: string; points: string[];
 ];
 
 const PLANS = [
-  { name: "Free", blurb: "For Small Teams Just Getting Started With Lead Generation.", features: ["3 Scrape Queries", "Website Enrichment", "Lead Dashboard & CSV Export", "1 Admin User"] },
-  { name: "Growth", blurb: "For Growing Teams That Want Scoring, Outreach And Team Roles.", features: ["50 Scrape Queries / Month", "AI Lead Scoring & Outreach", "Full Team & 7 Role Modules", "SEO & Website-Build Reports"], featured: true },
-  { name: "Scale", blurb: "For High-Volume Teams That Need Their Own Infrastructure.", features: ["Unlimited Queries", "Distributed Scrape Fleet", "Multi-Source (LinkedIn, IndiaMART)", "Per-Org API Keys, Priority Support & SLA"] },
+  { name: "Free", blurb: "For small teams just getting started with lead generation.", features: ["3 scrape queries", "Website Enrichment", "Lead dashboard & CSV export", "1 admin user"] },
+  { name: "Growth", blurb: "For growing teams that want scoring, outreach and team roles.", features: ["50 scrape queries / month", "AI lead scoring & outreach", "Full team & 7 role modules", "SEO & website-build reports"], featured: true },
+  { name: "Scale", blurb: "For high-volume teams that need their own infrastructure.", features: ["Unlimited queries", "Distributed Scrape Fleet", "Multi-source (LinkedIn, IndiaMART)", "Per-org API keys, priority support & SLA"] },
 ];
 
 const HOME_FAQS = [
-  { q: "Which Data Sources Does LeadGen AI Use?", a: "LeadGen AI Discovers Business Leads From Google Maps, LinkedIn And IndiaMART. One Query Can Search Every Source You Turn On. The Results Are Merged Into One Record Per Business, And The Source Of Each Field Is Recorded." },
-  { q: "What Does A Lead Record Contain?", a: "Typically The Business Name, Category And Postal Address; Website, Listed Phone Numbers And Public Email Addresses; Ratings, Review Counts And Listing-Completeness Signals; Plus Anything Added By Enrichment, The 0–100 Score With Its Reasons, And Audit Results." },
-  { q: "Can I Try It Before Choosing A Paid Plan?", a: "Yes. The Free Plan Includes 3 Scrape Queries, Website Enrichment, The Lead Dashboard And CSV Export For One Admin User. Growth And Scale Add Scoring, Outreach, Team Roles, More Queries And Dedicated Infrastructure." },
-  { q: "Does LeadGen AI Send Emails On My Behalf?", a: "Outreach Campaigns Are Sent Through The Email Transport You Configure. Every Message Is Logged Against Its Lead, And You Remain Responsible For Your List, Sending Limits And Opt-Out Obligations." },
-  { q: "How Is Each Lead Scored?", a: "Every Lead Gets One 0–100 Score Based On Completeness, Website Health, Market Fit And Activity. The Reasons Are Stored On The Record. Because The Reasons Are Saved, Your Team Can See Why A Lead Ranks Where It Does Instead Of Trusting A Bare Number." },
-  { q: "Will Enrichment Overwrite Changes My Team Makes By Hand?", a: "No. Enrichment Never Overwrites A Field You Edited Manually, And It Only Writes A Field When The New Value Is More Complete. Every Field Also Records The Source It Came From, So You Can Always See Where A Value Came From." },
-  { q: "What Happens If I Close The Browser During A Large Scrape?", a: "Nothing Is Lost. Long Scrapes Are Handed To A Background Worker Fleet Rather Than Your Browser, So They Keep Running After You Close The Tab. Each Job Records What It Fetched And When, And Quotas Are Tracked Per Plan And Billing Cycle." },
-  { q: "Can I Get My Leads Out Of The Platform?", a: "Yes. Leads Can Be Exported To CSV, And CSV Export Is Already Included In The Free Plan. Teams On The Scale Plan Can Also Use Per-Org API Keys To Connect LeadGen AI To Their Own Systems And Workflows." },
+  { q: "Which Data Sources Does LeadGen AI Use?", a: "LeadGen AI discovers business leads from Google Maps, LinkedIn and IndiaMART. One query can search every source you turn on. The results are merged into one record per business, and the source of each field is recorded." },
+  { q: "What Does A Lead Record Contain?", a: "Typically the business name, category and postal address; website, listed phone numbers and public email addresses; ratings, review counts and listing-completeness signals; plus anything added by enrichment, the 0–100 score with its reasons, and audit results." },
+  { q: "Can I Try It Before Choosing A Paid Plan?", a: "Yes. The Free plan includes 3 scrape queries, website enrichment, the lead dashboard and CSV export for one admin user. Growth and Scale add scoring, outreach, team roles, more queries and dedicated infrastructure." },
+  { q: "Does LeadGen AI Send Emails On My Behalf?", a: "Outreach campaigns are sent through the email transport you configure. Every message is logged against its lead, and you remain responsible for your list, sending limits and opt-out obligations." },
+  { q: "How Is Each Lead Scored?", a: "Every lead gets one 0–100 score based on completeness, website health, market fit and activity. The reasons are stored on the record. Because the reasons are saved, your team can see why a lead ranks where it does instead of trusting a bare number." },
+  { q: "Will Enrichment Overwrite Changes My Team Makes By Hand?", a: "No. Enrichment never overwrites a field you edited manually, and it only writes a field when the new value is more complete. Every field also records the source it came from, so you can always see where a value came from." },
+  { q: "What Happens If I Close The Browser During A Large Scrape?", a: "Nothing is lost. Long scrapes are handed to a background worker fleet rather than your browser, so they keep running after you close the tab. Each job records what it fetched and when, and quotas are tracked per plan and billing cycle." },
+  { q: "Can I Get My Leads Out Of The Platform?", a: "Yes. Leads can be exported to CSV, and CSV export is already included in the Free plan. Teams on the Scale plan can also use per-org API keys to connect LeadGen AI to their own systems and workflows." },
 ];
 
-const HUB_ICONS = { "/b2c": Users, "/lead-capture": FileCheck, "/lead-qualification": Gauge, "/tools": Layers, "/resources": Sparkle, "/compare": Shield, "/strategies": Target, "/b2b": Users } as const;
+const HUB_ICONS = { "/b2c-lead-generation": Users, "/lead-capture-and-conversion": FileCheck, "/lead-qualification-and-nurturing": Gauge, "/tools-analytics-and-reporting": Layers, "/resources": Sparkle, "/comparisons-and-planning": Shield, "/lead-generation-strategies": Target, "/b2b-lead-generation": Users } as const;
 
 export default function HomePage() {
   const industries = groupChildren("industries").slice(0, 12);
   const strategies = ["/strategies/cold-email-outreach", "/strategies/website-audit-offers", "/strategies/local-seo", "/strategies/linkedin-prospecting", "/strategies/outbound-sequences", "/strategies/account-based-marketing"]
     .filter(isLive)
     .map((p) => getPlan(p)!);
-  const hubs = (["/strategies", "/b2b", "/b2c", "/lead-capture", "/lead-qualification", "/tools", "/resources", "/compare"] as const).filter(isLive);
+  const hubs = (["/lead-generation-strategies", "/b2b-lead-generation", "/b2c-lead-generation", "/lead-capture-and-conversion", "/lead-qualification-and-nurturing", "/tools-analytics-and-reporting", "/resources", "/comparisons-and-planning"] as const).filter(isLive);
 
   return (
-    <>
+    <div className="page-root">
       {/* ───────── Hero: headline beside a live 3D office where each room is one pipeline stage ───────── */}
       <section className="relative isolate overflow-hidden bg-bg text-ink">
         <div aria-hidden="true" className="bg-grid absolute inset-0 -z-10 opacity-40" />
@@ -158,7 +158,7 @@ export default function HomePage() {
             intro={
               <div className="fade-up">
                 <p className="flex items-center gap-2 text-xs font-bold uppercase tracking-[0.18em] text-ink-soft">
-                  <span className="size-1.5 rounded-full bg-warm" /> AI-Powered Lead Generation · Prospect Intelligence
+                  <span className="size-1.5 rounded-full bg-warm" /> AI-powered lead generation · prospect intelligence
                 </p>
                 <h1 className="mt-5 text-[clamp(2.2rem,3.5vw,3.6rem)] font-extrabold uppercase leading-[1] tracking-tight">
                   Turn Raw Market Data Into
@@ -168,7 +168,7 @@ export default function HomePage() {
                   </span>
                 </h1>
                 <p className="mt-5 max-w-xl text-[17px] leading-relaxed text-ink-soft">
-                  Find, Qualify And Reach Prospects On Google Maps, LinkedIn And IndiaMART. One AI-Powered Pipeline, From Scraping To Outreach.
+                  Find, qualify and reach prospects on Google Maps, LinkedIn and IndiaMART. One AI-powered pipeline, from scraping to outreach.
                 </p>
                 <ul className="mt-5 flex flex-wrap gap-x-5 gap-y-2 text-sm font-semibold text-ink-soft">
                   {["No Credit Card Required", "3 Free Queries Included", "Multi-Tenant & Role-Based"].map((t) => (
@@ -192,7 +192,7 @@ export default function HomePage() {
       </section>
 
       {/* ───────── Scrolling capability strip ───────── */}
-      <section className="marquee-wrap overflow-hidden border-y border-line bg-bg-alt py-6" aria-label="Platform capabilities">
+      <section className="surface-soft marquee-wrap overflow-hidden py-6" aria-label="Platform capabilities">
         <div className="marquee">
           {[...MARQUEE, ...MARQUEE].map(([label, href], i) => (
             <Link
@@ -217,8 +217,8 @@ export default function HomePage() {
           <div className="card !rounded-[2rem] p-6 sm:p-8">
             <div className="flex items-start justify-between gap-4 border-b border-line pb-5">
               <div>
-                <p className="font-display text-lg font-extrabold uppercase tracking-wide">The LeadGen AI Pipeline</p>
-                <p className="text-sm text-muted">From Public Data To Qualified Conversations</p>
+                <p className="font-display text-lg font-extrabold uppercase tracking-wide">The LeadGen AI pipeline</p>
+                <p className="text-sm text-muted">From public data to qualified conversations</p>
               </div>
               <span className="pill shrink-0">Single Source Of Truth</span>
             </div>
@@ -248,15 +248,15 @@ export default function HomePage() {
           <div>
             <SectionHeading align="left" badge="About LeadGen AI" title="Find, Understand And Reach The Right Prospects" />
             <p className="lead mt-6">
-              LeadGen AI Is A Prospect Intelligence Platform. It Turns Public Business Data Into Clean, Scored Leads You Can Export. Your Team Spends Its
-              Time Talking To Prospects Instead Of Copying And Pasting Research.
+              LeadGen AI is a prospect intelligence platform. It turns public business data into clean, scored leads you can export. Your team spends its
+              Time talking to prospects instead of copying and pasting research.
             </p>
             <p className="mt-5 leading-relaxed text-muted">
-              Describe The Businesses You Want. The Platform Collects Them, Fills In Missing Contact Details And Scores Every Lead With Saved Reasons. It Also Audits Websites
-              And Flags Businesses With A Clear Problem You Can Solve.
+              Describe the businesses you want. The platform collects them, fills in missing contact details and scores every lead with saved reasons. It also audits websites
+              And flags businesses with a clear problem you can solve.
             </p>
             <blockquote className="mt-8 rounded-2xl border border-line border-l-4 border-l-brand bg-surface p-6 text-lg font-semibold italic leading-relaxed">
-              “From Scraping To Outreach, One AI-Powered Pipeline To Discover, Qualify, And Close Prospects.”
+              “From scraping to outreach, one AI-powered pipeline to discover, qualify, and close prospects.”
             </blockquote>
             <Link href="/about" className="btn btn-primary mt-9 !rounded-full !px-8 !py-4 text-base">
               About <ArrowRight size={18} />
@@ -266,14 +266,14 @@ export default function HomePage() {
       </section>
 
       {/* ───────── Modules ───────── */}
-      <section className="section-y relative overflow-hidden border-y border-line bg-bg-alt" aria-labelledby="modules-title">
+      <section className="surface-tint cut-wave section-y overflow-hidden" aria-labelledby="modules-title">
         <div aria-hidden="true" className="absolute left-1/2 top-0 size-[40rem] -translate-x-1/2 rounded-full bg-[var(--glow-1)] blur-3xl" />
         <div className="container-x relative">
           <SectionHeading
             id="modules-title"
             badge="Platform Modules"
             title="Everything Between “Who Should We Call?” And The First Reply"
-            subtitle="Six Connected Modules On A Single Source Of Truth. Filter By Pipeline Stage To See What Each One Does."
+            subtitle="Six connected modules on a single source of truth. Filter by pipeline stage to see what each one does."
           />
           <ModuleTabs />
         </div>
@@ -282,7 +282,7 @@ export default function HomePage() {
       {/* ───────── Why ───────── */}
       <section className="section-y" aria-labelledby="why-title">
         <div className="container-x">
-          <SectionHeading id="why-title" badge="Why LeadGen AI" title="Why Teams Choose LeadGen AI" subtitle="Prospecting Designed For Evidence, Not Guesswork." />
+          <SectionHeading id="why-title" badge="Why LeadGen AI" title="Why Teams Choose LeadGen AI" subtitle="Prospecting designed for evidence, not guesswork." />
           <div className="mt-10 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
             {WHY.map(({ icon: Icon, ...w }) => (
               <div key={w.title} className="card card-link p-7">
@@ -312,9 +312,9 @@ export default function HomePage() {
       </section>
 
       {/* ───────── Methodology ───────── */}
-      <section className="section-y border-y border-line bg-bg-alt" aria-labelledby="method-title">
+      <section data-theme="dark" className="surface-island section-y my-8 md:my-12" aria-labelledby="method-title">
         <div className="container-x">
-          <SectionHeading id="method-title" badge="How It Works" title="Search, Scrape, Enrich, Score, Reach" subtitle="A Five-Stage Workflow That Takes You From A Search Term To Logged Outreach." />
+          <SectionHeading id="method-title" badge="How It Works" title="Search, Scrape, Enrich, Score, Reach" subtitle="A five-stage workflow that takes you from a search term to logged outreach." />
           <div className="relative mt-10">
             <div aria-hidden="true" className="absolute inset-x-[8%] top-[4.25rem] hidden h-0.5 bg-gradient-to-r from-transparent via-brand/50 to-transparent lg:block" />
             <ol className="relative grid gap-5 sm:grid-cols-2 lg:grid-cols-5">
@@ -342,8 +342,8 @@ export default function HomePage() {
                 </span>
                 <h3 className="mt-5 text-[clamp(1.6rem,3vw,2.3rem)] font-extrabold leading-tight">Large Jobs Keep Running After You Close The Tab</h3>
                 <p className="mt-4 max-w-xl text-white/80">
-                  Long Scrapes Are Handed To The Worker Fleet Rather Than Your Browser. Quotas Are Enforced Per Plan And Billing Cycle, And Every Job Records What It
-                  Fetched And When.
+                  Long scrapes are handed to the worker fleet rather than your browser. Quotas are enforced per plan and billing cycle, and every job records what it
+                  fetched and when.
                 </p>
               </div>
               <Link href="/how-it-works" className="btn !rounded-full bg-white !px-7 !py-3.5 text-base text-[#4338ca] hover:bg-white/90 lg:justify-self-end">
@@ -357,7 +357,7 @@ export default function HomePage() {
       {/* ───────── Solutions (alternating splits) ───────── */}
       <section className="section-y" aria-labelledby="solutions-title">
         <div className="container-x">
-          <SectionHeading id="solutions-title" badge="Solutions" title="Built For Teams That Sell To Businesses" subtitle="The Same Pipeline, Tuned To How Your Team Finds And Wins Customers." />
+          <SectionHeading id="solutions-title" badge="Solutions" title="Built For Teams That Sell To Businesses" subtitle="The same pipeline, tuned to how your team finds and wins customers." />
           <div className="mt-10 grid gap-12 lg:gap-14">
             {SOLUTIONS.map((s, i) => (
               <div key={s.title} className="grid items-center gap-10 lg:grid-cols-2 lg:gap-16">
@@ -410,13 +410,13 @@ export default function HomePage() {
       </section>
 
       {/* ───────── Industries ───────── */}
-      <section className="section-y border-y border-line bg-bg-alt" aria-labelledby="ind-title">
+      <section className="surface-soft cut-wave section-y" aria-labelledby="ind-title">
         <div className="container-x">
           <SectionHeading
             id="ind-title"
             badge="Industries"
             title="Playbooks For 44 Industries"
-            subtitle="Buying Triggers, Listing Signals And Objections Differ By Vertical. Each Guide Covers Generating Leads And Prospecting Into The Sector."
+            subtitle="Buying triggers, listing signals and objections differ by vertical. Each guide covers generating leads and prospecting into the sector."
           />
           <ul className="mt-10 grid grid-cols-2 gap-4 sm:grid-cols-3 lg:grid-cols-4">
             {industries.map((p) => (
@@ -442,24 +442,24 @@ export default function HomePage() {
       {/* ───────── Strategies ───────── */}
       <section className="section-y" aria-labelledby="str-title">
         <div className="container-x">
-          <SectionHeading id="str-title" badge="Strategies" title="Practical Lead Generation Playbooks" subtitle="Step-By-Step Guides For Outbound, Inbound And Multichannel Campaigns." />
+          <SectionHeading id="str-title" badge="Strategies" title="Practical Lead Generation Playbooks" subtitle="Step-by-step guides for outbound, inbound and multichannel campaigns." />
           <div className="mt-10 grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
             {strategies.map((p) => (
               <PageCard key={p.path} page={p} />
             ))}
           </div>
           <div className="mt-10 text-center">
-            <Link href="/strategies" className="btn btn-ghost !rounded-full !px-8 !py-3.5 text-base">
-              Solutions <ArrowRight size={18} />
+            <Link href="/lead-generation-strategies" className="btn btn-ghost !rounded-full !px-8 !py-3.5 text-base">
+              All Strategies <ArrowRight size={18} />
             </Link>
           </div>
         </div>
       </section>
 
       {/* ───────── Plans ───────── */}
-      <section className="section-y border-y border-line bg-bg-alt" aria-labelledby="plan-title">
+      <section className="surface-tint cut-wave section-y" aria-labelledby="plan-title">
         <div className="container-x">
-          <SectionHeading id="plan-title" badge="Plans" title="Start Free, Scale When It Works" subtitle="Three Plans, From A First Test To Dedicated Infrastructure. See The Live App For Current Pricing." />
+          <SectionHeading id="plan-title" badge="Plans" title="Start Free, Scale When It Works" subtitle="Three plans, from a first test to dedicated infrastructure. See the live app for current pricing." />
           <div className="mt-10 grid gap-6 lg:grid-cols-3">
             {PLANS.map((p) => (
               <div key={p.name} className={`card relative flex flex-col !rounded-3xl p-8 ${p.featured ? "border-brand ring-4 ring-brand-soft" : ""}`}>
@@ -497,11 +497,11 @@ export default function HomePage() {
             <div>
               <Faqs items={HOME_FAQS} showHeading={false} />
               <p className="mt-5 text-center text-muted">
-                More Questions? Visit The{" "}
+                More questions? Visit the{" "}
                 <Link href="/faq" className="font-semibold text-brand">
                   FAQ
                 </Link>{" "}
-                Or Browse The{" "}
+                or browse the{" "}
                 <Link href="/sitemap" className="font-semibold text-brand">
                   Sitemap
                 </Link>
@@ -515,14 +515,14 @@ export default function HomePage() {
       <div className="container-x">
         <CtaBand
           heading="Find The Businesses That Need What You Sell"
-          text="Run Your First Queries On The Free Plan, Or Request A Walkthrough For Your Team."
+          text="Run your first queries on the Free plan, or request a walkthrough for your team."
           label="Start Free"
           href={SITE.appUrl}
         />
       </div>
 
       {/* ───────── Knowledge hubs ───────── */}
-      <section className="section-y" aria-labelledby="learn-title">
+      <section className="surface-soft cut-wave section-y" aria-labelledby="learn-title">
         <div className="container-x">
           <SectionHeading id="learn-title" badge="Learning Library" title="What You’ll Find In Our Guides" subtitle={`${LIVE.length} Pages Covering Every Stage, From First Click To Closed Deal.`} />
           <div className="mt-10 grid gap-5 sm:grid-cols-2 lg:grid-cols-4">
@@ -544,6 +544,6 @@ export default function HomePage() {
           </div>
         </div>
       </section>
-    </>
+    </div>
   );
 }

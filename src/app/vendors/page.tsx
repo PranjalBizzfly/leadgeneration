@@ -37,11 +37,11 @@ const STEPS = [
 
 export default function VendorsPage() {
   return (
-    <>
+    <div className="page-root">
       <PageHero
         path="/vendors"
         badge="Vendors"
-        title="Working With LeadGen AI"
+        title="Vendors: Working With LeadGen AI"
         intro="We rely on good partners to build and run a dependable prospect intelligence platform. If your product or service could help us, or help the teams that use LeadGen AI, we would like to hear from you."
       >
         <Link href="/contact?topic=Vendors" className="btn btn-primary !rounded-full !px-7 !py-3.5">
@@ -69,7 +69,7 @@ export default function VendorsPage() {
         </div>
       </section>
 
-      <section className="section-y border-y border-line bg-bg-alt">
+      <section className="section-y border-y border-line bg-bg-alt cut-wave">
         <div className="container-x grid gap-12 lg:grid-cols-2">
           <div>
             <SectionHeading align="left" badge="Principles" title="What We Expect From Every Vendor" />
@@ -101,11 +101,11 @@ export default function VendorsPage() {
         </div>
       </section>
 
-      <FaqSection items={VENDORS_FAQS} subtitle="Quick Answers About Working With LeadGen AI As A Vendor." className="!border-t-0" />
+      <FaqSection items={VENDORS_FAQS} subtitle="Quick answers about working with LeadGen AI as a vendor." cut="cut-wave" className="!border-t-0" />
 
       <div className="container-x mt-12 md:mt-14">
         <CtaBand heading="Have Something That Could Help?" text="Send a short introduction and we will be in touch about next steps." label="Contact" href="/contact?topic=Vendors" />
       </div>
-    </>
+    </div>
   );
 }

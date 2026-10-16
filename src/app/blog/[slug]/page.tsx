@@ -35,7 +35,7 @@ export default async function BlogPostPage({ params }: Props) {
   const more = posts.filter((p) => p.slug !== post.slug && p.category === post.category).slice(0, 2);
 
   return (
-    <>
+    <div className="page-root">
       <PageHero path={`/blog/${post.slug}`} badge={post.category} title={post.title} intro={post.excerpt}>
         <span className="chip">{post.readMinutes} min read</span>
       </PageHero>
@@ -88,7 +88,7 @@ export default async function BlogPostPage({ params }: Props) {
       </section>
 
       {(related.length > 0 || more.length > 0) && (
-        <section className="section-y border-t border-line bg-bg-alt">
+        <section className="section-y border-t border-line bg-bg-alt cut-slant">
           <div className="container-x">
             <LetterHeading text="Keep Reading" as="h2" triggerOnScroll className="text-2xl font-extrabold sm:text-3xl" />
             <span aria-hidden="true" className="heading-accent-line mt-3" />
@@ -107,11 +107,11 @@ export default async function BlogPostPage({ params }: Props) {
         </section>
       )}
 
-      {post.faqs && <FaqSection items={post.faqs} subtitle="Quick Answers About This Article." className={related.length > 0 || more.length > 0 ? "!border-t-0" : ""} />}
+      {post.faqs && <FaqSection items={post.faqs} subtitle="Quick answers about this article." cut="cut-slant" className={related.length > 0 || more.length > 0 ? "!border-t-0" : ""} />}
 
       <div className="container-x mt-12 md:mt-14">
         <CtaBand heading="Put It Into Practice" text="Run your first queries on the Free plan, or talk to us about your prospecting." label="Start Free" href={SITE.appUrl} />
       </div>
-    </>
+    </div>
   );
 }

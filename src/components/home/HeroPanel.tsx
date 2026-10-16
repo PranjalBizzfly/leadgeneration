@@ -28,7 +28,7 @@ export function HeroPanel() {
             </span>
             <div className="min-w-0 flex-1">
               <p className="text-[15px] font-bold">Lead Discovered</p>
-              <p className="text-sm text-muted">Dental Clinic · Google Maps · De-Duplicated</p>
+              <p className="text-sm text-muted">Dental clinic · Google Maps · de-duplicated</p>
             </div>
             <span className="rounded-full border border-success/40 bg-success/10 px-2.5 py-1 text-xs font-bold text-success">New</span>
           </div>
@@ -38,7 +38,7 @@ export function HeroPanel() {
               <span className="icon-tile !size-10">
                 <Gauge size={18} />
               </span>
-              <p className="flex-1 text-[15px] font-bold">AI Lead Score</p>
+              <p className="flex-1 text-[15px] font-bold">AI lead score</p>
               <p className="font-display text-2xl font-extrabold">
                 86<span className="text-sm font-semibold text-muted">/100</span>
               </p>
@@ -60,8 +60,8 @@ export function HeroPanel() {
               <FileCheck size={18} />
             </span>
             <div className="min-w-0 flex-1">
-              <p className="text-[15px] font-bold">SEO Audit Ready</p>
-              <p className="text-sm text-muted">Findings Ranked By Severity, With A Fix List</p>
+              <p className="text-[15px] font-bold">SEO audit ready</p>
+              <p className="text-sm text-muted">Findings ranked by severity, with a fix list</p>
             </div>
             <span className="rounded-full border border-warm/50 bg-warm/10 px-2.5 py-1 text-xs font-bold text-warm">Opportunity</span>
           </div>
@@ -82,7 +82,7 @@ export function HeroPanel() {
         </span>
         <div>
           <p className="text-sm font-bold">AI-Drafted Outreach</p>
-          <p className="text-xs text-muted">Sent Through Your Own Email Transport</p>
+          <p className="text-xs text-muted">Sent through your own email transport</p>
         </div>
       </div>
     </div>

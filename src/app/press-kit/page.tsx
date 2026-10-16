@@ -44,7 +44,7 @@ const COLOURS = [
 
 export default function PressKitPage() {
   return (
-    <>
+    <div className="page-root">
       <PageHero
         path="/press-kit"
         badge="Press Kit"
@@ -61,7 +61,7 @@ export default function PressKitPage() {
 
       <section id="logos" className="section-y scroll-mt-24">
         <div className="container-x">
-          <SectionHeading badge="Logos" title="Logo Files" subtitle="The LeadGen AI mark is an indigo-to-violet rounded tile with a white L. The wordmark “LeadGen AI” is set in Space Grotesk Bold." />
+          <SectionHeading badge="Logos" title="Logo Files" subtitle="The LeadGen AI mark is an indigo-to-violet rounded tile with a white L. The wordmark “LeadGen AI” is set in DM Sans Bold." />
           <div className="mx-auto mt-9 grid max-w-4xl gap-6 md:grid-cols-2">
             <div className="card grid place-items-center gap-4 !rounded-3xl bg-white p-10">
               <span className="flex items-center gap-3 text-[#0f1222]">
@@ -98,7 +98,7 @@ export default function PressKitPage() {
         </div>
       </section>
 
-      <section className="section-y border-y border-line bg-bg-alt">
+      <section className="section-y border-y border-line bg-bg-alt cut-step">
         <div className="container-x">
           <SectionHeading badge="Boilerplate" title="Approved Descriptions" subtitle="Copy the length that fits your piece." />
           <div className="mx-auto mt-9 grid max-w-4xl gap-5">
@@ -136,11 +136,11 @@ export default function PressKitPage() {
           <div className="mx-auto mt-6 grid max-w-4xl gap-5 sm:grid-cols-2">
             <div className="card p-6">
               <p className="text-xs font-bold uppercase tracking-wider text-muted">Headings</p>
-              <p className="mt-2 font-display text-3xl font-bold">Space Grotesk</p>
+              <p className="mt-2 text-3xl font-semibold" style={{ fontFamily: "var(--font-headline)" }}>Bricolage Grotesque</p>
             </div>
             <div className="card p-6">
               <p className="text-xs font-bold uppercase tracking-wider text-muted">Body text</p>
-              <p className="mt-2 font-sans text-3xl font-semibold">Inter</p>
+              <p className="mt-2 font-sans text-3xl font-semibold">DM Sans</p>
             </div>
           </div>
           <p className="mx-auto mt-10 max-w-4xl text-center text-sm text-muted">
@@ -149,7 +149,7 @@ export default function PressKitPage() {
         </div>
       </section>
 
-      <FaqSection items={PRESS_KIT_FAQS} subtitle="Quick Answers About Logos, Descriptions And Brand Use." />
-    </>
+      <FaqSection items={PRESS_KIT_FAQS} subtitle="Quick answers about logos, descriptions and brand use." cut="cut-step" />
+    </div>
   );
 }

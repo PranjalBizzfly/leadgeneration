@@ -79,7 +79,7 @@ export function SitemapExplorer({ groups }: { groups: SitemapGroup[] }) {
       </div>
 
       <div className="mt-10 grid gap-10">
-        {visible.length === 0 && <p className="text-center text-lg text-muted">No Pages Match “{query}”.</p>}
+        {visible.length === 0 && <p className="text-center text-lg text-muted">No pages match “{query}”.</p>}
         {visible.map((g) => {
           const isCollapsed = collapsed.has(g.key);
           return (

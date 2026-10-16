@@ -61,7 +61,7 @@ export function Header() {
         <div className="ml-auto flex shrink-0 items-center gap-2">
           <SearchDialog total={LIVE.length} />
           <ThemeToggle />
-          <Link href="/book-a-demo" className="btn btn-primary hidden whitespace-nowrap !rounded-full !px-5 sm:inline-flex lg:hidden xl:inline-flex">
+          <Link href="/request-access" className="btn btn-primary hidden whitespace-nowrap !rounded-full !px-5 sm:inline-flex lg:hidden xl:inline-flex">
             Request Access <ArrowRight size={16} />
           </Link>
           <MobileNav items={NAV} />

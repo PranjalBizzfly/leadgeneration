@@ -1,7 +1,6 @@
 import Image from "next/image";
-import { titleCase } from "@/lib/title-case";
+import { pageBackground } from "@/lib/page-background";
 import Link from "next/link";
-import { heroImage } from "@/content/images";
 import type { PageContent, PlanEntry } from "@/content/types";
 import { GROUPS, type Visual } from "@/lib/groups";
 import { breadcrumbs, groupChildren, relatedPages } from "@/lib/registry";
@@ -47,23 +46,28 @@ function CtaLink({ href, className, children }: { href: string; className: strin
   );
 }
 
+const CUTS = ["cut-wave", "cut-step", "cut-slant", "cut-curve", "cut-tilt", "cut-flow"];
+
 export function ContentPage({ content, plan }: { content: PageContent; plan: PlanEntry }) {
   const group = GROUPS[plan.group];
   const GroupIcon = GROUP_ICON[plan.group];
   const isHub = group.hub === plan.path;
   const children = isHub ? groupChildren(plan.group) : [];
   const related = relatedPages(plan.path);
+  // One section-cut shape per page (varies across pages, never mixed on one page).
+  const cut = CUTS[[...plan.path].reduce((h, c) => (h * 31 + c.charCodeAt(0)) >>> 0, 0) % CUTS.length];
   const minutes = readingMinutes(content);
   const toc = content.sections.map((s) => s.heading);
-  const photo = heroImage(plan.path);
+  const bg = pageBackground(plan.path);
+  const photo = bg?.image;
 
   return (
-    <>
+    <div className="page-root">
       {/* ───────── Hero ───────── */}
       {photo ? (
         <>
         <section data-theme="dark" className="relative isolate overflow-hidden bg-bg text-ink">
-          <Image src={photo.src} alt={photo.alt} fill preload quality={90} sizes="100vw" className="-z-20 object-cover" />
+          <Image src={photo.src} alt={bg.own ? photo.alt : ""} fill preload quality={90} sizes="100vw" className="-z-20 object-cover" />
           <div aria-hidden="true" className="absolute inset-0 -z-10 bg-gradient-to-r from-black/90 via-black/70 to-black/30" />
           <div aria-hidden="true" className="absolute inset-0 -z-10 bg-gradient-to-t from-black/60 via-transparent to-black/40" />
           <div className="container-x relative pb-24 pt-8 md:pb-28 lg:pt-12">
@@ -74,7 +78,7 @@ export function ContentPage({ content, plan }: { content: PageContent; plan: Pla
             <LetterHeading text={content.h1} as="h1" className="mt-5 max-w-4xl text-[clamp(2.3rem,5.2vw,4.2rem)] font-extrabold uppercase leading-[1.02] tracking-tight text-white" />
             <span aria-hidden="true" className="heading-accent-line mt-4 w-20 !bg-gradient-to-r !from-indigo-400 !via-purple-300 !to-cyan-400" />
             <div className="mt-6 grid items-end gap-8 lg:grid-cols-[1fr_auto]">
-              <p className="max-w-2xl text-[clamp(1.05rem,1.6vw,1.2rem)] leading-relaxed text-white/85">{titleCase(content.metaDescription)}</p>
+              <p className="max-w-2xl text-[clamp(1.05rem,1.6vw,1.2rem)] leading-relaxed text-white/85">{content.metaDescription}</p>
               <div className="flex flex-wrap gap-3">
                 <CtaLink href={content.cta.href} className="btn btn-primary !rounded-full !px-6 !py-3">
                   {content.cta.label} <ArrowRight size={17} />
@@ -125,7 +129,7 @@ export function ContentPage({ content, plan }: { content: PageContent; plan: Pla
             </div>
             <LetterHeading text={content.h1} as="h1" className="mt-6 text-[clamp(2.3rem,5vw,4rem)] font-extrabold leading-[1.05]" />
             <span aria-hidden="true" className="heading-accent-line mt-4 w-20" />
-            <p className="mt-6 max-w-2xl text-[clamp(1.1rem,1.8vw,1.3rem)] leading-relaxed text-ink-soft">{titleCase(content.metaDescription)}</p>
+            <p className="mt-6 max-w-2xl text-[clamp(1.1rem,1.8vw,1.3rem)] leading-relaxed text-ink-soft">{content.metaDescription}</p>
             <ul className="mt-8 flex flex-wrap gap-2.5" aria-label="Page facts">
               <li className="chip">
                 <GroupIcon size={16} className="text-brand" /> {group.label}
@@ -303,7 +307,7 @@ export function ContentPage({ content, plan }: { content: PageContent; plan: Pla
               </div>
               {toc.length > 1 && (
                 <nav aria-label="On this page" className="hidden border-b border-line p-6 lg:block">
-                  <p className="text-xs font-bold uppercase tracking-wider text-muted">On This Page</p>
+                  <p className="text-xs font-bold uppercase tracking-wider text-muted">On this page</p>
                   <ol className="mt-3 grid gap-2.5 text-sm">
                     {toc.map((t, i) => (
                       <li key={t} className="flex gap-2.5">
@@ -339,7 +343,7 @@ export function ContentPage({ content, plan }: { content: PageContent; plan: Pla
                 )}
                 <p className="mt-4 flex items-start gap-2 text-xs leading-relaxed text-muted">
                   <Shield size={15} className="mt-px shrink-0 text-success" />
-                  The Free Plan Includes 3 Scrape Queries, Website Enrichment And CSV Export.
+                  The Free plan includes 3 scrape queries, website enrichment and CSV export.
                 </p>
               </div>
             </div>
@@ -349,7 +353,7 @@ export function ContentPage({ content, plan }: { content: PageContent; plan: Pla
 
       {/* ───────── Process ───────── */}
       {content.steps && (
-        <section id={slugify(content.steps.heading)} className="section-y scroll-mt-20 border-y border-line bg-bg-alt">
+        <section id={slugify(content.steps.heading)} data-theme="dark" className="surface-island section-y my-8 scroll-mt-20 md:my-12">
           <div className="container-x">
             <SectionHeading badge="Step By Step" title={content.steps.heading} subtitle={`A ${content.steps.items.length}-Step Process You Can Follow And Adapt.`} />
             <ol
@@ -371,7 +375,7 @@ export function ContentPage({ content, plan }: { content: PageContent; plan: Pla
 
       {/* ───────── Considerations ───────── */}
       {content.considerations && (
-        <section id={slugify(content.considerations.heading)} className="section-y scroll-mt-20">
+        <section id={slugify(content.considerations.heading)} className={`surface-tint ${cut} section-y scroll-mt-20`}>
           <div className="container-x">
             <SectionHeading badge="Before You Start" title={content.considerations.heading} />
             <ul className="mt-10 grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
@@ -393,7 +397,7 @@ export function ContentPage({ content, plan }: { content: PageContent; plan: Pla
 
       {/* ───────── Illustrative example banner ───────── */}
       {content.example && (
-        <section className="container-x pb-6" aria-label="Illustrative example">
+        <section className="container-x pb-6 pt-12 md:pt-16" aria-label="Illustrative example">
           <div className="card grid items-center gap-8 overflow-hidden !rounded-[2rem] p-6 sm:p-10 lg:grid-cols-[1.3fr_1fr]">
             <div>
               <span className="pill">
@@ -402,7 +406,7 @@ export function ContentPage({ content, plan }: { content: PageContent; plan: Pla
               <LetterHeading text={content.example.heading} as="h2" triggerOnScroll className="mt-5 text-[clamp(1.6rem,3vw,2.3rem)] font-extrabold leading-tight" />
               <span aria-hidden="true" className="heading-accent-line mt-3" />
               <p className="lead mt-5">{content.example.text}</p>
-              <p className="mt-5 text-sm text-muted">A Hypothetical Scenario For Explanation Only, Not A Customer Story Or A Promised Result.</p>
+              <p className="mt-5 text-sm text-muted">A hypothetical scenario for explanation only, not a customer story or a promised result.</p>
             </div>
             <div className="hidden rounded-3xl border border-line bg-bg-alt p-4 lg:block">
               <HeroVisual variant={exampleVisual(group.visual, Boolean(photo))} seed={`${plan.path}#example`} hue={group.hue} topic={plan.title} className="h-auto w-full" />
@@ -423,9 +427,9 @@ export function ContentPage({ content, plan }: { content: PageContent; plan: Pla
 
       {/* ───────── FAQ ───────── */}
       {content.faqs.length > 0 && (
-        <section id="faqs" className="section-y scroll-mt-20 border-y border-line bg-bg-alt" aria-labelledby="faq-title">
+        <section id="faqs" className={`surface-soft ${cut} section-y scroll-mt-20`} aria-labelledby="faq-title">
           <div className="container-x">
-            <SectionHeading id="faq-title" badge="FAQ" title="Frequently Asked Questions" subtitle={`Quick Answers About ${titleCase(plan.title)}.`} />
+            <SectionHeading id="faq-title" badge="FAQ" title="Frequently Asked Questions" subtitle={`Quick answers about ${plan.title}.`} />
             <div className="mx-auto mt-9 max-w-3xl">
               <Faqs items={content.faqs} showHeading={false} />
             </div>
@@ -437,7 +441,7 @@ export function ContentPage({ content, plan }: { content: PageContent; plan: Pla
       {related.length > 0 && (
         <section className="section-y" aria-labelledby="related-title">
           <div className="container-x">
-            <SectionHeading id="related-title" badge="Keep Exploring" title="Related Topics" subtitle="Hand-Picked Pages That Go Deeper On The Ideas Covered Here." />
+            <SectionHeading id="related-title" badge="Keep Exploring" title="Related Topics" subtitle="Hand-picked pages that go deeper on the ideas covered here." />
             <TopicLinkGrid pages={related} />
           </div>
         </section>
@@ -446,6 +450,6 @@ export function ContentPage({ content, plan }: { content: PageContent; plan: Pla
       <div className="container-x">
         <CtaBand {...content.cta} />
       </div>
-    </>
+    </div>
   );
 }
