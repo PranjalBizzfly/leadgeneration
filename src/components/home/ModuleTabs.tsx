@@ -115,11 +115,6 @@ export function ModuleTabs() {
       <div className="mt-9 grid gap-6 sm:grid-cols-2 lg:grid-cols-3" role="tabpanel">
         {shown.map(({ icon: Icon, ...m }) => (
           <article key={m.title} className={`card card-link relative flex flex-col p-7 ${m.featured ? "card-accent" : ""}`}>
-            {m.featured && (
-              <span className="absolute -top-3.5 left-1/2 inline-flex -translate-x-1/2 items-center gap-1.5 rounded-full border border-brand bg-surface px-3 py-1 text-xs font-bold text-brand">
-                <Sparkle size={12} /> Core Module
-              </span>
-            )}
             <div className="flex items-center justify-between">
               <span className="icon-tile">
                 <Icon size={22} />
