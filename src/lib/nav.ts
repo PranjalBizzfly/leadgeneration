@@ -72,7 +72,7 @@ export const NAV: NavItem[] = [
       col("B2C Audiences", ["/b2c-lead-generation", "/b2c/homeowners", "/b2c/patients", "/b2c/students", "/b2c/local-shoppers"]),
       col("Strategies", ["/strategies/cold-email-outreach", "/strategies/linkedin-prospecting", "/strategies/local-seo", "/strategies/website-audit-offers", "/strategies/outbound-sequences"]),
     ],
-    footer: { title: "All Strategies", href: "/lead-generation-strategies" },
+    footer: { title: "Strategies", href: "/lead-generation-strategies" },
   },
   {
     label: "Industries",

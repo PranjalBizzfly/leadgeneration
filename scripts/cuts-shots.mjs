@@ -18,7 +18,7 @@ for (const theme of ["dark", "light"]) {
         [...document.querySelectorAll(":is(.cut-wave,.cut-step,.cut-slant,.cut-curve,.cut-tilt,.cut-flow)")].map((s) => {
           const r = s.getBoundingClientRect();
           const h = parseFloat(getComputedStyle(s).getPropertyValue("--cut-h")) || 0;
-          const cutPx = Math.min(76, Math.max(28, (window.innerWidth * 5) / 100));
+          const cutPx = parseFloat(getComputedStyle(s).getPropertyValue("--cut-h")) || Math.min(52, Math.max(20, window.innerWidth * 0.034));
           // Any visible text/element inside the top or bottom band would be clipped by the mask.
           const clipped = [...s.querySelectorAll("h2,h3,p,a,button,li,img")].some((el) => {
             const e = el.getBoundingClientRect();

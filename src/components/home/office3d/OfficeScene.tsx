@@ -715,7 +715,8 @@ function Lobby() {
       <B p={[1.6, 0.25, -6.6]} s={[3, 0.5, 1]} c="#64748b" />
       <B p={[1.6, 0.7, -7]} s={[3, 0.5, 0.25]} c="#64748b" />
       <B p={[1.6, 0.25, -4.9]} s={[1.2, 0.4, 0.7]} c="#f8fafc" />
-      <Person p={[0.8, 0, -6.4]} seed={14} seated />
+      {/* Faces the coffee table (+z), back against the sofa's backrest. */}
+      <Person p={[0.8, 0, -6.7]} rot={Math.PI} seed={14} seated />
       <Plant p={[-3, 0, -7.8]} s={1.2} />
       <Plant p={[3.2, 0, -7.8]} />
       {/* Entrance mat and planters on the south side */}

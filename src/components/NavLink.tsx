@@ -17,7 +17,10 @@ export function NavLink({ href, match, children }: { href: string; match: string
       }`}
     >
       {children}
-      {active && <span className="absolute inset-x-2 -bottom-0.5 h-0.5 rounded-full bg-brand xl:inset-x-3" />}
+      {/* Always rendered (only its visibility changes): the prerendered "/" shell doesn't know the current
+          path, so a conditional element made the server and client trees differ (React hydration error 418). */}
+      <span aria-hidden="true" className={`absolute inset-x-2 -bottom-0.5 h-0.5 rounded-full bg-brand transition-opacity xl:inset-x-3 ${active ? "opacity-100" : "opacity-0"}`} />
+
     </Link>
   );
 }

@@ -108,7 +108,7 @@ export function AppWindow({ station, index, run, playing, dwellMs, status, onTog
           ))}
         </div>
         <Link href={station.href} className="hidden shrink-0 items-center gap-1 text-[11px] font-bold text-ink/75 hover:text-ink sm:inline-flex">
-          Details <ArrowRight size={12} />
+          {station.title} <ArrowRight size={12} />
         </Link>
       </div>
     </div>

@@ -165,7 +165,7 @@ export function IndustryTabsClient({ tabs, className = "" }: { tabs: IndustryTab
               ))}
             </ul>
             <Link href={t.path} className="btn btn-primary mt-7 !rounded-full !px-6 !py-3">
-              Explore {t.title} <ArrowRight size={17} />
+              {t.title} <ArrowRight size={17} />
             </Link>
           </div>
           <div className="min-w-0">

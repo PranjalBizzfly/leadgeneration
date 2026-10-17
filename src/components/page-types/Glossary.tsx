@@ -39,7 +39,7 @@ export function Glossary({ sections }: { sections: Section[] }) {
       </nav>
       <div className="mt-8 grid gap-8">
         {LETTERS.filter((l) => groups.has(l)).map((l) => (
-          <section key={l} id={`letter-${l.toLowerCase()}`} aria-labelledby={`letter-${l.toLowerCase()}-h`} className="scroll-mt-44">
+          <section key={l} id={`letter-${l.toLowerCase()}`} aria-labelledby={`letter-${l.toLowerCase()}-h`} className="scroll-mt-44" data-filter-group>
             <h2 id={`letter-${l.toLowerCase()}-h`} className="flex items-center gap-3 font-display text-2xl font-extrabold">
               <span className="grid size-11 place-items-center rounded-xl bg-grad">{l}</span>
               <span className="text-sm font-semibold text-muted">
@@ -48,7 +48,7 @@ export function Glossary({ sections }: { sections: Section[] }) {
             </h2>
             <dl className="mt-4 grid gap-3 sm:grid-cols-2">
               {groups.get(l)!.map((t) => (
-                <div key={t.term} className="card p-5">
+                <div key={t.term} className="card p-5" data-filter-item>
                   <dt className="font-bold text-ink">{t.term}</dt>
                   {t.def && <dd className="mt-1.5 text-[15px] leading-relaxed text-ink-soft">{t.def}</dd>}
                 </div>

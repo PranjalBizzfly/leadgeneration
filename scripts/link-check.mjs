@@ -5,7 +5,8 @@
 import { readdirSync, readFileSync, statSync } from "node:fs";
 import { join, relative } from "node:path";
 
-const ROOT = ".next/server/app";
+// LINK_CHECK_ROOT lets the check run on HTML saved from a dev server instead of a production build.
+const ROOT = process.env.LINK_CHECK_ROOT ?? ".next/server/app";
 const SKIP = new Set(["_not-found", "_global-error"]);
 
 function walk(dir, out = []) {

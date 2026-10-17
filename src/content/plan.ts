@@ -84,7 +84,7 @@ const services = group(
 const strategies = group(
   "strategies",
   [
-    ["/lead-generation-strategies", "Lead Generation Strategies", "Marketers And Founders", "Strategy map; inbound vs outbound; choosing a mix"],
+    ["/lead-generation-strategies", "Strategies", "Marketers And Founders", "Strategy map; inbound vs outbound; choosing a mix"],
     ["/strategies/cold-email-outreach", "Cold Email Outreach", "Outbound Teams", "Targeting; copy; sequencing; deliverability; compliance"],
     ["/strategies/cold-calling", "Cold Calling", "Calling Teams", "Lists; openers; call flow; follow-up"],
     ["/strategies/linkedin-prospecting", "LinkedIn Prospecting", "B2B Sellers", "Profile; search; connection notes; etiquette"],

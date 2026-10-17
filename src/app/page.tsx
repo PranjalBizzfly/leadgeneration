@@ -489,7 +489,7 @@ export default function HomePage() {
           </div>
           <div className="mt-10 text-center">
             <Link href="/lead-generation-strategies" className="btn btn-ghost !rounded-full !px-8 !py-3.5 text-base">
-              All Strategies <ArrowRight size={18} />
+              Strategies <ArrowRight size={18} />
             </Link>
           </div>
         </div>

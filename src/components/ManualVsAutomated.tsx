@@ -59,7 +59,7 @@ export function ManualVsAutomated({ className = "" }: { className?: string }) {
       {plan && (
         <div className="mt-6 text-center">
           <Link href={COMPARE_PATH} className="btn btn-ghost !rounded-full !px-6 !py-3">
-            Read The Full Comparison: {plan.title} <ArrowRight size={17} />
+            {plan.title} <ArrowRight size={17} />
           </Link>
         </div>
       )}

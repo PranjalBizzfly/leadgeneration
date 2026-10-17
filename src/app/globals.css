@@ -319,13 +319,33 @@ p {
    * shows through and the edge blends seamlessly in both themes (no extra markup, no colour to match).
    * The cut height stays inside the section's own padding, so content is never clipped.
    *   .cut-wave  soft wave        .cut-step   asymmetric step (rounded shoulders)
-   *   .cut-slant slanted edges    .cut-curve  convex arc
-   *   .cut-tilt  opposing slants  .cut-flow   long flowing wave
+   *   .cut-slant S-step sweep     .cut-curve  convex arc
+   *   .cut-tilt  off-centre rise  .cut-flow   long flowing wave
    */
   :is(.cut-wave, .cut-step, .cut-slant, .cut-curve, .cut-tilt, .cut-flow) {
     /* Kept below the section's own padding (2.5rem / 3.25rem / 3.75rem) so the cut never clips content. */
     --cut-h: clamp(20px, 3.4vw, 52px);
     border-block: 0 !important;
+    /* Overlap the neighbouring sections by the cut height and sit above them, so the masked-away strips show
+       the NEIGHBOUR's background (not the page background), and the edge reads as one clean shape instead of
+       a stray band. Neighbours' padding is always taller than --cut-h, so no content is covered. */
+    position: relative;
+    z-index: 1;
+    margin-block: calc(-1 * var(--cut-h));
+  }
+  /* Only overlap real sections (they always have padding). Next to anything else, keep a normal edge. */
+  :is(.cut-wave, .cut-step, .cut-slant, .cut-curve, .cut-tilt, .cut-flow):first-child,
+  :not(section) + :is(.cut-wave, .cut-step, .cut-slant, .cut-curve, .cut-tilt, .cut-flow) {
+    margin-top: 0;
+  }
+  :is(.cut-wave, .cut-step, .cut-slant, .cut-curve, .cut-tilt, .cut-flow):not(:has(+ section)) {
+    margin-bottom: 0;
+  }
+  /* Two cut sections back to back: the first keeps a straight bottom so only ONE curve forms the boundary
+     (two overlapping cuts left a sliver of page background between them). */
+  :is(.cut-wave, .cut-step, .cut-slant, .cut-curve, .cut-tilt, .cut-flow):has(+ :is(.cut-wave, .cut-step, .cut-slant, .cut-curve, .cut-tilt, .cut-flow)) {
+    --cut-bottom: linear-gradient(#000 0 0);
+    margin-bottom: 0;
     -webkit-mask: var(--cut-top) top / 100% var(--cut-h) no-repeat, linear-gradient(#000 0 0) center / 100% calc(100% - 2 * var(--cut-h) + 2px) no-repeat, var(--cut-bottom) bottom / 100% var(--cut-h) no-repeat;
     mask: var(--cut-top) top / 100% var(--cut-h) no-repeat, linear-gradient(#000 0 0) center / 100% calc(100% - 2 * var(--cut-h) + 2px) no-repeat, var(--cut-bottom) bottom / 100% var(--cut-h) no-repeat;
   }
@@ -338,16 +358,16 @@ p {
     --cut-bottom: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1440 100' preserveAspectRatio='none'%3E%3Cpath d='M0 0H1440V22C1440 34 1428 40 1396 40H880C842 40 828 46 800 64C772 82 754 88 716 88H44C12 88 0 94 0 100Z'/%3E%3C/svg%3E");
   }
   .cut-slant {
-    --cut-top: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1440 100' preserveAspectRatio='none'%3E%3Cpath d='M0 100V72L1440 4V100Z'/%3E%3C/svg%3E");
-    --cut-bottom: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1440 100' preserveAspectRatio='none'%3E%3Cpath d='M0 0H1440V28L0 96Z'/%3E%3C/svg%3E");
+    --cut-top: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1440 100' preserveAspectRatio='none'%3E%3Cpath d='M0 100V96C380 96 520 4 860 4H1440V100Z'/%3E%3C/svg%3E");
+    --cut-bottom: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1440 100' preserveAspectRatio='none'%3E%3Cpath d='M0 0H1440V4C1060 4 920 96 580 96H0Z'/%3E%3C/svg%3E");
   }
   .cut-curve {
     --cut-top: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1440 100' preserveAspectRatio='none'%3E%3Cpath d='M0 100V70Q720 -36 1440 70V100Z'/%3E%3C/svg%3E");
     --cut-bottom: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1440 100' preserveAspectRatio='none'%3E%3Cpath d='M0 0H1440V30Q720 136 0 30Z'/%3E%3C/svg%3E");
   }
   .cut-tilt {
-    --cut-top: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1440 100' preserveAspectRatio='none'%3E%3Cpath d='M0 100V6L1440 74V100Z'/%3E%3C/svg%3E");
-    --cut-bottom: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1440 100' preserveAspectRatio='none'%3E%3Cpath d='M0 0H1440V94L0 26Z'/%3E%3C/svg%3E");
+    --cut-top: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1440 100' preserveAspectRatio='none'%3E%3Cpath d='M0 100V96C300 96 380 4 600 4S960 96 1440 96V100Z'/%3E%3C/svg%3E");
+    --cut-bottom: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1440 100' preserveAspectRatio='none'%3E%3Cpath d='M0 0H1440V4C1140 4 1060 96 840 96S480 4 0 4Z'/%3E%3C/svg%3E");
   }
   .cut-flow {
     --cut-top: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1440 100' preserveAspectRatio='none'%3E%3Cpath d='M0 40C180 90 360 96 540 64S900 0 1080 18S1360 70 1440 56V100H0Z'/%3E%3C/svg%3E");
@@ -418,6 +438,29 @@ p {
 
     .marquee-wrap:hover .marquee {
       animation-play-state: paused;
+    }
+
+    .marquee-reverse {
+      animation-direction: reverse;
+    }
+  }
+
+  .marquee-fade {
+    mask-image: linear-gradient(90deg, transparent, #000 8%, #000 92%, transparent);
+  }
+
+  /* No motion: wrap the rows statically and drop the duplicate copies */
+  @media (prefers-reduced-motion: reduce) {
+    .marquee-fade {
+      mask-image: none;
+    }
+    .marquee-fade .marquee {
+      width: auto;
+      flex-wrap: wrap;
+      justify-content: center;
+    }
+    .marquee-fade .marquee-dup {
+      display: none;
     }
   }
 
@@ -1486,6 +1529,567 @@ html[data-theme="light"] .surface-tint {
   }
 }
 
+/* ═══════════════ Layout families (components/content/*) ═══════════════
+   Structural pieces used by the per-family page layouts. All colours come from the theme tokens. */
+
+/* Live filter box (glossary, FAQs, hub libraries) */
+.list-filter {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+  min-height: 3rem;
+  padding: 0 1rem;
+  border-radius: 9999px;
+  border: 1px solid var(--line);
+  background: var(--surface);
+  box-shadow: var(--shadow);
+}
+
+.list-filter:focus-within {
+  border-color: var(--brand);
+}
+
+.glossary-tools {
+  position: sticky;
+  top: 5.5rem;
+  z-index: 5;
+  padding-block: 0.5rem;
+  background: color-mix(in oklch, var(--bg) 88%, transparent);
+  backdrop-filter: blur(8px);
+}
+
+/* Filtered-out items must hide even when a utility class sets display (e.g. flex). */
+[data-filter-item][hidden],
+[data-filter-group][hidden],
+.faq-filterable details[hidden] {
+  display: none !important;
+}
+
+/* Horizontal connected process (wraps to a vertical chain on narrow screens) */
+.process-strip {
+  position: relative;
+  display: grid;
+  gap: 1.25rem;
+}
+
+@media (min-width: 1024px) {
+  .process-strip {
+    grid-template-columns: repeat(var(--cols, 5), minmax(0, 1fr));
+    gap: 1rem;
+  }
+
+  .process-strip::before {
+    content: "";
+    position: absolute;
+    left: 2rem;
+    right: 2rem;
+    top: 1.5rem;
+    height: 2px;
+    background: linear-gradient(90deg, color-mix(in oklch, var(--brand) 60%, transparent), color-mix(in oklch, var(--violet) 60%, transparent));
+  }
+}
+
+.process-node {
+  position: relative;
+  display: grid;
+  grid-template-columns: 3rem 1fr;
+  gap: 0.9rem;
+  align-items: start;
+}
+
+@media (min-width: 1024px) {
+  .process-node {
+    grid-template-columns: 1fr;
+  }
+}
+
+.process-dot {
+  position: relative;
+  z-index: 1;
+  display: grid;
+  place-items: center;
+  width: 3rem;
+  height: 3rem;
+  border-radius: 9999px;
+  background: var(--grad);
+  color: #fff;
+  font-weight: 800;
+  font-size: 0.85rem;
+  box-shadow: 0 0 0 6px var(--bg), 0 10px 24px -10px rgb(99 102 241 / 0.8);
+}
+
+.surface-island .process-dot {
+  box-shadow: 0 0 0 6px var(--surface), 0 10px 24px -10px rgb(99 102 241 / 0.8);
+}
+
+.process-body {
+  border-radius: 1.1rem;
+  border: 1px solid var(--line);
+  background: var(--surface);
+  padding: 1rem 1.1rem;
+}
+
+/* Service deep dives: alternating text + feature card rows */
+.split-row {
+  display: grid;
+  gap: 2rem;
+}
+
+@media (min-width: 1024px) {
+  .split-row {
+    grid-template-columns: minmax(0, 1.2fr) minmax(0, 1fr);
+    gap: 4rem;
+  }
+
+  .split-row-rev > :first-child {
+    order: 2;
+  }
+}
+
+/* Playbook / case rail: numbered plays down a vertical line */
+.play-rail {
+  position: relative;
+  display: grid;
+  gap: 1.75rem;
+}
+
+.play-rail::before {
+  content: "";
+  position: absolute;
+  left: 1.25rem;
+  top: 1rem;
+  bottom: 1rem;
+  width: 2px;
+  background: linear-gradient(180deg, color-mix(in oklch, var(--brand) 55%, transparent), color-mix(in oklch, var(--violet) 40%, transparent));
+}
+
+.play-rail-item {
+  position: relative;
+  display: grid;
+  grid-template-columns: 2.5rem minmax(0, 1fr);
+  gap: 1rem;
+}
+
+@media (min-width: 640px) {
+  .play-rail-item {
+    gap: 1.5rem;
+  }
+}
+
+.play-rail-n {
+  position: relative;
+  z-index: 1;
+  display: grid;
+  place-items: center;
+  width: 2.5rem;
+  height: 2.5rem;
+  margin-top: 1.5rem;
+  border-radius: 0.8rem;
+  background: var(--grad);
+  color: #fff;
+  font-size: 0.8rem;
+  font-weight: 800;
+}
+
+/* Industry: situation | approach rows */
+.sector-row {
+  display: grid;
+  overflow: hidden;
+  border-radius: 1.75rem;
+  border: 1px solid var(--line);
+  background: var(--surface);
+  box-shadow: var(--shadow);
+}
+
+@media (min-width: 1024px) {
+  .sector-row {
+    grid-template-columns: minmax(0, 1.25fr) minmax(0, 1fr);
+  }
+
+  .sector-row-solo {
+    grid-template-columns: 1fr;
+  }
+}
+
+.sector-approach {
+  border-top: 1px solid var(--line);
+  background:
+    radial-gradient(70% 90% at 100% 0%, color-mix(in oklch, var(--brand) 9%, transparent), transparent 70%),
+    var(--surface-2);
+}
+
+@media (min-width: 1024px) {
+  .sector-approach {
+    border-top: 0;
+    border-left: 1px solid var(--line);
+  }
+}
+
+/* Toolkit: setup list and reference cards */
+.setup-list {
+  display: grid;
+  gap: 0.75rem;
+}
+
+.setup-list > li {
+  display: grid;
+  grid-template-columns: 2rem 1fr;
+  gap: 0.9rem;
+  padding: 1rem 1.1rem;
+  border-radius: 1.1rem;
+  border: 1px solid var(--line);
+  background: var(--surface);
+}
+
+.setup-n {
+  display: grid;
+  place-items: center;
+  width: 2rem;
+  height: 2rem;
+  border-radius: 0.6rem;
+  background: var(--brand-soft);
+  color: var(--brand);
+  font-weight: 800;
+  font-size: 0.85rem;
+}
+
+.reference-grid {
+  display: grid;
+  gap: 1.25rem;
+}
+
+@media (min-width: 768px) {
+  .reference-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+.spec-list {
+  display: grid;
+  gap: 0.45rem;
+  padding-top: 1rem;
+  border-top: 1px dashed var(--line);
+}
+
+.spec-list > li {
+  position: relative;
+  padding-left: 1.1rem;
+  font-size: 15px;
+  line-height: 1.55;
+  color: var(--ink-soft);
+}
+
+.spec-list > li::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 0.6em;
+  width: 0.45rem;
+  height: 0.45rem;
+  border-radius: 2px;
+  background: var(--grad);
+}
+
+/* Workflow: zig-zag process diagram and stage chain */
+.zigzag {
+  position: relative;
+  display: grid;
+  gap: 1.25rem;
+}
+
+.zigzag::before {
+  content: "";
+  position: absolute;
+  left: 1.5rem;
+  top: 0;
+  bottom: 0;
+  width: 2px;
+  background: linear-gradient(180deg, color-mix(in oklch, var(--brand) 60%, transparent), color-mix(in oklch, var(--violet) 50%, transparent));
+}
+
+.zigzag-item {
+  position: relative;
+  display: grid;
+  grid-template-columns: 3rem minmax(0, 1fr);
+  gap: 1rem;
+  align-items: center;
+}
+
+.zigzag-n {
+  position: relative;
+  z-index: 1;
+  display: grid;
+  place-items: center;
+  width: 3rem;
+  height: 3rem;
+  border-radius: 9999px;
+  background: var(--grad);
+  color: #fff;
+  font-weight: 800;
+  font-size: 0.85rem;
+  box-shadow: 0 0 0 6px var(--surface);
+}
+
+@media (min-width: 900px) {
+  .zigzag::before {
+    left: 50%;
+    transform: translateX(-50%);
+  }
+
+  .zigzag-item {
+    grid-template-columns: minmax(0, 1fr) 3rem minmax(0, 1fr);
+  }
+
+  .zigzag-item > .card {
+    grid-column: 1;
+    grid-row: 1;
+  }
+
+  .zigzag-item > .zigzag-n {
+    grid-column: 2;
+    grid-row: 1;
+  }
+
+  .zigzag-item:nth-child(even) > .card {
+    grid-column: 3;
+  }
+}
+
+.stage-chain {
+  position: relative;
+}
+
+.stage-chain > .guide-part + .guide-part::before {
+  content: "";
+  position: absolute;
+  left: 2.75rem;
+  top: -2.5rem;
+  height: 2.5rem;
+  width: 2px;
+  background: color-mix(in oklch, var(--brand) 45%, transparent);
+}
+
+.stage-chain > .guide-part {
+  position: relative;
+  overflow: visible;
+}
+
+/* Guide (editorial): chapter list + one readable column */
+.guide-grid {
+  display: grid;
+  gap: 2.5rem;
+}
+
+@media (min-width: 1024px) {
+  .guide-grid {
+    grid-template-columns: 14rem minmax(0, 46rem);
+    justify-content: center;
+    gap: 4rem;
+  }
+}
+
+.guide-takeaways {
+  border-radius: 1.5rem;
+  padding: 1.5rem;
+  border: 1px solid color-mix(in oklch, var(--brand) 22%, var(--line));
+  background: color-mix(in oklch, var(--brand) 5%, var(--surface));
+}
+
+.guide-chapter {
+  margin-top: 3.5rem;
+  padding-top: 2.5rem;
+  border-top: 1px solid var(--line);
+}
+
+.guide-callout {
+  border-radius: 1.25rem;
+  padding: 1.25rem 1.4rem;
+  border: 1px solid color-mix(in oklch, var(--warm) 35%, var(--line));
+  background: color-mix(in oklch, var(--warm) 7%, var(--surface));
+}
+
+.guide-example {
+  border-radius: 1.25rem;
+  padding: 1.25rem 1.4rem;
+  border-left: 4px solid var(--brand);
+  background: var(--surface-2);
+}
+
+/* Legal document */
+.legal-doc > section {
+  margin-top: 2.5rem;
+}
+
+.legal-doc h2 {
+  font-family: var(--font-sans);
+  font-size: 1.3rem;
+  font-weight: 700;
+  letter-spacing: -0.01em;
+  color: var(--ink);
+}
+
+.legal-n {
+  color: var(--brand);
+  margin-right: 0.25rem;
+}
+
+.legal-doc p,
+.legal-doc li {
+  margin-top: 0.85rem;
+  font-size: 16.5px;
+  line-height: 1.75;
+  color: var(--ink-soft);
+}
+
+.legal-doc ul {
+  margin-top: 0.5rem;
+  padding-left: 1.25rem;
+  list-style: disc;
+}
+
+/* Comparison duel */
+.duel-badge {
+  display: grid;
+  gap: 0.75rem;
+  border-radius: 1.75rem;
+  padding: 1.25rem;
+  border: 1px solid rgb(255 255 255 / 0.15);
+  background: rgb(255 255 255 / 0.07);
+  backdrop-filter: blur(10px);
+  color: #fff;
+}
+
+.duel-side {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  padding: 0.85rem 1rem;
+  border-radius: 1.1rem;
+  background: rgb(255 255 255 / 0.08);
+  font-weight: 700;
+}
+
+.duel-side-b {
+  background: linear-gradient(135deg, rgb(99 102 241 / 0.55), rgb(139 92 246 / 0.55));
+}
+
+.duel-letter {
+  display: grid;
+  place-items: center;
+  width: 2rem;
+  height: 2rem;
+  border-radius: 0.6rem;
+  background: rgb(255 255 255 / 0.18);
+  font-size: 0.85rem;
+}
+
+.duel-vs {
+  justify-self: center;
+  font-family: var(--font-headline);
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  color: rgb(255 255 255 / 0.75);
+}
+
+/* Case: illustrative-scenario note */
+.scenario-note {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.6rem;
+  padding: 0.9rem 1.1rem;
+  border-radius: 1rem;
+  border: 1px dashed color-mix(in oklch, var(--warm) 55%, var(--line));
+  background: color-mix(in oklch, var(--warm) 7%, var(--surface));
+  font-size: 0.92rem;
+  font-weight: 600;
+  color: var(--ink-soft);
+}
+
+.scenario-note > svg {
+  flex-shrink: 0;
+  margin-top: 0.15rem;
+  color: var(--warm);
+}
+
+/* Brand story */
+.story-purpose {
+  font-family: var(--font-headline);
+  font-size: clamp(1.45rem, 2.8vw, 2.1rem);
+  font-weight: 600;
+  line-height: 1.35;
+  letter-spacing: -0.015em;
+  color: var(--ink);
+}
+
+.story-row {
+  display: grid;
+  gap: 1.25rem;
+}
+
+@media (min-width: 1024px) {
+  .story-row {
+    grid-template-columns: minmax(0, 0.8fr) minmax(0, 1.2fr);
+    gap: 4rem;
+    align-items: start;
+  }
+
+  .story-row-rev > :first-child {
+    order: 2;
+  }
+}
+
+/* Hubs */
+.resource-mosaic {
+  display: grid;
+  gap: 1rem;
+}
+
+@media (min-width: 640px) {
+  .resource-mosaic {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+/* Wide-screen columns, the featured first card and equal rows live in content/interactive.css. */
+
+.learning-path {
+  position: relative;
+  display: grid;
+  gap: 0.9rem;
+}
+
+@media (min-width: 768px) {
+  .learning-path {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+.learning-path > li {
+  display: grid;
+  grid-template-columns: 2.25rem minmax(0, 1fr);
+  gap: 0.75rem;
+  align-items: center;
+}
+
+.learning-n {
+  display: grid;
+  place-items: center;
+  width: 2.25rem;
+  height: 2.25rem;
+  border-radius: 9999px;
+  border: 2px solid color-mix(in oklch, var(--brand) 45%, var(--line));
+  color: var(--brand);
+  font-weight: 800;
+  font-size: 0.85rem;
+}
+
+@media print {
+  header,
+  footer {
+    display: none !important;
+  }
+}
+
 /* ─── Ticks ─── A filled gradient circle with a white check, used for checklists and takeaways. */
 .tick {
   display: grid;
@@ -2389,4 +2993,80 @@ a.glossary-letter:focus-visible {
 nav[data-menu-closed] .mega-menu {
   visibility: hidden;
   opacity: 0;
+}
+
+/* "More industry" chip cloud: chips pop up row by row as the cloud scrolls in (scroll-driven, no JS),
+   then lift with a brand glow on hover. Whole-pixel moves and a transform-free resting state keep the
+   labels crisp. */
+.chip-cloud .chip {
+  transition: transform 0.25s cubic-bezier(0.34, 1.56, 0.64, 1), border-color 0.2s ease, color 0.2s ease, background-color 0.2s ease, box-shadow 0.25s ease;
+}
+
+.chip-cloud .chip:hover,
+.chip-cloud .chip:focus-visible {
+  transform: translateY(-3px);
+  border-color: var(--brand);
+  color: var(--brand);
+  background: color-mix(in oklch, var(--brand) 8%, var(--surface));
+  box-shadow: 0 10px 22px -14px var(--brand);
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  @supports (animation-timeline: view()) {
+    .chip-cloud > li {
+      animation: chip-pop linear both;
+      animation-timeline: view();
+      animation-range: entry calc(var(--i, 0) * 10px) entry calc(110px + var(--i, 0) * 10px);
+    }
+  }
+}
+
+@keyframes chip-pop {
+  from {
+    opacity: 0;
+    transform: translateY(14px) scale(0.92);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+/* Hub directory lanes (LaneDirectory): layered depth without rotation, so text stays crisp. The panel
+   reads as a raised slab (inner highlight, a darker lip and a soft brand drop); cards sit on a thin
+   "thickness" edge and lift onto it on hover. */
+.dir-lane {
+  box-shadow: 0 1px 0 var(--dir-sheen, color-mix(in oklch, white 60%, transparent)) inset, 0 24px 48px -36px color-mix(in oklch, var(--brand) 55%, transparent);
+}
+
+.dir-panel {
+  box-shadow:
+    inset 0 1px 0 rgb(255 255 255 / 0.28),
+    inset 0 -3px 0 rgb(0 0 0 / 0.18),
+    0 18px 36px -18px color-mix(in oklch, var(--brand) 75%, transparent);
+}
+
+.dir-panel-icon {
+  box-shadow: inset 0 1px 0 rgb(255 255 255 / 0.35), 0 8px 18px -8px rgb(0 0 0 / 0.45);
+}
+
+.dir-card {
+  box-shadow:
+    0 1px 0 var(--dir-sheen, color-mix(in oklch, white 70%, transparent)) inset,
+    0 4px 0 -1px color-mix(in oklch, var(--brand) 14%, var(--line)),
+    0 14px 26px -20px color-mix(in oklch, var(--brand) 60%, transparent);
+}
+
+.dir-card:hover {
+  box-shadow:
+    0 1px 0 var(--dir-sheen, color-mix(in oklch, white 70%, transparent)) inset,
+    0 6px 0 -1px color-mix(in oklch, var(--brand) 32%, var(--line)),
+    0 22px 34px -20px color-mix(in oklch, var(--brand) 70%, transparent);
+}
+
+/* Dark: the top highlight drops to a faint sheen (a bright inset line looks like a border on dark cards). */
+[data-theme="dark"] .dir-lane,
+[data-theme="dark"] .dir-card,
+[data-theme="dark"] .dir-card:hover {
+  --dir-sheen: rgb(255 255 255 / 0.06);
 }
