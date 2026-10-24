@@ -509,6 +509,22 @@
   }
 }
 
+/* ── Process strip: on wide screens every step card stretches to the tallest one, tops aligned. ── */
+@media (min-width: 1024px) {
+  .process-strip.process-strip {
+    align-items: stretch;
+  }
+
+  .process-strip > .process-node {
+    grid-template-rows: auto 1fr;
+    align-items: stretch;
+  }
+
+  .process-strip > .process-node > .process-body {
+    height: 100%;
+  }
+}
+
 /* ── 3D bookshelf ── */
 .library-search .text-xs {
   white-space: nowrap;

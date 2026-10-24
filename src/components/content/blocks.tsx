@@ -530,7 +530,7 @@ export function Considerations({ ctx, badge = "Before You Start", variant = "car
       <div className="container-x">
         <SectionHeading badge={badge} title={c.heading} />
         {variant === "cards" ? (
-          <ul className="mt-10 grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
+          <ul className="mt-10 grid auto-rows-fr gap-5 sm:grid-cols-2 lg:grid-cols-3">
             {c.items.map((item, i) => (
               <li key={item} className="card p-6">
                 <div className="flex items-center justify-between">
@@ -544,7 +544,7 @@ export function Considerations({ ctx, badge = "Before You Start", variant = "car
             ))}
           </ul>
         ) : (
-          <ul className="mx-auto mt-9 grid max-w-4xl gap-3 md:grid-cols-2">
+          <ul className="mx-auto mt-9 grid max-w-4xl auto-rows-fr gap-3 md:grid-cols-2">
             {c.items.map((item) => (
               <li key={item} className="flex gap-3 rounded-2xl border border-line bg-surface p-4 text-[15.5px] leading-relaxed text-ink-soft">
                 <Info size={18} className="mt-0.5 shrink-0 text-warm" />
@@ -563,7 +563,8 @@ export function Example({ ctx, label = "Illustrative Example" }: { ctx: Ctx; lab
   const ex = ctx.content.example;
   if (!ex) return null;
   return (
-    <section className="container-x pb-6 pt-12 md:pt-16" aria-label={label}>
+    <section className="container-x pb-16 pt-12 md:pb-20 md:pt-16" aria-label={label}>
+      {/* Bottom padding stays taller than a following section's wave cut (max 52px), so the wave never overlaps the card. */}
       <div className="card grid items-center gap-8 overflow-hidden !rounded-[2rem] p-6 sm:p-10 lg:grid-cols-[1.3fr_1fr]">
         <div>
           <span className="pill">

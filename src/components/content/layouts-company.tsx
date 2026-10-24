@@ -316,9 +316,9 @@ export function StoryLayout({ ctx }: { ctx: Ctx }) {
 
       <section id="overview" className="section-y scroll-mt-24">
         <div className="container-x max-w-4xl text-center">
-          {purpose && <p className="story-purpose">{purpose}</p>}
+          {purpose && <p className="story-purpose text-justify [text-align-last:center] [hyphens:auto]">{purpose}</p>}
           {rest.map((p) => (
-            <p key={p.slice(0, 40)} className="lead mx-auto mt-6 max-w-3xl">
+            <p key={p.slice(0, 40)} className="lead mx-auto mt-6 max-w-3xl text-justify [text-align-last:center] [hyphens:auto]">
               {p}
             </p>
           ))}

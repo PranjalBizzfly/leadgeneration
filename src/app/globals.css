@@ -3070,3 +3070,9 @@ nav[data-menu-closed] .mega-menu {
 [data-theme="dark"] .dir-card:hover {
   --dir-sheen: rgb(255 255 255 / 0.06);
 }
+
+/* A wave-cut section overlaps the section above it by up to 52px. Give that section enough bottom padding to
+   clear the wave plus breathing room, so the wave never runs into or crowds the last card above it. */
+:not(:is(.cut-wave, .cut-step, .cut-slant, .cut-curve, .cut-tilt, .cut-flow)):has(+ :is(.cut-wave, .cut-step, .cut-slant, .cut-curve, .cut-tilt, .cut-flow)) {
+  padding-bottom: calc(2.5rem + clamp(20px, 3.4vw, 52px));
+}

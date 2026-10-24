@@ -141,8 +141,8 @@ export function ModuleTabs() {
                 </li>
               ))}
             </ul>
-            {/* One loud action in the grid: the featured module keeps the gradient pill, the rest are text links. */}
-            <Link href={m.href} className={m.featured ? "btn btn-primary mt-7 w-full !rounded-full" : "btn-text mt-6 self-start"}>
+            {/* Every module uses the same text-link action, so no card's button looks different. */}
+            <Link href={m.href} className="btn-text mt-6 self-start">
               {m.page} <ArrowRight size={16} />
             </Link>
           </article>
